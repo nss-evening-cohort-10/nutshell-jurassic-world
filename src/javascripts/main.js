@@ -3,4 +3,10 @@ import 'bootstrap';
 
 import '../styles/main.scss';
 
-console.log('roar');
+import homepage from './homepage/homepage';
+
+const init = () => {
+  homepage.buildHomepageCards();
+};
+
+init();
