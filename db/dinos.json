@@ -1,0 +1,92 @@
+{
+  "dino1": {
+    "name": "Nimona",
+    "dinoImage": "https://i.pinimg.com/originals/fd/98/5f/fd985f5b111c96c0441f55b434d0511b.jpg",
+    "species":"Tyrannosaurus Rex",
+    "diet":"Carnivore",
+    "size/weight": 30000, 
+    "description":"Tyrannosaurus is a genus of coelurosaurian theropod dinosaur. The species Tyrannosaurus rex, often called T. rex or colloquially T-Rex, is one of the most well-represented of the large theropods. Tyrannosaurus lived throughout what is now western North America, on what was then an island continent known as Laramidia.",
+    "dangerLevel": 8
+    },
+  "dino2": {
+    "name": "Michael",
+    "dinoImage": "http://www.australasianscience.com.au/sites/default/files/Archaeopteryx.jpg",
+    "species":"Archaeopteryx",
+    "diet":"Carnivore",
+    "size/weight": 2, 
+    "description":"Archaeopteryx, is a genus of bird-like dinosaurs that is transitional between non-avian feathered dinosaurs and modern birds. The name derives from the ancient Greek ἀρχαῖος meaning \"ancient\", and πτέρυξ, meaning \"feather\" or \"wing\".",
+    "dangerLevel": 3
+    },
+  "dino3": {
+    "name": "Viva",
+    "dinoImage": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Fred_Wierum_Deinonychus.png",
+    "species":"Deinonychus",
+    "diet":"Carnivore",
+    "size/weight": 200, 
+    "description":"Deinonychus is a genus of dromaeosaurid theropod dinosaur with one described species, Deinonychus antirrhopus. This species, which could grow up to 3.4 metres long, lived during the early Cretaceous Period, about 115–108 million years ago.",
+    "dangerLevel": 7
+    },
+  "dino4": {
+    "name": "Hank",
+    "dinoImage": "https://upload.wikimedia.org/wikipedia/commons/5/51/Dimetrodon_grandis_3D_Model_Reconstruction.png",
+    "species":"Dimetrodon",
+    "diet":"Carnivore",
+    "size/weight": 500, 
+    "description":"Dimetrodon is an extinct genus of synapsids that lived during the Cisuralian, around 295–272 million years ago. It is a member of the family Sphenacodontidae. The most prominent feature of Dimetrodon is the large neural spine sail on its back formed by elongated spines extending from the vertebrae.",
+    "dangerLevel": 5
+    },
+  "dino5": {
+    "name": "Elaine",
+    "dinoImage": "https://vignette.wikia.nocookie.net/jurassicworld-evolution/images/a/a3/JWEDilophosaurus.png/revision/latest?cb=20180701005522",
+    "species":"Dilophosaurus",
+    "diet":"Carnivore",
+    "size/weight": 800, 
+    "description":"Dilophosaurus is a genus of theropod dinosaur that lived in what is now North America during the Early Jurassic, about 193 million years ago. Three skeletons were discovered in northern Arizona in 1940, and the two best preserved were collected in 1942.",
+    "dangerLevel": 6
+    },
+  "dino6": {
+    "name": "Laura",
+    "dinoImage": "https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/parasaurolophus-in-a-forest-daniel-eskridge.jpg",
+    "species":"Parasaurolophus",
+    "diet":"Herbivore",
+    "size/weight": 7000, 
+    "description":"Parasaurolophus is a genus of herbivorous ornithopod dinosaur that lived in what is now North America and possibly Asia during the Late Cretaceous Period, about 76.5–73 million years ago. It was a herbivore that walked both as a biped and as a quadruped.",
+    "dangerLevel": 5
+    },
+  "dino7": {
+    "name": "Greg",
+    "dinoImage": "https://i.pinimg.com/originals/3f/13/13/3f1313e4bb9514dfa69558a93e25e63e.jpg",
+    "species":"Pachycephalosaurus",
+    "diet":"Herbivore",
+    "size/weight": 2000, 
+    "description":"Pachycephalosaurus is a genus of pachycephalosaurid dinosaurs. The type species, P. wyomingensis, is the only known species. It lived during the Late Cretaceous Period of what is now North America. Remains have been excavated in Montana, South Dakota, and Wyoming.",
+    "dangerLevel": 7
+    },
+  "dino8": {
+    "name": "Zoe",
+    "dinoImage": "https://i.pinimg.com/originals/54/df/21/54df218acbcb6e8d5db9563f10c3d0ee.png",
+    "species":"Ankylosaurus",
+    "diet":"Herbivore",
+    "size/weight": 15000, 
+    "description":"Ankylosaurus is a genus of armored dinosaur. Its fossils have been found in geological formations dating to the very end of the Cretaceous Period, about 68–66 million years ago, in western North America, making it among the last of the non-avian dinosaurs.",
+    "dangerLevel": 6
+    },
+  "dino9": {
+    "name": "Sheryl",
+    "dinoImage": "https://i.ytimg.com/vi/EadXpsG6Urk/maxresdefault.jpg",
+    "species":"Triceratops",
+    "diet":"Herbivore",
+    "size/weight": 25000, 
+    "description":"Triceratops is a genus of herbivorous ceratopsid dinosaur that first appeared during the late Maastrichtian stage of the late Cretaceous period, about 68 million years ago in what is now North America.",
+    "dangerLevel": 5
+    },
+  "dino10": {
+    "name": "Haley",
+    "dinoImage": "https://www.worldatlas.com/r/w728-h425-c728x425/upload/2c/43/44/shutterstock-267488816.jpg",
+    "species":"Brontosaurus",
+    "diet":"Herbivore",
+    "size/weight": 48000, 
+    "description":"Brontosaurus is a genus of gigantic quadruped sauropod dinosaurs. Although the type species, B. excelsus, had long been considered a species of the closely related Apatosaurus, researchers proposed in 2015 that Brontosaurus is a genus separate from Apatosaurus.",
+    "dangerLevel": 5
+    }
+}
