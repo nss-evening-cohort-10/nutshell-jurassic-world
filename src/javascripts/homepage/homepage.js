@@ -30,7 +30,6 @@ const homepageArr = [
 ];
 
 const createHomepageCards = (arr) => {
-  console.log('check');
   let domString = '<div class="card-group home-page-cards">';
   for (let i = 0; i < arr.length; i += 0) {
     domString += '<div class="card">';
@@ -38,7 +37,7 @@ const createHomepageCards = (arr) => {
     domString += '<div class="card-body">';
     domString += `<h5 class="card-title">${arr.name}</h5>`;
     domString += `<p class="card-text">${arr.description}</p>`;
-    domString += '</div>';
+    domString += '</div></div>';
   }
   domString += '</div>';
   utilities.printToDom('home-page', domString);
