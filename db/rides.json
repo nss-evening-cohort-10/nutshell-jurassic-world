@@ -1,0 +1,32 @@
+{
+  "ride1": {
+    "name": "Isla Nubar",
+    "status": "status1",
+    "imgUrl": "https://images.ladbible.com/thumbnail?type=jpeg&url=http://beta.ems.ladbiblegroup.com/s3/content/466761e45c9995bad7b9ecb929eccbfd.png&quality=70&width=720",
+    "isExhibit": true
+  },
+  "ride2": {
+    "name": "Raptor Encounter",
+    "status": "status1",
+    "imgUrl": "https://www.visittheusa.com/sites/default/files/styles/hero_m_1300x700/public/images/hero_media_image/2016-12/Screen-Shot-2015-06-25-at-1.09.jpg?itok=Wz2L-UB4",
+    "isExhibit": true
+  },
+  "ride3": {
+    "name": "Dino-soarin'",
+    "status": "status1",
+    "imgUrl": "https://www.usj.co.jp/overseas/attraction/img/jurassic-park-the-flying-dinosaur/main_v.png",
+    "isExhibit": false
+  },
+  "ride4": {
+    "name": "Jurassic Park & Ride",
+    "status": "status1",
+    "imgUrl": "https://pmchollywoodlife.files.wordpress.com/2018/02/jeep-super-bowl-commercial-ftr-1.jpg",
+    "isExhibit": false
+  },
+  "ride5": {
+    "name": "Terror-dactyl",
+    "status": "status1",
+    "imgUrl": "https://s3.amazonaws.com/gs-waymarking-images/cb2538b8-31ff-497c-9f29-527cda8213e0_l.jpg",
+    "isExhibit": true
+  }
+}
