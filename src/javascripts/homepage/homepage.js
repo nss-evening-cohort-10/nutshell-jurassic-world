@@ -30,14 +30,15 @@ const homepageArr = [
 ];
 
 const createHomepageCards = (arr) => {
-  let domString = '<div class="card-group home-page-cards">';
+  let domString = '<div class="card-group d-flex home-page-cards">';
   arr.forEach((card) => {
     domString += '<div class="card single-card">';
     domString += `<div class=crop-image><img src="${card.imageUrl}" class="homepage-image card-img-top" alt="${card.name}"></div>`;
     domString += '<div class="card-body">';
     domString += `<h5 class="homepage-card-title card-title">${card.name}</h5>`;
     domString += `<p class="card-text">${card.description}</p>`;
-    domString += '</div></div>';
+    domString += '</div>';
+    domString += '</div>';
   });
   domString += '</div>';
   utilities.printToDom('home-page', domString);
