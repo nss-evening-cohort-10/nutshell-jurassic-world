@@ -1,0 +1,26 @@
+.navbar {
+  padding: 0;
+  background: #757575;
+  box-shadow: 5px 5px 10px #212121;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+
+  #logoImg {
+    height: 60px;
+    margin-left: 5px;
+  }
+
+  button {
+    box-shadow: 5px 5px 10px #212121;
+  }
+}
+
+#logInButton, #logOutButton {
+  margin-right: 10px;
+  width: 100px;
+
+  img {
+    height: 20px;
+  }
+}
