@@ -14,7 +14,7 @@ const homepageArr = [
   },
   {
     name: 'rides',
-    imageUrl: 'https://jurassicoutpost.com/wp-content/uploads/2019/01/Jurassic-World-IOA-Coaster-Update.png',
+    imageUrl: 'https://cdn.collider.com/wp-content/uploads/2015/06/jurassic-world-movie-image.jpg',
     description: 'Cruxicheiros Kotasaurus Diclonius Kazaklambia.',
   },
   {
@@ -31,14 +31,14 @@ const homepageArr = [
 
 const createHomepageCards = (arr) => {
   let domString = '<div class="card-group home-page-cards">';
-  for (let i = 0; i < arr.length; i += 0) {
-    domString += '<div class="card">';
-    domString += `<img src="${arr.imageUrl}" class="card-img-top" alt="${arr.name}">`;
+  arr.forEach((card) => {
+    domString += '<div class="card single-card">';
+    domString += `<div class=crop-image><img src="${card.imageUrl}" class="homepage-image card-img-top" alt="${card.name}"></div>`;
     domString += '<div class="card-body">';
-    domString += `<h5 class="card-title">${arr.name}</h5>`;
-    domString += `<p class="card-text">${arr.description}</p>`;
+    domString += `<h5 class="homepage-card-title card-title">${card.name}</h5>`;
+    domString += `<p class="card-text">${card.description}</p>`;
     domString += '</div></div>';
-  }
+  });
   domString += '</div>';
   utilities.printToDom('home-page', domString);
 };
