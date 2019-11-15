@@ -4,7 +4,7 @@ import utilities from '../helpers/utilities';
 const homepageArr = [
   {
     name: 'dinosaurs',
-    imageUrl: 'https://i.pinimg.com/736x/0d/ed/cd/0dedcd8ba172241c16320e4548fc309c.jpg',
+    imageUrl: 'https://i.imgur.com/0sS6UxM.png',
     description: 'Cetiosauriscus Elaltitan Tarbosaurus.',
   },
   {
@@ -33,7 +33,7 @@ const createHomepageCards = (arr) => {
   let domString = '<div class="card-group d-flex home-page-cards">';
   arr.forEach((card) => {
     domString += '<div class="card single-card">';
-    domString += `<div class=crop-image><img src="${card.imageUrl}" class="homepage-image card-img-top" alt="${card.name}"></div>`;
+    domString += `<div class=crop-image><img src="${card.imageUrl}" class="homepage-image" alt="${card.name}"></div>`;
     domString += '<div class="card-body">';
     domString += `<h5 class="homepage-card-title card-title">${card.name}</h5>`;
     domString += `<p class="card-text">${card.description}</p>`;

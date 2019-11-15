@@ -1,21 +1,28 @@
 body {
   background-color: white;
 }
+#home-page-cards {
+  flex-flow: row wrap;
+}
+
 .single-card {
-  max-height: 300px;
+  min-width: 200px;
+  max-width: 400px;
   box-sizing: border-box;
 }
 .homepage-card-title {
   text-transform: uppercase;
 }
-
-
- .homepage-image {
+.crop-image {
   width: 400px;
-  height: 300px;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: 260px;
+}
+
+.homepage-image {
+  overflow: hidden;
+  width: auto;
+  height: 100%;
+  text-align: center;
   opacity: 0.6;
   &:hover {
     opacity: 1;
