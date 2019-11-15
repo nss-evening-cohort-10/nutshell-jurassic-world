@@ -1,0 +1,22 @@
+{
+  "vendor1": {
+    "type":"Food",
+    "description": "T Rex Turkey Legs"
+    },
+  "vendor2": {
+    "type":"Gift Shop",
+    "description": "Buy fun dinosaur themed merch!"
+    },
+  "vendor3": {
+    "type":"Restaurant",
+    "description": "Jimmy Buffett's Margaritaville"
+    },
+  "vendor4": {
+    "type":"Gift Shop",
+    "description": "Novelty Penny Smasher"
+    },
+  "vendor5": {
+    "type":"Food",
+    "description": "Dino food for the petting zoo"
+    }
+}

@@ -1,13 +1,18 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import navBar from '../../components/navBar/navBar';
+import $ from 'jquery';
+
+const logInButton = $('#logButtons');
+const logOutButton = $('#logOutButton');
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      navBar.logInEvent();
+      logOutButton.removeClass('hide');
+      logInButton.addClass('hide');
     } else {
-      navBar.printLoginButton();
+      logOutButton.addClass('hide');
+      logInButton.removeClass('hide');
     }
   });
 };

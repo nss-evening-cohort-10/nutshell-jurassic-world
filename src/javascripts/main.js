@@ -11,6 +11,8 @@ import apiKeys from './helpers/apiKeys.json';
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
   navBar.printLogo();
+  navBar.printLoginButton();
+  navBar.logoutEvent();
   authData.checkLoginStatus();
 };
 

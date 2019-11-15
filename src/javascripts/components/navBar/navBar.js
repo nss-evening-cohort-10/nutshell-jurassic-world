@@ -16,11 +16,16 @@ const signMeIn = () => {
   firebase.auth().signInWithPopup(provider);
 };
 
-const logInEvent = () => {
-  const domString = '<button class="btn btn-dark" id="logOutButton">Logout</button>';
-  utilities.printToDom('logButtons', domString);
-  // eslint-disable-next-line no-use-before-define
-  $('body').on('click', '#logOutButton', printLoginButton);
+const logoutEvent = () => {
+  const logoutButton = $('#logOutButton');
+  logoutButton.click((e) => {
+    e.preventDefault();
+    firebase.auth().signOut()
+      .then(() => {
+        $('#logButtons').removeClass('hide');
+        logoutButton.addClass('hide');
+      }).catch((error) => console.error(error));
+  });
 };
 
 const printLoginButton = () => {
@@ -29,4 +34,4 @@ const printLoginButton = () => {
   $('body').on('click', '#logInButton', signMeIn);
 };
 
-export default { printLogo, printLoginButton, logInEvent };
+export default { printLogo, printLoginButton, logoutEvent };
