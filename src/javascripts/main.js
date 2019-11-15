@@ -7,6 +7,8 @@ import navBar from './components/navBar/navBar';
 import authData from './helpers/data/authData';
 
 import apiKeys from './helpers/apiKeys.json';
+import homepage from './homepage/homepage';
+
 
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
@@ -14,6 +16,7 @@ const init = () => {
   navBar.printLoginButton();
   navBar.logoutEvent();
   authData.checkLoginStatus();
+  homepage.buildHomepageCards();
 };
 
 init();
