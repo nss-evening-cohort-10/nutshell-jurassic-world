@@ -2,8 +2,8 @@ const makeStaff = (staff) => {
   let domString = '';
   if (staff.id) {
     domString += `
-    <div class="card col-3" id="${staff.id}">
-      <img src="${staff.img}" class="card-img-top staffImg d-flex" alt="...">
+    <div class="card col-4 d-flex" id="${staff.id}">
+      <img src="${staff.img}" class="card-img-top staffImg img-responsive" alt="...">
         <div class="card-body">
           <h5 class="card-title">${staff.name}</h5>
           <p class="card-text">${staff.role}</p>
