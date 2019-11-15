@@ -1,10 +1,10 @@
 body {
   background-color: white;
-}
+
 #home-page {
-  margin: 100px 0 0 0;
+  margin: 75px 0 0 0;
   flex-flow: row wrap;
-}
+  pointer-events: auto;
 
 .single-card {
   min-width: 200px;
@@ -29,3 +29,5 @@ body {
     opacity: 1;
   }
  }
+}
+}

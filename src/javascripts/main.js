@@ -3,7 +3,7 @@ import 'bootstrap';
 
 import '../styles/main.scss';
 import navBar from './components/navBar/navBar';
-import homepage from './homepage/homepage';
+import homepage from './components/homepage/homepage';
 
 const init = () => {
   navBar.printLogo();
