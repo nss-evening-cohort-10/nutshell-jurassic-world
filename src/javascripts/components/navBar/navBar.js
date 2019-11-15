@@ -5,10 +5,21 @@ import $ from 'jquery';
 import logo from './assets/logo.png';
 import googleLogo from './assets/googleLogo.png';
 import utilities from '../../helpers/utilities';
+import dinosaurs from '../dinos/dinos';
+
+const backToHome = () => {
+  $('#home-page').removeClass('hide');
+  $('#dinosaurs').addClass('hide');
+  $('#equipment').addClass('hide');
+  $('#rides').addClass('hide');
+  $('#staff').addClass('hide');
+  $('#vendors').addClass('hide');
+};
 
 const printLogo = () => {
   const domString = `<img src="${logo}" id="logoImg">`;
   utilities.printToDom('brandLogo', domString);
+  $('#brandLogo').on('click', '#logoImg', backToHome);
 };
 
 const signMeIn = () => {
@@ -32,6 +43,7 @@ const printLoginButton = () => {
   const domString = `<button class="btn btn-dark" id="logInButton"><img src="${googleLogo}"> Login</button>`;
   utilities.printToDom('logButtons', domString);
   $('body').on('click', '#logInButton', signMeIn);
+  $('body').on('click', '#dinoLink', dinosaurs.printDinos);
 };
 
 export default { printLogo, printLoginButton, logoutEvent };
