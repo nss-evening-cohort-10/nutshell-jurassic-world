@@ -30,8 +30,21 @@ const fireStaff = (e) => {
 };
 
 const hireStaff = (e) => {
-
-}
+  e.stopImmediatePropagation();
+  const newStaff = {
+    name: $('#staffName').val(),
+    age: $('#staffAge').val(),
+    statusId: 'status1',
+    role: $('#staffRole').val(),
+    img: $('#staffImageURL').val(),
+  };
+  staffData.hireStaff(newStaff)
+    .then(() => {
+      $('#staffModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      buildAllStaff();
+    }).catch((error) => console.error(error));
+};
 
 const buildAllStaff = () => {
   $('#dinosaurs').addClass('hide');
@@ -41,7 +54,7 @@ const buildAllStaff = () => {
   $('#staff').removeClass('hide');
   staffData.getStaff()
     .then((allStaff) => {
-      let domString = '<button href="#" class="btn btn-outline-success hireButton" id="hire">Hire</button>';
+      let domString = '<button href="#" class="btn btn-outline-success hireButton" hireId="hire"  data-toggle="modal" data-target="#staffModal">Hire</button>';
       domString += '<div id="staffSection" class="d-flex flex-wrap">';
       allStaff.forEach((staff) => {
         domString += `
@@ -62,6 +75,7 @@ const buildAllStaff = () => {
       utilities.printToDom('staff', domString);
       staffModeToggle();
       $('.fire').click(fireStaff);
+      $('#hireStaff').click(hireStaff);
     })
     .catch((error) => console.error(error));
 };
