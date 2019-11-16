@@ -25,7 +25,7 @@ const backToHome = () => {
 const printLogo = () => {
   const domString = `<img src="${logo}" id="logoImg">`;
   utilities.printToDom('brandLogo', domString);
-  $('#brandLogo').on('click', '#logoImg', backToHome);
+  $('body').on('click', '#logoImg', backToHome);
 };
 
 const signMeIn = () => {
@@ -56,4 +56,9 @@ const printLoginButton = () => {
   $('body').on('click', '#staffLink', allStaff.buildAllStaff);
 };
 
-export default { printLogo, printLoginButton, logoutEvent };
+export default {
+  printLogo,
+  printLoginButton,
+  logoutEvent,
+  backToHome,
+};
