@@ -45,13 +45,50 @@ const addNewDino = (e) => {
   $('#danger-selector').val('Choose...');
 };
 
+
+const updateDino = (e) => {
+  const dinoId = e.target.id.split('dino-')[1];
+  const newInfo = {
+    name: $('#new-dino-name').val(),
+    dinoImage: $('#new-dino-pic').val(),
+    sizeWeight: $('#new-dino-size').val() * 1,
+    dangerLevel: $('#new-danger-selector').val() * 1,
+  };
+  dinoData.updateDinoInfo(dinoId, newInfo)
+    .then(() => {
+      $('#dinoEditModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      printDinos();
+    })
+    .catch((error) => console.error(error));
+};
+
 const deleteDino = (e) => {
-  e.stopImmediatePropagation();
   const dinoToDelete = e.target.id.split('kill-')[1];
   dinoData.euthenizeDino(dinoToDelete)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
       printDinos();
+    })
+    .catch((error) => console.error(error));
+};
+
+
+const getDinoToUpdate = (e) => {
+  $('#dinoEditModal').modal('show');
+  const dinoToUpdate = e.target.id.split('update-')[1];
+  dinoData.getDinosaurs()
+    .then((dinos) => {
+      dinos.forEach((dino) => {
+        if (dino.id === dinoToUpdate) {
+          const newId = `dino-${dino.id}`;
+          $('#new-dino-name').val(`${dino.name}`);
+          $('#new-dino-pic').val(`${dino.dinoImage}`);
+          $('#new-dino-size').val(`${dino.sizeWeight}`);
+          $('#new-danger-selector').val(`${dino.dangerLevel}`);
+          $('.updateDinoInfo').attr('id', newId);
+        }
+      });
     })
     .catch((error) => console.error(error));
 };
@@ -86,6 +123,8 @@ const printDinos = () => {
       utilities.printToDom('dinosaurs', domString);
       userModeToggle();
       $('body').on('click', '#addDino', addNewDino);
+      $('body').on('click', '.updateDino', getDinoToUpdate);
+      $('body').on('click', '.updateDinoInfo', updateDino);
       $('body').on('click', '.kill', deleteDino);
     })
     .catch((error) => console.error(error));
