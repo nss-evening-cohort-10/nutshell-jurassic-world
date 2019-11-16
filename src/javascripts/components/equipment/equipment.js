@@ -51,4 +51,4 @@ const printEquipment = () => {
     .catch((error) => console.error(error));
 };
 
-export default { printEquipment };
+export default { printEquipment, userModeToggle };
