@@ -3,7 +3,7 @@ import apiKeys from '../apiKeys.json';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
-const getEquipmentData  = () => new Promise((resolve, reject) => {
+const getEquipmentData = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/authentication.json`)
     .then((response) => {
       const demEquips = response.data;
