@@ -143,11 +143,47 @@
         </div>
       </div>
 
+<div class="modal fade" id="rideUpdateModal" tabindex="-1" role="dialog" aria-labelledby="rideUpdateModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="rideUpdateModalLabel">Deconstruct</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="update-ride-name">New Name</label>
+            <input type="text" class="form-control" id="update-ride-name" placeholder="Enter New Name">
+          </div>
+          <div class="form-group">
+            <label for="update-ride-pic">New Image Url</label>
+            <input type="text" class="form-control" id="update-ride-pic" placeholder="Enter Image Url">
+          </div>
+          <div class="form-group">
+            <label class="my-1 mr-2" for="update-exhibit-status">New Exhibit Status</label>
+            <select class="custom-select my-1 mr-sm-2" id="update-exhibit-status">
+              <option selected>Is this ride also a dinosaur exhibit?</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="ride-update-save-changes btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="modal fade" id="rideModal" tabindex="-1" role="dialog" aria-labelledby="rideModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="rideModalLabel">Deconstruct</h5>
+        <h5 class="modal-title" id="rideModalLabel">Add Ride</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
