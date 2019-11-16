@@ -17,8 +17,11 @@ const getDinosaurs = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const euthenizeDino = (dinoId) => axios.delete(`${baseUrl}/dinosaurs/${dinoId}.json`);
+
 const addNewDino = (newDino) => axios.post(`${baseUrl}/dinosaurs.json`, newDino);
 
+<<<<<<< HEAD
 const updateDino = (dinoId, updatedDino) => axios.put(`${baseUrl}/dinosaurs/${dinoId}.json`, updatedDino);
 
 const updateDinoInfo = (dinoId, newInfo) => new Promise((resolve, reject) => {
@@ -36,3 +39,6 @@ const updateDinoInfo = (dinoId, newInfo) => new Promise((resolve, reject) => {
 });
 
 export default { getDinosaurs, addNewDino, updateDinoInfo };
+=======
+export default { getDinosaurs, addNewDino, euthenizeDino };
+>>>>>>> a88401ca3dcdbceac2f591055a6560b5f47c2501
