@@ -44,6 +44,10 @@ const hireStaff = (e) => {
       // eslint-disable-next-line no-use-before-define
       buildAllStaff();
     }).catch((error) => console.error(error));
+  $('#staffName').val('');
+  $('#staffAge').val('');
+  $('#staffRole').val('');
+  $('#staffImageURL').val('');
 };
 
 const buildAllStaff = () => {
