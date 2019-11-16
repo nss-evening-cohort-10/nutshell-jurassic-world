@@ -45,6 +45,38 @@ const addNewDino = (e) => {
   $('#danger-selector').val('Choose...');
 };
 
+const updateDino = (e) => {
+  e.stopImmediatePropagation();
+  const dinoId = e.target.id.split('dino-')[1];
+  const newInfo = {
+    name: $('#new-dino-name').val(),
+    dinoImage: $('#new-dino-pic').val(),
+    sizeWeight: $('#new-dino-size').val() * 1,
+    dangerLevel: $('#new-danger-selector').val() * 1,
+  };
+  dinoData.updateDino(dinoId, newInfo);
+};
+
+const getDinoToUpdate = (e) => {
+  e.stopImmediatePropagation();
+  $('#dinoEditModal').modal('show');
+  const dinoToUpdate = e.target.id.split('update-')[1];
+  dinoData.getDinosaurs()
+    .then((dinos) => {
+      dinos.forEach((dino) => {
+        if (dino.id === dinoToUpdate) {
+          const newId = `dino- ${dino.id}`;
+          $('#new-dino-name').val(`${dino.name}`);
+          $('#new-dino-pic').val(`${dino.dinoImage}`);
+          $('#new-dino-size').val(`${dino.sizeWeight}`);
+          $('#new-danger-selector').val(`${dino.dangerLevel}`);
+          $('.updateDinoInfo').attr('id', newId);
+        }
+      });
+    })
+    .catch((error) => console.error(error));
+};
+
 const printDinos = () => {
   $('#home-page').addClass('hide');
   $('#dinosaurs').removeClass('hide');
@@ -75,6 +107,8 @@ const printDinos = () => {
       utilities.printToDom('dinosaurs', domString);
       userModeToggle();
       $('body').on('click', '#addDino', addNewDino);
+      $('body').on('click', '.updateDino', getDinoToUpdate);
+      $('body').on('click', '.updateDinoInfo', updateDino);
     })
     .catch((error) => console.error(error));
 };
