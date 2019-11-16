@@ -1,34 +1,83 @@
-// import $ from 'jquery';
-// import utilities from '../../helpers/utilities';
+import $ from 'jquery';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
+import utilities from '../../helpers/utilities';
+
+import vendorData from '../../helpers/data/vendorData';
 
 // attach event listener for click-event to 'vendors' card
 // import vendorData.js function that imports all vendor data
 // when clicked, function should re-print page with other collections hidden, and full list/display of vendor cards
 // when expanded, there should be the ability to either navigate away via the navbar or just close the expanded list and re-prints the homepage
 
+import './vendors.scss';
+
+const vendorLoginStatus = () => {
+  const user = firebase.auth().currentUser;
+  if (user) {
+    $('.vendor-edit').removeClass('hide');
+    $('.vendor-update').removeClass('hide');
+    $('.vendor-delete').removeClass('hide');
+  } else {
+    $('.vendor-edit').addClass('hide');
+    $('.vendor-update').addClass('hide');
+    $('.vendor-delete').addClass('hide');
+  }
+};
+
+const singleVendorCard = (vendorInfo) => {
+  const domString = `
+  <div class="vendor-card col-md-6">
+  <div class="card-body">
+  <!--Title-->
+  <h4 class="card-title">Card Title</h4>
+  <div class="border-top my-3 hide"></div>
+  <div id=${vendorInfo.id} class="vendor-footer d-flex justify-content-between hide">
+  <button class="btn btn-warning vendor-update hide fas fa-times">Update Vendor Details</button>
+  <button class="btn btn-danger vendor-delete hide fas fa-times">Close Shop</button>
+  </div>
+  </div>
+  </div>
+  </div>
+  `;
+  console.log(vendorInfo.id);
+  return domString;
+};
 
 const printAllVendors = () => {
-  console.log('this should be all the vendors from vendors.js');
-  // do the thing (i.e., loop over vendor data to print cards with each item and two buttons that don't work yet.)
-  // let domString = '';
-  // domString += '<div class="card" style="width: 18rem;">';
-  // domString += '<div class="card-body">';
-  // domString += `<h5 class="card-title">${vendorData.name}</h5>`;
-  // domString += `<p class="card-text">${vendorData.description}</p>`;
-  // domString += '<div id="buttonDiv">';
-  // domString += '<button class="btn btn-primary" id="openVendor}">open new vendor</button>';
-  // domString += '<button class="btn btn-dark" id="closeVendor">close up</button>';
-  // domString += '</div>';
-  // domString += '</div>';
-  // domString += '</div>';
-  // }
+  $('#home-page').addClass('hide');
+  $('#dinosaurs').addClass('hide');
+  $('#equipment').addClass('hide');
+  $('#staff').addClass('hide');
+  $('#vendors').removeClass('hide');
+  $('#rides').addClass('hide');
+
+  vendorData.getAllVendors()
+    .then((vendors) => {
+      let domString = '';
+      domString += '<div class="card">';
+      domString += '<div class="card-body">';
+      domString += '<button class="btn btn-success" id="openVendor}">open new vendor</button>';
+      domString += `<h5 class="card-title">${vendorData.name}</h5>`;
+      domString += `<p class="card-text">${vendorData.description}</p>`;
+      domString += '<div id="buttonDiv">';
+      vendors.forEach((vendor) => {
+        domString += singleVendorCard(vendor);
+      });
+      domString += '</div></div>';
+      console.log('nice');
+      utilities.printToDom('vendors', domString);
+      vendorLoginStatus();
+    })
+    .catch((error) => console.error(error));
 };
 
 // click event to trigger printAllVendors
-const showAllVendors = () =>{
+const showAllVendors = () => {
   console.log('click event');
   // if 'card.name' === 'vendors') {
   printAllVendors();
 };
 
-export default { showAllVendors };
+export default { showAllVendors, vendorLoginStatus };

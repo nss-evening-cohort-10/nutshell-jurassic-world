@@ -1,9 +1,6 @@
 import Axios from 'axios';
 
-// import axios from 'axios';
-// import apiKeys from './apiKeys.json';
-
-
+import apiKeys from '../apiKeys.json';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
@@ -13,8 +10,7 @@ const baseUrl = apiKeys.firebaseKeys.databaseURL;
 // converts vendor data from object of objects to array
 // delivers array in response
 
-const getAllVendors = () => new Promise ((resolve, reject) => {
-  console.log('test');
+const getAllVendors = () => new Promise((resolve, reject) => {
   Axios.get(`${baseUrl}/vendors.json`)
     .then((response) => {
       const demVendors = response.data;
@@ -24,6 +20,7 @@ const getAllVendors = () => new Promise ((resolve, reject) => {
         vendors.push(demVendors[fbId]);
       });
       resolve(vendors);
+      console.log(vendors);
     })
     .catch((error) => reject(error));
 });
