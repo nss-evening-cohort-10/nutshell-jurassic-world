@@ -17,4 +17,6 @@ const getEquipmentData = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getEquipmentData };
+const addEquipment = (newEquipment) => axios.post(`${baseUrl}/equipment.json`, newEquipment);
+
+export default { getEquipmentData, addEquipment };

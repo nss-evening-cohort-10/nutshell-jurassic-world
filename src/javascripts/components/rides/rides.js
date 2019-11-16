@@ -33,7 +33,7 @@ const createRide = (e) => {
     .then(() => {
       // eslint-disable-next-line no-use-before-define
       printRides();
-      ('#rideModal').modal('hide');
+      $('#rideModal').modal('hide');
     })
     .catch((error) => console.error(error));
 };
@@ -42,9 +42,9 @@ const updateRide = (e) => {
   const rideId = e.target.id.split('ride-')[1];
   $('#rideUpdateModal').modal('show');
   const newRideInfo = {
-    name: $('#new-ride-name').val(),
-    imgUrl: $('#new-ride-pic').val(),
-    isExhibit: $('#new-exhibit-status').val(),
+    name: $('#update-ride-name').val(),
+    imgUrl: $('#update-ride-pic').val(),
+    isExhibit: $('#update-exhibit-status').val(),
     status: 'status1',
   };
   rideData.updateRideInfo(rideId, newRideInfo)
@@ -63,9 +63,9 @@ const getRideInfo = (e) => {
     .then((rides) => {
       rides.forEach((ride) => {
         if (rideId === ride.id) {
-          $('#new-ride-name').val(`${ride.name}`);
-          $('#new-ride-pic').val(`${ride.imgUrl}`);
-          $('#new-exhibit-status').val(`${ride.isExhibit}`);
+          $('#update-ride-name').val(`${ride.name}`);
+          $('#update-ride-pic').val(`${ride.imgUrl}`);
+          $('#update-exhibit-status').val(`${ride.isExhibit}`);
           const newRideId = `ride-${ride.id}`;
           $('.ride-update-save-changes').attr('id', newRideId);
         }

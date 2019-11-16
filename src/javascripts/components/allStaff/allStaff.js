@@ -29,6 +29,64 @@ const fireStaff = (e) => {
     .catch((error) => console.error(error));
 };
 
+const hireStaff = (e) => {
+  e.stopImmediatePropagation();
+  const newStaff = {
+    name: $('#staffName').val(),
+    age: $('#staffAge').val(),
+    statusId: 'status1',
+    role: $('#staffRole').val(),
+    img: $('#staffImageURL').val(),
+  };
+  staffData.hireStaff(newStaff)
+    .then(() => {
+      $('#staffModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      buildAllStaff();
+    }).catch((error) => console.error(error));
+  $('#staffName').val('');
+  $('#staffAge').val('');
+  $('#staffRole').val('');
+  $('#staffImageURL').val('');
+};
+
+const updateStaff = (e) => {
+  const staffId = e.target.id.split('staff-')[1];
+  const newStaffRole = {
+    name: $('#updateStaffName').val(),
+    age: $('#updateStaffAge').val(),
+    statusId: 'status1',
+    role: $('#updateStaffRole').val(),
+    img: $('#updateStaffImageURL').val(),
+  };
+  staffData.updateStaff(staffId, newStaffRole)
+    .then(() => {
+      $('#updateStaffModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      buildAllStaff();
+    })
+    .catch((error) => console.error(error));
+};
+
+const getStaffUpdate = (e) => {
+  $('#updateStaffModal').modal('show');
+  const staffId = e.target.id.split('update-')[1];
+  staffData.getStaff()
+    .then((allStaff) => {
+      allStaff.forEach((staff) => {
+        if (staff.id === staffId) {
+          const newStaffId = `staff-${staff.id}`;
+          $('#updateStaffName').val(`${staff.name}`);
+          $('#updateStaffAge').val(`${staff.age}`);
+          $('#updateStaffRole').val(`${staff.role}`);
+          $('#updateStaffImageURL').val(`${staff.img}`);
+          $('.updateStaff').attr('id', newStaffId);
+        }
+      });
+    })
+    .catch((error) => console.error(error));
+};
+
 const buildAllStaff = () => {
   $('#dinosaurs').addClass('hide');
   $('#rides').addClass('hide');
@@ -37,7 +95,7 @@ const buildAllStaff = () => {
   $('#staff').removeClass('hide');
   staffData.getStaff()
     .then((allStaff) => {
-      let domString = '<button href="#" class="btn btn-outline-success hireButton">Hire</button>';
+      let domString = '<button href="#" class="btn btn-outline-success hireButton" hireId="hire"  data-toggle="modal" data-target="#staffModal">Hire</button>';
       domString += '<div id="staffSection" class="d-flex flex-wrap">';
       allStaff.forEach((staff) => {
         domString += `
@@ -48,7 +106,7 @@ const buildAllStaff = () => {
               <p class="card-text">${staff.role}</p>
                 <div class="d-flex justify-content-between">
                   <button href="#" class="btn btn-outline-danger fire hide" id="fire-${staff.id}">Fire</button>
-                  <button href="#" class="btn btn-outline-secondary updateRole hide">Update Role</button>
+                  <button href="#" class="btn btn-outline-secondary updateRole hide" id="update-${staff.id}" data-toggle="modal" data-target="#updateStaffModal">Update Role</button>
                 </div>
             </div>
         </div>
@@ -58,6 +116,9 @@ const buildAllStaff = () => {
       utilities.printToDom('staff', domString);
       staffModeToggle();
       $('.fire').click(fireStaff);
+      $('#hireStaff').click(hireStaff);
+      $('.updateStaff').click(updateStaff);
+      $('.updateRole').click(getStaffUpdate);
     })
     .catch((error) => console.error(error));
 };

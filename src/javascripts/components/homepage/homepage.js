@@ -43,15 +43,12 @@ const imageClickEvent = (e) => {
     dinos.printDinos();
   } else if (target === 'rides') {
     rides.printRides();
-    $('#home-page').empty();
   } else if (target === 'equipment') {
     equipment.printEquipment();
   } else if (target === 'staff') {
     allStaff.buildAllStaff();
-    $('#home-page').empty();
   } else if (target === 'vendors') {
     vendors.showAllVendors();
-    $('#home-page').empty();
   }
 };
 
