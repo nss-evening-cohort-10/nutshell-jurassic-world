@@ -21,6 +21,23 @@ const deleteRide = (e) => {
     .catch((error) => console.error(error));
 };
 
+const createRide = (e) => {
+  e.stopImmediatePropagation();
+  const newRide = {
+    name: $('#new-ride-name').val(),
+    imgUrl: $('#new-ride-pic').val(),
+    isExhibit: $('#new-exhibit-status').val(),
+    status: 'status1',
+  };
+  rideData.addRide(newRide)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      printRides();
+      ('#rideModal').modal('hide');
+    })
+    .catch((error) => console.error(error));
+};
+
 const rideLoginStatus = () => {
   const user = firebase.auth().currentUser;
   if (user) {
@@ -45,11 +62,10 @@ const printRides = () => {
   $('#staff').addClass('hide');
   $('#vendors').addClass('hide');
   $('#rides').removeClass('hide');
-
   rideData.getRides()
     .then((rides) => {
       let domString = `<div class="img-container"><img src="${title}" class="rides-title" alt="title" /></div>`;
-      domString += '<div class="center"><button id="build-ride" class="btn btn-outline-secondary create-ride hide">BUILD A RIDE</button>';
+      domString += '<div class="center"><button id="build-ride" class="btn btn-outline-secondary create-ride hide" data-toggle="modal" data-target="#rideModal">BUILD A RIDE</button>';
       domString += '<div class="rides-cards container"><div class="card-deck row">';
       rides.forEach((ride) => {
         domString += individualRide.individualRideLoggedIn(ride);
@@ -57,6 +73,7 @@ const printRides = () => {
       domString += '</div></div></div>';
       utilities.printToDom('rides', domString);
       $('.ride-footer').on('click', '.ride-delete', deleteRide);
+      $('body').on('click', '#ride-save-changes', createRide);
       rideLoginStatus();
     })
     .catch((error) => console.error(error));
