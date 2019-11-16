@@ -8,6 +8,7 @@ import googleLogo from './assets/googleLogo.png';
 import utilities from '../../helpers/utilities';
 import dinosaurs from '../dinos/dinos';
 import rides from '../rides/rides';
+import vendors from '../vendors/vendors';
 import equipment from '../equipment/equipment';
 import allStaff from '../allStaff/allStaff';
 
@@ -50,6 +51,7 @@ const printLoginButton = () => {
   $('body').on('click', '#logInButton', signMeIn);
   $('body').on('click', '#dinoLink', dinosaurs.printDinos);
   $('body').on('click', '#ridesLink', rides.printRides);
+  $('body').on('click', '#vendLink', vendors.showAllVendors);
   $('body').on('click', '#equipmentLink', equipment.printEquipment);
   $('body').on('click', '#staffLink', allStaff.buildAllStaff);
 };
