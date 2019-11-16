@@ -95,6 +95,9 @@ const getDinoToUpdate = (e) => {
 
 const printDinos = () => {
   $('#home-page').addClass('hide');
+  $('#equipment').addClass('hide');
+  $('#staff').addClass('hide');
+  $('#rides').addClass('hide');
   $('#dinosaurs').removeClass('hide');
   $('#staff').addClass('hide');
   $('#rides').addClass('hide');
