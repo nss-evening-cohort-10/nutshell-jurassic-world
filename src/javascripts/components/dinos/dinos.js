@@ -45,6 +45,17 @@ const addNewDino = (e) => {
   $('#danger-selector').val('Choose...');
 };
 
+const deleteDino = (e) => {
+  e.stopImmediatePropagation();
+  const dinoToDelete = e.target.id.split('kill-')[1];
+  dinoData.euthenizeDino(dinoToDelete)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      printDinos();
+    })
+    .catch((error) => console.error(error));
+};
+
 const printDinos = () => {
   $('#home-page').addClass('hide');
   $('#dinosaurs').removeClass('hide');
@@ -75,6 +86,7 @@ const printDinos = () => {
       utilities.printToDom('dinosaurs', domString);
       userModeToggle();
       $('body').on('click', '#addDino', addNewDino);
+      $('body').on('click', '.kill', deleteDino);
     })
     .catch((error) => console.error(error));
 };
