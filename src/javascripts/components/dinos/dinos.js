@@ -53,10 +53,13 @@ const updateDino = (e) => {
     sizeWeight: $('#new-dino-size').val() * 1,
     dangerLevel: $('#new-danger-selector').val() * 1,
   };
-  dinoData.updateDinoInfo(dinoId, newInfo);
-  $('#dinoEditModal').modal('hide');
-  // eslint-disable-next-line no-use-before-define
-  printDinos();
+  dinoData.updateDinoInfo(dinoId, newInfo)
+    .then(() => {
+      $('#dinoEditModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      printDinos();
+    })
+    .catch((error) => console.error(error));
 };
 
 const getDinoToUpdate = (e) => {
