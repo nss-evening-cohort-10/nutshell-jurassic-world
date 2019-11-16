@@ -14,9 +14,9 @@ const individualRideLoggedIn = (ride) => {
     <!--Title-->
     <h4 class="card-title">${ride.name}</h4>
     <div class="border-top my-3 hide"></div>
-    <div id=${ride.id} class="ride-footer d-flex justify-content-between hide">
-    <i class="ride-edit hide fas fa-pen"></i>
-    <i class="ride-delete hide fas fa-times"></i>
+    <div class="ride-footer d-flex justify-content-between hide">
+    <button id="edit-${ride.id}" class="ride-edit hide btn btn-outline-secondary">UNDER CONSTRUCTION</button>
+    <button id="delete-${ride.id}" class="ride-delete hide btn btn-outline-secondary">SHUTDOWN</button>
     </div>
   </div>
 </div>
