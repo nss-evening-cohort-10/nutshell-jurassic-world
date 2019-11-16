@@ -215,7 +215,6 @@
     </div>
   </div>
 </div>
-
 <div class="modal fade" id="staffModal" tabindex="-1" role="dialog" aria-labelledby="staffModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -289,5 +288,38 @@
       </div>
     </div>
   </div>
+
+<div class="modal fade" id="equipmentModal" tabindex="-1" role="dialog" aria-labelledby="equipmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="equipmentModalLabel">Add New Equipment</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                  <label for="new-equipment-name">New Name</label>
+                  <input type="text" class="form-control" id="new-equipment-name" placeholder="Enter New Name">
+                </div>
+                <div class="form-group">
+                  <label for="new-equipment-desc">New Description</label>
+                  <input type="text" class="form-control" id="new-equipment-desc" placeholder="Enter Description">
+                </div>
+                <div class="form-group">
+                    <label for="new-equipment-quantity">New Quantity</label>
+                    <input type="number" class="form-control" id="new-equipment-quantity" placeholder="Enter New Quantity">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="equipment-create" type="button" class="save-new-equipment btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
 </body>
 </html>
