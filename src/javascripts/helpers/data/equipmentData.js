@@ -4,7 +4,7 @@ import apiKeys from '../apiKeys.json';
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
 const getEquipmentData = () => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/authentication.json`)
+  axios.get(`${baseUrl}/equipment.json`)
     .then((response) => {
       const demEquips = response.data;
       const equips = [];
@@ -12,6 +12,7 @@ const getEquipmentData = () => new Promise((resolve, reject) => {
         demEquips[fbId].id = fbId;
         equips.push(demEquips[fbId]);
       });
+      resolve(equips);
     })
     .catch((error) => reject(error));
 });
