@@ -18,6 +18,17 @@ const staffModeToggle = () => {
   }
 };
 
+const fireStaff = (e) => {
+  e.preventDefault();
+  const staffId = e.target.id.split('fire-')[1];
+  staffData.fireStaff(staffId)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      buildAllStaff();
+    })
+    .catch((error) => console.error(error));
+};
+
 const buildAllStaff = () => {
   $('#dinosaurs').addClass('hide');
   $('#rides').addClass('hide');
@@ -36,7 +47,7 @@ const buildAllStaff = () => {
               <h5 class="card-title">${staff.name}</h5>
               <p class="card-text">${staff.role}</p>
                 <div class="d-flex justify-content-between">
-                  <button href="#" class="btn btn-outline-danger fire hide">Fire</button>
+                  <button href="#" class="btn btn-outline-danger fire hide" id="fire-${staff.id}">Fire</button>
                   <button href="#" class="btn btn-outline-secondary updateRole hide">Update Role</button>
                 </div>
             </div>
@@ -46,6 +57,7 @@ const buildAllStaff = () => {
       domString += '</div>';
       utilities.printToDom('staff', domString);
       staffModeToggle();
+      $('.fire').click(fireStaff);
     })
     .catch((error) => console.error(error));
 };
