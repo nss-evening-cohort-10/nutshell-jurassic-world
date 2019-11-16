@@ -1,6 +1,7 @@
 import '@fortawesome/fontawesome-free/js/all';
 import 'bootstrap';
 import firebase from 'firebase';
+
 import '../styles/main.scss';
 
 import navBar from './components/navBar/navBar';
