@@ -50,6 +50,43 @@ const hireStaff = (e) => {
   $('#staffImageURL').val('');
 };
 
+const updateStaff = (e) => {
+  const staffId = e.target.id.split('staff-')[1];
+  const newStaffRole = {
+    name: $('#updateStaffName').val(),
+    age: $('#updateStaffAge').val(),
+    statusId: 'status1',
+    role: $('#updateStaffRole').val(),
+    img: $('#updateStaffImageURL').val(),
+  };
+  staffData.updateStaff(staffId, newStaffRole)
+    .then(() => {
+      $('#updateStaffModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      buildAllStaff();
+    })
+    .catch((error) => console.error(error));
+};
+
+const getStaffUpdate = (e) => {
+  $('#updateStaffModal').modal('show');
+  const staffId = e.target.id.split('update-')[1];
+  staffData.getStaff()
+    .then((allStaff) => {
+      allStaff.forEach((staff) => {
+        if (staff.id === staffId) {
+          const newStaffId = `staff-${staff.id}`;
+          $('#updateStaffName').val(`${staff.name}`);
+          $('#updateStaffAge').val(`${staff.age}`);
+          $('#updateStaffRole').val(`${staff.role}`);
+          $('#updateStaffImageURL').val(`${staff.img}`);
+          $('.updateStaff').attr('id', newStaffId);
+        }
+      });
+    })
+    .catch((error) => console.error(error));
+};
+
 const buildAllStaff = () => {
   $('#dinosaurs').addClass('hide');
   $('#rides').addClass('hide');
@@ -69,7 +106,7 @@ const buildAllStaff = () => {
               <p class="card-text">${staff.role}</p>
                 <div class="d-flex justify-content-between">
                   <button href="#" class="btn btn-outline-danger fire hide" id="fire-${staff.id}">Fire</button>
-                  <button href="#" class="btn btn-outline-secondary updateRole hide">Update Role</button>
+                  <button href="#" class="btn btn-outline-secondary updateRole hide" id="update-${staff.id}" data-toggle="modal" data-target="#updateStaffModal">Update Role</button>
                 </div>
             </div>
         </div>
@@ -80,6 +117,8 @@ const buildAllStaff = () => {
       staffModeToggle();
       $('.fire').click(fireStaff);
       $('#hireStaff').click(hireStaff);
+      $('.updateStaff').click(updateStaff);
+      $('.updateRole').click(getStaffUpdate);
     })
     .catch((error) => console.error(error));
 };
