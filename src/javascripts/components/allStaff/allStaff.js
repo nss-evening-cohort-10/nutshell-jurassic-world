@@ -50,6 +50,23 @@ const hireStaff = (e) => {
   $('#staffImageURL').val('');
 };
 
+const updateStaff = (e) => {
+  const staffId = e.target.id.split('update-')[1];
+  const newInfo = {
+    name: $('#new-dino-name').val(),
+    dinoImage: $('#new-dino-pic').val(),
+    sizeWeight: $('#new-dino-size').val() * 1,
+    dangerLevel: $('#new-danger-selector').val() * 1,
+  };
+  staffData.updateStaff(dinoId, newInfo)
+    .then(() => {
+      $('#updateStaffModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      buildAllStaff();
+    })
+    .catch((error) => console.error(error));
+};
+
 const buildAllStaff = () => {
   $('#dinosaurs').addClass('hide');
   $('#rides').addClass('hide');
@@ -69,7 +86,7 @@ const buildAllStaff = () => {
               <p class="card-text">${staff.role}</p>
                 <div class="d-flex justify-content-between">
                   <button href="#" class="btn btn-outline-danger fire hide" id="fire-${staff.id}">Fire</button>
-                  <button href="#" class="btn btn-outline-secondary updateRole hide">Update Role</button>
+                  <button href="#" class="btn btn-outline-secondary updateRole hide" id="update-${staff.id}" data-toggle="modal" data-target="#updateStaffModal">Update Role</button>
                 </div>
             </div>
         </div>

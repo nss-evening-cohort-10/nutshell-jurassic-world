@@ -21,4 +21,6 @@ const fireStaff = (staffId) => axios.delete(`${baseUrl}/staff/${staffId}.json`);
 
 const hireStaff = (newStaff) => axios.post(`${baseUrl}/staff.json`, newStaff);
 
+const updateRole = (staffId, updatedStaff) => axios.put(`${baseUrl}/staff/${staffId}.json`, updatedStaff);
+
 export default { getStaff, fireStaff, hireStaff };
