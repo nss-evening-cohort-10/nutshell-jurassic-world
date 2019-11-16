@@ -17,4 +17,6 @@ const getDinosaurs = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getDinosaurs };
+const addNewDino = (newDino) => axios.post(`${baseUrl}/dinosaurs.json`, newDino);
+
+export default { getDinosaurs, addNewDino };

@@ -18,11 +18,38 @@ const userModeToggle = () => {
   }
 };
 
+const addNewDino = (e) => {
+  e.stopImmediatePropagation();
+  const newDino = {
+    name: $('#dino-name').val(),
+    dinoImage: $('#dino-pic').val(),
+    species: $('#dino-species').val(),
+    diet: $('#diet-selector').val(),
+    sizeWeight: $('#dino-size').val() * 1,
+    description: $('#dino-description').val(),
+    dangerLevel: $('#danger-selector').val() * 1,
+  };
+  dinoData.addNewDino(newDino)
+    .then(() => {
+      $('#dinoModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      printDinos();
+    })
+    .catch((error) => console.error(error));
+  $('#dino-name').val('');
+  $('#dino-pic').val('');
+  $('#dino-species').val('');
+  $('#diet-selector').val('Choose...');
+  $('#dino-size').val('');
+  $('#dino-description').val('');
+  $('#danger-selector').val('Choose...');
+};
+
 const printDinos = () => {
   $('#home-page').addClass('hide');
   $('#dinosaurs').removeClass('hide');
   let domString = `
-  <button class="btn btn-dark" id="spawn">Spawn Dino</button>
+  <button class="btn btn-dark" id="spawn" data-toggle="modal" data-target="#dinoModal">Spawn Dino</button>
   <div class="d-flex row wrap justify-content-center">`;
   dinoData.getDinosaurs()
     .then((dinos) => {
@@ -47,6 +74,7 @@ const printDinos = () => {
       domString += '</div>';
       utilities.printToDom('dinosaurs', domString);
       userModeToggle();
+      $('body').on('click', '#addDino', addNewDino);
     })
     .catch((error) => console.error(error));
 };

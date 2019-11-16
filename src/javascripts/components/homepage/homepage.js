@@ -1,7 +1,10 @@
-import './homepage.scss';
 import $ from 'jquery';
-import utilities from '../helpers/utilities';
-import dinos from '../components/dinos/dinos';
+import './homepage.scss';
+
+
+import utilities from '../../helpers/utilities';
+import dinos from '../dinos/dinos';
+import rides from '../rides/rides';
 
 const homepageArr = [
   {
@@ -35,6 +38,9 @@ const imageClickEvent = (e) => {
   const target = e.target.id.split('hp-')[1];
   if (target === 'dinosaurs') {
     dinos.printDinos();
+  } else if (target === 'rides') {
+    rides.printRides();
+    $('#home-page').empty();
   }
 };
 
