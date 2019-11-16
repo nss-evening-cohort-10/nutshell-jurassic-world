@@ -34,8 +34,8 @@ const singleVendorCard = (vendorInfo) => {
   <h4 class="card-title">Card Title</h4>
   <div class="border-top my-3 hide"></div>
   <div id=${vendorInfo.id} class="vendor-footer d-flex justify-content-between hide">
-  <button class="btn btn-warning vendor-update hide fas fa-times">Update Vendor Details</button>
-  <button class="btn btn-danger vendor-delete hide fas fa-times">Close Shop</button>
+  <button class="btn btn-warning vendor-update hide">Update Vendor Details</button>
+  <button class="btn btn-danger vendor-delete hide">Close Shop</button>
   </div>
   </div>
   </div>
