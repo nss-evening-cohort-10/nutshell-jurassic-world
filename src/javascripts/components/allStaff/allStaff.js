@@ -29,7 +29,10 @@ const fireStaff = (e) => {
     .catch((error) => console.error(error));
 };
 
-// const hireStaff = () => {}
+// const hireStaff = (e) => {
+//   e.stopImmediatePropagation();
+
+// };
 
 const buildAllStaff = () => {
   $('#dinosaurs').addClass('hide');
@@ -40,9 +43,10 @@ const buildAllStaff = () => {
   $('#equipment').addClass('hide');
   staffData.getStaff()
     .then((allStaff) => {
-      let domString = '<button href="#" class="btn btn-outline-success hireButton">Hire</button>';
-      domString += '<div id="staffSection" class="d-flex flex-wrap">';
+      let domString = '';
       allStaff.forEach((staff) => {
+        domString += `<button href="#" class="btn btn-outline-success hireButton" id="hire-${staff.id}">Hire</button>`;
+        domString += '<div id="staffSection" class="d-flex flex-wrap">';
         domString += `
         <div class="card col-4 d-flex" id="${staff.id}">
           <img src="${staff.img}" class="card-img-top staffImg img-responsive" alt="...">
