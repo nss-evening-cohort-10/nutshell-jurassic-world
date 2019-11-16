@@ -39,8 +39,39 @@ const createRide = (e) => {
 };
 
 const updateRide = (e) => {
+  const rideId = e.target.id.split('ride-')[1];
+  $('#rideUpdateModal').modal('show');
+  const newRideInfo = {
+    name: $('#new-ride-name').val(),
+    imgUrl: $('#new-ride-pic').val(),
+    isExhibit: $('#new-exhibit-status').val(),
+    status: 'status1',
+  };
+  rideData.updateRideInfo(rideId, newRideInfo)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      printRides();
+      $('#rideUpdateModal').modal('hide');
+    })
+    .catch((error) => console.error(error));
+};
+
+const getRideInfo = (e) => {
   const rideId = e.target.id.split('edit-')[1];
-  console.log(rideId);
+  $('#rideUpdateModal').modal('show');
+  rideData.getRides()
+    .then((rides) => {
+      rides.forEach((ride) => {
+        if (rideId === ride.id) {
+          $('#new-ride-name').val(`${ride.name}`);
+          $('#new-ride-pic').val(`${ride.imgUrl}`);
+          $('#new-exhibit-status').val(`${ride.isExhibit}`);
+          const newRideId = `ride-${ride.id}`;
+          $('.ride-update-save-changes').attr('id', newRideId);
+        }
+      });
+    })
+    .catch((error) => console.error(error));
 };
 
 const rideLoginStatus = () => {
@@ -79,7 +110,8 @@ const printRides = () => {
       utilities.printToDom('rides', domString);
       $('.ride-footer').on('click', '.ride-delete', deleteRide);
       $('body').on('click', '#ride-save-changes', createRide);
-      $('body').on('click', '.ride-edit', updateRide);
+      $('body').on('click', '.ride-update-save-changes', updateRide);
+      $('body').on('click', '.ride-edit', getRideInfo);
       rideLoginStatus();
     })
     .catch((error) => console.error(error));
