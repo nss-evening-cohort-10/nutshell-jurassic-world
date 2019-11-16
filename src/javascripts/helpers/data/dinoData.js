@@ -4,7 +4,7 @@ import apiKeys from '../apiKeys.json';
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
 const getDinosaurs = () => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/dinos.json`)
+  axios.get(`${baseUrl}/dinosaurs.json`)
     .then((response) => {
       const demDinos = response.data;
       const dinos = [];
@@ -17,4 +17,6 @@ const getDinosaurs = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getDinosaurs };
+const addNewDino = (newDino) => axios.post(`${baseUrl}/dinosaurs.json`, newDino);
+
+export default { getDinosaurs, addNewDino };
