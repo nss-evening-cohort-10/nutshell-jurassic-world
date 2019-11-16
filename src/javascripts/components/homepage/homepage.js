@@ -5,6 +5,7 @@ import './homepage.scss';
 import utilities from '../../helpers/utilities';
 import dinos from '../dinos/dinos';
 import rides from '../rides/rides';
+import allStaff from '../allStaff/allStaff';
 
 const homepageArr = [
   {
@@ -40,6 +41,9 @@ const imageClickEvent = (e) => {
     dinos.printDinos();
   } else if (target === 'rides') {
     rides.printRides();
+    $('#home-page').empty();
+  } else if (target === 'staff') {
+    allStaff.buildAllStaff();
     $('#home-page').empty();
   }
 };

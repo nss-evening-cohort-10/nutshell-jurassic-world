@@ -8,7 +8,6 @@ import authData from './helpers/data/authData';
 
 import apiKeys from './helpers/apiKeys.json';
 import homepage from './components/homepage/homepage';
-import allStaff from './components/allStaff/allStaff';
 
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
@@ -17,7 +16,6 @@ const init = () => {
   navBar.logoutEvent();
   authData.checkLoginStatus();
   homepage.buildHomepageCards();
-  allStaff.buildAllStaff();
 };
 
 init();
