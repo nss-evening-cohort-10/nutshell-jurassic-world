@@ -1,9 +1,12 @@
 import $ from 'jquery';
 import './homepage.scss';
-import utilities from '../../helpers/utilities';
 
+
+import utilities from '../../helpers/utilities';
 import dinos from '../dinos/dinos';
 import rides from '../rides/rides';
+import equipment from '../equipment/equipment';
+import allStaff from '../allStaff/allStaff';
 
 const homepageArr = [
   {
@@ -33,13 +36,17 @@ const homepageArr = [
   },
 ];
 
-
 const imageClickEvent = (e) => {
   const target = e.target.id.split('hp-')[1];
   if (target === 'dinosaurs') {
     dinos.printDinos();
   } else if (target === 'rides') {
     rides.printRides();
+    $('#home-page').empty();
+  } else if (target === 'equipment') {
+    equipment.printEquipment();
+  } else if (target === 'staff') {
+    allStaff.buildAllStaff();
     $('#home-page').empty();
   }
 };

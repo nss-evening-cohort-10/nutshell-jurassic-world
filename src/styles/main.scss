@@ -1,5 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
 
-.hide {
-  display: none;
+body {
+  background-color: lightcyan;
+  .hide {
+    display: none;
+  }
 }
