@@ -51,18 +51,38 @@ const hireStaff = (e) => {
 };
 
 const updateStaff = (e) => {
-  const staffId = e.target.id.split('update-')[1];
-  const newInfo = {
-    name: $('#new-dino-name').val(),
-    dinoImage: $('#new-dino-pic').val(),
-    sizeWeight: $('#new-dino-size').val() * 1,
-    dangerLevel: $('#new-danger-selector').val() * 1,
+  const staffId = e.target.id.split('staff-')[1];
+  const newStaffRole = {
+    name: $('#updateStaffName').val(),
+    age: $('#updateStaffAge').val(),
+    statusId: 'status1',
+    role: $('#updateStaffRole').val(),
+    img: $('#updateStaffImageURL').val(),
   };
-  staffData.updateStaff(dinoId, newInfo)
+  staffData.updateStaff(staffId, newStaffRole)
     .then(() => {
       $('#updateStaffModal').modal('hide');
       // eslint-disable-next-line no-use-before-define
       buildAllStaff();
+    })
+    .catch((error) => console.error(error));
+};
+
+const getStaffUpdate = (e) => {
+  $('#updateStaffModal').modal('show');
+  const staffId = e.target.id.split('update-')[1];
+  staffData.getStaff()
+    .then((allStaff) => {
+      allStaff.forEach((staff) => {
+        if (staff.id === staffId) {
+          const newStaffId = `staff-${staff.id}`;
+          $('#updateStaffName').val(`${staff.name}`);
+          $('#updateStaffAge').val(`${staff.age}`);
+          $('#updateStaffRole').val(`${staff.role}`);
+          $('#updateStaffImageURL').val(`${staff.img}`);
+          $('.updateStaff').attr('id', newStaffId);
+        }
+      });
     })
     .catch((error) => console.error(error));
 };
@@ -97,6 +117,8 @@ const buildAllStaff = () => {
       staffModeToggle();
       $('.fire').click(fireStaff);
       $('#hireStaff').click(hireStaff);
+      $('.updateStaff').click(updateStaff);
+      $('.updateRole').click(getStaffUpdate);
     })
     .catch((error) => console.error(error));
 };
