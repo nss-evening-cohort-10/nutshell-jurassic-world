@@ -26,7 +26,7 @@ const buildAllStaff = () => {
   $('#staff').removeClass('hide');
   staffData.getStaff()
     .then((allStaff) => {
-      let domString = '<button href="#" class="btn btn-primary hireButton">Hire</button>';
+      let domString = '<button href="#" class="btn btn-outline-success hireButton">Hire</button>';
       domString += '<div id="staffSection" class="d-flex flex-wrap">';
       allStaff.forEach((staff) => {
         domString += `
@@ -35,8 +35,10 @@ const buildAllStaff = () => {
             <div class="card-body">
               <h5 class="card-title">${staff.name}</h5>
               <p class="card-text">${staff.role}</p>
-              <button href="#" class="btn btn-danger fire hide">Fire</button>
-              <button href="#" class="btn btn-success updateRole hide">Update Role</button>
+                <div class="d-flex justify-content-between">
+                  <button href="#" class="btn btn-outline-danger fire hide">Fire</button>
+                  <button href="#" class="btn btn-outline-secondary updateRole hide">Update Role</button>
+                </div>
             </div>
         </div>
         `;
