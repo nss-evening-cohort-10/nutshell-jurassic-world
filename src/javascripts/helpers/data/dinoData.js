@@ -31,8 +31,10 @@ const updateDinoInfo = (dinoId, newInfo) => new Promise((resolve, reject) => {
       dinoObject.dinoImage = newInfo.dinoImage;
       dinoObject.sizeWeight = newInfo.sizeWeight;
       dinoObject.dangerLevel = newInfo.dangerLevel;
-      updateDino(dinoId, dinoObject);
-      resolve();
+      updateDino(dinoId, dinoObject)
+        .then(() => {
+          resolve();
+        });
     })
     .catch((error) => reject(error));
 });

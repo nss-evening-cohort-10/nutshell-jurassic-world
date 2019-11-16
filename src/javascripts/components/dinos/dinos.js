@@ -64,7 +64,6 @@ const updateDino = (e) => {
 };
 
 const deleteDino = (e) => {
-  e.stopImmediatePropagation();
   const dinoToDelete = e.target.id.split('kill-')[1];
   dinoData.euthenizeDino(dinoToDelete)
     .then(() => {
@@ -76,7 +75,6 @@ const deleteDino = (e) => {
 
 
 const getDinoToUpdate = (e) => {
-  e.stopImmediatePropagation();
   $('#dinoEditModal').modal('show');
   const dinoToUpdate = e.target.id.split('update-')[1];
   dinoData.getDinosaurs()
