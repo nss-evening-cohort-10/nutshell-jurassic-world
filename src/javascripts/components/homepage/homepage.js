@@ -4,6 +4,7 @@ import utilities from '../../helpers/utilities';
 
 import dinos from '../dinos/dinos';
 import rides from '../rides/rides';
+import vendors from '../vendors/vendors';
 
 const homepageArr = [
   {
@@ -40,6 +41,9 @@ const imageClickEvent = (e) => {
     dinos.printDinos();
   } else if (target === 'rides') {
     rides.printRides();
+    $('#home-page').empty();
+  } else if (target === 'vendors') {
+    vendors.showAllVendors();
     $('#home-page').empty();
   }
 };

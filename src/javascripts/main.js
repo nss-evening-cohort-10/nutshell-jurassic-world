@@ -6,7 +6,6 @@ import '../styles/main.scss';
 import navBar from './components/navBar/navBar';
 import homepage from './components/homepage/homepage';
 import authData from './helpers/data/authData';
-import vendors from './components/vendors/vendors';
 
 import apiKeys from './helpers/apiKeys.json';
 
@@ -17,7 +16,6 @@ const init = () => {
   navBar.logoutEvent();
   authData.checkLoginStatus();
   homepage.buildHomepageCards();
-  vendors.showAllVendors();
 };
 
 init();
