@@ -5,6 +5,7 @@ import dinosaurs from '../../components/dinos/dinos';
 import rides from '../../components/rides/rides';
 import vendors from '../../components/vendors/vendors';
 import allStaff from '../../components/allStaff/allStaff';
+import equipment from '../../components/equipment/equipment';
 
 
 const logInButton = $('#logButtons');
@@ -19,6 +20,7 @@ const checkLoginStatus = () => {
       rides.rideLoginStatus();
       vendors.vendorLoginStatus();
       allStaff.staffModeToggle();
+      equipment.userModeToggle();
     } else {
       logOutButton.addClass('hide');
       logInButton.removeClass('hide');
@@ -26,6 +28,7 @@ const checkLoginStatus = () => {
       rides.rideLoginStatus();
       vendors.vendorLoginStatus();
       allStaff.staffModeToggle();
+      equipment.userModeToggle();
     }
   });
 };
