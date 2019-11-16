@@ -45,7 +45,7 @@ const addNewDino = (e) => {
   $('#danger-selector').val('Choose...');
 };
 
-<<<<<<< HEAD
+
 const updateDino = (e) => {
   const dinoId = e.target.id.split('dino-')[1];
   const newInfo = {
@@ -57,20 +57,24 @@ const updateDino = (e) => {
   dinoData.updateDinoInfo(dinoId, newInfo)
     .then(() => {
       $('#dinoEditModal').modal('hide');
-=======
-const deleteDino = (e) => {
-  e.stopImmediatePropagation();
-  const dinoToDelete = e.target.id.split('kill-')[1];
-  dinoData.euthenizeDino(dinoToDelete)
-    .then(() => {
->>>>>>> a88401ca3dcdbceac2f591055a6560b5f47c2501
       // eslint-disable-next-line no-use-before-define
       printDinos();
     })
     .catch((error) => console.error(error));
 };
 
-<<<<<<< HEAD
+const deleteDino = (e) => {
+  e.stopImmediatePropagation();
+  const dinoToDelete = e.target.id.split('kill-')[1];
+  dinoData.euthenizeDino(dinoToDelete)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      printDinos();
+    })
+    .catch((error) => console.error(error));
+};
+
+
 const getDinoToUpdate = (e) => {
   e.stopImmediatePropagation();
   $('#dinoEditModal').modal('show');
@@ -91,8 +95,6 @@ const getDinoToUpdate = (e) => {
     .catch((error) => console.error(error));
 };
 
-=======
->>>>>>> a88401ca3dcdbceac2f591055a6560b5f47c2501
 const printDinos = () => {
   $('#home-page').addClass('hide');
   $('#dinosaurs').removeClass('hide');
@@ -123,12 +125,9 @@ const printDinos = () => {
       utilities.printToDom('dinosaurs', domString);
       userModeToggle();
       $('body').on('click', '#addDino', addNewDino);
-<<<<<<< HEAD
       $('body').on('click', '.updateDino', getDinoToUpdate);
       $('body').on('click', '.updateDinoInfo', updateDino);
-=======
       $('body').on('click', '.kill', deleteDino);
->>>>>>> a88401ca3dcdbceac2f591055a6560b5f47c2501
     })
     .catch((error) => console.error(error));
 };
