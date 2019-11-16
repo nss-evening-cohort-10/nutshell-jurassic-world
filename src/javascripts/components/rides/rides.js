@@ -33,6 +33,7 @@ const createRide = (e) => {
     .then(() => {
       // eslint-disable-next-line no-use-before-define
       printRides();
+      ('#rideModal').modal('hide');
     })
     .catch((error) => console.error(error));
 };
