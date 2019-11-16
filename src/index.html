@@ -26,7 +26,7 @@
         <div id="dinosaurs"></div>
         <div id="equipment"></div>
         <div id="rides"></div>
-        <div id="staff"></div>
+        <div id="staff" class="container"></div>
         <div id="vendors"></div>
 
       <div class="modal fade" id="dinoModal" tabindex="-1" role="dialog" aria-labelledby="dinoModalLabel" aria-hidden="true">
@@ -142,5 +142,42 @@
           </div>
         </div>
       </div>
+
+<div class="modal fade" id="rideModal" tabindex="-1" role="dialog" aria-labelledby="rideModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="rideModalLabel">Deconstruct</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="new-ride-name">New Name</label>
+            <input type="text" class="form-control" id="new-ride-name" placeholder="Enter New Name">
+          </div>
+          <div class="form-group">
+            <label for="new-ride-pic">New Image Url</label>
+            <input type="text" class="form-control" id="new-ride-pic" placeholder="Enter Image Url">
+          </div>
+          <div class="form-group">
+            <label class="my-1 mr-2" for="new-exhibit-status">New Exhibit Status</label>
+            <select class="custom-select my-1 mr-sm-2" id="new-exhibit-status">
+              <option selected>Is this ride also a dinosaur exhibit?</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="ride-save-changes" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

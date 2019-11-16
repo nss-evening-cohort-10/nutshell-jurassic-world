@@ -96,6 +96,8 @@ const getDinoToUpdate = (e) => {
 const printDinos = () => {
   $('#home-page').addClass('hide');
   $('#dinosaurs').removeClass('hide');
+  $('#staff').addClass('hide');
+  $('#rides').addClass('hide');
   let domString = `
   <button class="btn btn-dark" id="spawn" data-toggle="modal" data-target="#dinoModal">Spawn Dino</button>
   <div class="d-flex row wrap justify-content-center">`;
@@ -129,6 +131,5 @@ const printDinos = () => {
     })
     .catch((error) => console.error(error));
 };
-
 
 export default { printDinos, userModeToggle };

@@ -19,4 +19,6 @@ const getRides = () => new Promise((resolve, reject) => {
 
 const deleteRide = (ride) => axios.delete(`${baseUrl}/rides/${ride}.json`);
 
-export default { getRides, deleteRide };
+const addRide = (newRide) => axios.post(`${baseUrl}/rides.json`, newRide);
+
+export default { getRides, deleteRide, addRide };

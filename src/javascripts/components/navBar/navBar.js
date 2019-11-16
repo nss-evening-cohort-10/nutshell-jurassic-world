@@ -1,6 +1,7 @@
 import './navBar.scss';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+
 import $ from 'jquery';
 import logo from './assets/logo.png';
 import googleLogo from './assets/googleLogo.png';
@@ -8,6 +9,7 @@ import utilities from '../../helpers/utilities';
 import dinosaurs from '../dinos/dinos';
 import rides from '../rides/rides';
 import vendors from '../vendors/vendors';
+import allStaff from '../allStaff/allStaff';
 
 const backToHome = () => {
   $('#home-page').removeClass('hide');
@@ -48,6 +50,7 @@ const printLoginButton = () => {
   $('body').on('click', '#dinoLink', dinosaurs.printDinos);
   $('body').on('click', '#ridesLink', rides.printRides);
   $('body').on('click', '#vendLink', vendors.showAllVendors);
+  $('body').on('click', '#staffLink', allStaff.buildAllStaff);
 };
 
 export default { printLogo, printLoginButton, logoutEvent };

@@ -4,6 +4,8 @@ import $ from 'jquery';
 import dinosaurs from '../../components/dinos/dinos';
 import rides from '../../components/rides/rides';
 import vendors from '../../components/vendors/vendors';
+import allStaff from '../../components/allStaff/allStaff';
+
 
 const logInButton = $('#logButtons');
 const logOutButton = $('#logOutButton');
@@ -16,12 +18,14 @@ const checkLoginStatus = () => {
       dinosaurs.userModeToggle();
       rides.rideLoginStatus();
       vendors.vendorLoginStatus();
+      allStaff.staffModeToggle();
     } else {
       logOutButton.addClass('hide');
       logInButton.removeClass('hide');
       dinosaurs.userModeToggle();
       rides.rideLoginStatus();
       vendors.vendorLoginStatus();
+      allStaff.staffModeToggle();
     }
   });
 };
