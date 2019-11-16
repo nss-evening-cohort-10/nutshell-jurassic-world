@@ -24,6 +24,7 @@ const printEquipment = () => {
   $('#staff').addClass('hide');
   $('#rides').addClass('hide');
   $('#dinosaurs').addClass('hide');
+  $('#vendors').addClass('hide');
   let domString = `
   <div class="container text-center">
   <button class="btn btn-dark" id="newEquip" data-toggle="modal" data-target="#equipmentModal">Get New Equipment</button></div>
