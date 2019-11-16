@@ -11,8 +11,14 @@ import './rides.scss';
 import title from './rides_assets/jwtitle.jpg';
 
 const deleteRide = (e) => {
-  const target = e.target.id;
-  console.log('clicked ride', target);
+  e.stopImmediatePropagation();
+  const rideId = e.target.id.split('delete-')[1];
+  rideData.deleteRide(rideId)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      printRides();
+    })
+    .catch((error) => console.error(error));
 };
 
 const rideLoginStatus = () => {
@@ -43,7 +49,7 @@ const printRides = () => {
   rideData.getRides()
     .then((rides) => {
       let domString = `<div class="img-container"><img src="${title}" class="rides-title" alt="title" /></div>`;
-      domString += '<div class="center"><button id="build-ride" class="btn btn-outline-secondary create-ride hide">BUILD</button>';
+      domString += '<div class="center"><button id="build-ride" class="btn btn-outline-secondary create-ride hide">BUILD A RIDE</button>';
       domString += '<div class="rides-cards container"><div class="card-deck row">';
       rides.forEach((ride) => {
         domString += individualRide.individualRideLoggedIn(ride);
