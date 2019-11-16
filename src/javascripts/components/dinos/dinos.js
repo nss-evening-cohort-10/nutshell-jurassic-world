@@ -101,6 +101,7 @@ const printDinos = () => {
   $('#dinosaurs').removeClass('hide');
   $('#staff').addClass('hide');
   $('#rides').addClass('hide');
+  $('#vendors').addClass('hide');
   let domString = `
   <button class="btn btn-dark" id="spawn" data-toggle="modal" data-target="#dinoModal">Spawn Dino</button>
   <div class="d-flex row wrap justify-content-center">`;
