@@ -1,21 +1,28 @@
 import './individualRide.scss';
 
-const individualRide = (ride) => {
+const individualRideLoggedIn = (ride) => {
   const domString = `
-  <div id="individual-${ride.name}" class="single-ride card mb-3">
-  <div class="row no-gutters">
-    <div class="col-md-7">
-      <img src="${ride.imgUrl}" class="card-img" alt="...">
-    </div>
-    <div class="col-md-5">
-      <div class="card-body">
-        <h3 class="card-title">${ride.name}</h3>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
+  <div class="ride-card col-xs-6 col-sm-6 col-md-6">
+<div class="card mb-4">
+  <div class="view overlay">
+    <img class="card-img-top" src="${ride.imgUrl}" alt="Card image cap">
+    <a href="#!">
+      <div class="mask rgba-white-slight"></div>
+    </a>
+  </div>
+  <div class="card-body">
+    <!--Title-->
+    <h4 class="card-title">${ride.name}</h4>
+    <div class="border-top my-3 hide"></div>
+    <div id=${ride.id} class="ride-footer d-flex justify-content-between hide">
+    <i class="ride-edit hide fas fa-pen"></i>
+    <i class="ride-delete hide fas fa-times"></i>
     </div>
   </div>
-</div>`;
+</div>
+</div>
+`;
   return domString;
 };
 
-export default { individualRide };
+export default { individualRideLoggedIn };

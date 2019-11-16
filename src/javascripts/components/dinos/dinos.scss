@@ -1,0 +1,26 @@
+#dangerRate {
+  color: red;
+}
+
+.dinoCards {
+  box-shadow: 5px 5px 10px #212121;
+  padding-top: 10px;
+
+}
+
+#spawn {
+  box-shadow: 5px 5px 10px #212121;
+  margin-left: 200px;
+}
+
+.card-footer {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.updateDino, .kill {
+  box-shadow: 5px 5px 10px #212121;
+  margin: 4px;
+  font-size: 14px;
+}

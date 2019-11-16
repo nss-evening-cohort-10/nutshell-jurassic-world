@@ -7,11 +7,23 @@
 }
 }
 
-
-.rides-cards {
-  margin: 0 auto;
-  .single-ride {
-    max-width: 80%;
-    margin: 0 auto;
-  }
+.center {
+  text-align: center;
 }
+
+  .ride-card {
+    .card{
+      margin: 5% 0%;
+    }
+
+    .card-body{
+      margin: 0% 5% 0% 5%;
+      padding: 6% 0%;
+    }
+    .ride-edit, .ride-delete {
+      &:hover {
+        color: darkgray;
+      }
+    }
+  }
+
