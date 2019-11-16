@@ -29,12 +29,15 @@ const fireStaff = (e) => {
     .catch((error) => console.error(error));
 };
 
+// const hireStaff = () => {}
+
 const buildAllStaff = () => {
   $('#dinosaurs').addClass('hide');
   $('#rides').addClass('hide');
   $('#vendors').addClass('hide');
   $('#home-page').addClass('hide');
   $('#staff').removeClass('hide');
+  $('#equipment').addClass('hide');
   staffData.getStaff()
     .then((allStaff) => {
       let domString = '<button href="#" class="btn btn-outline-success hireButton">Hire</button>';
