@@ -1,5 +1,7 @@
 import './homepage.scss';
+import $ from 'jquery';
 import utilities from '../helpers/utilities';
+import dinos from '../components/dinos/dinos';
 
 const homepageArr = [
   {
@@ -29,11 +31,18 @@ const homepageArr = [
   },
 ];
 
+const imageClickEvent = (e) => {
+  const target = e.target.id.split('hp-')[1];
+  if (target === 'dinosaurs') {
+    dinos.printDinos();
+  }
+};
+
 const createHomepageCards = (arr) => {
   let domString = '<div class="card-group d-flex home-page-cards">';
   arr.forEach((card) => {
     domString += '<div class="card single-card">';
-    domString += `<div class=crop-image><img src="${card.imageUrl}" class="homepage-image" alt="${card.name}"></div>`;
+    domString += `<div class="crop-image"><img src="${card.imageUrl}" class="homepage-image" alt="${card.name}" id="hp-${card.name}"></div>`;
     domString += '<div class="card-body">';
     domString += `<h5 class="homepage-card-title card-title">${card.name}</h5>`;
     domString += `<p class="card-text">${card.description}</p>`;
@@ -42,6 +51,7 @@ const createHomepageCards = (arr) => {
   });
   domString += '</div>';
   utilities.printToDom('home-page', domString);
+  $('#home-page').on('click', '.homepage-image', imageClickEvent);
 };
 
 const buildHomepageCards = () => {
