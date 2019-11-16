@@ -8,6 +8,7 @@ import navBar from './components/navBar/navBar';
 import authData from './helpers/data/authData';
 import apiKeys from './helpers/apiKeys.json';
 import homepage from './components/homepage/homepage';
+import chaosMonkey from './components/chaosMonkey/chaosMonkey';
 
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
@@ -16,6 +17,7 @@ const init = () => {
   navBar.logoutEvent();
   authData.checkLoginStatus();
   homepage.buildHomepageCards();
+  chaosMonkey.chaosMonkey.start();
 };
 
 init();
