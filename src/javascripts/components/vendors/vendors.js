@@ -12,40 +12,40 @@ const vendorLoginStatus = () => {
   const user = firebase.auth().currentUser;
   if (user) {
     $('.vendor-add').removeClass('hide');
-    $('.vendor-update').removeClass('hide');
-    $('.vendor-delete').removeClass('hide');
+    $('.update-vendor').removeClass('hide');
+    $('.delete-vendor').removeClass('hide');
+    $('.border-top').removeClass('hide');
   } else {
     $('.vendor-add').addClass('hide');
-    $('.vendor-update').addClass('hide');
-    $('.vendor-delete').addClass('hide');
+    $('.update-vendor').addClass('hide');
+    $('.delete-vendor').addClass('hide');
+    $('.border-top').addClass('hide');
   }
 };
 
 const singleVendorCard = (vendorInfo) => {
   const domString = `
-  <div class="vendor-card col-md-3">
+  <div class="card vendor-card col-md-4">
     <div class="card-body">
-      <div class="border-top my-3 hide"></div>
-      <div class="view overlay">
-      <img class="card-img-top" src="${vendorInfo.img}" alt="Card image cap">
-      <a href="#!">
-        <div class="mask rgba-white-slight"></div>
-      </a>
+    <div class="view overlay">
+    <img class="card-img-top" src="${vendorInfo.img}" alt="Card image cap">
+    <a href="#!">
+    <div class="mask rgba-white-slight"></div>
+    </a>
     </div>
-        <h4 class="card-title" id="${vendorInfo.id}">${vendorInfo.name}</h4>
-        <h6 id="">${vendorInfo.description}</h6>
-        <h6 id="">category: ${vendorInfo.type}</h6>
-        <div class="vendor-footer d-flex justify-content-between hide">
-          <button class="btn btn-warning vendor-update hide">Update Vendor Details</button>
-          <button class="btn btn-danger vendor-delete hide">Close Shop</button>
-        </div>
+    <h4 class="card-title" id="${vendorInfo.id}">${vendorInfo.name}</h4>
+    <h6 id="">${vendorInfo.description}</h6>
+    <h6 id="">category: ${vendorInfo.type}</h6>
+    <div class="border-top my-3 hide"></div>
+          <button class="btn btn-warning update-vendor hide" id="update-vendor">Update Vendor Details</button>
+          <button class="btn btn-danger delete-vendor hide" id="delete-${vendorInfo.id}">Close Shop</button>
     </div>
   </div>
   `;
   return domString;
 };
 
-const printAllVendors = () => {
+const showAllVendors = () => {
   $('#home-page').addClass('hide');
   $('#dinosaurs').addClass('hide');
   $('#equipment').addClass('hide');
@@ -56,24 +56,30 @@ const printAllVendors = () => {
   vendorData.getAllVendors()
     .then((vendors) => {
       let domString = '';
-      domString += '<div class="card">';
-      domString += '<div class="card-body">';
-      domString += '<button class="btn btn-success vendor-add">open new vendor</button>';
       domString += '<div id="buttonDiv">';
+      domString += '<button class="btn btn-success vendor-add">open new vendor</button>';
+      domString += '</div>';
+      domString += '<div class="container">';
+      domString += '<div class="row">';
       vendors.forEach((vendor) => {
         domString += singleVendorCard(vendor);
       });
-      domString += '</div></div></div>';
+      domString += '</div></div>';
       utilities.printToDom('vendors', domString);
+      // eslint-disable-next-line no-use-before-define
+      $('body').on('click', '.delete-vendor', closeShop);
       vendorLoginStatus();
     })
     .catch((error) => console.error(error));
 };
 
-// click event to trigger printAllVendors
-const showAllVendors = () => {
-  // if 'card.name' === 'vendors') {
-  printAllVendors();
+const closeShop = (e) => {
+  const vendorToClose = e.target.id.split('delete-')[1];
+  vendorData.shutDownVendor(vendorToClose)
+    .then(() => {
+      showAllVendors();
+    })
+    .catch((error) => console.error(error));
 };
 
-export default { showAllVendors, vendorLoginStatus };
+export default { showAllVendors, vendorLoginStatus, closeShop };
