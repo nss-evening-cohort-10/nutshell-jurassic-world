@@ -10,6 +10,11 @@ import utilities from '../../helpers/utilities';
 import './rides.scss';
 import title from './rides_assets/jwtitle.jpg';
 
+const deleteRide = (e) => {
+  const target = e.target.id;
+  console.log('clicked ride', target);
+};
+
 const rideLoginStatus = () => {
   const user = firebase.auth().currentUser;
   if (user) {
@@ -45,6 +50,7 @@ const printRides = () => {
       });
       domString += '</div></div></div>';
       utilities.printToDom('rides', domString);
+      $('.ride-footer').on('click', '.ride-delete', deleteRide);
       rideLoginStatus();
     })
     .catch((error) => console.error(error));
