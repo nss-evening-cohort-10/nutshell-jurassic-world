@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import $ from 'jquery';
 import dinosaurs from '../../components/dinos/dinos';
+import rides from '../../components/rides/rides';
 
 const logInButton = $('#logButtons');
 const logOutButton = $('#logOutButton');
@@ -12,10 +13,12 @@ const checkLoginStatus = () => {
       logOutButton.removeClass('hide');
       logInButton.addClass('hide');
       dinosaurs.userModeToggle();
+      rides.rideLoginStatus();
     } else {
       logOutButton.addClass('hide');
       logInButton.removeClass('hide');
       dinosaurs.userModeToggle();
+      rides.rideLoginStatus();
     }
   });
 };

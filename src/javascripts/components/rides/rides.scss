@@ -1,0 +1,29 @@
+.img-container {
+  text-align: center;
+
+.rides-title {
+  max-width: 50%;
+  margin: 10px;
+}
+}
+
+.center {
+  text-align: center;
+}
+
+  .ride-card {
+    .card{
+      margin: 5% 0%;
+    }
+
+    .card-body{
+      margin: 0% 5% 0% 5%;
+      padding: 6% 0%;
+    }
+    .ride-edit, .ride-delete {
+      &:hover {
+        color: darkgray;
+      }
+    }
+  }
+
