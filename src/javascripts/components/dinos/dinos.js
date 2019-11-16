@@ -46,7 +46,6 @@ const addNewDino = (e) => {
 };
 
 const updateDino = (e) => {
-  e.stopImmediatePropagation();
   const dinoId = e.target.id.split('dino-')[1];
   const newInfo = {
     name: $('#new-dino-name').val(),
@@ -54,7 +53,10 @@ const updateDino = (e) => {
     sizeWeight: $('#new-dino-size').val() * 1,
     dangerLevel: $('#new-danger-selector').val() * 1,
   };
-  dinoData.updateDino(dinoId, newInfo);
+  dinoData.updateDinoInfo(dinoId, newInfo);
+  $('#dinoEditModal').modal('hide');
+  // eslint-disable-next-line no-use-before-define
+  printDinos();
 };
 
 const getDinoToUpdate = (e) => {
@@ -65,7 +67,7 @@ const getDinoToUpdate = (e) => {
     .then((dinos) => {
       dinos.forEach((dino) => {
         if (dino.id === dinoToUpdate) {
-          const newId = `dino- ${dino.id}`;
+          const newId = `dino-${dino.id}`;
           $('#new-dino-name').val(`${dino.name}`);
           $('#new-dino-pic').val(`${dino.dinoImage}`);
           $('#new-dino-size').val(`${dino.sizeWeight}`);
