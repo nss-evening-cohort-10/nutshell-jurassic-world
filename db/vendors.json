@@ -1,22 +1,32 @@
 {
   "vendor1": {
     "type":"Food",
-    "description": "T Rex Turkey Legs"
+    "name":"T Rex Legs",
+    "description": "Giant Novelty Turkey legs",
+    "img" : "https://thewoksoflife.com/wp-content/uploads/2015/07/smoked-turkey-legs-11.jpg"
     },
   "vendor2": {
     "type":"Gift Shop",
-    "description": "Buy fun dinosaur themed merch!"
+    "name":"BuyRannasaurus Rex",
+    "description": "Buy fun dinosaur themed merch!",
+    "img" : "https://davesdinosaurs.files.wordpress.com/2017/05/dinosaur-land-gift-shop-1.jpg"
     },
   "vendor3": {
     "type":"Restaurant",
-    "description": "Jimmy Buffett's Margaritaville"
+    "name":"Jimmy Buffett's Margaritaville",
+    "description": "A casual dining American restaurant chain, selling Jimmy Buffett-themed merchandise and menu items.",
+    "img" : "https://vignette.wikia.nocookie.net/jurassicpark/images/9/9c/Main-street_gallery1.jpg/revision/latest/scale-to-width-down/2000?cb=20150607223323"
     },
   "vendor4": {
-    "type":"Gift Shop",
-    "description": "Novelty Penny Smasher"
+    "type":"Souvenier Kiosk",
+    "name":"Penny Souveniers",
+    "description": "Novelty Penny Smasher",
+    "img" : "http://3.bp.blogspot.com/-eJVECLCddV8/T3dfad04t5I/AAAAAAAAB2A/WlRMg3IDZ3k/s1600/dz_pen1.jpg"
     },
   "vendor5": {
-    "type":"Food",
-    "description": "Dino food for the petting zoo"
+    "type":"Interactive",
+    "name":"Petting Zoo Food",
+    "description": "Dino food for the petting zoo",
+    "img" : "http://2.bp.blogspot.com/_nsUH2LY5mXE/TFNAxdS3oxI/AAAAAAAAAEQ/vmwF-HdYjBI/s1600/101_4705.JPG"
     }
 }
