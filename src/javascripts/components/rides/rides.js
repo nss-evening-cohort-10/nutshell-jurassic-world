@@ -38,6 +38,11 @@ const createRide = (e) => {
     .catch((error) => console.error(error));
 };
 
+const updateRide = (e) => {
+  const rideId = e.target.id.split('edit-')[1];
+  console.log(rideId);
+};
+
 const rideLoginStatus = () => {
   const user = firebase.auth().currentUser;
   if (user) {
@@ -74,6 +79,7 @@ const printRides = () => {
       utilities.printToDom('rides', domString);
       $('.ride-footer').on('click', '.ride-delete', deleteRide);
       $('body').on('click', '#ride-save-changes', createRide);
+      $('body').on('click', '.ride-edit', updateRide);
       rideLoginStatus();
     })
     .catch((error) => console.error(error));
