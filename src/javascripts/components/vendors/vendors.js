@@ -58,6 +58,8 @@ const showAllVendors = () => {
       let domString = '';
       domString += '<div id="buttonDiv">';
       domString += '<button class="btn btn-success vendor-add">open new vendor</button>';
+      // eslint-disable-next-line no-use-before-define
+      $('body').on('click', '.vendor-add', addVendor);
       domString += '</div>';
       domString += '<div class="container">';
       domString += '<div class="row">';
@@ -82,4 +84,25 @@ const closeShop = (e) => {
     .catch((error) => console.error(error));
 };
 
-export default { showAllVendors, vendorLoginStatus, closeShop };
+const addVendor = (e) => {
+  e.stopImmediatePropagation();
+  const newVendor = {
+    type: $('#new-vendor-type').val(),
+    name: $('#new-vendor-name').val(),
+    description: $('#new-vendor-description').val(),
+    img: $('#new-vendor-pic').val(),
+  };
+  vendorData.addNewVendor(newVendor)
+    .then(() => {
+      showAllVendors();
+      $('#newVendorModal').modal('hide');
+    })
+    .catch((error) => console.error(error));
+};
+
+export default {
+  showAllVendors,
+  vendorLoginStatus,
+  closeShop,
+  addVendor,
+};

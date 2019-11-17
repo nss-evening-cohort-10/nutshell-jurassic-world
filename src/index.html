@@ -321,5 +321,45 @@
             </div>
           </div>
         </div>
+
+        
+<div class="modal fade" id="newVendorModal" tabindex="-1" role="dialog" aria-labelledby="vendorModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="vendorModalLabel">Add New Vendor</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="new-vendor-name">Vendor Name</label>
+            <input type="text" class="form-control" id="new-vendor-name" placeholder="Enter New Name">
+          </div>
+          <div class="form-group">
+            <label for="new-vendor-pic">Image Url</label>
+            <input type="text" class="form-control" id="new-vendor-pic" placeholder="Enter Image Url">
+          </div>
+          <div class="form-group">
+            <label for="new-vendor-description">Vendor Descriptionl</label>
+            <input type="text" class="form-control" id="new-vendor-description" placeholder="Brief Description of New Vendor">
+          </div>
+          <div class="form-group">
+            <label for="new-vendor-type">Vendor Cetegory</label>
+            <input type="text" class="form-control" id="new-vendor-type" placeholder="Category">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="vendor-save-new" type="button" class="btn btn-primary">Save New Vendor</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </body>
 </html>
