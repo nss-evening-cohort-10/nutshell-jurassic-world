@@ -57,7 +57,7 @@ const showAllVendors = () => {
     .then((vendors) => {
       let domString = '';
       domString += '<div id="buttonDiv">';
-      domString += '<button class="btn btn-success vendor-add">open new vendor</button>';
+      domString += '<button class="btn btn-success vendor-add" data-toggle="modal" data-target="#newVendorModal">open new vendor</button>';
       // eslint-disable-next-line no-use-before-define
       $('body').on('click', '.vendor-add', addVendor);
       domString += '</div>';
