@@ -92,6 +92,7 @@ const buildAllStaff = () => {
   $('#rides').addClass('hide');
   $('#vendors').addClass('hide');
   $('#home-page').addClass('hide');
+  $('#equipment').addClass('hide');
   $('#staff').removeClass('hide');
   staffData.getStaff()
     .then((allStaff) => {
