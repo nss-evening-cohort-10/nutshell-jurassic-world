@@ -20,4 +20,6 @@ const getAllVendors = () => new Promise((resolve, reject) => {
 
 const shutDownVendor = (vendorId) => axios.delete(`${baseUrl}/vendors/${vendorId}.json`);
 
-export default { getAllVendors, shutDownVendor };
+const addNewVendor = (newVendor) => axios.post(`${baseUrl}/vendors/.json`, newVendor);
+
+export default { getAllVendors, shutDownVendor, addNewVendor };

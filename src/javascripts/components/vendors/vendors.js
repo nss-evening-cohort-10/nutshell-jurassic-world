@@ -37,8 +37,8 @@ const singleVendorCard = (vendorInfo) => {
     <h6 id="">${vendorInfo.description}</h6>
     <h6 id="">category: ${vendorInfo.type}</h6>
     <div class="border-top my-3 hide"></div>
-          <button class="btn btn-warning update-vendor hide" id="update-vendor">Update Vendor Details</button>
-          <button class="btn btn-danger delete-vendor hide" id="delete-${vendorInfo.id}">Close Shop</button>
+          <button class="btn btn-outline-primary update-vendor hide" id="update-vendor">Update Vendor Details</button>
+          <button class="btn btn-outline-danger delete-vendor hide" id="delete-${vendorInfo.id}">Close Shop</button>
     </div>
   </div>
   `;
@@ -57,7 +57,9 @@ const showAllVendors = () => {
     .then((vendors) => {
       let domString = '';
       domString += '<div id="buttonDiv">';
-      domString += '<button class="btn btn-success vendor-add">open new vendor</button>';
+      domString += '<button class="btn btn-outline-success vendor-add" data-toggle="modal" data-target="#newVendorModal">open new vendor</button>';
+      // eslint-disable-next-line no-use-before-define
+      $('body').on('click', '.saveVendor', addVendor);
       domString += '</div>';
       domString += '<div class="container">';
       domString += '<div class="row">';
@@ -82,4 +84,25 @@ const closeShop = (e) => {
     .catch((error) => console.error(error));
 };
 
-export default { showAllVendors, vendorLoginStatus, closeShop };
+const addVendor = (e) => {
+  e.stopImmediatePropagation();
+  const newVendor = {
+    type: $('#new-vendor-type').val(),
+    name: $('#new-vendor-name').val(),
+    description: $('#new-vendor-description').val(),
+    img: $('#new-vendor-pic').val(),
+  };
+  vendorData.addNewVendor(newVendor)
+    .then(() => {
+      showAllVendors();
+      $('#newVendorModal').modal('hide');
+    })
+    .catch((error) => console.error(error));
+};
+
+export default {
+  showAllVendors,
+  vendorLoginStatus,
+  closeShop,
+  addVendor,
+};
