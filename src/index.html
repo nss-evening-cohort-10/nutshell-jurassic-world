@@ -9,250 +9,252 @@
 <body>
   <nav class="navbar navbar-expand-sm">
     <a class="navbar-brand" href="#" id="brandLogo"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div id="navbarButtons">
-          <button class="btn btn-dark" id="dinoLink">Dinosaurs</button>
-          <button class="btn btn-dark" id="equipmentLink">Equipment</button>
-          <button class="btn btn-dark" id="ridesLink">Rides</button>
-          <button class="btn btn-dark" id="staffLink">Staff</button>
-          <button class="btn btn-dark" id="vendLink">Vendors</button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbarButtons">
+      <button class="btn btn-dark" id="dinoLink">Dinosaurs</button>
+      <button class="btn btn-dark" id="equipmentLink">Equipment</button>
+      <button class="btn btn-dark" id="ridesLink">Rides</button>
+      <button class="btn btn-dark" id="staffLink">Staff</button>
+      <button class="btn btn-dark" id="vendLink">Vendors</button>
+    </div>
+    <div id="logButtons"></div><button id="logOutButton" class="btn btn-dark hide">Logout</button>
+  </nav>
+
+  <div id="home-page"></div>
+  <div id="dinosaurs"></div>
+  <div id="equipment"></div>
+  <div id="rides"></div>
+  <div id="staff" class="container"></div>
+  <div id="vendors"></div>
+
+  <div class="modal fade" id="dinoModal" tabindex="-1" role="dialog" aria-labelledby="dinoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="dinoModalLabel">Spawn a Dinosaur</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <div id="logButtons"></div><button id="logOutButton" class="btn btn-dark hide">Logout</button>
-      </nav>
-
-        <div id="home-page"></div>
-        <div id="dinosaurs"></div>
-        <div id="equipment"></div>
-        <div id="rides"></div>
-        <div id="staff" class="container"></div>
-        <div id="vendors"></div>
-
-      <div class="modal fade" id="dinoModal" tabindex="-1" role="dialog" aria-labelledby="dinoModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="dinoModalLabel">Spawn a Dinosaur</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="dino-name">Name</label>
+              <input type="text" class="form-control" id="dino-name" placeholder="Enter Name">
             </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label for="dino-name">Name</label>
-                  <input type="text" class="form-control" id="dino-name" placeholder="Enter Name">
-                </div>
-                <div class="form-group">
-                  <label for="dino-pic">Dinosaur Image Url</label>
-                  <input type="text" class="form-control" id="dino-pic" placeholder="Enter Image Url">
-                </div>
-                <div class="form-group">
-                  <label for="dino-species">Species</label>
-                  <input type="text" class="form-control" id="dino-species" placeholder="Enter Species">
-                </div>
-                <div class="form-group">
-                  <label class="my-1 mr-2" for="diet-selector">Diet</label>
-                  <select class="custom-select my-1 mr-sm-2" id="diet-selector">
-                    <option selected>Choose...</option>
-                    <option value="herbivore">Herbivore</option>
-                    <option value="carnivore">Carnivore</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="dino-size">Size</label>
-                  <input type="number" class="form-control" id="dino-size" placeholder="Enter Weight">
-                </div>
-                <div class="form-group">
-                  <label for="dino-description">Description</label>
-                  <input type="text" class="form-control" id="dino-description" placeholder="Enter Description">
-                </div>
-                <div class="form-group">
-                  <label class="my-1 mr-2" for="danger-selector">Danger Rating</label>
-                  <select class="custom-select my-1 mr-sm-2" id="danger-selector">
-                    <option selected>Choose...</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                  </select>
-                </div>
-              </form>
+            <div class="form-group">
+              <label for="dino-pic">Dinosaur Image Url</label>
+              <input type="text" class="form-control" id="dino-pic" placeholder="Enter Image Url">
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-dark" id="addDino">Synthesize</button>
+            <div class="form-group">
+              <label for="dino-species">Species</label>
+              <input type="text" class="form-control" id="dino-species" placeholder="Enter Species">
             </div>
-          </div>
+            <div class="form-group">
+              <label class="my-1 mr-2" for="diet-selector">Diet</label>
+              <select class="custom-select my-1 mr-sm-2" id="diet-selector">
+                <option selected>Choose...</option>
+                <option value="herbivore">Herbivore</option>
+                <option value="carnivore">Carnivore</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="dino-size">Size</label>
+              <input type="number" class="form-control" id="dino-size" placeholder="Enter Weight">
+            </div>
+            <div class="form-group">
+              <label for="dino-description">Description</label>
+              <input type="text" class="form-control" id="dino-description" placeholder="Enter Description">
+            </div>
+            <div class="form-group">
+              <label class="my-1 mr-2" for="danger-selector">Danger Rating</label>
+              <select class="custom-select my-1 mr-sm-2" id="danger-selector">
+                <option selected>Choose...</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </div>
+          </form>
         </div>
-      </div>
-
-      <div class="modal fade" id="dinoEditModal" tabindex="-1" role="dialog" aria-labelledby="dinoEditModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="dinoEditModalLabel">Update Dino Info</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label for="new-dino-name">New Name</label>
-                  <input type="text" class="form-control" id="new-dino-name" placeholder="Enter New Name">
-                </div>
-                <div class="form-group">
-                  <label for="new-dino-pic">New Dinosaur Image Url</label>
-                  <input type="text" class="form-control" id="new-dino-pic" placeholder="Enter Image Url">
-                </div>
-                <div class="form-group">
-                  <label for="new-dino-size">New Weight</label>
-                  <input type="number" class="form-control" id="new-dino-size" placeholder="Enter New Weight">
-                </div>
-                <div class="form-group">
-                  <label class="my-1 mr-2" for="new-danger-selector">New Danger Rating</label>
-                  <select class="custom-select my-1 mr-sm-2" id="new-danger-selector">
-                    <option selected>Choose...</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                  </select>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-dark updateDinoInfo">Update</button>
-            </div>
-          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-dark" id="addDino">Synthesize</button>
         </div>
-      </div>
-
-<div class="modal fade" id="rideUpdateModal" tabindex="-1" role="dialog" aria-labelledby="rideUpdateModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="rideUpdateModalLabel">Deconstruct</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="update-ride-name">New Name</label>
-            <input type="text" class="form-control" id="update-ride-name" placeholder="Enter New Name">
-          </div>
-          <div class="form-group">
-            <label for="update-ride-pic">New Image Url</label>
-            <input type="text" class="form-control" id="update-ride-pic" placeholder="Enter Image Url">
-          </div>
-          <div class="form-group">
-            <label class="my-1 mr-2" for="update-exhibit-status">New Exhibit Status</label>
-            <select class="custom-select my-1 mr-sm-2" id="update-exhibit-status">
-              <option selected>Is this ride also a dinosaur exhibit?</option>
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-            </select>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="ride-update-save-changes btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
-</div>
-<div class="modal fade" id="rideModal" tabindex="-1" role="dialog" aria-labelledby="rideModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="rideModalLabel">Add Ride</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="new-ride-name">New Name</label>
-            <input type="text" class="form-control" id="new-ride-name" placeholder="Enter New Name">
-          </div>
-          <div class="form-group">
-            <label for="new-ride-pic">New Image Url</label>
-            <input type="text" class="form-control" id="new-ride-pic" placeholder="Enter Image Url">
-          </div>
-          <div class="form-group">
-            <label class="my-1 mr-2" for="new-exhibit-status">New Exhibit Status</label>
-            <select class="custom-select my-1 mr-sm-2" id="new-exhibit-status">
-              <option selected>Is this ride also a dinosaur exhibit?</option>
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-            </select>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button id="ride-save-changes" type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="staffModal" tabindex="-1" role="dialog" aria-labelledby="staffModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="staffName">Name</label>
-            <input type="text" class="form-control" id="staffName" placeholder="Enter Name">
-          </div>
-          <div class="form-group">
-            <label for="staffAge">Age</label>
-            <input type="text" class="form-control" id="staffAge" placeholder="Enter Age">
-          </div>
-          <div class="form-group">
-            <label for="staffRole">Role</label>
-            <input type="text" class="form-control" id="staffRole" placeholder="Enter Role">
-          </div>
-          <div class="form-group">
-            <label for="staffImageURL">Image URL</label>
-            <input type="text" class="form-control" id="staffImageURL" placeholder="Enter Image URL">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="hireStaff">Hire Staff</button>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="modal fade" id="updateStaffModal" tabindex="-1" role="dialog" aria-labelledby="updateStaffModalLabel" aria-hidden="true">
+  <div class="modal fade" id="dinoEditModal" tabindex="-1" role="dialog" aria-labelledby="dinoEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="dinoEditModalLabel">Update Dino Info</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="new-dino-name">New Name</label>
+              <input type="text" class="form-control" id="new-dino-name" placeholder="Enter New Name">
+            </div>
+            <div class="form-group">
+              <label for="new-dino-pic">New Dinosaur Image Url</label>
+              <input type="text" class="form-control" id="new-dino-pic" placeholder="Enter Image Url">
+            </div>
+            <div class="form-group">
+              <label for="new-dino-size">New Weight</label>
+              <input type="number" class="form-control" id="new-dino-size" placeholder="Enter New Weight">
+            </div>
+            <div class="form-group">
+              <label class="my-1 mr-2" for="new-danger-selector">New Danger Rating</label>
+              <select class="custom-select my-1 mr-sm-2" id="new-danger-selector">
+                <option selected>Choose...</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-dark updateDinoInfo">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="rideUpdateModal" tabindex="-1" role="dialog" aria-labelledby="rideUpdateModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="rideUpdateModalLabel">Deconstruct</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="update-ride-name">New Name</label>
+              <input type="text" class="form-control" id="update-ride-name" placeholder="Enter New Name">
+            </div>
+            <div class="form-group">
+              <label for="update-ride-pic">New Image Url</label>
+              <input type="text" class="form-control" id="update-ride-pic" placeholder="Enter Image Url">
+            </div>
+            <div class="form-group">
+              <label class="my-1 mr-2" for="update-exhibit-status">New Exhibit Status</label>
+              <select class="custom-select my-1 mr-sm-2" id="update-exhibit-status">
+                <option selected>Is this ride also a dinosaur exhibit?</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="ride-update-save-changes btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="rideModal" tabindex="-1" role="dialog" aria-labelledby="rideModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="rideModalLabel">Add Ride</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="new-ride-name">New Name</label>
+              <input type="text" class="form-control" id="new-ride-name" placeholder="Enter New Name">
+            </div>
+            <div class="form-group">
+              <label for="new-ride-pic">New Image Url</label>
+              <input type="text" class="form-control" id="new-ride-pic" placeholder="Enter Image Url">
+            </div>
+            <div class="form-group">
+              <label class="my-1 mr-2" for="new-exhibit-status">New Exhibit Status</label>
+              <select class="custom-select my-1 mr-sm-2" id="new-exhibit-status">
+                <option selected>Is this ride also a dinosaur exhibit?</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="ride-save-changes" type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="staffModal" tabindex="-1" role="dialog" aria-labelledby="staffModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="staffName">Name</label>
+              <input type="text" class="form-control" id="staffName" placeholder="Enter Name">
+            </div>
+            <div class="form-group">
+              <label for="staffAge">Age</label>
+              <input type="text" class="form-control" id="staffAge" placeholder="Enter Age">
+            </div>
+            <div class="form-group">
+              <label for="staffRole">Role</label>
+              <input type="text" class="form-control" id="staffRole" placeholder="Enter Role">
+            </div>
+            <div class="form-group">
+              <label for="staffImageURL">Image URL</label>
+              <input type="text" class="form-control" id="staffImageURL" placeholder="Enter Image URL">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="hireStaff">Hire Staff</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="updateStaffModal" tabindex="-1" role="dialog" aria-labelledby="updateStaffModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -289,73 +291,105 @@
     </div>
   </div>
 
-<div class="modal fade" id="equipmentModal" tabindex="-1" role="dialog" aria-labelledby="equipmentModalLabel" aria-hidden="true">
+  <div class="modal fade" id="equipmentModal" tabindex="-1" role="dialog" aria-labelledby="equipmentModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="equipmentModalLabel">Add New Equipment</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                  <label for="new-equipment-name">New Name</label>
-                  <input type="text" class="form-control" id="new-equipment-name" placeholder="Enter New Name">
-                </div>
-                <div class="form-group">
-                  <label for="new-equipment-desc">New Description</label>
-                  <input type="text" class="form-control" id="new-equipment-desc" placeholder="Enter Description">
-                </div>
-                <div class="form-group">
-                    <label for="new-equipment-quantity">New Quantity</label>
-                    <input type="number" class="form-control" id="new-equipment-quantity" placeholder="Enter New Quantity">
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="equipment-create" type="button" class="save-new-equipment btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-
-        
-<div class="modal fade" id="newVendorModal" tabindex="-1" role="dialog" aria-labelledby="vendorModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="vendorModalLabel">Add New Vendor</h5>
-      </div>
-      <div class="modal-body">
-        <form>
+        <div class="modal-body">
+          <form>
           <div class="form-group">
-            <label for="new-vendor-name">Vendor Name</label>
-            <input type="text" class="form-control" id="new-vendor-name" placeholder="Enter New Name">
-          </div>
-          <div class="form-group">
-            <label for="new-vendor-pic">Image Url</label>
-            <input type="text" class="form-control" id="new-vendor-pic" placeholder="Enter Image Url">
-          </div>
-          <div class="form-group">
-            <label for="new-vendor-description">Vendor Description</label>
-            <input type="text" class="form-control" id="new-vendor-description" placeholder="Brief Description of New Vendor">
-          </div>
-          <div class="form-group">
-            <label for="new-vendor-type">Vendor Cetegory</label>
-            <input type="text" class="form-control" id="new-vendor-type" placeholder="Category">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button id="vendor-save-new" type="button" class="btn btn-primary saveVendor">Save New Vendor</button>
+              <label for="new-equipment-name">New Name</label>
+              <input type="text" class="form-control" id="new-equipment-name" placeholder="Enter New Name">
+            </div>
+            <div class="form-group">
+              <label for="new-equipment-desc">New Description</label>
+              <input type="text" class="form-control" id="new-equipment-desc" placeholder="Enter Description">
+            </div>
+            <div class="form-group">
+              <label for="new-equipment-quantity">New Quantity</label>
+              <input type="number" class="form-control" id="new-equipment-quantity" placeholder="Enter New Quantity">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="equipment-create" type="button" class="save-new-equipment btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+  <div class="modal fade" id="updateEquipmentModal" tabindex="-1" role="dialog" aria-labelledby="equipmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateEquipmentModalLabel">Update Equipment</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="update-equipment-name">Update Name</label>
+              <input type="text" class="form-control" id="update-equipment-name" placeholder="Enter New Name">
+            </div>
+            <div class="form-group">
+              <label for="update-equipment-desc">Update Description</label>
+              <input type="text" class="form-control" id="update-equipment-desc" placeholder="Enter Description">
+            </div>
+            <div class="form-group">
+              <label for="update-equipment-quantity">Update Quantity</label>
+              <input type="number" class="form-control" id="update-equipment-quantity" placeholder="Enter New Quantity">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="equipment-update" type="button" class="save-updated-equipment btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+          
+  <div class="modal fade" id="newVendorModal" tabindex="-1" role="dialog" aria-labelledby="vendorModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="vendorModalLabel">Add New Vendor</h5>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="new-vendor-name">Vendor Name</label>
+              <input type="text" class="form-control" id="new-vendor-name" placeholder="Enter New Name">
+            </div>
+            <div class="form-group">
+              <label for="new-vendor-pic">Image Url</label>
+              <input type="text" class="form-control" id="new-vendor-pic" placeholder="Enter Image Url">
+            </div>
+            <div class="form-group">
+              <label for="new-vendor-description">Vendor Description</label>
+              <input type="text" class="form-control" id="new-vendor-description" placeholder="Brief Description of New Vendor">
+            </div>
+            <div class="form-group">
+              <label for="new-vendor-type">Vendor Cetegory</label>
+              <input type="text" class="form-control" id="new-vendor-type" placeholder="Category">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="vendor-save-new" type="button" class="btn btn-primary saveVendor">Save New Vendor</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 </body>
