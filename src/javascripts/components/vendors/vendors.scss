@@ -1,3 +1,48 @@
-.card {
+.img-container {
+  text-align: center;
+
+.vendors-title {
+  max-width: 50%;
   margin: 10px;
+}
+}
+
+// .center {
+//   text-align: center;
+// }
+
+//   .vendor-card {
+//     .card{
+//       margin: 5% 0%;
+//     }
+
+//     .card-body{
+//       margin: 0% 5% 0% 5%;
+//       padding: 6% 0%;
+//       font-size: 1.5em;
+//       .fa-times {
+//         font-size: 1.6em;
+//       }
+//     }
+//     .vendor-edit, .vendor-delete {
+//       &:hover {
+//         color: darkgray;
+//       }
+//     }
+//   }
+
+#newEquip {
+  box-shadow: 5px 5px 10px #212121;
+}
+
+.updateEquip, .removeEquip {
+  box-shadow: 5px 5px 10px #212121;
+  margin: 4px;
+  font-size: 14px;
+}
+
+.equipCards {
+  box-shadow: 5px 5px 10px #212121;
+  padding-top: 10px;
+
 }
