@@ -46,6 +46,16 @@ const trashEquipment = (e) => {
     .catch((error) => console.error(error));
 };
 
+const updateEquipment = (e) => {
+  const equipmentId = e.target.id.split('update-')[1];
+  equipmentData.updateEquipmentInfo(equipmentId)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      printEquipment();
+    })
+    .catch((error) => console.error(error));
+};
+
 const printEquipment = () => {
   $('#home-page').addClass('hide');
   $('#equipment').removeClass('hide');
@@ -76,6 +86,7 @@ const printEquipment = () => {
         utilities.printToDom('equipment', domString);
         $('body').on('click', '.save-new-equipment', createEquipment);
         $('body').on('click', '.removeEquip', trashEquipment);
+        $('body').on('click', '.updateEquip', updateEquipment);
         userModeToggle();
       });
     })
