@@ -1,0 +1,19 @@
+.toast {
+  position: absolute; 
+  top: 5px; 
+  right: 5px;
+
+  .toast-body {
+    height: 100px;
+    margin: 10px;
+  }
+
+  #chaosMonkeyData {
+    img {
+      width: 25%;
+      position: absolute;
+      bottom: 25px;
+      right: 5px;
+    }
+  }
+}
