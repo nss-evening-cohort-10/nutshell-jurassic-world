@@ -2,23 +2,33 @@ import './chaosMonkey.scss';
 import $ from 'jquery';
 import monkeyImg from './assets/images/chaosMonkey.gif';
 import utilities from '../../helpers/utilities';
-<<<<<<< HEAD
 import staffData from '../../helpers/data/staffData';
+import rideData from '../../helpers/data/rideData';
+
+const kidnapStaffUpdater = (staffId, statusId) => staffData.updateStaff(staffId, statusId).then((staff) => staff.data.name).catch((error) => console.error(error));
 
 const kidnapStaff = () => staffData.getStaff().then((allStaff) => {
   let domString = '';
   const newAllStaff = { ...allStaff };
   const randomStaff = Math.floor(Math.random() * allStaff.length);
   if (newAllStaff[randomStaff].statusId === 'status1') {
-    newAllStaff[randomStaff].statusId = 'status2';
+    const newAllStaffId = newAllStaff[randomStaff].id;
     const staffName = newAllStaff[randomStaff].name;
+    const newStaffData = {
+      name: "Malcolm",
+      age: 35,
+      statusId: "status2",
+      role: "Scientist",
+      img: 
+    }
+    newAllStaff[randomStaff].statusId = 'status2';
+    const newAllStaffStatusId = newAllStaff[randomStaff].statusId;
+    
     domString += `kidnapped ${staffName}`;
+    kidnapStaffUpdater(newAllStaffId, newAllStaffStatusId);
   }
   return domString;
 }).catch((error) => console.error(error));
-=======
-import rideData from '../../helpers/data/rideData';
->>>>>>> master
 
 const cron = require('cron');
 
@@ -36,9 +46,6 @@ const randomMonkeyEvent = () => {
   return attackZone;
 };
 
-<<<<<<< HEAD
-const chaosMonkey = cron.job('45 21 * * 0-6', () => {
-=======
 const rideUpdater = (rideId, newInfo) => rideData.updateRide(rideId, newInfo).then((ride) => ride.data.name).catch((error) => console.error(error));
 
 const rideBreaker = () => rideData.getRides().then((rides) => {
@@ -56,8 +63,7 @@ const rideBreaker = () => rideData.getRides().then((rides) => {
   return rideName;
 }).catch((error) => console.error(error));
 
-const chaosMonkey = cron.job('26 21 * * 0-6', () => {
->>>>>>> master
+const chaosMonkey = cron.job('08 22 * * 0-6', () => {
   const attackZone = randomMonkeyEvent();
   let domString = '';
   if (attackZone === 1) {
@@ -77,4 +83,4 @@ const chaosMonkey = cron.job('26 21 * * 0-6', () => {
   }
 });
 
-export default { chaosMonkey, rideBreaker };
+export default { chaosMonkey };
