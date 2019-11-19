@@ -37,7 +37,7 @@ const singleVendorCard = (vendorInfo) => {
     <h6 id="">${vendorInfo.description}</h6>
     <h6 id="">category: ${vendorInfo.type}</h6>
     <div class="border-top my-3 hide"></div>
-          <button class="btn btn-outline-primary update-vendor hide" id="update-vendor">Update Vendor Details</button>
+          <button class="btn btn-outline-primary update-vendor hide" id="update-${vendorInfo.id}">Update Vendor Details</button>
           <button class="btn btn-outline-danger delete-vendor hide" id="delete-${vendorInfo.id}">Close Shop</button>
     </div>
   </div>
@@ -70,6 +70,10 @@ const showAllVendors = () => {
       utilities.printToDom('vendors', domString);
       // eslint-disable-next-line no-use-before-define
       $('body').on('click', '.delete-vendor', closeShop);
+      // eslint-disable-next-line no-use-before-define
+      $('body').on('click', '.update-vendor', getVendorToUpdate);
+      // eslint-disable-next-line no-use-before-define
+      $('body').on('click', '.saveUpdatedVendor', updateVendor);
       vendorLoginStatus();
     })
     .catch((error) => console.error(error));
@@ -96,6 +100,41 @@ const addVendor = (e) => {
     .then(() => {
       showAllVendors();
       $('#newVendorModal').modal('hide');
+    })
+    .catch((error) => console.error(error));
+};
+
+const getVendorToUpdate = (e) => {
+  $('#updateVendorModal').modal('show');
+  const vendorToUpdate = e.target.id.split('update-')[1];
+  vendorData.getAllVendors()
+    .then((vendors) => {
+      vendors.forEach((vendor) => {
+        if (vendor.id === vendorToUpdate) {
+          const newId = `vendor-${vendor.id}`;
+          $('#update-vendor-name').val(`${vendor.name}`);
+          $('#update-vendor-pic').val(`${vendor.img}`);
+          $('#update-vendor-type').val(`${vendor.type}`);
+          $('#update-vendor-description').val(`${vendor.description}`);
+          $('.saveUpdatedVendor').attr('id', newId);
+        }
+      });
+    })
+    .catch((error) => console.error(error));
+};
+
+const updateVendor = (e) => {
+  const vendorId = e.target.id.split('vendor-')[1];
+  const newVendorInfo = {
+    type: $('#update-vendor-type').val(),
+    name: $('#update-vendor-name').val(),
+    description: $('#update-vendor-description').val(),
+    img: $('#update-vendor-pic').val(),
+  };
+  vendorData.updateVendor(vendorId, newVendorInfo)
+    .then(() => {
+      $('updateVendorModal').modal('hide');
+      showAllVendors();
     })
     .catch((error) => console.error(error));
 };
