@@ -18,6 +18,34 @@ const userModeToggle = () => {
   }
 };
 
+const createEquipment = (e) => {
+  e.stopImmediatePropagation();
+  const newEquipment = {
+    type: $('#new-equipment-name').val(),
+    description: $('#new-equipment-desc').val(),
+    quantity: $('#new-equipment-quantity').val(),
+    status: 'status1',
+  };
+  equipmentData.addEquipment(newEquipment)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      printEquipment();
+      $('#equipmentModal').modal('hide');
+    })
+    .catch((error) => console.error(error));
+};
+
+const trashEquipment = (e) => {
+  e.preventDefault();
+  const equipmentId = e.target.id.split('trash-')[1];
+  equipmentData.removeEquipment(equipmentId)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      printEquipment();
+    })
+    .catch((error) => console.error(error));
+};
+
 const printEquipment = () => {
   $('#home-page').addClass('hide');
   $('#equipment').removeClass('hide');
@@ -46,6 +74,8 @@ const printEquipment = () => {
         </div>`;
         domString += '</div>';
         utilities.printToDom('equipment', domString);
+        $('body').on('click', '.save-new-equipment', createEquipment);
+        $('body').on('click', '.removeEquip', trashEquipment);
         userModeToggle();
       });
     })

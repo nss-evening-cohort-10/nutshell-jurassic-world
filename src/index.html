@@ -215,7 +215,6 @@
     </div>
   </div>
 </div>
-
 <div class="modal fade" id="staffModal" tabindex="-1" role="dialog" aria-labelledby="staffModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -265,6 +264,111 @@
   </div>
   <div class="toast-body">
     <div id="chaosMonkeyData" class="row"></div>
+  </div>
+</div>
+
+<div class="modal fade" id="updateStaffModal" tabindex="-1" role="dialog" aria-labelledby="updateStaffModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="updateStaffName">Name</label>
+              <input type="text" class="form-control" id="updateStaffName" placeholder="Enter Name">
+            </div>
+            <div class="form-group">
+              <label for="updateStaffAge">Age</label>
+              <input type="text" class="form-control" id="updateStaffAge" placeholder="Enter Age">
+            </div>
+            <div class="form-group">
+              <label for="updateStaffRole">Role</label>
+              <input type="text" class="form-control" id="updateStaffRole" placeholder="Enter Role">
+            </div>
+            <div class="form-group">
+              <label for="updateStaffImageURL">Image URL</label>
+              <input type="text" class="form-control" id="updateStaffImageURL" placeholder="Enter Image URL">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary updateStaff">Update Staff</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="equipmentModal" tabindex="-1" role="dialog" aria-labelledby="equipmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="equipmentModalLabel">Add New Equipment</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                  <label for="new-equipment-name">New Name</label>
+                  <input type="text" class="form-control" id="new-equipment-name" placeholder="Enter New Name">
+                </div>
+                <div class="form-group">
+                  <label for="new-equipment-desc">New Description</label>
+                  <input type="text" class="form-control" id="new-equipment-desc" placeholder="Enter Description">
+                </div>
+                <div class="form-group">
+                    <label for="new-equipment-quantity">New Quantity</label>
+                    <input type="number" class="form-control" id="new-equipment-quantity" placeholder="Enter New Quantity">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="equipment-create" type="button" class="save-new-equipment btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+<div class="modal fade" id="newVendorModal" tabindex="-1" role="dialog" aria-labelledby="vendorModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="vendorModalLabel">Add New Vendor</h5>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="new-vendor-name">Vendor Name</label>
+            <input type="text" class="form-control" id="new-vendor-name" placeholder="Enter New Name">
+          </div>
+          <div class="form-group">
+            <label for="new-vendor-pic">Image Url</label>
+            <input type="text" class="form-control" id="new-vendor-pic" placeholder="Enter Image Url">
+          </div>
+          <div class="form-group">
+            <label for="new-vendor-description">Vendor Description</label>
+            <input type="text" class="form-control" id="new-vendor-description" placeholder="Brief Description of New Vendor">
+          </div>
+          <div class="form-group">
+            <label for="new-vendor-type">Vendor Cetegory</label>
+            <input type="text" class="form-control" id="new-vendor-type" placeholder="Category">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="vendor-save-new" type="button" class="btn btn-primary saveVendor">Save New Vendor</button>
+      </div>
+    </div>
   </div>
 </div>
 

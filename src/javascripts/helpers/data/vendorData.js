@@ -1,11 +1,11 @@
-import Axios from 'axios';
+import axios from 'axios';
 
 import apiKeys from '../apiKeys.json';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
 const getAllVendors = () => new Promise((resolve, reject) => {
-  Axios.get(`${baseUrl}/vendors.json`)
+  axios.get(`${baseUrl}/vendors.json`)
     .then((response) => {
       const demVendors = response.data;
       const vendors = [];
@@ -18,4 +18,8 @@ const getAllVendors = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getAllVendors };
+const shutDownVendor = (vendorId) => axios.delete(`${baseUrl}/vendors/${vendorId}.json`);
+
+const addNewVendor = (newVendor) => axios.post(`${baseUrl}/vendors/.json`, newVendor);
+
+export default { getAllVendors, shutDownVendor, addNewVendor };
