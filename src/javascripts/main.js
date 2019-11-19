@@ -19,7 +19,6 @@ const init = () => {
   authData.checkLoginStatus();
   homepage.buildHomepageCards();
   chaosMonkey.chaosMonkey.start();
-  // chaosMonkey.rideBreaker();
 };
 
 init();
