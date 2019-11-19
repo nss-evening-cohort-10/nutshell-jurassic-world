@@ -22,4 +22,27 @@ const shutDownVendor = (vendorId) => axios.delete(`${baseUrl}/vendors/${vendorId
 
 const addNewVendor = (newVendor) => axios.post(`${baseUrl}/vendors/.json`, newVendor);
 
-export default { getAllVendors, shutDownVendor, addNewVendor };
+const updateVendor = (vendorId, updatedVendor) => axios.put(`${baseUrl}/vendor/${vendorId}.json`, updatedVendor);
+
+const updateVendorInfo = (vendorId, updatedVendorInfo) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/vendor/${vendorId}.json`)
+    .then((result) => {
+      const vendorObject = { ...result.data };
+      vendorObject.type = updatedVendorInfo.type;
+      vendorObject.name = updatedVendorInfo.name;
+      vendorObject.description = updatedVendorInfo.description;
+      vendorObject.img = updatedVendorInfo.img;
+      updateVendor(vendorId, vendorObject)
+        .then(() => {
+          resolve();
+        });
+    })
+    .catch((error) => reject(error));
+});
+
+export default {
+  getAllVendors,
+  shutDownVendor,
+  addNewVendor,
+  updateVendorInfo,
+};
