@@ -4,21 +4,17 @@ import monkeyImg from './assets/images/chaosMonkey.gif';
 import utilities from '../../helpers/utilities';
 import staffData from '../../helpers/data/staffData';
 
-const kidnapStaff = () => {
+const kidnapStaff = () => staffData.getStaff().then((allStaff) => {
   let domString = '';
-  staffData.getStaff()
-    .then((allStaff) => {
-      const newAllStaff = { ...allStaff };
-      const randomStaff = Math.floor(Math.random() * allStaff.length);
-      if (newAllStaff[randomStaff].statusId === 'status1') {
-        newAllStaff[randomStaff].statusId = 'status2';
-        const staffName = newAllStaff[randomStaff].name;
-        domString += `kidnapped ${staffName}`;
-      }
-      return domString;
-    })
-    .catch((error) => console.error(error));
-};
+  const newAllStaff = { ...allStaff };
+  const randomStaff = Math.floor(Math.random() * allStaff.length);
+  if (newAllStaff[randomStaff].statusId === 'status1') {
+    newAllStaff[randomStaff].statusId = 'status2';
+    const staffName = newAllStaff[randomStaff].name;
+    domString += `kidnapped ${staffName}`;
+  }
+  return domString;
+}).catch((error) => console.error(error));
 
 const cron = require('cron');
 
@@ -36,18 +32,21 @@ const randomMonkeyEvent = () => {
   return attackZone;
 };
 
-const chaosMonkey = cron.job('18 21 * * 0-6', () => {
+const chaosMonkey = cron.job('45 21 * * 0-6', () => {
   const attackZone = randomMonkeyEvent();
-  const kindappingStaff = kidnapStaff();
   let domString = '';
   if (attackZone === 1) {
     domString = 'fill in ride event';
   } else if (attackZone === 2) {
-    domString = kindappingStaff;
+    kidnapStaff()
+      .then((result) => {
+        domString = `${result}`;
+        chaosMonkeyData(domString);
+      })
+      .catch((error) => console.error(error));
   } else if (attackZone === 3) {
     domString = 'fill in staff event';
   }
-  chaosMonkeyData(domString);
 });
 
 export default { chaosMonkey };
