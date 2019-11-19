@@ -101,14 +101,14 @@ const printRides = () => {
   rideData.getRides()
     .then((rides) => {
       let domString = `<div class="img-container"><img src="${title}" class="rides-title" alt="title" /></div>`;
-      domString += '<div class="center"><button id="build-ride" class="btn btn-outline-secondary create-ride hide" data-toggle="modal" data-target="#rideModal">BUILD A RIDE</button>';
-      domString += '<div class="rides-cards container"><div class="card-deck row">';
+      domString += '<div class="center"><button id="build-ride" class="btn btn-outline-dark create-ride hide" data-toggle="modal" data-target="#rideModal">BUILD A RIDE</button>';
+      domString += '<div class="rides-cards d-flex row wrap justify-content-center">';
       rides.forEach((ride) => {
         domString += individualRide.individualRideLoggedIn(ride);
       });
       domString += '</div></div></div>';
       utilities.printToDom('rides', domString);
-      $('.ride-footer').on('click', '.ride-delete', deleteRide);
+      $('body').on('click', '.ride-delete', deleteRide);
       $('body').on('click', '#ride-save-changes', createRide);
       $('body').on('click', '.ride-update-save-changes', updateRide);
       $('body').on('click', '.ride-edit', getRideInfo);
