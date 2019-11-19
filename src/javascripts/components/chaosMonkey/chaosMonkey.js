@@ -15,17 +15,16 @@ const kidnapStaff = () => staffData.getStaff().then((allStaff) => {
     const newAllStaffId = newAllStaff[randomStaff].id;
     const staffName = newAllStaff[randomStaff].name;
     const newStaffData = {
-      name: "Malcolm",
-      age: 35,
-      statusId: "status2",
-      role: "Scientist",
-      img: 
-    }
+      name: newAllStaff[randomStaff].name,
+      age: newAllStaff[randomStaff].age,
+      statusId: 'status2',
+      role: newAllStaff[randomStaff].role,
+      img: newAllStaff[randomStaff].img,
+    };
     newAllStaff[randomStaff].statusId = 'status2';
-    const newAllStaffStatusId = newAllStaff[randomStaff].statusId;
-    
+    // const newAllStaffStatusId = newAllStaff[randomStaff].statusId;
     domString += `kidnapped ${staffName}`;
-    kidnapStaffUpdater(newAllStaffId, newAllStaffStatusId);
+    kidnapStaffUpdater(newAllStaffId, newStaffData);
   }
   return domString;
 }).catch((error) => console.error(error));
