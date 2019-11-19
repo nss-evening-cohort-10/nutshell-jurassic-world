@@ -4,6 +4,7 @@ import 'firebase/auth';
 import dinoData from '../../helpers/data/dinoData';
 import utilities from '../../helpers/utilities';
 import './dinos.scss';
+import dinoTitle from './assets/images/DinoTitle.gif';
 
 const userModeToggle = () => {
   const user = firebase.auth().currentUser;
@@ -103,6 +104,7 @@ const printDinos = () => {
   $('#rides').addClass('hide');
   $('#vendors').addClass('hide');
   let domString = `
+  <div class="row justify-content-center" id="dinoTitle"><img src=${dinoTitle}></div>
   <button class="btn btn-dark" id="spawn" data-toggle="modal" data-target="#dinoModal">Spawn Dino</button>
   <div class="d-flex row wrap justify-content-center">`;
   dinoData.getDinosaurs()
