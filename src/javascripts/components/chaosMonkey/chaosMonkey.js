@@ -14,10 +14,10 @@ const chaosMonkeyData = (monkeyDamage) => {
   $('.toast').toast('show');
 };
 
-// const randomMonkeyEvent = () => {
-//   const attackZone = Math.floor((Math.random() * 3) + 1);
-//   return attackZone;
-// };
+const randomMonkeyEvent = () => {
+  const attackZone = Math.floor((Math.random() * 3) + 1);
+  return attackZone;
+};
 
 const rideUpdater = (rideId, newInfo) => rideData.updateRide(rideId, newInfo).then((ride) => ride.data.name).catch((error) => console.error(error));
 
@@ -29,7 +29,7 @@ const rideBreaker = () => rideData.getRides().then((rides) => {
   const updatedRide = {
     name: `${rides[attackedRide].name}`,
     imgUrl: `${rides[attackedRide].imgUrl}`,
-    status: 'status1',
+    status: 'status2',
     isExhibit: `${rides[attackedRide].isExhibit}`,
   };
   rideUpdater(rideId, updatedRide);
@@ -37,7 +37,7 @@ const rideBreaker = () => rideData.getRides().then((rides) => {
 }).catch((error) => console.error(error));
 
 const chaosMonkey = cron.job('26 21 * * 0-6', () => {
-  const attackZone = 1; // randomMonkeyEvent();
+  const attackZone = randomMonkeyEvent();
   let domString = '';
   if (attackZone === 1) {
     rideBreaker().then((result) => {
