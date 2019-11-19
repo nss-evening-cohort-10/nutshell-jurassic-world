@@ -96,11 +96,12 @@ const buildAllStaff = () => {
   $('#staff').removeClass('hide');
   staffData.getStaff()
     .then((allStaff) => {
-      let domString = '<button href="#" class="btn btn-outline-success hireButton" hireId="hire"  data-toggle="modal" data-target="#staffModal">Hire</button>';
+      let domString = '<div class="d-flex justify-content-center">';
+      domString += '<button href="#" class="btn btn-outline-success hireButton" hireId="hire"  data-toggle="modal" data-target="#staffModal">Hire</button></div>';
       domString += '<div id="staffSection" class="d-flex flex-wrap">';
       allStaff.forEach((staff) => {
         domString += `
-        <div class="card col-3 d-flex" id="${staff.id}">
+        <div class="card staffCard col-3 shadow p-3 mb-5 bg-white rounded" id="${staff.id}">
           <img src="${staff.img}" class="card-img-top staffImg img-responsive" alt="...">
             <div class="card-body">
               <h5 class="card-title">${staff.name}</h5>
