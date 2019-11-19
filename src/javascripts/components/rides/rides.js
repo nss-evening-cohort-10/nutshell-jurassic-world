@@ -13,7 +13,6 @@ import title from './rides_assets/jwtitle.jpg';
 const deleteRide = (e) => {
   e.stopImmediatePropagation();
   const rideId = e.target.id.split('delete-')[1];
-  console.log(rideId);
   rideData.deleteRide(rideId)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
