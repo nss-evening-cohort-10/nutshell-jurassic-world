@@ -7,32 +7,33 @@ import rides from '../rides/rides';
 import equipment from '../equipment/equipment';
 import allStaff from '../allStaff/allStaff';
 import vendors from '../vendors/vendors';
+import blue from './assets/blue.jpg';
 
 const homepageArr = [
   {
     name: 'dinosaurs',
-    imageUrl: 'https://i.imgur.com/0sS6UxM.png',
+    imageUrl: `${blue}`,
     description: 'Cetiosauriscus Elaltitan Tarbosaurus.',
   },
   {
     name: 'equipment',
     imageUrl: 'https://www.gannett-cdn.com/presto/2019/10/30/PBAC/24bbda49-846b-4615-a200-436bbf7b2e4f-1030jurassicpark05.JPG',
-    description: 'Cumnoria Patagosaurus Polacanthus Cruxicheiros.',
+    description: 'Jurassic World is a progressive & dynamic zoological park located just off the coast of Costa Rica. There are many pieces of equipment required for day to day operations.',
   },
   {
     name: 'rides',
     imageUrl: 'https://cdn.collider.com/wp-content/uploads/2015/06/jurassic-world-movie-image.jpg',
-    description: 'Cruxicheiros Kotasaurus Diclonius Kazaklambia.',
+    description: 'Looking for thrills? Well, you\'ve found them. In fact, you\'ve found some of the fastest, tallest, wildest, gut-wrenchingest rides in the world - hold on to your butts!',
   },
   {
     name: 'staff',
     imageUrl: 'http://secureservercdn.net/184.168.47.225/6d8.54c.myftpupload.com/wp-content/uploads/2014/11/keepers2017.jpg',
-    description: 'Kazaklambia Sellosaurus Tetragonosaurus Cetiosauriscus Elaltitan Tarbosaurus.',
+    description: 'The expertise of the animal care staff & paleozoologists who work with our dinosaurs are invaluable assets to our community.',
   },
   {
     name: 'vendors',
     imageUrl: 'https://busites-www.s3.amazonaws.com/blog-margaritaville/2016/06/jurassicworld.jpg',
-    description: 'Kotasaurus Diclonius Kazaklambia Sellosaurus Tetragonosaurus Cetiosauriscus.',
+    description: 'Get your stretchy pants ready! We have T-Rex Legs, Dino-sized cookies, and the original Margaritaville. Don\'t forget to stop by our souvenir shops!',
   },
 ];
 
