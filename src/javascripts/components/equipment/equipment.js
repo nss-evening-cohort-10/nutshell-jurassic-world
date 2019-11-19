@@ -46,6 +46,41 @@ const trashEquipment = (e) => {
     .catch((error) => console.error(error));
 };
 
+const updateEquipment = (e) => {
+  const equipmentId = e.target.id.split('equipment-')[1];
+  const updatedEquipment = {
+    type: $('#update-equipment-name').val(),
+    description: $('#update-equipment-desc').val(),
+    quantity: $('#update-equipment-quantity').val(),
+    status: 'status1',
+  };
+  equipmentData.updateEquipmentInfo(equipmentId, updatedEquipment)
+    .then(() => {
+      $('#updateEquipmentModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      printEquipment();
+    })
+    .catch((error) => console.error(error));
+};
+
+const getEquipmentToUpdate = (e) => {
+  $('#updateEquipmentModal').modal('show');
+  const equipmentToUpdate = e.target.id.split('update-')[1];
+  equipmentData.getEquipmentData()
+    .then((equipments) => {
+      equipments.forEach((equipment) => {
+        if (equipment.id === equipmentToUpdate) {
+          const newId = `equipment-${equipment.id}`;
+          $('#update-equipment-name').val(`${equipment.type}`);
+          $('#update-equipment-quantity').val(`${equipment.quantity}`);
+          $('#update-equipment-desc').val(`${equipment.description}`);
+          $('.save-updated-equipment').attr('id', newId);
+        }
+      });
+    })
+    .catch((error) => console.error(error));
+};
+
 const printEquipment = () => {
   $('#home-page').addClass('hide');
   $('#equipment').removeClass('hide');
@@ -76,6 +111,8 @@ const printEquipment = () => {
         utilities.printToDom('equipment', domString);
         $('body').on('click', '.save-new-equipment', createEquipment);
         $('body').on('click', '.removeEquip', trashEquipment);
+        $('body').on('click', '.updateEquip', getEquipmentToUpdate);
+        $('body').on('click', '.save-updated-equipment', updateEquipment);
         userModeToggle();
       });
     })

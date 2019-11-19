@@ -21,4 +21,26 @@ const addEquipment = (newEquipment) => axios.post(`${baseUrl}/equipment.json`, n
 
 const removeEquipment = (equipmentId) => axios.delete(`${baseUrl}/equipment/${equipmentId}.json`);
 
-export default { getEquipmentData, addEquipment, removeEquipment };
+const updateEquipment = (equipmentId, updatedEquipment) => axios.put(`${baseUrl}/equipment/${equipmentId}.json`, updatedEquipment);
+
+const updateEquipmentInfo = (equipmentId, updatedEquipmentInfo) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/equipment/${equipmentId}.json`)
+    .then((result) => {
+      const equipmentObject = { ...result.data };
+      equipmentObject.type = updatedEquipmentInfo.type;
+      equipmentObject.statusId = updatedEquipmentInfo.statusId;
+      equipmentObject.description = updatedEquipmentInfo.description;
+      equipmentObject.quantity = updatedEquipmentInfo.quantity;
+      updateEquipment(equipmentId, equipmentObject)
+        .then(() => {
+          resolve();
+        });
+    })
+    .catch((error) => reject(error));
+});
+export default {
+  getEquipmentData,
+  addEquipment,
+  removeEquipment,
+  updateEquipmentInfo,
+};
