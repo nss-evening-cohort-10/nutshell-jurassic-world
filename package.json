@@ -42,8 +42,12 @@
     "@fortawesome/fontawesome-free": "^5.11.2",
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
+    "cron": "^1.7.2",
+    "express": "^4.17.1",
     "firebase": "^7.4.0",
+    "fs": "0.0.1-security",
     "jquery": "^3.4.1",
+    "node-cron": "^2.0.3",
     "popper.js": "^1.16.0"
   }
 }
