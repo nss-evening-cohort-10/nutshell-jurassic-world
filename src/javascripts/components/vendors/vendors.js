@@ -131,9 +131,9 @@ const updateVendor = (e) => {
     description: $('#update-vendor-description').val(),
     img: $('#update-vendor-pic').val(),
   };
-  vendorData.updateVendor(vendorId, newVendorInfo)
+  vendorData.updateVendorInfo(vendorId, newVendorInfo)
     .then(() => {
-      $('updateVendorModal').modal('hide');
+      $('#updateVendorModal').modal('hide');
       showAllVendors();
     })
     .catch((error) => console.error(error));

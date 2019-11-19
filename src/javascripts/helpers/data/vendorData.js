@@ -22,7 +22,7 @@ const shutDownVendor = (vendorId) => axios.delete(`${baseUrl}/vendors/${vendorId
 
 const addNewVendor = (newVendor) => axios.post(`${baseUrl}/vendors/.json`, newVendor);
 
-const updateVendor = (vendorId, updatedVendor) => axios.put(`${baseUrl}/vendor/${vendorId}.json`, updatedVendor);
+const updateVendor = (vendorId, updatedVendor) => axios.put(`${baseUrl}/vendors/${vendorId}.json`, updatedVendor);
 
 const updateVendorInfo = (vendorId, updatedVendorInfo) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/vendor/${vendorId}.json`)
