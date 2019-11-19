@@ -106,7 +106,7 @@ const buildAllStaff = () => {
             <div class="card-body">
               <h5 class="card-title">${staff.name}</h5>
               <p class="card-text">${staff.role}</p>
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between flex-wrap">
                   <button href="#" class="btn btn-outline-danger fire hide" id="fire-${staff.id}">Fire</button>
                   <button href="#" class="btn btn-outline-secondary updateRole hide" id="update-${staff.id}" data-toggle="modal" data-target="#updateStaffModal">Update Role</button>
                 </div>
