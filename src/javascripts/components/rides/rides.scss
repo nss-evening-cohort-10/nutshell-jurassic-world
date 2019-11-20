@@ -2,21 +2,26 @@
   text-align: center;
 }
 
-  .ride-card {
-    box-shadow: 4px 4px 6px darkgrey;
-    padding: 1% 1% 0 1%;
+.create-ride {
+  box-shadow: 5px 5px 10px #212121;
+}
 
-    .card{
-      margin: 5% 0%;
-    }
+.ride-card {
+  box-shadow: 4px 4px 6px darkgrey;
+  padding: 1% 1% 0 1%;
 
-    .card-body{
-      margin: 0% 5% 0% 5%;
-      padding: 6%;
-    }
-    .ride-edit, .ride-delete {
-      margin: 2% 3% 2% 3%;
-      box-shadow: 2px 2px 4px darkgrey;
-    }
+  .card{
+    margin: 5% 0%;
   }
+
+  .card-body{
+    margin: 0% 5% 0% 5%;
+    padding: 6%;
+  }
+  .ride-edit, .ride-delete {
+    margin: 2% 3% 2% 3%;
+    box-shadow: 2px 2px 4px darkgrey;
+  }
+}
+
 

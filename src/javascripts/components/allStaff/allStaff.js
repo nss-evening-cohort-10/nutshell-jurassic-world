@@ -97,26 +97,27 @@ const buildAllStaff = () => {
   $('#staff').removeClass('hide');
   staffData.getStaff()
     .then((allStaff) => {
-      let domString = `  <div class="row justify-content-center" id="dinoTitle"><img src=${staffTitle}></div>`;
+      let domString = `<div class="row justify-content-center" id="dinoTitle"><img src=${staffTitle}></div>`;
       domString += '<div class="d-flex justify-content-center">';
-      domString += '<button href="#" class="btn btn-outline-success hireButton" hireId="hire"  data-toggle="modal" data-target="#staffModal">Hire</button></div>';
-      domString += '<div id="staffSection" class="d-flex flex-wrap">';
+      domString += '<button href="#" class="btn btn-outline-dark hireButton" hireId="hire"  data-toggle="modal" data-target="#staffModal">Hire</button></div>';
+      domString += '<div id="staffSection" class="container d-flex flex-wrap">';
+      domString += '<div class="row justify-content-center">';
       allStaff.forEach((staff) => {
         domString += `
-        <div class="card staffCard col-sm-3 shadow p-3 mb-5 bg-white rounded" id="${staff.id}">
+        <div class="card staffCard col-3 shadow p-3 mb-5 bg-white rounded" id="${staff.id}">
           <img src="${staff.img}" class="card-img-top staffImg img-responsive" alt="...">
             <div class="card-body">
               <h5 class="card-title">${staff.name}</h5>
               <p class="card-text">${staff.role}</p>
-                <div class="d-flex justify-content-between flex-wrap">
-                  <button href="#" class="btn btn-outline-danger fire hide" id="fire-${staff.id}">Fire</button>
-                  <button href="#" class="btn btn-outline-secondary updateRole hide" id="update-${staff.id}" data-toggle="modal" data-target="#updateStaffModal">Update Role</button>
-                </div>
-            </div>
+              </div>
+              <div class="card-footer d-flex justify-content-between flex-wrap">
+                <button href="#" class="btn btn-dark fire hide" id="fire-${staff.id}">Fire</button>
+                <button href="#" class="btn btn-dark updateRole hide" id="update-${staff.id}" data-toggle="modal" data-target="#updateStaffModal">Update Role</button>
+              </div>
         </div>
         `;
       });
-      domString += '</div>';
+      domString += '</div></div>';
       utilities.printToDom('staff', domString);
       staffModeToggle();
       $('.fire').click(fireStaff);
