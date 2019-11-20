@@ -38,8 +38,7 @@ const singleVendorCard = (vendorInfo) => {
     <h6 id="">${vendorInfo.description}</h6>
     <h6 id="">category: ${vendorInfo.type}</h6>
     </div>
-    <div class="card-footer">
-    <div class="border-top my-3 hide"></div>
+    <div class="card-footer d-flex justify-content-between flex-wrap">
           <button class="btn btn-dark update-vendor hide" id="update-${vendorInfo.id}">Update</button>
           <button class="btn btn-dark delete-vendor hide" id="delete-${vendorInfo.id}">Close</button>
     </div>
