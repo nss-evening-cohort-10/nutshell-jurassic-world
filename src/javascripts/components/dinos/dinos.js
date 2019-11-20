@@ -105,7 +105,9 @@ const printDinos = () => {
   $('#vendors').addClass('hide');
   let domString = `
   <div class="row justify-content-center" id="dinoTitle"><img src=${dinoTitle}></div>
-  <button class="btn btn-dark" id="spawn" data-toggle="modal" data-target="#dinoModal">Spawn Dino</button>
+  <div class="container text-center" id="buttonDiv">
+  <button class="btn btn-outline-dark" id="spawn" data-toggle="modal" data-target="#dinoModal">Spawn Dino</button>
+  </div>
   <div class="d-flex row wrap justify-content-center">`;
   dinoData.getDinosaurs()
     .then((dinos) => {

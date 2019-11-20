@@ -90,7 +90,7 @@ const printEquipment = () => {
   $('#vendors').addClass('hide');
   let domString = `
   <div class="container text-center">
-  <button class="btn btn-dark" id="newEquip" data-toggle="modal" data-target="#equipmentModal">Get New Equipment</button></div>
+  <button class="btn btn-outline-dark" id="newEquip" data-toggle="modal" data-target="#equipmentModal">Get New Equipment</button></div>
   <div class="d-flex row wrap justify-content-center">`;
   equipmentData.getEquipmentData()
     .then((equipment) => {
@@ -100,6 +100,7 @@ const printEquipment = () => {
           <div class="card-body">
           <h5 class="card-title text-center">${equip.type}</h5>
           <p class="card-text">${equip.description}</p>
+          <h6>Status: ${equip.status}</h6>
           <h6>Quantity: ${equip.quantity}</h6>
         </div>
         <div class="card-footer row">

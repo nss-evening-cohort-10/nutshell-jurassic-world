@@ -11,19 +11,20 @@
   text-align: center;
 }
 
-  .ride-card {
-    box-shadow: 4px 4px 6px darkgrey;
-    .card{
-      margin: 5% 0%;
-    }
-
-    .card-body{
-      margin: 0% 5% 0% 5%;
-      padding: 6% 0%;
-    }
-    .ride-edit, .ride-delete {
-      margin: 2% 3% 2% 3%;
-      box-shadow: 2px 2px 4px darkgrey;
-    }
+.ride-card {
+  box-shadow: 4px 4px 6px darkgrey;
+  padding-top: 10px;
+  .card{
+    margin: 5% 0%;
   }
+
+  .card-body{
+    margin: 0% 5% 0% 5%;
+    padding: 6% 0%;
+  }
+  .ride-edit, .ride-delete {
+    margin: 2% 3% 2% 3%;
+    box-shadow: 2px 2px 4px darkgrey;
+  }
+}
 

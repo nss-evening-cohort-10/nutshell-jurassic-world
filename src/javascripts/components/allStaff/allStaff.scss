@@ -2,11 +2,28 @@
   display: none;
 }
 
+.container {
+  align-content: space-around;
+}
 
 .hireButton {
-  margin-bottom: 10px;
+  box-shadow: 5px 5px 10px #212121;
 }
 
 .staffCard {
-margin: 10px 10px;
+  box-shadow: 5px 5px 10px #212121;
+  padding-top: 5px;
+  margin: 5px;
+
+  .card-footer {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+  
+    .updateRole, .fire {
+    box-shadow: 5px 5px 10px #212121;
+    margin: 4px;
+    font-size: 14px;
+    }
+  }
 }
