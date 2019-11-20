@@ -11,8 +11,12 @@
 #dinoTitle {
 
   img {
-  height: 50px;
-  margin: 10px;
+  // height: 50px;
+  max-height: 50px;
+  width: auto;
+  max-width: 92%;
+  margin: 15px;
+  text-align: center;
   }
 }
 
