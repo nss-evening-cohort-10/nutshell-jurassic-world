@@ -32,6 +32,7 @@ const chaosMonkeyData = (monkeyDamage) => {
       <p>The Chaos Monkey has ${monkeyDamage}</p>!
       <img src=${monkeyImg}>`;
   utilities.printToDom('chaosMonkeyData', domString);
+  $('.toast').css('z-index', 3000);
   $('.toast').toast('show');
 };
 
