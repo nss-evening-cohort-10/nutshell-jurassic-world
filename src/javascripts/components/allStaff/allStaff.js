@@ -103,7 +103,7 @@ const buildAllStaff = () => {
       domString += '<div id="staffSection" class="d-flex flex-wrap">';
       allStaff.forEach((staff) => {
         domString += `
-        <div class="card staffCard col-3 shadow p-3 mb-5 bg-white rounded" id="${staff.id}">
+        <div class="card staffCard col-sm-3 shadow p-3 mb-5 bg-white rounded" id="${staff.id}">
           <img src="${staff.img}" class="card-img-top staffImg img-responsive" alt="...">
             <div class="card-body">
               <h5 class="card-title">${staff.name}</h5>

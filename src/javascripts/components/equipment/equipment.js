@@ -98,7 +98,7 @@ const printEquipment = () => {
     .then((equipment) => {
       equipment.forEach((equip) => {
         domString += `
-        <div class="card col-3 m-2 equipCards">
+        <div class="card col-sm-3 m-3 equipCards">
           <div class="card-body">
           <h5 class="card-title text-center">${equip.type}</h5>
           <p class="card-text">${equip.description}</p>

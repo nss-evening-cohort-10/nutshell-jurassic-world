@@ -1,7 +1,7 @@
 import './individualRide.scss';
 
 const individualRideLoggedIn = (ride) => {
-  const domString = `<div class="ride-card card col-3 m-2">
+  const domString = `<div class="ride-card card col-sm-3 m-3">
     <img src="${ride.imgUrl}" class="card-img-top" alt="${ride.name}">
     <div class="card-body">
       <h5 class="card-title">${ride.name}</h5>

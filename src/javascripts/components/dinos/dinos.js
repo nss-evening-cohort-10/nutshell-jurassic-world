@@ -111,7 +111,7 @@ const printDinos = () => {
     .then((dinos) => {
       dinos.forEach((dino) => {
         domString += `
-        <div class="card col-3 m-2 dinoCards">
+        <div class="card col-sm-3 m-3 dinoCards">
           <img src="${dino.dinoImage}" class="card-img-top" alt="${dino.name}">
           <div class="card-body">
             <h5 class="card-title">${dino.name}</h5>
