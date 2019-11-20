@@ -4,6 +4,7 @@ import $ from 'jquery';
 import './allStaff.scss';
 import staffData from '../../helpers/data/staffData';
 import utilities from '../../helpers/utilities';
+import staffTitle from './assets/images/staffTitle.gif';
 
 const staffModeToggle = () => {
   const user = firebase.auth().currentUser;
@@ -96,7 +97,8 @@ const buildAllStaff = () => {
   $('#staff').removeClass('hide');
   staffData.getStaff()
     .then((allStaff) => {
-      let domString = '<div class="d-flex justify-content-center">';
+      let domString = `<div class="row justify-content-center" id="dinoTitle"><img src=${staffTitle}></div>`;
+      domString += '<div class="d-flex justify-content-center">';
       domString += '<button href="#" class="btn btn-outline-dark hireButton" hireId="hire"  data-toggle="modal" data-target="#staffModal">Hire</button></div>';
       domString += '<div id="staffSection" class="container d-flex flex-wrap">';
       domString += '<div class="row justify-content-center">';
