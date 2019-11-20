@@ -112,7 +112,7 @@ const buildAllStaff = () => {
                 <button href="#" class="btn btn-dark fire hide" id="fire-${staff.id}">Fire</button>
                 <button href="#" class="btn btn-dark updateRole hide" id="update-${staff.id}" data-toggle="modal" data-target="#updateStaffModal">Update Role</button>
               </div>
-          </div>
+        </div>
         `;
       });
       domString += '</div></div>';

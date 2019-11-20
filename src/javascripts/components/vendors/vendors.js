@@ -7,6 +7,7 @@ import utilities from '../../helpers/utilities';
 import vendorData from '../../helpers/data/vendorData';
 
 import './vendors.scss';
+import vendorTitle from './assets/images/vendorTitle.gif';
 
 const vendorLoginStatus = () => {
   const user = firebase.auth().currentUser;
@@ -58,6 +59,7 @@ const showAllVendors = () => {
   vendorData.getAllVendors()
     .then((vendors) => {
       let domString = '';
+      domString += `<div class="row justify-content-center" id="dinoTitle"><img src=${vendorTitle}></div>`;
       domString += '<div class="container text-center" id="buttonDiv">';
       domString += '<button class="btn btn-outline-dark vendor-add" id="newVendor" data-toggle="modal" data-target="#newVendorModal">open new vendor</button>';
       // eslint-disable-next-line no-use-before-define

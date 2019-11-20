@@ -8,7 +8,7 @@ import individualRide from './individualRide/individualRide';
 import utilities from '../../helpers/utilities';
 
 import './rides.scss';
-import title from './rides_assets/jwtitle.jpg';
+import rideTitle from './rides_assets/rideTitle.gif';
 
 const deleteRide = (e) => {
   e.stopImmediatePropagation();
@@ -100,7 +100,7 @@ const printRides = () => {
   $('#rides').removeClass('hide');
   rideData.getRides()
     .then((rides) => {
-      let domString = `<div class="img-container"><img src="${title}" class="rides-title" alt="title" /></div>`;
+      let domString = `<div id="dinoTitle" class="img-container"><img src="${rideTitle}" class="rides-title" alt="title" /></div>`;
       domString += '<div class="center"><button id="build-ride" class="btn btn-outline-dark create-ride hide" data-toggle="modal" data-target="#rideModal">BUILD A RIDE</button>';
       domString += '<div class="rides-cards d-flex row wrap justify-content-center">';
       rides.forEach((ride) => {

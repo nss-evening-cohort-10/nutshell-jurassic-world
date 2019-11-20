@@ -4,6 +4,7 @@ import 'firebase/auth';
 import equipmentData from '../../helpers/data/equipmentData';
 import './equipment.scss';
 import utilities from '../../helpers/utilities';
+import equipmentTitle from './assets/images/equipmentTitle.gif';
 
 const userModeToggle = () => {
   const user = firebase.auth().currentUser;
@@ -89,6 +90,7 @@ const printEquipment = () => {
   $('#dinosaurs').addClass('hide');
   $('#vendors').addClass('hide');
   let domString = `
+  <div class="row justify-content-center" id="dinoTitle"><img src=${equipmentTitle}></div>
   <div class="container text-center">
   <button class="btn btn-outline-dark" id="newEquip" data-toggle="modal" data-target="#equipmentModal">Get New Equipment</button></div>
   <div class="d-flex row wrap justify-content-center">`;
@@ -96,7 +98,7 @@ const printEquipment = () => {
     .then((equipment) => {
       equipment.forEach((equip) => {
         domString += `
-        <div class="card col-3 m-2 equipCards">
+        <div class="card col-sm-3 m-3 equipCards">
           <div class="card-body">
           <h5 class="card-title text-center">${equip.type}</h5>
           <p class="card-text">${equip.description}</p>

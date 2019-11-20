@@ -1,7 +1,8 @@
 .toast {
   position: absolute; 
-  top: 5px; 
-  right: 5px;
+  top: 50%; 
+  right: 50%;
+  z-index: -1;
 
   .toast-body {
     height: 100px;
