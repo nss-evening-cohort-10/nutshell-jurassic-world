@@ -25,10 +25,10 @@ However, be careful! Because there is a Chaos Monkey that wreaks havoc at the sa
 * in your browser nagivate to https://localhost:8080
 
 ## Contributors
-[Jacob Best-Wittenberg](https://github.com/jacob-bw)
-[Kelsey Creel](https://github.com/kelseycreel)
-[Laura Collins](https://github.com/LaCollins)
-[Monica Djunaidi](https://github.com/djunaim)
+* [Jacob Best-Wittenberg](https://github.com/jacob-bw)
+* [Kelsey Creel](https://github.com/kelseycreel)
+* [Laura Collins](https://github.com/LaCollins)
+* [Monica Djunaidi](https://github.com/djunaim)
 
 ## Technologies Used
 * HTML
