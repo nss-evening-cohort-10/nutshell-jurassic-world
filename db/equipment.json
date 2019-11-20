@@ -1,13 +1,13 @@
 {
   "equipment1": {
   "type": "Pooper Scooper",
-  "description": "For scooping dino poops",
+  "description": "For scooping dino poops. That is one big pile of shit.",
   "status": "status1",
   "quantity": 10
   },
   "equipment2": {
     "type": "Jeep",
-    "description": "For scooting around the park grounds",
+    "description": "Objects in mirror are closer than they appear.",
     "status": "status1",
     "quantity": 8
   },
