@@ -43,4 +43,5 @@ export default {
   addEquipment,
   removeEquipment,
   updateEquipmentInfo,
+  updateEquipment,
 };
