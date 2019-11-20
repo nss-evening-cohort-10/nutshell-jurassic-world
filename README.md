@@ -16,6 +16,7 @@ However, be careful! Because there is a Chaos Monkey that wreaks havoc at the sa
 ![screenshot of 'equipment'](https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-jurassic-world/master/images/readmeImg/equipment.PNG)
 ![screenshot of 'rides'](https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-jurassic-world/master/images/readmeImg/rides.PNG)
 ![screenshot of 'staff'](https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-jurassic-world/master/images/readmeImg/staff.PNG)
+![screenshot of 'vendors'](https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-jurassic-world/master/images/readmeImg/vendors.png)
 
 # Instructions on How to Run
 * clone down this project
@@ -24,10 +25,10 @@ However, be careful! Because there is a Chaos Monkey that wreaks havoc at the sa
 * in your browser nagivate to https://localhost:8080
 
 ## Contributors
-[Jacob Best-Wittenberg](https://github.com/jacob-bw)
-[Kelsey Creel](https://github.com/kelseycreel)
-[Laura Collins](https://github.com/LaCollins)
-[Monica Djunaidi](https://github.com/djunaim)
+* [Jacob Best-Wittenberg](https://github.com/jacob-bw)
+* [Kelsey Creel](https://github.com/kelseycreel)
+* [Laura Collins](https://github.com/LaCollins)
+* [Monica Djunaidi](https://github.com/djunaim)
 
 ## Technologies Used
 * HTML
