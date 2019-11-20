@@ -31,6 +31,7 @@ const chaosMonkeyData = (monkeyDamage) => {
       <p>The Chaos Monkey has ${monkeyDamage}</p>!
       <img src=${monkeyImg}>`;
   utilities.printToDom('chaosMonkeyData', domString);
+  $('.toast').css('z-index', 3000);
   $('.toast').toast('show');
 };
 
@@ -56,7 +57,7 @@ const rideBreaker = () => rideData.getRides().then((rides) => {
   return rideName;
 }).catch((error) => console.error(error));
 
-const chaosMonkey = cron.job('41 18 * * 0-6', () => {
+const chaosMonkey = cron.job('27 19 * * 0-6', () => {
   const attackZone = randomMonkeyEvent();
   let domString = '';
   if (attackZone === 1) {
