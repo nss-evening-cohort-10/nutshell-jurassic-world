@@ -15,6 +15,10 @@
   button {
     box-shadow: 5px 5px 10px #212121;
   }
+
+  li {
+    box-shadow: 5px 5px 10px #212121;
+  }
 }
 
 #logInButton, #logOutButton {
@@ -23,5 +27,26 @@
 
   img {
     height: 20px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar {
+    width: 100vw;
+    background-image: url('./assets/navBarBack2.jpg');
+    background-size: 100vw;
+
+    #navbarButtons {
+      margin-left: 1px;
+      margin-bottom: 10px;
+      justify-content: center;
+    }
+
+    #logInButton, #logOutButton {
+      position: absolute;
+      top: 10px;
+      right: 0;
+      width: 100px;
+    }
   }
 }
