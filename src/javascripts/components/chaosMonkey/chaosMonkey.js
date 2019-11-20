@@ -5,27 +5,22 @@ import utilities from '../../helpers/utilities';
 import staffData from '../../helpers/data/staffData';
 import rideData from '../../helpers/data/rideData';
 
-const kidnapStaffUpdater = (staffId, statusId) => staffData.updateStaff(staffId, statusId).then((staff) => staff.data.name).catch((error) => console.error(error));
+const kidnapStaffUpdater = (staffId, newStaffData) => staffData.updateRole(staffId, newStaffData).then((staff) => staff.data.name).catch((error) => console.error(error));
 
 const kidnapStaff = () => staffData.getStaff().then((allStaff) => {
-  let domString = '';
   const newAllStaff = { ...allStaff };
   const randomStaff = Math.floor(Math.random() * allStaff.length);
-  if (newAllStaff[randomStaff].statusId === 'status1') {
-    const newAllStaffId = newAllStaff[randomStaff].id;
-    const staffName = newAllStaff[randomStaff].name;
-    const newStaffData = {
-      name: newAllStaff[randomStaff].name,
-      age: newAllStaff[randomStaff].age,
-      statusId: 'status2',
-      role: newAllStaff[randomStaff].role,
-      img: newAllStaff[randomStaff].img,
-    };
-    newAllStaff[randomStaff].statusId = 'status2';
-    // const newAllStaffStatusId = newAllStaff[randomStaff].statusId;
-    domString += `kidnapped ${staffName}`;
-    kidnapStaffUpdater(newAllStaffId, newStaffData);
-  }
+  const newAllStaffId = newAllStaff[randomStaff].id;
+  const staffName = newAllStaff[randomStaff].name;
+  const newStaffData = {
+    name: newAllStaff[randomStaff].name,
+    age: newAllStaff[randomStaff].age,
+    statusId: 'status2',
+    role: newAllStaff[randomStaff].role,
+    img: newAllStaff[randomStaff].img,
+  };
+  const domString = `kidnapped ${staffName}`;
+  kidnapStaffUpdater(newAllStaffId, newStaffData);
   return domString;
 }).catch((error) => console.error(error));
 
@@ -40,8 +35,7 @@ const chaosMonkeyData = (monkeyDamage) => {
 };
 
 const randomMonkeyEvent = () => {
-  // const attackZone = Math.floor((Math.random() * 3) + 1);
-  const attackZone = 2;
+  const attackZone = Math.floor((Math.random() * 3) + 1);
   return attackZone;
 };
 
@@ -62,7 +56,7 @@ const rideBreaker = () => rideData.getRides().then((rides) => {
   return rideName;
 }).catch((error) => console.error(error));
 
-const chaosMonkey = cron.job('08 22 * * 0-6', () => {
+const chaosMonkey = cron.job('41 18 * * 0-6', () => {
   const attackZone = randomMonkeyEvent();
   let domString = '';
   if (attackZone === 1) {
@@ -82,4 +76,4 @@ const chaosMonkey = cron.job('08 22 * * 0-6', () => {
   }
 });
 
-export default { chaosMonkey };
+export default { chaosMonkey, kidnapStaff };
