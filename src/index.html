@@ -9,10 +9,7 @@
 <body>
   <nav class="navbar navbar-expand-sm">
     <a class="navbar-brand" href="#" id="brandLogo"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div id="navbarButtons">
+      <div id="navbarButtons" class="row">
       <button class="btn btn-dark" id="dinoLink">Dinosaurs</button>
       <button class="btn btn-dark" id="equipmentLink">Equipment</button>
       <button class="btn btn-dark" id="ridesLink">Rides</button>
@@ -401,40 +398,6 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button id="vendor-save-new" type="button" class="btn btn-primary saveVendor">Save New Vendor</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="updateVendorModal" tabindex="-1" role="dialog" aria-labelledby="updateVendorModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="updateVendorModalLabel">Update Vendor</h5>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="update-vendor-name">Vendor Name</label>
-              <input type="text" class="form-control" id="update-vendor-name" placeholder="Enter New Name">
-            </div>
-            <div class="form-group">
-              <label for="update-vendor-pic">Image Url</label>
-              <input type="text" class="form-control" id="update-vendor-pic" placeholder="Enter Image Url">
-            </div>
-            <div class="form-group">
-              <label for="update-vendor-description">Vendor Description</label>
-              <input type="text" class="form-control" id="update-vendor-description" placeholder="Vendor Description">
-            </div>
-            <div class="form-group">
-              <label for="update-vendor-type">Vendor Category</label>
-              <input type="text" class="form-control" id="update-vendor-type" placeholder="Category">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button id="vendor-save-new" type="button" class="btn btn-primary saveUpdatedVendor">Save Updated Vendor</button>
         </div>
       </div>
     </div>
