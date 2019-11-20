@@ -10,7 +10,12 @@ In order to keep track of the dinosaurs, staff, rides, vendors, and equipment, t
 However, be careful! Because there is a Chaos Monkey that wreaks havoc at the same time every day on the equipment, staff, and rides.
 
 ## Screenshots
-![screenshot of '']()
+![screenshot of 'homepage'](https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-jurassic-world/master/images/readmeImg/homepage.PNG)
+![screenshot of 'dinosaurs logout'](https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-jurassic-world/master/images/readmeImg/dinoLogin.PNG)
+![screenshot of 'dinosaurs login'](https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-jurassic-world/master/images/readmeImg/dinoLogout.PNG)
+![screenshot of 'equipment'](https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-jurassic-world/master/images/readmeImg/equipment.PNG)
+![screenshot of 'rides'](https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-jurassic-world/master/images/readmeImg/rides.PNG)
+![screenshot of 'staff'](https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-jurassic-world/master/images/readmeImg/staff.PNG)
 
 # Instructions on How to Run
 * clone down this project
