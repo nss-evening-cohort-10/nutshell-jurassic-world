@@ -16,6 +16,7 @@ However, be careful! Because there is a Chaos Monkey that wreaks havoc at the sa
 ![screenshot of 'equipment'](https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-jurassic-world/master/images/readmeImg/equipment.PNG)
 ![screenshot of 'rides'](https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-jurassic-world/master/images/readmeImg/rides.PNG)
 ![screenshot of 'staff'](https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-jurassic-world/master/images/readmeImg/staff.PNG)
+![screenshot of 'vendors'](https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-jurassic-world/master/images/readmeImg/vendors.png)
 
 # Instructions on How to Run
 * clone down this project
