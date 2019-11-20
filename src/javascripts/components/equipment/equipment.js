@@ -100,7 +100,6 @@ const printEquipment = () => {
           <div class="card-body">
           <h5 class="card-title text-center">${equip.type}</h5>
           <p class="card-text">${equip.description}</p>
-          <h6>Status: ${equip.status}</h6>
           <h6>Quantity: ${equip.quantity}</h6>
         </div>
         <div class="card-footer row">
