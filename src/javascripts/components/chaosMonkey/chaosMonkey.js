@@ -4,6 +4,7 @@ import monkeyImg from './assets/images/chaosMonkey.gif';
 import utilities from '../../helpers/utilities';
 import staffData from '../../helpers/data/staffData';
 import rideData from '../../helpers/data/rideData';
+import equipmentData from '../../helpers/data/equipmentData';
 
 const kidnapStaffUpdater = (staffId, newStaffData) => staffData.updateRole(staffId, newStaffData).then((staff) => staff.data.name).catch((error) => console.error(error));
 
@@ -31,6 +32,7 @@ const chaosMonkeyData = (monkeyDamage) => {
       <p>The Chaos Monkey has ${monkeyDamage}</p>!
       <img src=${monkeyImg}>`;
   utilities.printToDom('chaosMonkeyData', domString);
+  $('.toast').css('z-index', 3000);
   $('.toast').toast('show');
 };
 
@@ -56,7 +58,24 @@ const rideBreaker = () => rideData.getRides().then((rides) => {
   return rideName;
 }).catch((error) => console.error(error));
 
-const chaosMonkey = cron.job('41 18 * * 0-6', () => {
+const equipUpdater = (equipId, updatedEquip) => equipmentData.updateEquipment(equipId, updatedEquip).then((equipment) => equipment.data.type).catch((error) => console.error(error));
+
+const equipBreaker = () => equipmentData.getEquipmentData().then((equipments) => {
+  const number = equipments.length;
+  const attackedEquip = Math.floor((Math.random() * number));
+  const equipId = equipments[attackedEquip].id;
+  const equipName = equipments[attackedEquip].type;
+  const updatedEquip = {
+    type: `${equipments[attackedEquip].type}`,
+    description: `${equipments[attackedEquip].description}`,
+    status: 'status2',
+    quantity: `${equipments[attackedEquip].quantity}`,
+  };
+  equipUpdater(equipId, updatedEquip);
+  return equipName;
+}).catch((error) => console.error(error));
+
+const chaosMonkey = cron.job('18 19 * * 0-6', () => {
   const attackZone = randomMonkeyEvent();
   let domString = '';
   if (attackZone === 1) {
@@ -72,7 +91,12 @@ const chaosMonkey = cron.job('41 18 * * 0-6', () => {
       })
       .catch((error) => console.error(error));
   } else if (attackZone === 3) {
-    domString = 'fill in staff event';
+    equipBreaker()
+      .then((result) => {
+        domString = `destroyed ${result}`;
+        chaosMonkeyData(domString);
+      })
+      .catch((error) => console.error(error));
   }
 });
 
