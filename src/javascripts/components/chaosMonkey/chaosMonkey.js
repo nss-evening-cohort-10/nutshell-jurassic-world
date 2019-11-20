@@ -2,7 +2,27 @@ import './chaosMonkey.scss';
 import $ from 'jquery';
 import monkeyImg from './assets/images/chaosMonkey.gif';
 import utilities from '../../helpers/utilities';
+import staffData from '../../helpers/data/staffData';
 import rideData from '../../helpers/data/rideData';
+
+const kidnapStaffUpdater = (staffId, newStaffData) => staffData.updateRole(staffId, newStaffData).then((staff) => staff.data.name).catch((error) => console.error(error));
+
+const kidnapStaff = () => staffData.getStaff().then((allStaff) => {
+  const newAllStaff = { ...allStaff };
+  const randomStaff = Math.floor(Math.random() * allStaff.length);
+  const newAllStaffId = newAllStaff[randomStaff].id;
+  const staffName = newAllStaff[randomStaff].name;
+  const newStaffData = {
+    name: newAllStaff[randomStaff].name,
+    age: newAllStaff[randomStaff].age,
+    statusId: 'status2',
+    role: newAllStaff[randomStaff].role,
+    img: newAllStaff[randomStaff].img,
+  };
+  const domString = `kidnapped ${staffName}`;
+  kidnapStaffUpdater(newAllStaffId, newStaffData);
+  return domString;
+}).catch((error) => console.error(error));
 
 const cron = require('cron');
 
@@ -36,7 +56,7 @@ const rideBreaker = () => rideData.getRides().then((rides) => {
   return rideName;
 }).catch((error) => console.error(error));
 
-const chaosMonkey = cron.job('26 21 * * 0-6', () => {
+const chaosMonkey = cron.job('41 18 * * 0-6', () => {
   const attackZone = randomMonkeyEvent();
   let domString = '';
   if (attackZone === 1) {
@@ -45,10 +65,15 @@ const chaosMonkey = cron.job('26 21 * * 0-6', () => {
       chaosMonkeyData(domString);
     }).catch((error) => console.error(error));
   } else if (attackZone === 2) {
-    domString = 'fill in equipment event';
+    kidnapStaff()
+      .then((result) => {
+        domString = `${result}`;
+        chaosMonkeyData(domString);
+      })
+      .catch((error) => console.error(error));
   } else if (attackZone === 3) {
     domString = 'fill in staff event';
   }
 });
 
-export default { chaosMonkey, rideBreaker };
+export default { chaosMonkey, kidnapStaff };
