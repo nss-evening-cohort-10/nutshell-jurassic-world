@@ -45,4 +45,5 @@ export default {
   fireStaff,
   hireStaff,
   updateStaff,
+  updateRole,
 };
