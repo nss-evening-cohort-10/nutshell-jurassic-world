@@ -26,7 +26,7 @@ const vendorLoginStatus = () => {
 
 const singleVendorCard = (vendorInfo) => {
   const domString = `
-  <div class="card vendor-card col-md-4">
+  <div class="card col-3 vendor-card">
     <div class="card-body">
     <div class="view overlay">
     <img class="card-img-top" src="${vendorInfo.img}" alt="Card image cap">
@@ -37,11 +37,12 @@ const singleVendorCard = (vendorInfo) => {
     <h4 class="card-title" id="${vendorInfo.id}">${vendorInfo.name}</h4>
     <h6 id="">${vendorInfo.description}</h6>
     <h6 id="">category: ${vendorInfo.type}</h6>
-    <div class="border-top my-3 hide"></div>
-          <button class="btn btn-outline-primary update-vendor hide" id="update-${vendorInfo.id}">Update Vendor Details</button>
-          <button class="btn btn-outline-danger delete-vendor hide" id="delete-${vendorInfo.id}">Close Shop</button>
     </div>
-  </div>
+    <div class="card-footer d-flex justify-content-between flex-wrap">
+          <button class="btn btn-dark update-vendor hide" id="update-${vendorInfo.id}">Update</button>
+          <button class="btn btn-dark delete-vendor hide" id="delete-${vendorInfo.id}">Close</button>
+    </div>
+    </div>
   `;
   return domString;
 };
@@ -58,13 +59,13 @@ const showAllVendors = () => {
     .then((vendors) => {
       let domString = '';
       domString += `<div class="row justify-content-center" id="dinoTitle"><img src=${vendorTitle}></div>`;
-      domString += '<div id="buttonDiv">';
-      domString += '<button class="btn btn-outline-success vendor-add" data-toggle="modal" data-target="#newVendorModal">open new vendor</button>';
+      domString += '<div class="container text-center" id="buttonDiv">';
+      domString += '<button class="btn btn-outline-dark vendor-add" id="newVendor" data-toggle="modal" data-target="#newVendorModal">open new vendor</button>';
       // eslint-disable-next-line no-use-before-define
       $('body').on('click', '.saveVendor', addVendor);
       domString += '</div>';
       domString += '<div class="container">';
-      domString += '<div class="row">';
+      domString += '<div class="row justify-content-center">';
       vendors.forEach((vendor) => {
         domString += singleVendorCard(vendor);
       });
