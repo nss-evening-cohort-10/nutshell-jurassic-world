@@ -1,5 +1,7 @@
 import axios from 'axios';
 import apiKeys from '../apiKeys.json';
+import utilities from '../utilities';
+import dinoTop from '../../components/dinos/assets/images/DinoTitle.gif';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
@@ -8,10 +10,22 @@ const getDinosaurs = () => new Promise((resolve, reject) => {
     .then((response) => {
       const demDinos = response.data;
       const dinos = [];
-      Object.keys(demDinos).forEach((fbId) => {
-        demDinos[fbId].id = fbId;
-        dinos.push(demDinos[fbId]);
-      });
+      if (demDinos === null) {
+        const domString = `
+        <div class="row justify-content-center" id="dinoTitle"><img src=${dinoTop}></div>
+        <div class="container text-center" id="buttonDiv">
+        <button class="btn btn-outline-dark" id="spawn" data-toggle="modal" data-target="#dinoModal">Spawn Dino</button>
+        <h1>You got no dino DNA! Get to spawning!</h1>
+        </div>
+        <div class="d-flex row wrap justify-content-center">
+        `;
+        utilities.printToDom('dinosaurs', domString);
+      } else {
+        Object.keys(demDinos).forEach((fbId) => {
+          demDinos[fbId].id = fbId;
+          dinos.push(demDinos[fbId]);
+        });
+      }
       resolve(dinos);
     })
     .catch((error) => reject(error));
