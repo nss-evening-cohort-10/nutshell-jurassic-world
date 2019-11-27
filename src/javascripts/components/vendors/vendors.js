@@ -54,35 +54,37 @@ const showAllVendors = () => {
   $('#staff').addClass('hide');
   $('#vendors').removeClass('hide');
   $('#rides').addClass('hide');
-
+  let domString = `<div class="row justify-content-center" id="dinoTitle"><img src=${vendorTitle}></div>
+  <div class="container text-center" id="buttonDiv">
+  <button class="btn btn-outline-dark vendor-add" id="newVendor" data-toggle="modal" data-target="#newVendorModal">Create New Vendor</button>
+  </div>
+  <div class="container">
+  <div class="row justify-content-center">
+  `;
   vendorData.getAllVendors()
     .then((vendors) => {
-      let domString = '';
-      domString += `<div class="row justify-content-center" id="dinoTitle"><img src=${vendorTitle}></div>`;
-      domString += '<div class="container text-center" id="buttonDiv">';
-      domString += '<button class="btn btn-outline-dark vendor-add" id="newVendor" data-toggle="modal" data-target="#newVendorModal">open new vendor</button>';
-      // eslint-disable-next-line no-use-before-define
-      $('body').on('click', '.saveVendor', addVendor);
-      domString += '</div>';
-      domString += '<div class="container">';
-      domString += '<div class="row justify-content-center">';
-      vendors.forEach((vendor) => {
-        domString += singleVendorCard(vendor);
-      });
-      domString += '</div></div>';
-      utilities.printToDom('vendors', domString);
+      if (vendors[0]) {
+        vendors.forEach((vendor) => {
+          domString += singleVendorCard(vendor);
+        });
+        domString += '</div></div>';
+        utilities.printToDom('vendors', domString);
+      }
       // eslint-disable-next-line no-use-before-define
       $('body').on('click', '.delete-vendor', closeShop);
       // eslint-disable-next-line no-use-before-define
       $('body').on('click', '.update-vendor', getVendorToUpdate);
       // eslint-disable-next-line no-use-before-define
       $('body').on('click', '.saveUpdatedVendor', updateVendor);
+      // eslint-disable-next-line no-use-before-define
+      $('body').on('click', '.saveVendor', addVendor);
       vendorLoginStatus();
     })
     .catch((error) => console.error(error));
 };
 
 const closeShop = (e) => {
+  e.stopImmediatePropagation();
   const vendorToClose = e.target.id.split('delete-')[1];
   vendorData.shutDownVendor(vendorToClose)
     .then(() => {
@@ -103,11 +105,16 @@ const addVendor = (e) => {
     .then(() => {
       showAllVendors();
       $('#newVendorModal').modal('hide');
+      $('#new-vendor-type').val('');
+      $('#new-vendor-name').val('');
+      $('#new-vendor-description').val('');
+      $('#new-vendor-pic').val('');
     })
     .catch((error) => console.error(error));
 };
 
 const getVendorToUpdate = (e) => {
+  e.stopImmediatePropagation();
   $('#updateVendorModal').modal('show');
   const vendorToUpdate = e.target.id.split('update-')[1];
   vendorData.getAllVendors()
@@ -127,6 +134,7 @@ const getVendorToUpdate = (e) => {
 };
 
 const updateVendor = (e) => {
+  e.stopImmediatePropagation();
   const vendorId = e.target.id.split('vendor-')[1];
   const newVendorInfo = {
     type: $('#update-vendor-type').val(),
