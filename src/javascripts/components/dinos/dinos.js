@@ -48,6 +48,7 @@ const addNewDino = (e) => {
 
 
 const updateDino = (e) => {
+  e.stopImmediatePropagation();
   const dinoId = e.target.id.split('dino-')[1];
   const newInfo = {
     name: $('#new-dino-name').val(),
@@ -65,6 +66,7 @@ const updateDino = (e) => {
 };
 
 const deleteDino = (e) => {
+  e.stopImmediatePropagation();
   const dinoToDelete = e.target.id.split('kill-')[1];
   dinoData.euthenizeDino(dinoToDelete)
     .then(() => {
@@ -76,6 +78,7 @@ const deleteDino = (e) => {
 
 
 const getDinoToUpdate = (e) => {
+  e.stopImmediatePropagation();
   $('#dinoEditModal').modal('show');
   const dinoToUpdate = e.target.id.split('update-')[1];
   dinoData.getDinosaurs()
@@ -111,8 +114,9 @@ const printDinos = () => {
   <div class="d-flex row wrap justify-content-center">`;
   dinoData.getDinosaurs()
     .then((dinos) => {
-      dinos.forEach((dino) => {
-        domString += `
+      if (dinos[0]) {
+        dinos.forEach((dino) => {
+          domString += `
         <div class="card col-sm-3 m-3 dinoCards">
           <img src="${dino.dinoImage}" class="card-img-top" alt="${dino.name}">
           <div class="card-body">
@@ -128,9 +132,10 @@ const printDinos = () => {
           <button class="btn btn-dark kill" id="kill-${dino.id}">Euthenize</button>
           </div>
         </div>`;
-      });
-      domString += '</div>';
-      utilities.printToDom('dinosaurs', domString);
+        });
+        domString += '</div>';
+        utilities.printToDom('dinosaurs', domString);
+      }
       userModeToggle();
       $('body').on('click', '#addDino', addNewDino);
       $('body').on('click', '.updateDino', getDinoToUpdate);
