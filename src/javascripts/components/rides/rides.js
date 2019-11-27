@@ -100,7 +100,7 @@ const printRides = () => {
   $('#rides').removeClass('hide');
   rideData.getRides()
     .then((rides) => {
-      if (rides) {
+      if (rides[0]) {
         let domString = `<div id="dinoTitle" class="img-container"><img src="${rideTitle}" class="rides-title" alt="title" /></div>`;
         domString += '<div class="center"><button id="build-ride" class="btn btn-outline-dark create-ride hide" data-toggle="modal" data-target="#rideModal">BUILD A RIDE</button>';
         domString += '<div class="rides-cards d-flex row wrap justify-content-center">';
