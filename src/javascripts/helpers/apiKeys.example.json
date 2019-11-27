@@ -1,5 +1,5 @@
 {
-  "firebaseKeys": {
+    "firebaseConfig": {
     "apiKey": "",
     "authDomain": "",
     "databaseURL": "",
