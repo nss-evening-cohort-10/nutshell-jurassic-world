@@ -97,13 +97,15 @@ const buildAllStaff = () => {
   $('#staff').removeClass('hide');
   staffData.getStaff()
     .then((allStaff) => {
-      let domString = `<div class="row justify-content-center" id="dinoTitle"><img src=${staffTitle}></div>`;
-      domString += '<div class="d-flex justify-content-center">';
-      domString += '<button href="#" class="btn btn-outline-dark hireButton" hireId="hire"  data-toggle="modal" data-target="#staffModal">Hire</button></div>';
-      domString += '<div id="staffSection" class="container d-flex flex-wrap">';
-      domString += '<div class="row justify-content-center">';
-      allStaff.forEach((staff) => {
-        domString += `
+      if (allStaff[0]) {
+        let domString = `
+        <div class="row justify-content-center" id="dinoTitle"><img src=${staffTitle}></div>
+        <div class="d-flex justify-content-center">
+        <button href="#" class="btn btn-outline-dark hireButton" hireId="hire"  data-toggle="modal" data-target="#staffModal">Hire</button></div>
+        <div id="staffSection" class="container d-flex flex-wrap justify-content-center">
+        `;
+        allStaff.forEach((staff) => {
+          domString += `
         <div class="card staffCard col-3 shadow p-3 mb-5 bg-white rounded" id="${staff.id}">
           <img src="${staff.img}" class="card-img-top staffImg img-responsive" alt="...">
             <div class="card-body">
@@ -116,9 +118,10 @@ const buildAllStaff = () => {
               </div>
         </div>
         `;
-      });
-      domString += '</div></div>';
-      utilities.printToDom('staff', domString);
+        });
+        domString += '</div></div>';
+        utilities.printToDom('staff', domString);
+      }
       staffModeToggle();
       $('.fire').click(fireStaff);
       $('#hireStaff').click(hireStaff);
