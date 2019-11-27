@@ -14,7 +14,7 @@ const getStaff = () => new Promise((resolve, reject) => {
         const noStaffString = `
         <div class="row justify-content-center" id="dinoTitle"><img src=${staffTitle}></div>
         <div class="d-flex justify-content-center">
-        <button href="#" class="btn btn-outline-dark hireButton" hireId="hire"  data-toggle="modal" data-target="#staffModal">Hire</button></div>';
+        <button href="#" class="btn btn-outline-dark hireButton" hireId="hire"  data-toggle="modal" data-target="#staffModal">Hire</button></div>
         <div id="staffSection" class="container d-flex flex-wrap justify-content-center">
         <h1>Probably helps if you hire some folks to run this joint, don't you think?</h1>
         `;
