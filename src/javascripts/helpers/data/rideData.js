@@ -1,5 +1,7 @@
 import axios from 'axios';
 import apiKeys from '../apiKeys.json';
+import utilities from '../utilities';
+import rideTitle from '../../components/rides/rides_assets/rideTitle.gif';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
@@ -8,10 +10,19 @@ const getRides = () => new Promise((resolve, reject) => {
     .then((response) => {
       const demRides = response.data;
       const rides = [];
-      Object.keys(demRides).forEach((fbId) => {
-        demRides[fbId].id = fbId;
-        rides.push(demRides[fbId]);
-      });
+      if (demRides === null) {
+        const domString = `<div id="dinoTitle" class="img-container"><img src="${rideTitle}" class="rides-title" alt="title"></div>
+        <div class="center">
+        <button id="build-ride" class="btn btn-outline-dark create-ride" data-toggle="modal" data-target="#rideModal">BUILD A RIDE</button>
+        <h1 class="p-3">There aren't any rides. Click the button above to add one!</h1>
+        </div>`;
+        utilities.printToDom('rides', domString);
+      } else {
+        Object.keys(demRides).forEach((fbId) => {
+          demRides[fbId].id = fbId;
+          rides.push(demRides[fbId]);
+        });
+      }
       resolve(rides);
     })
     .catch((error) => reject(error));

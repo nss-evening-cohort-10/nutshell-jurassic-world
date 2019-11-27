@@ -13,7 +13,8 @@ const homepageArr = [
   {
     name: 'dinosaurs',
     imageUrl: `${blue}`,
-    description: 'Come see our extensive menagerie of prehistoric wonders! These amazing animals have been brought back from extinction after millions of years to thrill young and old with their beauty and wonder!',
+    description: `Come see our extensive menagerie of prehistoric wonders! These amazing animals have been brought back from extinction after millions of years to thrill young and old with 
+    their beauty and wonder!`,
   },
   {
     name: 'equipment',
