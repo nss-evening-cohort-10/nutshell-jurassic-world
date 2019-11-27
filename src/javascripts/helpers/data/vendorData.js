@@ -14,7 +14,7 @@ const getAllVendors = () => new Promise((resolve, reject) => {
         const domString = `
         <div class="row justify-content-center" id="dinoTitle"><img src=${vendorTop}></div>
         <div class="container text-center" id="buttonDiv">
-        <button class="btn btn-outline-dark vendor-add" id="newVendor" data-toggle="modal" data-target="#newVendorModal">Create New Vendor</button>
+        <button class="btn btn-outline-dark vendor-add cudButton" id="newVendor" data-toggle="modal" data-target="#newVendorModal">Create New Vendor</button>
         <h1>You got no vendors! How will you serve the people?</h1>
         </div>
         <div class="container">

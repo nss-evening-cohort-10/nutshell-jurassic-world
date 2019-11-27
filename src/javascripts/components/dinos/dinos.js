@@ -1,23 +1,9 @@
 import $ from 'jquery';
-import firebase from 'firebase/app';
 import 'firebase/auth';
 import dinoData from '../../helpers/data/dinoData';
 import utilities from '../../helpers/utilities';
 import './dinos.scss';
 import dinoTitle from './assets/images/DinoTitle.gif';
-
-const userModeToggle = () => {
-  const user = firebase.auth().currentUser;
-  if (user) {
-    $('.updateDino').removeClass('hide');
-    $('.kill').removeClass('hide');
-    $('#spawn').removeClass('hide');
-  } else {
-    $('.updateDino').addClass('hide');
-    $('.kill').addClass('hide');
-    $('#spawn').addClass('hide');
-  }
-};
 
 const addNewDino = (e) => {
   e.stopImmediatePropagation();
@@ -127,7 +113,6 @@ const printDinos = () => {
         });
         domString += '</div>';
         utilities.printToDom('printComponent', domString);
-        userModeToggle();
         $('body').on('click', '#addDino', addNewDino);
         $('body').on('click', '.updateDino', getDinoToUpdate);
         $('body').on('click', '.updateDinoInfo', updateDino);
@@ -137,4 +122,4 @@ const printDinos = () => {
     .catch((error) => console.error(error));
 };
 
-export default { printDinos, userModeToggle };
+export default { printDinos };

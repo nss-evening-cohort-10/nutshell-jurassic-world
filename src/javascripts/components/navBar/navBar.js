@@ -35,7 +35,8 @@ const logoutEvent = () => {
     e.preventDefault();
     firebase.auth().signOut()
       .then(() => {
-        $('#logButtons').removeClass('hide');
+        $('cudButton').addClass('hide');
+        $('#logInButton').removeClass('hide');
         logoutButton.addClass('hide');
       }).catch((error) => console.error(error));
   });

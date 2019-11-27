@@ -1,4 +1,4 @@
-import firebase from 'firebase/app';
+// import firebase from 'firebase/app';
 import 'firebase/auth';
 import $ from 'jquery';
 import './allStaff.scss';
@@ -6,18 +6,18 @@ import staffData from '../../helpers/data/staffData';
 import utilities from '../../helpers/utilities';
 import staffTitle from './assets/images/staffTitle.gif';
 
-const staffModeToggle = () => {
-  const user = firebase.auth().currentUser;
-  if (user) {
-    $('.hireButton').removeClass('hide');
-    $('.fire').removeClass('hide');
-    $('.updateRole').removeClass('hide');
-  } else {
-    $('.hireButton').addClass('hide');
-    $('.fire').addClass('hide');
-    $('.updateRole').addClass('hide');
-  }
-};
+// const staffModeToggle = () => {
+//   const user = firebase.auth().currentUser;
+//   if (user) {
+//     $('.hireButton').removeClass('hide');
+//     $('.fire').removeClass('hide');
+//     $('.updateRole').removeClass('hide');
+//   } else {
+//     $('.hireButton').addClass('hide');
+//     $('.fire').addClass('hide');
+//     $('.updateRole').addClass('hide');
+//   }
+// };
 
 const fireStaff = (e) => {
   e.preventDefault();
@@ -116,7 +116,7 @@ const buildAllStaff = () => {
         domString += '</div></div>';
         utilities.printToDom('printComponent', domString);
       }
-      staffModeToggle();
+      // staffModeToggle();
       $('.fire').click(fireStaff);
       $('#hireStaff').click(hireStaff);
       $('.updateStaff').click(updateStaff);
@@ -125,4 +125,4 @@ const buildAllStaff = () => {
     .catch((error) => console.error(error));
 };
 
-export default { buildAllStaff, staffModeToggle };
+export default { buildAllStaff };

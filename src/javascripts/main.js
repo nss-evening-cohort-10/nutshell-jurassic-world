@@ -15,8 +15,8 @@ const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
   navBar.printLogo();
   navBar.printLoginButton();
-  navBar.logoutEvent();
   authData.checkLoginStatus();
+  navBar.logoutEvent();
   homepage.buildHomepageCards();
   chaosMonkey.chaosMonkey.start();
 };

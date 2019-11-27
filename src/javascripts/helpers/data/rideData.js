@@ -13,7 +13,7 @@ const getRides = () => new Promise((resolve, reject) => {
       if (demRides === null) {
         const domString = `<div id="dinoTitle" class="img-container"><img src="${rideTitle}" class="rides-title" alt="title"></div>
         <div class="center">
-        <button id="build-ride" class="btn btn-outline-dark create-ride" data-toggle="modal" data-target="#rideModal">BUILD A RIDE</button>
+        <button id="build-ride" class="btn btn-outline-dark create-ride cudButton" data-toggle="modal" data-target="#rideModal">BUILD A RIDE</button>
         <h1 class="p-3">There aren't any rides. Click the button above to add one!</h1>
         </div>`;
         utilities.printToDom('printComponent', domString);

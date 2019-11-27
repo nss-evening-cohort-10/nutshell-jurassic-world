@@ -14,7 +14,7 @@ const getDinosaurs = () => new Promise((resolve, reject) => {
         const domString = `
         <div class="row justify-content-center" id="dinoTitle"><img src=${dinoTop}></div>
         <div class="container text-center" id="buttonDiv">
-        <button class="btn btn-outline-dark" id="spawn" data-toggle="modal" data-target="#dinoModal">Spawn Dino</button>
+        <button class="btn btn-outline-dark cudButton" id="spawn" data-toggle="modal" data-target="#dinoModal">Spawn Dino</button>
         <h1>You got no dino DNA! Get to spawning!</h1>
         </div>
         <div class="d-flex row wrap justify-content-center">

@@ -16,11 +16,11 @@ const checkForUser = () => {
   if (firebase.auth().currentUser) {
     $('.cudButton').removeClass('hide');
     $('#logOutButton').removeClass('hide');
-    $('#logButtons').addClass('hide');
+    $('#logInButton').addClass('hide');
   } else {
     $('.cudButton').addClass('hide');
     $('#logOutButton').addClass('hide');
-    $('#logButtons').removeClass('hide');
+    $('#logInButton').removeClass('hide');
   }
 };
 
@@ -28,12 +28,12 @@ const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       $('.cudButton').removeClass('hide');
-      $('.activateLogout').removeClass('hide');
-      $('.activateLogin').addClass('hide');
+      $('#logOutButton').removeClass('hide');
+      $('#logInButton').addClass('hide');
     } else {
       $('.cudButton').addClass('hide');
-      $('.activateLogout').addClass('hide');
-      $('.activateLogin').removeClass('hide');
+      $('#logOutButton').addClass('hide');
+      $('#logInButton').removeClass('hide');
     }
   });
 };
@@ -60,4 +60,4 @@ const checkLoginStatus = () => {
 //   });
 // };
 
-export default { checkLoginStatus };
+export default { checkForUser, checkLoginStatus };

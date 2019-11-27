@@ -14,7 +14,7 @@ const getEquipmentData = () => new Promise((resolve, reject) => {
         const equipString = `
         <div class="row justify-content-center" id="dinoTitle"><img src=${equipmentTitle}></div>
         <div class="container text-center">
-        <button class="btn btn-outline-dark" id="newEquip" data-toggle="modal" data-target="#equipmentModal">Get New Equipment</button></div>
+        <button class="btn btn-outline-dark cudButton" id="newEquip" data-toggle="modal" data-target="#equipmentModal">Get New Equipment</button></div>
         <h1 class="p-2">It looks like you don't have any equipment. Consider getting some before you are eaten!</h1>
         `;
         utilities.printToDom('printComponent', equipString);
