@@ -19,7 +19,7 @@ const getDinosaurs = () => new Promise((resolve, reject) => {
         </div>
         <div class="d-flex row wrap justify-content-center">
         `;
-        utilities.printToDom('dinosaurs', domString);
+        utilities.printToDom('printComponent', domString);
       } else {
         Object.keys(demDinos).forEach((fbId) => {
           demDinos[fbId].id = fbId;

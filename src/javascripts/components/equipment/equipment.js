@@ -86,12 +86,12 @@ const getEquipmentToUpdate = (e) => {
 };
 
 const printEquipment = () => {
-  $('#home-page').addClass('hide');
-  $('#equipment').removeClass('hide');
-  $('#staff').addClass('hide');
-  $('#rides').addClass('hide');
-  $('#dinosaurs').addClass('hide');
-  $('#vendors').addClass('hide');
+  // $('#home-page').addClass('hide');
+  // $('#equipment').removeClass('hide');
+  // $('#staff').addClass('hide');
+  // $('#rides').addClass('hide');
+  // $('#dinosaurs').addClass('hide');
+  // $('#vendors').addClass('hide');
   let domString = `
   <div class="row justify-content-center" id="dinoTitle"><img src=${equipmentTitle}></div>
   <div class="container text-center">
@@ -114,7 +114,7 @@ const printEquipment = () => {
           <button class="btn btn-dark removeEquip" id="trash-${equip.id}">Trash</button>
           </div>`;
           domString += '</div>';
-          utilities.printToDom('equipment', domString);
+          utilities.printToDom('printComponent', domString);
         });
       }
       $('body').on('click', '.save-new-equipment', createEquipment);

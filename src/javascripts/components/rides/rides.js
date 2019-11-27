@@ -93,12 +93,12 @@ const rideLoginStatus = () => {
 };
 
 const printRides = () => {
-  $('#home-page').addClass('hide');
-  $('#dinosaurs').addClass('hide');
-  $('#equipment').addClass('hide');
-  $('#staff').addClass('hide');
-  $('#vendors').addClass('hide');
-  $('#rides').removeClass('hide');
+  // $('#home-page').addClass('hide');
+  // $('#dinosaurs').addClass('hide');
+  // $('#equipment').addClass('hide');
+  // $('#staff').addClass('hide');
+  // $('#vendors').addClass('hide');
+  // $('#rides').removeClass('hide');
   rideData.getRides()
     .then((rides) => {
       if (rides[0]) {
@@ -109,7 +109,7 @@ const printRides = () => {
           domString += individualRide.individualRideLoggedIn(ride);
         });
         domString += '</div></div></div>';
-        utilities.printToDom('rides', domString);
+        utilities.printToDom('printComponent', domString);
       }
       $('body').on('click', '.ride-delete', deleteRide);
       $('body').on('click', '#ride-save-changes', createRide);

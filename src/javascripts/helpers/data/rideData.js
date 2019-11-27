@@ -16,7 +16,7 @@ const getRides = () => new Promise((resolve, reject) => {
         <button id="build-ride" class="btn btn-outline-dark create-ride" data-toggle="modal" data-target="#rideModal">BUILD A RIDE</button>
         <h1 class="p-3">There aren't any rides. Click the button above to add one!</h1>
         </div>`;
-        utilities.printToDom('rides', domString);
+        utilities.printToDom('printComponent', domString);
       } else {
         Object.keys(demRides).forEach((fbId) => {
           demRides[fbId].id = fbId;

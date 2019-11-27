@@ -20,7 +20,7 @@ const getAllVendors = () => new Promise((resolve, reject) => {
         <div class="container">
         <div class="row justify-content-center">
         `;
-        utilities.printToDom('vendors', domString);
+        utilities.printToDom('printComponent', domString);
       } else {
         Object.keys(demVendors).forEach((fbId) => {
           demVendors[fbId].id = fbId;

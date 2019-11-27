@@ -17,7 +17,7 @@ const getEquipmentData = () => new Promise((resolve, reject) => {
         <button class="btn btn-outline-dark" id="newEquip" data-toggle="modal" data-target="#equipmentModal">Get New Equipment</button></div>
         <h1 class="p-2">It looks like you don't have any equipment. Consider getting some before you are eaten!</h1>
         `;
-        utilities.printToDom('equipment', equipString);
+        utilities.printToDom('printComponent', equipString);
       } else {
         Object.keys(demEquips).forEach((fbId) => {
           demEquips[fbId].id = fbId;
