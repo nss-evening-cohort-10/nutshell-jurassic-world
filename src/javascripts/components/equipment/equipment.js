@@ -86,12 +86,6 @@ const getEquipmentToUpdate = (e) => {
 };
 
 const printEquipment = () => {
-  // $('#home-page').addClass('hide');
-  // $('#equipment').removeClass('hide');
-  // $('#staff').addClass('hide');
-  // $('#rides').addClass('hide');
-  // $('#dinosaurs').addClass('hide');
-  // $('#vendors').addClass('hide');
   let domString = `
   <div class="row justify-content-center" id="dinoTitle"><img src=${equipmentTitle}></div>
   <div class="container text-center">

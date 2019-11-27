@@ -11,15 +11,11 @@ import rides from '../rides/rides';
 import vendors from '../vendors/vendors';
 import equipment from '../equipment/equipment';
 import allStaff from '../allStaff/allStaff';
+import homepage from '../homepage/homepage';
 
 
 const backToHome = () => {
-  $('#home-page').removeClass('hide');
-  $('#dinosaurs').addClass('hide');
-  $('#equipment').addClass('hide');
-  $('#rides').addClass('hide');
-  $('#staff').addClass('hide');
-  $('#vendors').addClass('hide');
+  homepage.buildHomepageCards();
 };
 
 const printLogo = () => {

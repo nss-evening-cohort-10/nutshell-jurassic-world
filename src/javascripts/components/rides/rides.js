@@ -93,12 +93,6 @@ const rideLoginStatus = () => {
 };
 
 const printRides = () => {
-  // $('#home-page').addClass('hide');
-  // $('#dinosaurs').addClass('hide');
-  // $('#equipment').addClass('hide');
-  // $('#staff').addClass('hide');
-  // $('#vendors').addClass('hide');
-  // $('#rides').removeClass('hide');
   rideData.getRides()
     .then((rides) => {
       if (rides[0]) {

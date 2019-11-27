@@ -48,12 +48,6 @@ const singleVendorCard = (vendorInfo) => {
 };
 
 const showAllVendors = () => {
-  // $('#home-page').addClass('hide');
-  // $('#dinosaurs').addClass('hide');
-  // $('#equipment').addClass('hide');
-  // $('#staff').addClass('hide');
-  // $('#vendors').removeClass('hide');
-  // $('#rides').addClass('hide');
   let domString = `<div class="row justify-content-center" id="dinoTitle"><img src=${vendorTitle}></div>
   <div class="container text-center" id="buttonDiv">
   <button class="btn btn-outline-dark vendor-add" id="newVendor" data-toggle="modal" data-target="#newVendorModal">Create New Vendor</button>
