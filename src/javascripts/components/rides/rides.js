@@ -31,9 +31,10 @@ const createRide = (e) => {
   };
   rideData.addRide(newRide)
     .then(() => {
+      $('#rideModal').modal('hide');
+      document.forms['rides-form'].reset();
       // eslint-disable-next-line no-use-before-define
       printRides();
-      $('#rideModal').modal('hide');
     })
     .catch((error) => console.error(error));
 };
@@ -100,14 +101,16 @@ const printRides = () => {
   $('#rides').removeClass('hide');
   rideData.getRides()
     .then((rides) => {
-      let domString = `<div id="dinoTitle" class="img-container"><img src="${rideTitle}" class="rides-title" alt="title" /></div>`;
-      domString += '<div class="center"><button id="build-ride" class="btn btn-outline-dark create-ride hide" data-toggle="modal" data-target="#rideModal">BUILD A RIDE</button>';
-      domString += '<div class="rides-cards d-flex row wrap justify-content-center">';
-      rides.forEach((ride) => {
-        domString += individualRide.individualRideLoggedIn(ride);
-      });
-      domString += '</div></div></div>';
-      utilities.printToDom('rides', domString);
+      if (rides[0]) {
+        let domString = `<div id="dinoTitle" class="img-container"><img src="${rideTitle}" class="rides-title" alt="title" /></div>`;
+        domString += '<div class="center"><button id="build-ride" class="btn btn-outline-dark create-ride hide" data-toggle="modal" data-target="#rideModal">BUILD A RIDE</button>';
+        domString += '<div class="rides-cards d-flex row wrap justify-content-center">';
+        rides.forEach((ride) => {
+          domString += individualRide.individualRideLoggedIn(ride);
+        });
+        domString += '</div></div></div>';
+        utilities.printToDom('rides', domString);
+      }
       $('body').on('click', '.ride-delete', deleteRide);
       $('body').on('click', '#ride-save-changes', createRide);
       $('body').on('click', '.ride-update-save-changes', updateRide);

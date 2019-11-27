@@ -1,7 +1,7 @@
 {
   "name": "nutshell-jurassic-world",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Description Welcome to the world of Jurassic Park!",
   "main": "src/javascripts/main.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
