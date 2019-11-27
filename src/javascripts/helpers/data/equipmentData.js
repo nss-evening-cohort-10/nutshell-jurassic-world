@@ -1,5 +1,7 @@
 import axios from 'axios';
 import apiKeys from '../apiKeys.json';
+import utilities from '../utilities';
+import equipmentTitle from '../../components/equipment/assets/images/equipmentTitle.gif';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
@@ -8,10 +10,20 @@ const getEquipmentData = () => new Promise((resolve, reject) => {
     .then((response) => {
       const demEquips = response.data;
       const equips = [];
-      Object.keys(demEquips).forEach((fbId) => {
-        demEquips[fbId].id = fbId;
-        equips.push(demEquips[fbId]);
-      });
+      if (demEquips === null) {
+        const equipString = `
+        <div class="row justify-content-center" id="dinoTitle"><img src=${equipmentTitle}></div>
+        <div class="container text-center">
+        <button class="btn btn-outline-dark" id="newEquip" data-toggle="modal" data-target="#equipmentModal">Get New Equipment</button></div>
+        <h1 class="p-2">It looks like you don't have any equipment. Consider getting some before you are eaten!</h1>
+        `;
+        utilities.printToDom('equipment', equipString);
+      } else {
+        Object.keys(demEquips).forEach((fbId) => {
+          demEquips[fbId].id = fbId;
+          equips.push(demEquips[fbId]);
+        });
+      }
       resolve(equips);
     })
     .catch((error) => reject(error));

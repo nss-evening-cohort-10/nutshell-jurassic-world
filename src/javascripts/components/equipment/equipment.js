@@ -32,12 +32,13 @@ const createEquipment = (e) => {
       // eslint-disable-next-line no-use-before-define
       printEquipment();
       $('#equipmentModal').modal('hide');
+      $('#newEquipment').trigger('reset');
     })
     .catch((error) => console.error(error));
 };
 
 const trashEquipment = (e) => {
-  e.preventDefault();
+  e.stopImmediatePropagation();
   const equipmentId = e.target.id.split('trash-')[1];
   equipmentData.removeEquipment(equipmentId)
     .then(() => {
@@ -48,6 +49,7 @@ const trashEquipment = (e) => {
 };
 
 const updateEquipment = (e) => {
+  e.stopImmediatePropagation();
   const equipmentId = e.target.id.split('equipment-')[1];
   const updatedEquipment = {
     type: $('#update-equipment-name').val(),
@@ -65,6 +67,7 @@ const updateEquipment = (e) => {
 };
 
 const getEquipmentToUpdate = (e) => {
+  e.stopImmediatePropagation();
   $('#updateEquipmentModal').modal('show');
   const equipmentToUpdate = e.target.id.split('update-')[1];
   equipmentData.getEquipmentData()
@@ -96,27 +99,29 @@ const printEquipment = () => {
   <div class="d-flex row wrap justify-content-center">`;
   equipmentData.getEquipmentData()
     .then((equipment) => {
-      equipment.forEach((equip) => {
-        domString += `
-        <div class="card col-sm-3 m-3 equipCards">
-          <div class="card-body">
-          <h5 class="card-title text-center">${equip.type}</h5>
-          <p class="card-text">${equip.description}</p>
-          <h6>Status: ${equip.status}</h6>
-          <h6>Quantity: ${equip.quantity}</h6>
-        </div>
-        <div class="card-footer row">
-        <button class="btn btn-dark updateEquip" id="update-${equip.id}">Update</button>
-        <button class="btn btn-dark removeEquip" id="trash-${equip.id}">Trash</button>
-        </div>`;
-        domString += '</div>';
-        utilities.printToDom('equipment', domString);
-        $('body').on('click', '.save-new-equipment', createEquipment);
-        $('body').on('click', '.removeEquip', trashEquipment);
-        $('body').on('click', '.updateEquip', getEquipmentToUpdate);
-        $('body').on('click', '.save-updated-equipment', updateEquipment);
-        userModeToggle();
-      });
+      if (equipment[0]) {
+        equipment.forEach((equip) => {
+          domString += `
+          <div class="card col-sm-3 m-3 equipCards">
+            <div class="card-body">
+            <h5 class="card-title text-center">${equip.type}</h5>
+            <p class="card-text">${equip.description}</p>
+            <h6>Status: ${equip.status}</h6>
+            <h6>Quantity: ${equip.quantity}</h6>
+          </div>
+          <div class="card-footer row">
+          <button class="btn btn-dark updateEquip" id="update-${equip.id}">Update</button>
+          <button class="btn btn-dark removeEquip" id="trash-${equip.id}">Trash</button>
+          </div>`;
+          domString += '</div>';
+          utilities.printToDom('equipment', domString);
+        });
+      }
+      $('body').on('click', '.save-new-equipment', createEquipment);
+      $('body').on('click', '.removeEquip', trashEquipment);
+      $('body').on('click', '.updateEquip', getEquipmentToUpdate);
+      $('body').on('click', '.save-updated-equipment', updateEquipment);
+      userModeToggle();
     })
     .catch((error) => console.error(error));
 };
