@@ -18,7 +18,7 @@ const getStaff = () => new Promise((resolve, reject) => {
         <div id="staffSection" class="container d-flex flex-wrap justify-content-center">
         <h1>Probably helps if you hire some folks to run this joint, don't you think?</h1>
         `;
-        utilities.printToDom('staff', noStaffString);
+        utilities.printToDom('printComponent', noStaffString);
       } else {
         Object.keys(demStaff).forEach((fbId) => {
           demStaff[fbId].id = fbId;

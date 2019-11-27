@@ -95,14 +95,14 @@ const getDinoToUpdate = (e) => {
 };
 
 const printDinos = () => {
-  $('#home-page').addClass('hide');
-  $('#equipment').addClass('hide');
-  $('#staff').addClass('hide');
-  $('#rides').addClass('hide');
-  $('#dinosaurs').removeClass('hide');
-  $('#staff').addClass('hide');
-  $('#rides').addClass('hide');
-  $('#vendors').addClass('hide');
+  // $('#home-page').addClass('hide');
+  // $('#equipment').addClass('hide');
+  // $('#staff').addClass('hide');
+  // $('#rides').addClass('hide');
+  // $('#dinosaurs').removeClass('hide');
+  // $('#staff').addClass('hide');
+  // $('#rides').addClass('hide');
+  // $('#vendors').addClass('hide');
   let domString = `
   <div class="row justify-content-center" id="dinoTitle"><img src=${dinoTitle}></div>
   <div class="container text-center" id="buttonDiv">
@@ -130,7 +130,7 @@ const printDinos = () => {
         </div>`;
       });
       domString += '</div>';
-      utilities.printToDom('dinosaurs', domString);
+      utilities.printToDom('printComponent', domString);
       userModeToggle();
       $('body').on('click', '#addDino', addNewDino);
       $('body').on('click', '.updateDino', getDinoToUpdate);
