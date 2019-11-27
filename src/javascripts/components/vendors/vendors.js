@@ -1,5 +1,4 @@
 import $ from 'jquery';
-// import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import utilities from '../../helpers/utilities';
@@ -8,21 +7,6 @@ import vendorData from '../../helpers/data/vendorData';
 
 import './vendors.scss';
 import vendorTitle from './assets/images/vendorTitle.gif';
-
-// const vendorLoginStatus = () => {
-//   const user = firebase.auth().currentUser;
-//   if (user) {
-//     $('.vendor-add').removeClass('hide');
-//     $('.update-vendor').removeClass('hide');
-//     $('.delete-vendor').removeClass('hide');
-//     $('.border-top').removeClass('hide');
-//   } else {
-//     $('.vendor-add').addClass('hide');
-//     $('.update-vendor').addClass('hide');
-//     $('.delete-vendor').addClass('hide');
-//     $('.border-top').addClass('hide');
-//   }
-// };
 
 const singleVendorCard = (vendorInfo) => {
   const domString = `
@@ -72,7 +56,6 @@ const showAllVendors = () => {
       $('body').on('click', '.saveUpdatedVendor', updateVendor);
       // eslint-disable-next-line no-use-before-define
       $('body').on('click', '.saveVendor', addVendor);
-      // vendorLoginStatus();
     })
     .catch((error) => console.error(error));
 };
@@ -146,7 +129,6 @@ const updateVendor = (e) => {
 
 export default {
   showAllVendors,
-  // vendorLoginStatus,
   closeShop,
   addVendor,
 };

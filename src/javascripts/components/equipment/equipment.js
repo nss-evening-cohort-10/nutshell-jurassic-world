@@ -1,23 +1,9 @@
 import $ from 'jquery';
-// import firebase from 'firebase/app';
-// import 'firebase/auth';
 import equipmentData from '../../helpers/data/equipmentData';
 import './equipment.scss';
 import utilities from '../../helpers/utilities';
 import equipmentTitle from './assets/images/equipmentTitle.gif';
 
-// const userModeToggle = () => {
-//   const user = firebase.auth().currentUser;
-//   if (user) {
-//     $('.updateEquip').removeClass('hide');
-//     $('.removeEquip').removeClass('hide');
-//     $('#newEquip').removeClass('hide');
-//   } else {
-//     $('.updateEquip').addClass('hide');
-//     $('.removeEquip').addClass('hide');
-//     $('#newEquip').addClass('hide');
-//   }
-// };
 
 const createEquipment = (e) => {
   e.stopImmediatePropagation();
@@ -115,7 +101,6 @@ const printEquipment = () => {
       $('body').on('click', '.removeEquip', trashEquipment);
       $('body').on('click', '.updateEquip', getEquipmentToUpdate);
       $('body').on('click', '.save-updated-equipment', updateEquipment);
-      // userModeToggle();
     })
     .catch((error) => console.error(error));
 };

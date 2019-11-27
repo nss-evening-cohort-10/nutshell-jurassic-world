@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import '@fortawesome/fontawesome-free/js/all';
-// import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import rideData from '../../helpers/data/rideData';
@@ -75,23 +74,6 @@ const getRideInfo = (e) => {
     .catch((error) => console.error(error));
 };
 
-// const rideLoginStatus = () => {
-//   const user = firebase.auth().currentUser;
-//   if (user) {
-//     $('.border-top').removeClass('hide');
-//     $('.ride-footer').removeClass('hide');
-//     $('.ride-edit').removeClass('hide');
-//     $('.ride-delete').removeClass('hide');
-//     $('#build-ride').removeClass('hide');
-//   } else {
-//     $('.border-top').addClass('hide');
-//     $('.ride-footer').addClass('hide');
-//     $('.ride-edit').addClass('hide');
-//     $('.ride-delete').addClass('hide');
-//     $('#build-ride').addClass('hide');
-//   }
-// };
-
 const printRides = () => {
   rideData.getRides()
     .then((rides) => {
@@ -109,7 +91,6 @@ const printRides = () => {
       $('body').on('click', '#ride-save-changes', createRide);
       $('body').on('click', '.ride-update-save-changes', updateRide);
       $('body').on('click', '.ride-edit', getRideInfo);
-      // rideLoginStatus();
     })
     .catch((error) => console.error(error));
 };
