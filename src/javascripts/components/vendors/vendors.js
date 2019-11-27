@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import utilities from '../../helpers/utilities';
@@ -8,21 +7,6 @@ import vendorData from '../../helpers/data/vendorData';
 
 import './vendors.scss';
 import vendorTitle from './assets/images/vendorTitle.gif';
-
-const vendorLoginStatus = () => {
-  const user = firebase.auth().currentUser;
-  if (user) {
-    $('.vendor-add').removeClass('hide');
-    $('.update-vendor').removeClass('hide');
-    $('.delete-vendor').removeClass('hide');
-    $('.border-top').removeClass('hide');
-  } else {
-    $('.vendor-add').addClass('hide');
-    $('.update-vendor').addClass('hide');
-    $('.delete-vendor').addClass('hide');
-    $('.border-top').addClass('hide');
-  }
-};
 
 const singleVendorCard = (vendorInfo) => {
   const domString = `
@@ -39,8 +23,8 @@ const singleVendorCard = (vendorInfo) => {
     <h6 id="">category: ${vendorInfo.type}</h6>
     </div>
     <div class="card-footer d-flex justify-content-between flex-wrap">
-          <button class="btn btn-dark update-vendor hide" id="update-${vendorInfo.id}">Update</button>
-          <button class="btn btn-dark delete-vendor hide" id="delete-${vendorInfo.id}">Close</button>
+          <button class="btn btn-dark update-vendor cudButton" id="update-${vendorInfo.id}">Update</button>
+          <button class="btn btn-dark delete-vendor cudButton" id="delete-${vendorInfo.id}">Close</button>
     </div>
     </div>
   `;
@@ -48,15 +32,9 @@ const singleVendorCard = (vendorInfo) => {
 };
 
 const showAllVendors = () => {
-  $('#home-page').addClass('hide');
-  $('#dinosaurs').addClass('hide');
-  $('#equipment').addClass('hide');
-  $('#staff').addClass('hide');
-  $('#vendors').removeClass('hide');
-  $('#rides').addClass('hide');
   let domString = `<div class="row justify-content-center" id="dinoTitle"><img src=${vendorTitle}></div>
   <div class="container text-center" id="buttonDiv">
-  <button class="btn btn-outline-dark vendor-add" id="newVendor" data-toggle="modal" data-target="#newVendorModal">Create New Vendor</button>
+  <button class="btn btn-outline-dark vendor-add cudButton" id="newVendor" data-toggle="modal" data-target="#newVendorModal">Create New Vendor</button>
   </div>
   <div class="container">
   <div class="row justify-content-center">
@@ -68,7 +46,7 @@ const showAllVendors = () => {
           domString += singleVendorCard(vendor);
         });
         domString += '</div></div>';
-        utilities.printToDom('vendors', domString);
+        utilities.printToDom('printComponent', domString);
       }
       // eslint-disable-next-line no-use-before-define
       $('body').on('click', '.delete-vendor', closeShop);
@@ -78,7 +56,6 @@ const showAllVendors = () => {
       $('body').on('click', '.saveUpdatedVendor', updateVendor);
       // eslint-disable-next-line no-use-before-define
       $('body').on('click', '.saveVendor', addVendor);
-      vendorLoginStatus();
     })
     .catch((error) => console.error(error));
 };
@@ -152,7 +129,6 @@ const updateVendor = (e) => {
 
 export default {
   showAllVendors,
-  vendorLoginStatus,
   closeShop,
   addVendor,
 };

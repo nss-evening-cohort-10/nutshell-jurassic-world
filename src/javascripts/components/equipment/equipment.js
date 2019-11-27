@@ -1,23 +1,9 @@
 import $ from 'jquery';
-import firebase from 'firebase/app';
-import 'firebase/auth';
 import equipmentData from '../../helpers/data/equipmentData';
 import './equipment.scss';
 import utilities from '../../helpers/utilities';
 import equipmentTitle from './assets/images/equipmentTitle.gif';
 
-const userModeToggle = () => {
-  const user = firebase.auth().currentUser;
-  if (user) {
-    $('.updateEquip').removeClass('hide');
-    $('.removeEquip').removeClass('hide');
-    $('#newEquip').removeClass('hide');
-  } else {
-    $('.updateEquip').addClass('hide');
-    $('.removeEquip').addClass('hide');
-    $('#newEquip').addClass('hide');
-  }
-};
 
 const createEquipment = (e) => {
   e.stopImmediatePropagation();
@@ -86,16 +72,10 @@ const getEquipmentToUpdate = (e) => {
 };
 
 const printEquipment = () => {
-  $('#home-page').addClass('hide');
-  $('#equipment').removeClass('hide');
-  $('#staff').addClass('hide');
-  $('#rides').addClass('hide');
-  $('#dinosaurs').addClass('hide');
-  $('#vendors').addClass('hide');
   let domString = `
   <div class="row justify-content-center" id="dinoTitle"><img src=${equipmentTitle}></div>
   <div class="container text-center">
-  <button class="btn btn-outline-dark" id="newEquip" data-toggle="modal" data-target="#equipmentModal">Get New Equipment</button></div>
+  <button class="btn btn-outline-dark cudButton" id="newEquip" data-toggle="modal" data-target="#equipmentModal">Get New Equipment</button></div>
   <div class="d-flex row wrap justify-content-center">`;
   equipmentData.getEquipmentData()
     .then((equipment) => {
@@ -110,20 +90,19 @@ const printEquipment = () => {
             <h6>Quantity: ${equip.quantity}</h6>
           </div>
           <div class="card-footer row">
-          <button class="btn btn-dark updateEquip" id="update-${equip.id}">Update</button>
-          <button class="btn btn-dark removeEquip" id="trash-${equip.id}">Trash</button>
+          <button class="btn btn-dark updateEquip cudButton" id="update-${equip.id}">Update</button>
+          <button class="btn btn-dark removeEquip cudButton" id="trash-${equip.id}">Trash</button>
           </div>`;
           domString += '</div>';
-          utilities.printToDom('equipment', domString);
+          utilities.printToDom('printComponent', domString);
         });
       }
       $('body').on('click', '.save-new-equipment', createEquipment);
       $('body').on('click', '.removeEquip', trashEquipment);
       $('body').on('click', '.updateEquip', getEquipmentToUpdate);
       $('body').on('click', '.save-updated-equipment', updateEquipment);
-      userModeToggle();
     })
     .catch((error) => console.error(error));
 };
 
-export default { printEquipment, userModeToggle };
+export default { printEquipment };

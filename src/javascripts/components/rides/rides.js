@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import '@fortawesome/fontawesome-free/js/all';
-import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import rideData from '../../helpers/data/rideData';
@@ -75,49 +74,25 @@ const getRideInfo = (e) => {
     .catch((error) => console.error(error));
 };
 
-const rideLoginStatus = () => {
-  const user = firebase.auth().currentUser;
-  if (user) {
-    $('.border-top').removeClass('hide');
-    $('.ride-footer').removeClass('hide');
-    $('.ride-edit').removeClass('hide');
-    $('.ride-delete').removeClass('hide');
-    $('#build-ride').removeClass('hide');
-  } else {
-    $('.border-top').addClass('hide');
-    $('.ride-footer').addClass('hide');
-    $('.ride-edit').addClass('hide');
-    $('.ride-delete').addClass('hide');
-    $('#build-ride').addClass('hide');
-  }
-};
-
 const printRides = () => {
-  $('#home-page').addClass('hide');
-  $('#dinosaurs').addClass('hide');
-  $('#equipment').addClass('hide');
-  $('#staff').addClass('hide');
-  $('#vendors').addClass('hide');
-  $('#rides').removeClass('hide');
   rideData.getRides()
     .then((rides) => {
       if (rides[0]) {
         let domString = `<div id="dinoTitle" class="img-container"><img src="${rideTitle}" class="rides-title" alt="title" /></div>`;
-        domString += '<div class="center"><button id="build-ride" class="btn btn-outline-dark create-ride hide" data-toggle="modal" data-target="#rideModal">BUILD A RIDE</button>';
+        domString += '<div class="center"><button id="build-ride" class="btn btn-outline-dark create-ride cudButton" data-toggle="modal" data-target="#rideModal">BUILD A RIDE</button>';
         domString += '<div class="rides-cards d-flex row wrap justify-content-center">';
         rides.forEach((ride) => {
           domString += individualRide.individualRideLoggedIn(ride);
         });
         domString += '</div></div></div>';
-        utilities.printToDom('rides', domString);
+        utilities.printToDom('printComponent', domString);
       }
       $('body').on('click', '.ride-delete', deleteRide);
       $('body').on('click', '#ride-save-changes', createRide);
       $('body').on('click', '.ride-update-save-changes', updateRide);
       $('body').on('click', '.ride-edit', getRideInfo);
-      rideLoginStatus();
     })
     .catch((error) => console.error(error));
 };
 
-export default { printRides, rideLoginStatus };
+export default { printRides };

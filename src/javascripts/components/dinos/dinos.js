@@ -1,23 +1,9 @@
 import $ from 'jquery';
-import firebase from 'firebase/app';
 import 'firebase/auth';
 import dinoData from '../../helpers/data/dinoData';
 import utilities from '../../helpers/utilities';
 import './dinos.scss';
 import dinoTitle from './assets/images/DinoTitle.gif';
-
-const userModeToggle = () => {
-  const user = firebase.auth().currentUser;
-  if (user) {
-    $('.updateDino').removeClass('hide');
-    $('.kill').removeClass('hide');
-    $('#spawn').removeClass('hide');
-  } else {
-    $('.updateDino').addClass('hide');
-    $('.kill').addClass('hide');
-    $('#spawn').addClass('hide');
-  }
-};
 
 const addNewDino = (e) => {
   e.stopImmediatePropagation();
@@ -98,18 +84,10 @@ const getDinoToUpdate = (e) => {
 };
 
 const printDinos = () => {
-  $('#home-page').addClass('hide');
-  $('#equipment').addClass('hide');
-  $('#staff').addClass('hide');
-  $('#rides').addClass('hide');
-  $('#dinosaurs').removeClass('hide');
-  $('#staff').addClass('hide');
-  $('#rides').addClass('hide');
-  $('#vendors').addClass('hide');
   let domString = `
   <div class="row justify-content-center" id="dinoTitle"><img src=${dinoTitle}></div>
   <div class="container text-center" id="buttonDiv">
-  <button class="btn btn-outline-dark" id="spawn" data-toggle="modal" data-target="#dinoModal">Spawn Dino</button>
+  <button class="btn btn-outline-dark cudButton" id="spawn" data-toggle="modal" data-target="#dinoModal">Spawn Dino</button>
   </div>
   <div class="d-flex row wrap justify-content-center">`;
   dinoData.getDinosaurs()
@@ -128,21 +106,20 @@ const printDinos = () => {
             <h6 id="dangerRate">Danger Rating: ${dino.dangerLevel}</h6>
           </div>
           <div class="card-footer row">
-          <button class="btn btn-dark updateDino" id="update-${dino.id}">Update</button>
-          <button class="btn btn-dark kill" id="kill-${dino.id}">Euthenize</button>
+          <button class="btn btn-dark updateDino cudButton" id="update-${dino.id}">Update</button>
+          <button class="btn btn-dark kill cudButton" id="kill-${dino.id}">Euthenize</button>
           </div>
         </div>`;
         });
         domString += '</div>';
-        utilities.printToDom('dinosaurs', domString);
+        utilities.printToDom('printComponent', domString);
+        $('body').on('click', '#addDino', addNewDino);
+        $('body').on('click', '.updateDino', getDinoToUpdate);
+        $('body').on('click', '.updateDinoInfo', updateDino);
+        $('body').on('click', '.kill', deleteDino);
       }
-      userModeToggle();
-      $('body').on('click', '#addDino', addNewDino);
-      $('body').on('click', '.updateDino', getDinoToUpdate);
-      $('body').on('click', '.updateDinoInfo', updateDino);
-      $('body').on('click', '.kill', deleteDino);
     })
     .catch((error) => console.error(error));
 };
 
-export default { printDinos, userModeToggle };
+export default { printDinos };

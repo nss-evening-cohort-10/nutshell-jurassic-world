@@ -55,7 +55,7 @@ const imageClickEvent = (e) => {
 };
 
 const createHomepageCards = (arr) => {
-  let domString = '<div class="card-group d-flex home-page-cards">';
+  let domString = '<div id="home-page"><div class="card-group d-flex home-page-cards">';
   arr.forEach((card) => {
     domString += '<div class="card single-card">';
     domString += `<div class="crop-image"><img src="${card.imageUrl}" class="homepage-image" alt="${card.name}" id="hp-${card.name}"></div>`;
@@ -65,8 +65,8 @@ const createHomepageCards = (arr) => {
     domString += '</div>';
     domString += '</div>';
   });
-  domString += '</div>';
-  utilities.printToDom('home-page', domString);
+  domString += '</div></div>';
+  utilities.printToDom('printComponent', domString);
   $('#home-page').on('click', '.homepage-image', imageClickEvent);
 };
 
