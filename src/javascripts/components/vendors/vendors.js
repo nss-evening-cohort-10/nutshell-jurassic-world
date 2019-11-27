@@ -39,8 +39,8 @@ const singleVendorCard = (vendorInfo) => {
     <h6 id="">category: ${vendorInfo.type}</h6>
     </div>
     <div class="card-footer d-flex justify-content-between flex-wrap">
-          <button class="btn btn-dark update-vendor hide" id="update-${vendorInfo.id}">Update</button>
-          <button class="btn btn-dark delete-vendor hide" id="delete-${vendorInfo.id}">Close</button>
+          <button class="btn btn-dark update-vendor cudButton" id="update-${vendorInfo.id}">Update</button>
+          <button class="btn btn-dark delete-vendor cudButton" id="delete-${vendorInfo.id}">Close</button>
     </div>
     </div>
   `;
@@ -50,7 +50,7 @@ const singleVendorCard = (vendorInfo) => {
 const showAllVendors = () => {
   let domString = `<div class="row justify-content-center" id="dinoTitle"><img src=${vendorTitle}></div>
   <div class="container text-center" id="buttonDiv">
-  <button class="btn btn-outline-dark vendor-add" id="newVendor" data-toggle="modal" data-target="#newVendorModal">Create New Vendor</button>
+  <button class="btn btn-outline-dark vendor-add cudButton" id="newVendor" data-toggle="modal" data-target="#newVendorModal">Create New Vendor</button>
   </div>
   <div class="container">
   <div class="row justify-content-center">

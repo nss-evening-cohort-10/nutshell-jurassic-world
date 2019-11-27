@@ -101,7 +101,7 @@ const printDinos = () => {
   let domString = `
   <div class="row justify-content-center" id="dinoTitle"><img src=${dinoTitle}></div>
   <div class="container text-center" id="buttonDiv">
-  <button class="btn btn-outline-dark" id="spawn" data-toggle="modal" data-target="#dinoModal">Spawn Dino</button>
+  <button class="btn btn-outline-dark cudButton" id="spawn" data-toggle="modal" data-target="#dinoModal">Spawn Dino</button>
   </div>
   <div class="d-flex row wrap justify-content-center">`;
   dinoData.getDinosaurs()
@@ -120,8 +120,8 @@ const printDinos = () => {
             <h6 id="dangerRate">Danger Rating: ${dino.dangerLevel}</h6>
           </div>
           <div class="card-footer row">
-          <button class="btn btn-dark updateDino" id="update-${dino.id}">Update</button>
-          <button class="btn btn-dark kill" id="kill-${dino.id}">Euthenize</button>
+          <button class="btn btn-dark updateDino cudButton" id="update-${dino.id}">Update</button>
+          <button class="btn btn-dark kill cudButton" id="kill-${dino.id}">Euthenize</button>
           </div>
         </div>`;
         });

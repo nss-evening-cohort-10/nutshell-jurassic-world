@@ -89,7 +89,7 @@ const printEquipment = () => {
   let domString = `
   <div class="row justify-content-center" id="dinoTitle"><img src=${equipmentTitle}></div>
   <div class="container text-center">
-  <button class="btn btn-outline-dark" id="newEquip" data-toggle="modal" data-target="#equipmentModal">Get New Equipment</button></div>
+  <button class="btn btn-outline-dark cudButton" id="newEquip" data-toggle="modal" data-target="#equipmentModal">Get New Equipment</button></div>
   <div class="d-flex row wrap justify-content-center">`;
   equipmentData.getEquipmentData()
     .then((equipment) => {
@@ -104,8 +104,8 @@ const printEquipment = () => {
             <h6>Quantity: ${equip.quantity}</h6>
           </div>
           <div class="card-footer row">
-          <button class="btn btn-dark updateEquip" id="update-${equip.id}">Update</button>
-          <button class="btn btn-dark removeEquip" id="trash-${equip.id}">Trash</button>
+          <button class="btn btn-dark updateEquip cudButton" id="update-${equip.id}">Update</button>
+          <button class="btn btn-dark removeEquip cudButton" id="trash-${equip.id}">Trash</button>
           </div>`;
           domString += '</div>';
           utilities.printToDom('printComponent', domString);

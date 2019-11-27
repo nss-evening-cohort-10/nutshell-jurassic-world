@@ -95,7 +95,7 @@ const buildAllStaff = () => {
         let domString = `
         <div class="row justify-content-center" id="dinoTitle"><img src=${staffTitle}></div>
         <div class="d-flex justify-content-center">
-        <button href="#" class="btn btn-outline-dark hireButton" hireId="hire"  data-toggle="modal" data-target="#staffModal">Hire</button></div>
+        <button href="#" class="btn btn-outline-dark hireButton cudButton" hireId="hire"  data-toggle="modal" data-target="#staffModal">Hire</button></div>
         <div id="staffSection" class="container d-flex flex-wrap justify-content-center">
         `;
         allStaff.forEach((staff) => {
@@ -107,8 +107,8 @@ const buildAllStaff = () => {
               <p class="card-text">${staff.role}</p>
               </div>
               <div class="card-footer d-flex justify-content-between flex-wrap">
-                <button href="#" class="btn btn-dark fire hide" id="fire-${staff.id}">Fire</button>
-                <button href="#" class="btn btn-dark updateRole hide" id="update-${staff.id}" data-toggle="modal" data-target="#updateStaffModal">Update Role</button>
+                <button href="#" class="btn btn-dark fire cudButton" id="fire-${staff.id}">Fire</button>
+                <button href="#" class="btn btn-dark updateRole cudButton" id="update-${staff.id}" data-toggle="modal" data-target="#updateStaffModal">Update Role</button>
               </div>
         </div>
         `;
