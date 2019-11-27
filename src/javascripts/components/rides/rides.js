@@ -32,6 +32,7 @@ const createRide = (e) => {
   rideData.addRide(newRide)
     .then(() => {
       $('#rideModal').modal('hide');
+      document.forms['rides-form'].reset();
       // eslint-disable-next-line no-use-before-define
       printRides();
     })
