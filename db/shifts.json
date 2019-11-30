@@ -1,0 +1,128 @@
+{
+  "shift1": {
+    "name": "Monday Overnight",
+    "weekday": "Monday",
+    "startTime": "12:00 AM",
+    "endTime": "8:00 AM"
+  },
+  "shift2": {
+    "name": "Monday Morning",
+    "weekday": "Monday",
+    "startTime": "8:00 AM",
+    "endTime": "4:00 PM"
+  },
+  "shift3": {
+    "name": "Monday Evening",
+    "weekday": "Monday",
+    "startTime": "4:00 PM",
+    "endTime": "12:00 AM"
+  },
+  "shift4": {
+    "name": "Tuesday Overnight",
+    "weekday": "Teusday",
+    "startTime": "12:00 AM",
+    "endTime": "8:00 AM"
+  },
+  "shift5": {
+    "name": "Tuesday Morning",
+    "weekday": "Tuesday",
+    "startTime": "8:00 AM",
+    "endTime": "4:00 PM"
+  },
+  "shift6": {
+    "name": "Tuesday Evening",
+    "weekday": "Tuesday",
+    "startTime": "4:00 PM",
+    "endTime": "12:00 AM"
+  },
+  "shift7": {
+    "name": "Wednesday Overnight",
+    "weekday": "Wednesday",
+    "startTime": "12:00 AM",
+    "endTime": "8:00 AM"
+  },
+  "shift8": {
+    "name": "Wednesday Morning",
+    "weekday": "Wednesday",
+    "startTime": "8:00 AM",
+    "endTime": "4:00 PM"
+  },
+  "shift9": {
+    "name": "Wednesday Evening",
+    "weekday": "Wednesday",
+    "startTime": "4:00 PM",
+    "endTime": "12:00 AM"
+  },
+  "shift10": {
+    "name": "Thursday Overnight",
+    "weekday": "Thursday",
+    "startTime": "12:00 AM",
+    "endTime": "8:00 AM"
+  },
+  "shift11": {
+    "name": "Thursday Morning",
+    "weekday": "Thursday",
+    "startTime": "8:00 AM",
+    "endTime": "4:00 PM"
+  },
+  "shift12": {
+    "name": "Thursday Evening",
+    "weekday": "Thursday",
+    "startTime": "4:00 PM",
+    "endTime": "12:00 AM"
+  },
+  "shift13": {
+    "name": "Friday Overnight",
+    "weekday": "Friday",
+    "startTime": "12:00 AM",
+    "endTime": "8:00 AM"
+  },
+  "shift14": {
+    "name": "Friday Morning",
+    "weekday": "Friday",
+    "startTime": "8:00 AM",
+    "endTime": "4:00 PM"
+  },
+  "shift15": {
+    "name": "Friday Evening",
+    "weekday": "Friday",
+    "startTime": "4:00 PM",
+    "endTime": "12:00 AM"
+  },
+  "shift16": {
+    "name": "Saturday Overnight",
+    "weekday": "Saturday",
+    "startTime": "12:00 AM",
+    "endTime": "8:00 AM"
+  },
+  "shift17": {
+    "name": "Saturday Morning",
+    "weekday": "Saturday",
+    "startTime": "8:00 AM",
+    "endTime": "4:00 PM"
+  },
+  "shift18": {
+    "name": "Saturday Evening",
+    "weekday": "Saturday",
+    "startTime": "4:00 PM",
+    "endTime": "12:00 AM"
+  },
+  "shift19": {
+    "name": "Sunday Overnight",
+    "weekday": "Sunday",
+    "startTime": "12:00 AM",
+    "endTime": "8:00 AM"
+  },
+  "shift20": {
+    "name": "Sunday Morning",
+    "weekday": "Sunday",
+    "startTime": "8:00 AM",
+    "endTime": "4:00 PM"
+  },
+  "shift21": {
+    "name": "Sunday Evening",
+    "weekday": "Sunday",
+    "startTime": "4:00 PM",
+    "endTime": "12:00 AM"
+  }
+} 

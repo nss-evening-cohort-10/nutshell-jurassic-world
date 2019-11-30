@@ -1,0 +1,52 @@
+{
+  "rideStaff-1": {
+    "staffId": "staff1",
+    "rideId": "ride1",
+    "shiftId": "shift1"
+  },
+  "rideStaff-2": {
+    "staffId": "staff2",
+    "rideId": "ride2",
+    "shiftId": "shift2"
+  },
+  "rideStaff-3": {
+    "staffId": "staff3",
+    "rideId": "ride3",
+    "shiftId": "shift3"
+  },
+  "rideStaff-4": {
+    "staffId": "staff4",
+    "rideId": "ride4",
+    "shiftId": "shift4"
+  },
+  "rideStaff-5": {
+    "staffId": "staff5",
+    "rideId": "ride5",
+    "shiftId": "shift5"
+  },
+  "rideStaff-6": {
+    "staffId": "staff1",
+    "rideId": "ride5",
+    "shiftId": "shift6"
+  },
+  "rideStaff-7": {
+    "staffId": "staff2",
+    "rideId": "ride4",
+    "shiftId": "shift7"
+  },
+  "rideStaff-8": {
+    "staffId": "staff3",
+    "rideId": "ride3",
+    "shiftId": "shift8"
+  },
+  "rideStaff-9": {
+    "staffId": "staff4",
+    "rideId": "ride2",
+    "shiftId": "shift9"
+  },
+  "rideStaff-10": {
+    "staffId": "staff5",
+    "rideId": "ride1",
+    "shiftId": "shift10"
+  }
+} 

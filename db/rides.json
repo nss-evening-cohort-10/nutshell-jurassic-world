@@ -2,31 +2,41 @@
   "ride1": {
     "name": "Isla Nubar",
     "status": "status1",
+    "isOperational": true,
     "imgUrl": "https://i.ibb.co/BNGC0Fm/0826-FEA-LDN-L-JURASSICPARK-FEATURED-1.jpg",
-    "isExhibit": true
+    "isExhibit": true,
+    "hasDinos": true
   },
   "ride2": {
     "name": "Raptor Encounter",
     "status": "status1",
+    "isOperational": true,
     "imgUrl": "https://i.ibb.co/PZ7d6Tx/Screen-Shot-2015-06-25-at-1-09.jpg",
-    "isExhibit": true
+    "isExhibit": true,
+    "hasDinos": true
   },
   "ride3": {
     "name": "Dino-soarin'",
     "status": "status1",
+    "isOperational": true,
     "imgUrl": "https://i.ibb.co/ZJtf1ZQ/C0mr1-G0-Uk-AAd-8-D.jpg",
-    "isExhibit": false
+    "isExhibit": false,
+    "hasDinos": false
   },
   "ride4": {
     "name": "Jurassic Park & Ride",
     "status": "status1",
+    "isOperational": true,
     "imgUrl": "https://i.ibb.co/T2NhM2G/parks-hollywood-jurassic-park-the-ride.jpg",
-    "isExhibit": false
+    "isExhibit": false,
+    "hasDinos": false
   },
   "ride5": {
     "name": "Terror-dactyl",
     "status": "status1",
+    "isOperational": true,
     "imgUrl": "https://i.ibb.co/9GdCgck/japan-mobile.jpg",
-    "isExhibit": true
+    "isExhibit": true,
+    "hasDinos": true
   }
 }
