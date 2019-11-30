@@ -9,12 +9,12 @@ const dinoScheduleBuilder = (scheduleArr, calendarArr) => {
   `;
   scheduleArr.forEach((shift) => {
     scheduleString += `
-    <div class='row d-flex'>
+    <div class='row d-flex allDays ${shift.weekday}'>
       <p class='col-3'>${shift.dinoName}</p>
       <p class='col-2'>${shift.weekday}</p>
       <p class='col-2'>${shift.startTime}</p>
       <p class='col-2'>${shift.endTime}</p>
-      <button class='cudButton col-2 btn btn-outline-secondary' id='${shift.dinoId}-split-${shift.id}'>Assign Staff</button>
+      <button class='cudButton col-2 assignStaff btn btn-outline-secondary' id='${shift.dinoId}-split-${shift.id}'>Assign Staff</button>
     </div>
     `;
   });
@@ -37,12 +37,12 @@ const rideScheduleBuilder = (scheduleArr, calendarArr) => {
   `;
   scheduleArr.forEach((shift) => {
     scheduleString += `
-    <div class='row d-flex'>
+    <div class='row d-flex allDays ${shift.weekday}'>
       <p class='col-3'>${shift.rideName}</p>
       <p class='col-2'>${shift.weekday}</p>
       <p class='col-2'>${shift.startTime}</p>
       <p class='col-2'>${shift.endTime}</p>
-      <button class='cudButton col-2 btn btn-outline-secondary' id='${shift.rideId}-split-${shift.id}'>Assign Staff</button>
+      <button class='cudButton col-2 assignStaff btn btn-outline-secondary' id='${shift.rideId}-split-${shift.id}'>Assign Staff</button>
     </div>
     `;
   });
@@ -65,12 +65,12 @@ const vendorScheduleBuilder = (scheduleArr, calendarArr) => {
   `;
   scheduleArr.forEach((shift) => {
     scheduleString += `
-    <div class='row d-flex'>
+    <div class='row d-flex allDays ${shift.weekday}'>
       <p class='col-3'>${shift.vendorName}</p>
       <p class='col-2'>${shift.weekday}</p>
       <p class='col-2'>${shift.startTime}</p>
       <p class='col-2'>${shift.endTime}</p>
-      <button class='cudButton col-2 btn btn-outline-secondary' id='${shift.vendorId}-split-${shift.id}'>Assign Staff</button>
+      <button class='cudButton col-2 assignStaff btn btn-outline-secondary' id='${shift.vendorId}-split-${shift.id}'>Assign Staff</button>
     </div>
     `;
   });
