@@ -18,16 +18,21 @@ const printOpenSchedule = () => {
     </div>
     <h3>Vendors</h3>
     <div id='openVendorsSchedule' class='container'>
-    </div>
-    <h3>Dinosaurs</h3>
-    <div id='openDinosSchedule' class='container'>
     `;
-    smash.findDinoShifts().then((dinoString) => {
+    smash.findVendorShifts().then((vendorShifts) => {
       scheduleString += `
-      ${dinoString}
+      ${vendorShifts}
       </div>
+      <h3>Dinosaurs</h3>
+      <div id='openDinosSchedule' class='container'>
       `;
-      utilities.printToDom('printComponent', scheduleString);
+      smash.findDinoShifts().then((dinoString) => {
+        scheduleString += `
+        ${dinoString}
+        </div>
+        `;
+        utilities.printToDom('printComponent', scheduleString);
+      });
     });
   }).catch((err) => console.error(err));
 };

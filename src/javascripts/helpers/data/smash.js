@@ -4,6 +4,8 @@ import rideData from './rideData';
 import rideStaffData from './rideStaffData';
 import shiftsData from './shiftsData';
 import scheduleBuilder from '../../components/schedule/scheduleDomStringBuilders';
+import vendorData from './vendorData';
+import vendorStaffData from './vendorStaffData';
 
 // Smash assignments into collection, ie: rides + rideStaff
 
@@ -47,17 +49,34 @@ const getRidesWithAssignment = () => new Promise((resolve, reject) => {
   }).catch((err) => reject(err));
 });
 
+const getVendorsWithAssignment = () => new Promise((resolve, reject) => {
+  vendorData.getAllVendors().then((allVendors) => {
+    vendorStaffData.getVendorStaff().then((assignedVendors) => {
+      const allVendorsWithAssignment = [];
+      allVendors.forEach((vendor) => {
+        const newVendor = { ...vendor };
+        const assigned = assignedVendors.filter((x) => x.vendorId === newVendor.id);
+        newVendor.assignments = [];
+        if (assigned) {
+          assigned.forEach((match) => {
+            newVendor.assignments.push(match);
+          });
+        }
+        allVendorsWithAssignment.push(newVendor);
+      });
+      resolve(allVendorsWithAssignment);
+    });
+  }).catch((err) => reject(err));
+});
+
 // Smash assignments & shift into collection, ie: rides + rideStaff + shifts
 
 const findDinoShifts = () => new Promise((resolve, reject) => {
   getDinosWithAssignment().then((dinoAssignments) => {
-    console.log('check1', dinoAssignments);
     shiftsData.getShifts().then((allShifts) => {
-      console.log('check2', allShifts);
       const openDinoShifts = [];
       const takenDinoShifts = [];
       dinoAssignments.forEach((dino) => {
-        console.log('dino open', dino);
         const newDino = { ...dino };
         const assignedShifts = newDino.assignments;
         allShifts.forEach((shift) => {
@@ -65,18 +84,14 @@ const findDinoShifts = () => new Promise((resolve, reject) => {
           const matchShift = assignedShifts.filter((x) => x.shiftId === newShift.id);
           if (matchShift[1]) {
             matchShift.forEach((timeMatch) => {
-              console.log('timematch', timeMatch);
               const storeShift = timeMatch;
               storeShift.shiftDetails = newShift;
-              console.log('store', storeShift);
             });
             takenDinoShifts.push(newDino);
           } else if (matchShift[0]) {
             matchShift.forEach((timeMatch) => {
-              console.log('timematch', timeMatch);
               const storeShift = timeMatch;
               storeShift.shiftDetails = newShift;
-              console.log('store', storeShift);
             });
             takenDinoShifts.push(newDino);
             newShift.dinoId = newDino.id;
@@ -89,8 +104,6 @@ const findDinoShifts = () => new Promise((resolve, reject) => {
           }
         });
       });
-      console.log('taken', takenDinoShifts);
-      console.log('open', openDinoShifts);
       const buildString = scheduleBuilder.dinoScheduleBuilder(openDinoShifts, takenDinoShifts);
       resolve(buildString);
     });
@@ -99,7 +112,6 @@ const findDinoShifts = () => new Promise((resolve, reject) => {
 
 const findRideShifts = () => new Promise((resolve, reject) => {
   getRidesWithAssignment().then((rideAssignments) => {
-    console.log('check1', rideAssignments);
     shiftsData.getShifts().then((allShifts) => {
       const openRideShifts = [];
       const takenRideShifts = [];
@@ -130,4 +142,38 @@ const findRideShifts = () => new Promise((resolve, reject) => {
   }).catch((err) => reject(err));
 });
 
-export default { findDinoShifts, findRideShifts };
+const findVendorShifts = () => new Promise((resolve, reject) => {
+  getVendorsWithAssignment().then((vendorAssignments) => {
+    console.log('check1', vendorAssignments);
+    shiftsData.getShifts().then((allShifts) => {
+      console.log('check2', allShifts);
+      const openVendorShifts = [];
+      const takenVendorShifts = [];
+      vendorAssignments.forEach((vendor) => {
+        const newVendor = { ...vendor };
+        const assignedShifts = newVendor.assignments;
+        allShifts.forEach((shift) => {
+          const newShift = { ...shift };
+          const matchShift = assignedShifts.filter((x) => x.shiftId === newShift.id);
+          if (matchShift[0]) {
+            matchShift.forEach((timeMatch) => {
+              const storeShift = timeMatch;
+              storeShift.shiftDetails = newShift;
+            });
+            takenVendorShifts.push(newVendor);
+          } else {
+            newShift.vendorId = newVendor.id;
+            newShift.vendorName = newVendor.name;
+            openVendorShifts.push(newShift);
+          }
+        });
+      });
+      console.log('open', openVendorShifts);
+      console.log('taken', takenVendorShifts);
+      const buildString = scheduleBuilder.vendorScheduleBuilder(openVendorShifts, takenVendorShifts);
+      resolve(buildString);
+    });
+  }).catch((err) => reject(err));
+});
+
+export default { findDinoShifts, findRideShifts, findVendorShifts };
