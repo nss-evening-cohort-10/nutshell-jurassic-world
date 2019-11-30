@@ -1,5 +1,6 @@
 const dinoScheduleBuilder = (scheduleArr, calendarArr) => {
   let scheduleString = `
+  <div class='container'>
   <div class='row d-flex'>
     <h5 class='col-3'>Dinosaur Name</h5>
     <h5 class='col-2'>Day of Week</h5>
@@ -18,7 +19,7 @@ const dinoScheduleBuilder = (scheduleArr, calendarArr) => {
     </div>
     `;
   });
-  scheduleString += '<div id="dinoCalendarShifts" class="calendar hide">';
+  scheduleString += '</div><div id="dinoCalendarShifts" class="calendar hide">';
   calendarArr.forEach((shift) => {
     scheduleString += `<p>calendar ${shift.name}</p>`;
   });
@@ -28,6 +29,7 @@ const dinoScheduleBuilder = (scheduleArr, calendarArr) => {
 
 const rideScheduleBuilder = (scheduleArr, calendarArr) => {
   let scheduleString = `
+  <div class='container'>
   <div class='row d-flex'>
     <h5 class='col-3'>Ride Name</h5>
     <h5 class='col-2'>Day of Week</h5>
@@ -46,7 +48,7 @@ const rideScheduleBuilder = (scheduleArr, calendarArr) => {
     </div>
     `;
   });
-  scheduleString += '<div id="rideCalendarShifts" class="calendar hide">';
+  scheduleString += '</div><div id="rideCalendarShifts" class="calendar hide">';
   calendarArr.forEach((shift) => {
     scheduleString += `<p>calendar ${shift.name}</p>`;
   });
@@ -56,6 +58,7 @@ const rideScheduleBuilder = (scheduleArr, calendarArr) => {
 
 const vendorScheduleBuilder = (scheduleArr, calendarArr) => {
   let scheduleString = `
+  <div class='container'>
   <div class='row d-flex'>
     <h5 class='col-3'>Vendor Name</h5>
     <h5 class='col-2'>Day of Week</h5>
@@ -74,7 +77,7 @@ const vendorScheduleBuilder = (scheduleArr, calendarArr) => {
     </div>
     `;
   });
-  scheduleString += '<div id="vendorCalendarShifts" class="calendar hide">';
+  scheduleString += '</div><div id="vendorCalendarShifts" class="calendar hide">';
   calendarArr.forEach((shift) => {
     scheduleString += `<p>calendar ${shift.name}</p>`;
   });

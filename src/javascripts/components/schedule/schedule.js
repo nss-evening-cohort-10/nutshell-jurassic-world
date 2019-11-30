@@ -6,7 +6,6 @@ import utilities from '../../helpers/utilities';
 
 const selectTypeView = (e) => {
   const selectedType = $(e.target).val();
-  console.log('target', selectedType);
   if (selectedType === 'allTypes') {
     $('.allTypes').removeClass('hide');
   } else {
@@ -17,7 +16,6 @@ const selectTypeView = (e) => {
 
 const selectDayView = (e) => {
   const selectedDay = $(e.target).val();
-  console.log('target', selectedDay);
   if (selectedDay === 'allDays') {
     $('.allDays').removeClass('hide');
   } else {
@@ -57,25 +55,25 @@ const printOpenSchedule = () => {
     </form>
     <button id='displayCalendar' class='hide col-2 btn btn-secondary'>Calendar View</button>
   </div>
+  <div id='openRidesSchedule' class='allTypes rides'>
   <h3>Rides</h3>
   <hr>
-  <div id='openRidesSchedule' class='container allTypes rides'>
   `;
   smash.findRideShifts().then((rideString) => {
     scheduleString += `
     ${rideString}
     </div>
+    <div id='openVendorsSchedule' class='allTypes vendors'>
     <h3>Vendors</h3>
     <hr>
-    <div id='openVendorsSchedule' class='container allTypes vendors'>
     `;
     smash.findVendorShifts().then((vendorShifts) => {
       scheduleString += `
       ${vendorShifts}
       </div>
+      <div id='openDinosSchedule' class='allTypes dinosaurs'>
       <h3>Dinosaurs</h3>
       <hr>
-      <div id='openDinosSchedule' class='container allTypes dinosaurs'>
       `;
       smash.findDinoShifts().then((dinoString) => {
         scheduleString += `
