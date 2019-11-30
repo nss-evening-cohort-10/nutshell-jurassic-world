@@ -1,9 +1,11 @@
 import './schedule.scss';
+import scheduleTitle from './assets/images/scheduleTitle.png';
 import smash from '../../helpers/data/smash';
 import utilities from '../../helpers/utilities';
 
 const printOpenSchedule = () => {
   let scheduleString = `
+  <div class="row justify-content-center" id="dinoTitle"><img src=${scheduleTitle}></div>
   <div class='container'>
   <h2 class='text-center'>Open Shifts</h2>
   </div>
@@ -19,9 +21,14 @@ const printOpenSchedule = () => {
     </div>
     <h3>Dinosaurs</h3>
     <div id='openDinosSchedule' class='container'>
-    </div>
     `;
-    utilities.printToDom('printComponent', scheduleString);
+    smash.findDinoShifts().then((dinoString) => {
+      scheduleString += `
+      ${dinoString}
+      </div>
+      `;
+      utilities.printToDom('printComponent', scheduleString);
+    });
   }).catch((err) => console.error(err));
 };
 

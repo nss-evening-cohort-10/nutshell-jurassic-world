@@ -1,9 +1,11 @@
 {
   "dinosaurs": "dinosaurs",
+  "dinoStaff": "dino1 employee2",
   "equipment": "equipment",
   "rides": "rides",
   "rideStaff": "ride1 employee2",
   "shifts": "monday 9-5",
   "staff": "staff",
-  "vendors": "vendors"
+  "vendors": "vendors",
+  "vendorStaff": "vendor1 staff2"
 }

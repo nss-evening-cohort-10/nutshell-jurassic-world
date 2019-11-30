@@ -39,7 +39,7 @@ const homepageArr = [
   },
   {
     name: 'schedule',
-    imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/61W97WW5mkL._SX466_.jpg',
+    imageUrl: 'https://www.dhresource.com/0x0/f2/albu/g6/M00/E6/1D/rBVaSFstldOAX8G_AAEge3HDBlw474.jpg',
     description: 'Check for and assign open shifts!',
   },
 ];
