@@ -8,6 +8,7 @@ import equipment from '../equipment/equipment';
 import allStaff from '../allStaff/allStaff';
 import vendors from '../vendors/vendors';
 import blue from './assets/blue.jpg';
+import schedule from '../schedule/schedule';
 
 const homepageArr = [
   {
@@ -36,6 +37,11 @@ const homepageArr = [
     imageUrl: 'https://busites-www.s3.amazonaws.com/blog-margaritaville/2016/06/jurassicworld.jpg',
     description: 'Get your stretchy pants ready! We have T-Rex Legs, Dino-sized cookies, and the original Margaritaville. Don\'t forget to stop by our souvenir shops!',
   },
+  {
+    name: 'schedule',
+    imageUrl: 'https://www.dhresource.com/0x0/f2/albu/g6/M00/E6/1D/rBVaSFstldOAX8G_AAEge3HDBlw474.jpg',
+    description: 'Check for and assign open shifts!',
+  },
 ];
 
 
@@ -51,11 +57,13 @@ const imageClickEvent = (e) => {
     allStaff.buildAllStaff();
   } else if (target === 'vendors') {
     vendors.showAllVendors();
+  } else if (target === 'schedule') {
+    schedule.printOpenSchedule();
   }
 };
 
 const createHomepageCards = (arr) => {
-  let domString = '<div class="card-group d-flex home-page-cards">';
+  let domString = '<div id="home-page"><div class="card-group d-flex home-page-cards">';
   arr.forEach((card) => {
     domString += '<div class="card single-card">';
     domString += `<div class="crop-image"><img src="${card.imageUrl}" class="homepage-image" alt="${card.name}" id="hp-${card.name}"></div>`;
@@ -65,8 +73,8 @@ const createHomepageCards = (arr) => {
     domString += '</div>';
     domString += '</div>';
   });
-  domString += '</div>';
-  utilities.printToDom('home-page', domString);
+  domString += '</div></div>';
+  utilities.printToDom('printComponent', domString);
   $('#home-page').on('click', '.homepage-image', imageClickEvent);
 };
 

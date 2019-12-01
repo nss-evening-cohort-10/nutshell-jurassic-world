@@ -1,23 +1,8 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
 import $ from 'jquery';
 import './allStaff.scss';
 import staffData from '../../helpers/data/staffData';
 import utilities from '../../helpers/utilities';
 import staffTitle from './assets/images/staffTitle.gif';
-
-const staffModeToggle = () => {
-  const user = firebase.auth().currentUser;
-  if (user) {
-    $('.hireButton').removeClass('hide');
-    $('.fire').removeClass('hide');
-    $('.updateRole').removeClass('hide');
-  } else {
-    $('.hireButton').addClass('hide');
-    $('.fire').addClass('hide');
-    $('.updateRole').addClass('hide');
-  }
-};
 
 const fireStaff = (e) => {
   e.preventDefault();
@@ -89,19 +74,13 @@ const getStaffUpdate = (e) => {
 };
 
 const buildAllStaff = () => {
-  $('#dinosaurs').addClass('hide');
-  $('#rides').addClass('hide');
-  $('#vendors').addClass('hide');
-  $('#home-page').addClass('hide');
-  $('#equipment').addClass('hide');
-  $('#staff').removeClass('hide');
   staffData.getStaff()
     .then((allStaff) => {
       if (allStaff[0]) {
         let domString = `
         <div class="row justify-content-center" id="dinoTitle"><img src=${staffTitle}></div>
         <div class="d-flex justify-content-center">
-        <button href="#" class="btn btn-outline-dark hireButton" hireId="hire"  data-toggle="modal" data-target="#staffModal">Hire</button></div>
+        <button href="#" class="btn btn-outline-dark hireButton cudButton" hireId="hire"  data-toggle="modal" data-target="#staffModal">Hire</button></div>
         <div id="staffSection" class="container d-flex flex-wrap justify-content-center">
         `;
         allStaff.forEach((staff) => {
@@ -113,16 +92,15 @@ const buildAllStaff = () => {
               <p class="card-text">${staff.role}</p>
               </div>
               <div class="card-footer d-flex justify-content-between flex-wrap">
-                <button href="#" class="btn btn-dark fire hide" id="fire-${staff.id}">Fire</button>
-                <button href="#" class="btn btn-dark updateRole hide" id="update-${staff.id}" data-toggle="modal" data-target="#updateStaffModal">Update Role</button>
+                <button href="#" class="btn btn-dark fire cudButton" id="fire-${staff.id}">Fire</button>
+                <button href="#" class="btn btn-dark updateRole cudButton" id="update-${staff.id}" data-toggle="modal" data-target="#updateStaffModal">Update Role</button>
               </div>
         </div>
         `;
         });
         domString += '</div></div>';
-        utilities.printToDom('staff', domString);
+        utilities.printToDom('printComponent', domString);
       }
-      staffModeToggle();
       $('.fire').click(fireStaff);
       $('#hireStaff').click(hireStaff);
       $('.updateStaff').click(updateStaff);
@@ -131,4 +109,4 @@ const buildAllStaff = () => {
     .catch((error) => console.error(error));
 };
 
-export default { buildAllStaff, staffModeToggle };
+export default { buildAllStaff };

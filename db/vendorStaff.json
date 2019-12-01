@@ -1,0 +1,27 @@
+{
+  "vendorStaff-1": {
+    "staffId": "staff1",
+    "vendorId": "vendor1",
+    "shiftId": "shift11"
+  },
+  "vendorStaff-2": {
+    "staffId": "staff2",
+    "vendorId": "vendor2",
+    "shiftId": "shift12"
+  },
+  "vendorStaff-3": {
+    "staffId": "staff3",
+    "vendorId": "vendor3",
+    "shiftId": "shift13"
+  },
+  "vendorStaff-4": {
+    "staffId": "staff4",
+    "vendorId": "vendor4",
+    "shiftId": "shift14"
+  },
+  "vendorStaff-5": {
+    "staffId": "staff5",
+    "vendorId": "vendor5",
+    "shiftId": "shift15"
+  }
+}

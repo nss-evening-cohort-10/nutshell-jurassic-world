@@ -1,0 +1,32 @@
+{
+  "dinoStaff-1": {
+    "staffId": "staff2",
+    "dinoId": "dino1",
+    "shiftId": "shift1"
+  },
+  "dinoStaff-2": {
+    "staffId": "staff5",
+    "dinoId": "dino2",
+    "shiftId": "shift2"
+  },
+  "dinoStaff-3": {
+    "staffId": "staff3",
+    "dinoId": "dino3",
+    "shiftId": "shift11"
+  },
+  "dinoStaff-4": {
+    "staffId": "staff3",
+    "dinoId": "dino4",
+    "shiftId": "shift4"
+  },
+  "dinoStaff-5": {
+    "staffId": "staff7",
+    "dinoId": "dino5",
+    "shiftId": "shift5"
+  },
+  "dinoStaff-6": {
+    "staffId": "staff6",
+    "dinoId": "dino6",
+    "shiftId": "shift9"
+  }
+}
