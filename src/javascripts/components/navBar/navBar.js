@@ -12,6 +12,7 @@ import vendors from '../vendors/vendors';
 import equipment from '../equipment/equipment';
 import allStaff from '../allStaff/allStaff';
 import homepage from '../homepage/homepage';
+import schedule from '../schedule/schedule';
 
 
 const backToHome = () => {
@@ -50,6 +51,7 @@ const printLoginButton = () => {
   $('body').on('click', '#ridesLink', rides.printRides);
   $('body').on('click', '#vendLink', vendors.showAllVendors);
   $('body').on('click', '#equipmentLink', equipment.printEquipment);
+  $('body').on('click', '#scheduleLink', schedule.printOpenSchedule);
   $('body').on('click', '#staffLink', allStaff.buildAllStaff);
 };
 
