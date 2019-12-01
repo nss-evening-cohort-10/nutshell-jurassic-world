@@ -2,37 +2,61 @@
   "equipment1": {
   "type": "Pooper Scooper",
   "description": "For scooping dino poops. That is one big pile of shit.",
-  "status": "status1",
-  "quantity": 10
+  "isBroken": false
   },
   "equipment2": {
     "type": "Jeep",
     "description": "Objects in mirror are closer than they appear.",
-    "status": "status1",
-    "quantity": 8
+    "isBroken": false
   },
   "equipment3": {
     "type": "Dinosaur Tracking Device",
     "description": "High tech tracking device for finding lost dinosaurs",
-    "status": "status1",
-    "quantity": 150
+    "isBroken": false
     },
   "equipment4": {
     "type": "Dinosaur Prod",
     "description": "Kind of like a cattle prod but larger and more effective on dinosaurs",
-    "status": "status1",
-    "quantity": 12
+    "isBroken": true
     },
   "equipment5": {
     "type": "Dinosaur Harness and Leash",
     "description": "A strong, Nylon woven harness and leash for walking small dinosaurs",
-    "status": "status1",
-    "quantity": 4
+    "isBroken": false
     },
   "equipment6": {
     "type": "First Aid Kit",
-    "description": "Self Explanitory",
-    "status": "status1",
-    "quantity": 100
+    "description": "Self Explanatory",
+    "isBroken": false
+  },
+  "equipment7": {
+    "type": "First Aid Kit",
+    "description": "Self Explanatory",
+    "isBroken": false
+  },
+  "equipment8": {
+    "type": "Pooper Scooper",
+    "description": "For scooping dino poops. That is one big pile of shit.",
+    "isBroken": false
+  },
+  "equipment9": {
+    "type": "Pooper Scooper",
+    "description": "For scooping dino poops. That is one big pile of shit.",
+    "isBroken": false
+  },
+  "equipment10": {
+    "type": "Pooper Scooper",
+    "description": "For scooping dino poops. That is one big pile of shit.",
+    "isBroken": false
+  },
+  "equipment11": {
+    "type": "Pooper Scooper",
+    "description": "For scooping dino poops. That is one big pile of shit.",
+    "isBroken": false
+  },
+  "equipment12": {
+    "type": "Pooper Scooper",
+    "description": "For scooping dino poops. That is one big pile of shit.",
+    "isBroken": false
   }
 }

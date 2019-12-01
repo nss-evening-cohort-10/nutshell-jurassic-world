@@ -1,0 +1,11 @@
+{
+  "zone-1": {
+    "zoneName": "Employee Zone"
+  },
+  "zone-2": {
+    "zoneName": "Ride Zone"
+  },
+  "zone-3": {
+    "zoneName": "Equipment Zone"
+  }
+}

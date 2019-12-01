@@ -1,0 +1,26 @@
+{
+  "chaosLog1": {
+    "incidentDescription": "The Chaos Monkey kidnapped a park ranger!",
+    "dateTime": "12/12/19 7:00 PM",
+    "zoneId": "zone-1",
+    "equipmentId": "",
+    "rideId": "",
+    "staffId": "staff1"
+  },
+  "chaosLog2": {
+    "incidentDescription": "The Chaos Monkey broke a ride!",
+    "dateTime": "12/02/19 9:00 PM",
+    "zoneId": "zone-2",
+    "equipmentId": "",
+    "rideId": "ride1",
+    "staffId": ""
+  },
+  "chaosLog3": {
+    "incidentDescription": "The Chaos Monkey stole an important piece of equipment!",
+    "dateTime": "12/22/19 8:00 PM",
+    "zoneId": "zone-3",
+    "equipmentId": "equipment1",
+    "rideId": "",
+    "staffId": ""
+  }
+}

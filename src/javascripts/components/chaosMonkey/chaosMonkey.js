@@ -75,7 +75,7 @@ const equipBreaker = () => equipmentData.getEquipmentData().then((equipments) =>
   return equipName;
 }).catch((error) => console.error(error));
 
-const chaosMonkey = cron.job('10-59/10 6-7 * * 0-6', () => {
+const chaosMonkey = cron.job('2-59/35 4-5 * * 0-6', () => {
   const attackZone = randomMonkeyEvent();
   let domString = '';
   if (attackZone === 1) {
