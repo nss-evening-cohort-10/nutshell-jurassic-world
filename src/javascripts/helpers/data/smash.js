@@ -144,9 +144,7 @@ const findRideShifts = () => new Promise((resolve, reject) => {
 
 const findVendorShifts = () => new Promise((resolve, reject) => {
   getVendorsWithAssignment().then((vendorAssignments) => {
-    console.log('check1', vendorAssignments);
     shiftsData.getShifts().then((allShifts) => {
-      console.log('check2', allShifts);
       const openVendorShifts = [];
       const takenVendorShifts = [];
       vendorAssignments.forEach((vendor) => {
@@ -168,8 +166,6 @@ const findVendorShifts = () => new Promise((resolve, reject) => {
           }
         });
       });
-      console.log('open', openVendorShifts);
-      console.log('taken', takenVendorShifts);
       const buildString = scheduleBuilder.vendorScheduleBuilder(openVendorShifts, takenVendorShifts);
       resolve(buildString);
     });
