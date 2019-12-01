@@ -43,7 +43,6 @@ const updateEquipmentInfo = (equipmentType, updatedEquipmentInfo) => new Promise
         const equipmentObject = {};
         equipmentObject.type = updatedEquipmentInfo.type;
         equipmentObject.description = updatedEquipmentInfo.description;
-        console.log('in loop', equipmentArr[fbId].isBroken);
         equipmentObject.isBroken = equipmentArr[fbId].isBroken;
         updateEquipment(fbId, equipmentObject)
           .then(() => resolve());
