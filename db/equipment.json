@@ -34,5 +34,29 @@
     "description": "Self Explanitory",
     "status": "status1",
     "quantity": 100
+  },
+  "equipment7": {
+    "type": "First Aid Kit",
+    "description": "Self Explanitory",
+    "status": "status1",
+    "quantity": 100
+  },
+  "equipment8": {
+    "type": "Tranq Gun",
+    "description": "Self defense",
+    "status": "status1",
+    "quantity": 100
+  },
+  "equipment9": {
+    "type": "First Aid Kit",
+    "description": "Self Explanitory",
+    "status": "status1",
+    "quantity": 100
+  },
+  "equipment10": {
+    "type": "First Aid Kit",
+    "description": "Self Explanitory",
+    "status": "status1",
+    "quantity": 100
   }
 }

@@ -1,9 +1,30 @@
 import $ from 'jquery';
 import equipmentData from '../../helpers/data/equipmentData';
+import smash from '../../helpers/data/smash';
 import './equipment.scss';
 import utilities from '../../helpers/utilities';
 import equipmentTitle from './assets/images/equipmentTitle.gif';
 
+const getUnassignedEquipment = () => {
+  smash.getEquipmentWithAssignment().then((allEquipmentDetails) => {
+    const allEquipmentNames = [];
+    allEquipmentDetails.forEach((item) => {
+      allEquipmentNames.push(item.type);
+    });
+    const distinctEquip = new Set(allEquipmentNames);
+    const unassignedEquip = allEquipmentDetails.filter((x) => x.assignment === '');
+    const consolidatedUnassignedEquipment = [];
+    distinctEquip.forEach((equipType) => {
+      const reducedUnassignedEquipment = unassignedEquip.filter((y) => y.type === equipType);
+      if (reducedUnassignedEquipment[0]) {
+        const reducedCount = reducedUnassignedEquipment.length;
+        reducedUnassignedEquipment[0].qty = reducedCount;
+        consolidatedUnassignedEquipment.push(reducedUnassignedEquipment[0]);
+      }
+    });
+    console.log(consolidatedUnassignedEquipment);
+  }).catch((err) => console.error(err));
+};
 
 const createEquipment = (e) => {
   e.stopImmediatePropagation();
@@ -79,6 +100,7 @@ const printEquipment = () => {
   <div class="d-flex row wrap justify-content-center">`;
   equipmentData.getEquipmentData()
     .then((equipment) => {
+      getUnassignedEquipment();
       if (equipment[0]) {
         equipment.forEach((equip) => {
           domString += `

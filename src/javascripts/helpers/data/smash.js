@@ -1,5 +1,7 @@
 import dinoData from './dinoData';
 import dinoStaffData from './dinoStaffData';
+import equipmentData from './equipmentData';
+import equipStaffData from './equipStaffData';
 import rideData from './rideData';
 import rideStaffData from './rideStaffData';
 import shiftsData from './shiftsData';
@@ -25,6 +27,27 @@ const getDinosWithAssignment = () => new Promise((resolve, reject) => {
         allDinosWithAssignment.push(newDino);
       });
       resolve(allDinosWithAssignment);
+    });
+  }).catch((err) => reject(err));
+});
+
+const getEquipmentWithAssignment = () => new Promise((resolve, reject) => {
+  equipmentData.getEquipmentData().then((allEquipment) => {
+    equipStaffData.getEquipStaff().then((assignedEquipment) => {
+      const allEquipWithAssignment = [];
+      allEquipment.forEach((equipItem) => {
+        const newEquipItem = { ...equipItem };
+        const assigned = assignedEquipment.find((x) => x.equipmentId === newEquipItem.id);
+        if (assigned) {
+          console.log(assigned);
+          newEquipItem.assignment = assigned;
+        } else {
+          newEquipItem.assignment = '';
+          console.log(newEquipItem.assignment);
+        }
+        allEquipWithAssignment.push(newEquipItem);
+      });
+      resolve(allEquipWithAssignment);
     });
   }).catch((err) => reject(err));
 });
@@ -176,4 +199,9 @@ const findVendorShifts = () => new Promise((resolve, reject) => {
   }).catch((err) => reject(err));
 });
 
-export default { findDinoShifts, findRideShifts, findVendorShifts };
+export default {
+  findDinoShifts,
+  findRideShifts,
+  findVendorShifts,
+  getEquipmentWithAssignment,
+};
