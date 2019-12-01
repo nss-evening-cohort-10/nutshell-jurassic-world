@@ -12,7 +12,7 @@ import vendors from '../vendors/vendors';
 import equipment from '../equipment/equipment';
 import allStaff from '../allStaff/allStaff';
 import homepage from '../homepage/homepage';
-
+import chaosLog from '../ChaosLog/chaosLog';
 
 const backToHome = () => {
   homepage.buildHomepageCards();
@@ -51,6 +51,7 @@ const printLoginButton = () => {
   $('body').on('click', '#vendLink', vendors.showAllVendors);
   $('body').on('click', '#equipmentLink', equipment.printEquipment);
   $('body').on('click', '#staffLink', allStaff.buildAllStaff);
+  $('body').on('click', '#chaosLog', chaosLog.printChaosLog);
 };
 
 export default {
