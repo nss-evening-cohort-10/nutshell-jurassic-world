@@ -28,10 +28,5 @@
     "staffId": "staff6",
     "dinoId": "dino6",
     "shiftId": "shift9"
-  },  
-  "dinoStaff-7": {
-    "staffId": "staff5",
-    "dinoId": "dino1",
-    "shiftId": "shift1"
   }
-} 
+}
