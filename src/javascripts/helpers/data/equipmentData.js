@@ -35,19 +35,23 @@ const removeEquipment = (equipmentId) => axios.delete(`${baseUrl}/equipment/${eq
 
 const updateEquipment = (equipmentId, updatedEquipment) => axios.put(`${baseUrl}/equipment/${equipmentId}.json`, updatedEquipment);
 
-const updateEquipmentInfo = (equipmentId, updatedEquipmentInfo) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/equipment/${equipmentId}.json`)
+const updateEquipmentInfo = (equipmentType, updatedEquipmentInfo) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/equipment.json?orderBy="type"&equalTo="${equipmentType}"`)
     .then((result) => {
-      const equipmentObject = { ...result.data };
-      equipmentObject.type = updatedEquipmentInfo.type;
-      equipmentObject.description = updatedEquipmentInfo.description;
-      updateEquipment(equipmentId, equipmentObject)
-        .then(() => {
-          resolve();
-        });
+      const equipmentArr = result.data;
+      Object.keys(equipmentArr).forEach((fbId) => {
+        const equipmentObject = {};
+        equipmentObject.type = updatedEquipmentInfo.type;
+        equipmentObject.description = updatedEquipmentInfo.description;
+        console.log('in loop', equipmentArr[fbId].isBroken);
+        equipmentObject.isBroken = equipmentArr[fbId].isBroken;
+        updateEquipment(fbId, equipmentObject)
+          .then(() => resolve());
+      });
     })
     .catch((error) => reject(error));
 });
+
 export default {
   getEquipmentData,
   addEquipment,
