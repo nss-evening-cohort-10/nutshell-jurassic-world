@@ -20,12 +20,8 @@
     "equipmentId": "equipment5"
   },
   "equipStaff-6": {
-    "staffId": "staff6",
-    "equipmentId": "equipment6"
-  },
-  "equipStaff-7": {
     "staffId": "staff1",
-    "equipmentId": "equipment7"
+    "equipmentId": "equipment6"
   },
   "equipStaff-8": {
     "staffId": "staff2",
@@ -42,9 +38,5 @@
   "equipStaff-11": {
     "staffId": "staff5",
     "equipmentId": "equipment11"
-  },
-  "equipStaff-12": {
-    "staffId": "staff6",
-    "equipmentId": "equipment12"
   }
 }
