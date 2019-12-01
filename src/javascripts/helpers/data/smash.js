@@ -39,11 +39,10 @@ const getEquipmentWithAssignment = () => new Promise((resolve, reject) => {
         const newEquipItem = { ...equipItem };
         const assigned = assignedEquipment.find((x) => x.equipmentId === newEquipItem.id);
         if (assigned) {
-          console.log(assigned);
           newEquipItem.assignment = assigned;
+          console.log(newEquipItem);
         } else {
           newEquipItem.assignment = '';
-          console.log(newEquipItem.assignment);
         }
         allEquipWithAssignment.push(newEquipItem);
       });

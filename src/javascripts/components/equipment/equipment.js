@@ -17,9 +17,15 @@ const getUnassignedEquipment = () => {
     distinctEquip.forEach((equipType) => {
       const reducedUnassignedEquipment = unassignedEquip.filter((y) => y.type === equipType);
       if (reducedUnassignedEquipment[0]) {
+        const skipBroken = reducedUnassignedEquipment.find((z) => z.isBroken === false);
         const reducedCount = reducedUnassignedEquipment.length;
-        reducedUnassignedEquipment[0].qty = reducedCount;
-        consolidatedUnassignedEquipment.push(reducedUnassignedEquipment[0]);
+        if (skipBroken) {
+          skipBroken.qty = reducedCount;
+          consolidatedUnassignedEquipment.push(skipBroken);
+        } else {
+          reducedUnassignedEquipment[0].qty = reducedCount;
+          consolidatedUnassignedEquipment.push(reducedUnassignedEquipment[0]);
+        }
       }
     });
     console.log(consolidatedUnassignedEquipment);
