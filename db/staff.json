@@ -1,37 +1,32 @@
 {
   "staff1": {
     "name": "Malcolm",
-    "age": 35,
-    "statusId": "status1",
+    "isDead": true,
     "role": "Scientist",
-    "img": "https://b.thumbs.redditmedia.com/at9wVrtOuzrofeHQtfY_8aOQzXs5_FsJ9O_MCZY0eMI.png"
+    "imgUrl": "https://b.thumbs.redditmedia.com/at9wVrtOuzrofeHQtfY_8aOQzXs5_FsJ9O_MCZY0eMI.png"
   },
   "staff2": {
     "name": "Ellie",
-    "age": 30,
-    "statusId": "status1",
+    "isDead": true,
     "role": "Scientist",
-    "img": "https://res.cloudinary.com/enjoymovie/image/upload/w_256,h_256,c_fill,g_auto:faces/zd52sapllgznhjihlqjs.jpg"
+    "imgUrl": "https://res.cloudinary.com/enjoymovie/image/upload/w_256,h_256,c_fill,g_auto:faces/zd52sapllgznhjihlqjs.jpg"
   },
   "staff3": {
     "name": "Arnold",
-    "age": 40,
-    "statusId": "status1",
+    "isDead": true,
     "role": "Head Zookeeper",
-    "img": "https://pbs.twimg.com/profile_images/412662405760430080/A-0b_Ia7.jpeg"
+    "imgUrl": "https://pbs.twimg.com/profile_images/412662405760430080/A-0b_Ia7.jpeg"
   },
   "staff4": {
     "name": "Owen",
-    "age": 33,
-    "statusId": "status1",
+    "isDead": true,
     "role": "Feeder",
-    "img": "https://d26oc3sg82pgk3.cloudfront.net/files/media/edit/image/33891/square_thumb%402x.jpg"
+    "imgUrl": "https://d26oc3sg82pgk3.cloudfront.net/files/media/edit/image/33891/square_thumb%402x.jpg"
   },
   "staff5": {
     "name": "Lex",
-    "age": 16,
-    "statusId": "status1",
+    "isDead": true,
     "role": "Pro Hacker",
-    "img": "https://cdnvos.lavoz.com.ar/sites/default/files/styles/box_128/public/galeria_multimedia/jurassic-park.jpg"
+    "imgUrl": "https://cdnvos.lavoz.com.ar/sites/default/files/styles/box_128/public/galeria_multimedia/jurassic-park.jpg"
   }
 }

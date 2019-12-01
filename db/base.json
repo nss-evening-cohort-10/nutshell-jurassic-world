@@ -3,5 +3,12 @@
   "equipment": "equipment",
   "rides": "rides",
   "staff": "staff",
-  "vendors": "vendors"
+  "vendors": "vendors",
+  "chaosLog": "logged events",
+  "dinoStaff": "dino staff groups",
+  "equipStaff": "equipment staff grouping",
+  "rideStaff": "rides staff assignments",
+  "shifts": "shifts available",
+  "vendorStaff": "staff assigned to vendor stations",
+  "zones": "zones within park"
 }
