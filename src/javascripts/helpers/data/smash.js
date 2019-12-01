@@ -8,6 +8,7 @@ import shiftsData from './shiftsData';
 import scheduleBuilder from '../../components/schedule/scheduleDomStringBuilders';
 import vendorData from './vendorData';
 import vendorStaffData from './vendorStaffData';
+import staffData from './staffData';
 
 // Smash assignments into collection, ie: rides + rideStaff
 
@@ -34,19 +35,23 @@ const getDinosWithAssignment = () => new Promise((resolve, reject) => {
 const getEquipmentWithAssignment = () => new Promise((resolve, reject) => {
   equipmentData.getEquipmentData().then((allEquipment) => {
     equipStaffData.getEquipStaff().then((assignedEquipment) => {
-      const allEquipWithAssignment = [];
-      allEquipment.forEach((equipItem) => {
-        const newEquipItem = { ...equipItem };
-        const assigned = assignedEquipment.find((x) => x.equipmentId === newEquipItem.id);
-        if (assigned) {
-          newEquipItem.assignment = assigned;
-          console.log(newEquipItem);
-        } else {
-          newEquipItem.assignment = '';
-        }
-        allEquipWithAssignment.push(newEquipItem);
+      staffData.getStaff().then((allStaff) => {
+        const allEquipWithAssignment = [];
+        allEquipment.forEach((equipItem) => {
+          const newEquipItem = { ...equipItem };
+          const assigned = assignedEquipment.find((x) => x.equipmentId === newEquipItem.id);
+          if (assigned) {
+            newEquipItem.assignment = assigned;
+            const findStaffMember = allStaff.find((y) => y.id === assigned.staffId);
+            newEquipItem.assignment.staffName = findStaffMember.name;
+            console.log(newEquipItem);
+          } else {
+            newEquipItem.assignment = '';
+          }
+          allEquipWithAssignment.push(newEquipItem);
+        });
+        resolve(allEquipWithAssignment);
       });
-      resolve(allEquipWithAssignment);
     });
   }).catch((err) => reject(err));
 });
@@ -166,9 +171,7 @@ const findRideShifts = () => new Promise((resolve, reject) => {
 
 const findVendorShifts = () => new Promise((resolve, reject) => {
   getVendorsWithAssignment().then((vendorAssignments) => {
-    console.log('check1', vendorAssignments);
     shiftsData.getShifts().then((allShifts) => {
-      console.log('check2', allShifts);
       const openVendorShifts = [];
       const takenVendorShifts = [];
       vendorAssignments.forEach((vendor) => {
@@ -190,8 +193,6 @@ const findVendorShifts = () => new Promise((resolve, reject) => {
           }
         });
       });
-      console.log('open', openVendorShifts);
-      console.log('taken', takenVendorShifts);
       const buildString = scheduleBuilder.vendorScheduleBuilder(openVendorShifts, takenVendorShifts);
       resolve(buildString);
     });
