@@ -11,7 +11,7 @@ const printChaosLog = () => {
   chaosLogData.getLogEntries()
     .then((logDatas) => {
       let domString = `<div class="row justify-content-center" id="dinoTitle"><img src=${chaosLogTitle}></div>
-      <table>
+      <table id="chaosLogTable">
         <tr>
           <th>Date/Time</th>
           <th>Event Details</th>
