@@ -4,6 +4,7 @@ import smash from '../../helpers/data/smash';
 import './equipment.scss';
 import utilities from '../../helpers/utilities';
 import equipmentTitle from './assets/images/equipmentTitle.gif';
+import equipStaffData from '../../helpers/data/equipStaffData';
 
 const getAssignedEquipment = () => new Promise((resolve, reject) => {
   smash.getEquipmentWithAssignment().then((allEquipmentDetails) => {
@@ -65,10 +66,19 @@ const createEquipment = (e) => {
 const trashEquipment = (e) => {
   e.stopImmediatePropagation();
   const equipmentId = e.target.id.split('trash-')[1];
+  const equipStaffId = $(e.target).attr('name');
   equipmentData.removeEquipment(equipmentId)
     .then(() => {
-      // eslint-disable-next-line no-use-before-define
-      printEquipment();
+      if (equipStaffId) {
+        equipStaffData.removeEquipStaff(equipStaffId)
+          .then(() => {
+            // eslint-disable-next-line no-use-before-define
+            printEquipment();
+          });
+      } else {
+        // eslint-disable-next-line no-use-before-define
+        printEquipment();
+      }
     })
     .catch((error) => console.error(error));
 };
@@ -148,7 +158,7 @@ const printEquipment = () => {
               </div>
               <div class="card-footer row">
               <button class="btn btn-dark updateEquip cudButton" id="update-${assignedEquip.id}" name="${assignedEquip.type}">Update</button>
-              <button class="btn btn-dark removeEquip cudButton" id="trash-${assignedEquip.id}">Trash</button>
+              <button class="btn btn-dark removeEquip cudButton" id="trash-${assignedEquip.id}" name="${assignedEquip.assignment.id}">Trash</button>
               </div>
             </div>`;
           });
