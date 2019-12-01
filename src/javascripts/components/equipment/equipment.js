@@ -50,8 +50,7 @@ const createEquipment = (e) => {
   const newEquipment = {
     type: $('#new-equipment-name').val(),
     description: $('#new-equipment-desc').val(),
-    quantity: $('#new-equipment-quantity').val(),
-    status: 'status1',
+    isBroken: false,
   };
   equipmentData.addEquipment(newEquipment)
     .then(() => {
@@ -89,8 +88,6 @@ const updateEquipment = (e) => {
   const updatedEquipment = {
     type: $('#update-equipment-name').val(),
     description: $('#update-equipment-desc').val(),
-    quantity: $('#update-equipment-quantity').val(),
-    status: 'status1',
   };
   equipmentData.updateEquipmentInfo(equipmentId, updatedEquipment)
     .then(() => {
@@ -111,7 +108,6 @@ const getEquipmentToUpdate = (e) => {
         if (equipment.id === equipmentToUpdate) {
           const newId = `equipment-${equipment.id}`;
           $('#update-equipment-name').val(`${equipment.type}`);
-          $('#update-equipment-quantity').val(`${equipment.quantity}`);
           $('#update-equipment-desc').val(`${equipment.description}`);
           $('.save-updated-equipment').attr('id', newId);
         }

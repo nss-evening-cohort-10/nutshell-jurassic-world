@@ -40,9 +40,7 @@ const updateEquipmentInfo = (equipmentId, updatedEquipmentInfo) => new Promise((
     .then((result) => {
       const equipmentObject = { ...result.data };
       equipmentObject.type = updatedEquipmentInfo.type;
-      equipmentObject.statusId = updatedEquipmentInfo.statusId;
       equipmentObject.description = updatedEquipmentInfo.description;
-      equipmentObject.quantity = updatedEquipmentInfo.quantity;
       updateEquipment(equipmentId, equipmentObject)
         .then(() => {
           resolve();
