@@ -26,7 +26,37 @@
     },
   "equipment6": {
     "type": "First Aid Kit",
-    "description": "Self Explanitory",
+    "description": "Self Explanatory",
+    "isBroken": false
+  },
+  "equipment7": {
+    "type": "First Aid Kit",
+    "description": "Self Explanatory",
+    "isBroken": false
+  },
+  "equipment8": {
+    "type": "Pooper Scooper",
+    "description": "For scooping dino poops. That is one big pile of shit.",
+    "isBroken": false
+  },
+  "equipment9": {
+    "type": "Pooper Scooper",
+    "description": "For scooping dino poops. That is one big pile of shit.",
+    "isBroken": false
+  },
+  "equipment10": {
+    "type": "Pooper Scooper",
+    "description": "For scooping dino poops. That is one big pile of shit.",
+    "isBroken": false
+  },
+  "equipment11": {
+    "type": "Pooper Scooper",
+    "description": "For scooping dino poops. That is one big pile of shit.",
+    "isBroken": false
+  },
+  "equipment12": {
+    "type": "Pooper Scooper",
+    "description": "For scooping dino poops. That is one big pile of shit.",
     "isBroken": false
   }
 }

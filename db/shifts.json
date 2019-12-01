@@ -19,7 +19,7 @@
   },
   "shift4": {
     "name": "Tuesday Overnight",
-    "weekday": "Teusday",
+    "weekday": "Tuesday",
     "startTime": "12:00 AM",
     "endTime": "8:00 AM"
   },

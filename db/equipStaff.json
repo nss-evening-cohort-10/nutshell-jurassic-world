@@ -25,26 +25,26 @@
   },
   "equipStaff-7": {
     "staffId": "staff1",
-    "equipmentId": "equipment6"
+    "equipmentId": "equipment7"
   },
   "equipStaff-8": {
     "staffId": "staff2",
-    "equipmentId": "equipment5"
+    "equipmentId": "equipment8"
   },
   "equipStaff-9": {
     "staffId": "staff3",
-    "equipmentId": "equipment4"
+    "equipmentId": "equipment9"
   },
   "equipStaff-10": {
     "staffId": "staff4",
-    "equipmentId": "equipment3"
+    "equipmentId": "equipment10"
   },
   "equipStaff-11": {
     "staffId": "staff5",
-    "equipmentId": "equipment2"
+    "equipmentId": "equipment11"
   },
   "equipStaff-12": {
     "staffId": "staff6",
-    "equipmentId": "equipment1"
+    "equipmentId": "equipment12"
   }
 }
