@@ -5,7 +5,19 @@ import './equipment.scss';
 import utilities from '../../helpers/utilities';
 import equipmentTitle from './assets/images/equipmentTitle.gif';
 
-const getUnassignedEquipment = () => {
+const getAssignedEquipment = () => new Promise((resolve, reject) => {
+  smash.getEquipmentWithAssignment().then((allEquipmentDetails) => {
+    const assignedEquipment = [];
+    allEquipmentDetails.forEach((equipItem) => {
+      if (equipItem.assignment !== '') {
+        assignedEquipment.push(equipItem);
+      }
+    });
+    resolve(assignedEquipment);
+  }).catch((err) => reject(err));
+});
+
+const getUnassignedEquipment = () => new Promise((resolve, reject) => {
   smash.getEquipmentWithAssignment().then((allEquipmentDetails) => {
     const allEquipmentNames = [];
     allEquipmentDetails.forEach((item) => {
@@ -28,9 +40,9 @@ const getUnassignedEquipment = () => {
         }
       }
     });
-    console.log(consolidatedUnassignedEquipment);
-  }).catch((err) => console.error(err));
-};
+    resolve(consolidatedUnassignedEquipment);
+  }).catch((err) => reject(err));
+});
 
 const createEquipment = (e) => {
   e.stopImmediatePropagation();
@@ -104,9 +116,8 @@ const printEquipment = () => {
   <div class="container text-center">
   <button class="btn btn-outline-dark cudButton" id="newEquip" data-toggle="modal" data-target="#equipmentModal">Get New Equipment</button></div>
   <div class="d-flex row wrap justify-content-center">`;
-  equipmentData.getEquipmentData()
+  getUnassignedEquipment()
     .then((equipment) => {
-      getUnassignedEquipment();
       if (equipment[0]) {
         equipment.forEach((equip) => {
           domString += `
@@ -114,21 +125,42 @@ const printEquipment = () => {
             <div class="card-body">
             <h5 class="card-title text-center">${equip.type}</h5>
             <p class="card-text">${equip.description}</p>
-            <h6>Status: ${equip.status}</h6>
-            <h6>Quantity: ${equip.quantity}</h6>
-          </div>
-          <div class="card-footer row">
-          <button class="btn btn-dark updateEquip cudButton" id="update-${equip.id}">Update</button>
-          <button class="btn btn-dark removeEquip cudButton" id="trash-${equip.id}">Trash</button>
+            <h6>Quantity: ${equip.qty}</h6>
+            <h6 class='unassignedEquip'>Unassigned</h6>
+            </div>
+            <div class="card-footer row">
+            <button class="btn btn-dark updateEquip cudButton" id="update-${equip.id}" name="${equip.type}">Update</button>
+            <button class="btn btn-dark assignEquip cudButton broken-${equip.isBroken}" id="assign-${equip.id}">Assign to Staff</button>
+            <button class="btn btn-dark removeEquip cudButton" id="trash-${equip.id}">Trash</button>
+            </div>
           </div>`;
-          domString += '</div>';
-          utilities.printToDom('printComponent', domString);
         });
       }
-      $('body').on('click', '.save-new-equipment', createEquipment);
-      $('body').on('click', '.removeEquip', trashEquipment);
-      $('body').on('click', '.updateEquip', getEquipmentToUpdate);
-      $('body').on('click', '.save-updated-equipment', updateEquipment);
+      getAssignedEquipment().then((assignEquipments) => {
+        if (assignEquipments[0]) {
+          assignEquipments.forEach((assignedEquip) => {
+            domString += `
+            <div class="card col-sm-3 m-3 equipCards">
+              <div class="card-body">
+              <h5 class="card-title text-center">${assignedEquip.type}</h5>
+              <p class="card-text">${assignedEquip.description}</p>
+              <h6 class='assignedEquip'>Assigned to: ${assignedEquip.assignment.staffName}</h6>
+              </div>
+              <div class="card-footer row">
+              <button class="btn btn-dark updateEquip cudButton" id="update-${assignedEquip.id}" name="${assignedEquip.type}">Update</button>
+              <button class="btn btn-dark removeEquip cudButton" id="trash-${assignedEquip.id}">Trash</button>
+              </div>
+            </div>`;
+          });
+        }
+        domString += '</div>';
+        utilities.printToDom('printComponent', domString);
+        $('.broken-true').attr('disabled', true);
+        $('body').on('click', '.save-new-equipment', createEquipment);
+        $('body').on('click', '.removeEquip', trashEquipment);
+        $('body').on('click', '.updateEquip', getEquipmentToUpdate);
+        $('body').on('click', '.save-updated-equipment', updateEquipment);
+      });
     })
     .catch((error) => console.error(error));
 };

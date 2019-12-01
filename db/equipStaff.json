@@ -18,33 +18,5 @@
   "equipStaff-5": {
     "staffId": "staff5",
     "equipmentId": "equipment5"
-  },
-  "equipStaff-6": {
-    "staffId": "staff6",
-    "equipmentId": "equipment5"
-  },
-  "equipStaff-7": {
-    "staffId": "staff1",
-    "equipmentId": "equipment5"
-  },
-  "equipStaff-8": {
-    "staffId": "staff2",
-    "equipmentId": "equipment5"
-  },
-  "equipStaff-9": {
-    "staffId": "staff3",
-    "equipmentId": "equipment4"
-  },
-  "equipStaff-10": {
-    "staffId": "staff4",
-    "equipmentId": "equipment3"
-  },
-  "equipStaff-11": {
-    "staffId": "staff5",
-    "equipmentId": "equipment2"
-  },
-  "equipStaff-12": {
-    "staffId": "staff6",
-    "equipmentId": "equipment1"
   }
 }

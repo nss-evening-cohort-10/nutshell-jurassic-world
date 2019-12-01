@@ -44,7 +44,6 @@ const getEquipmentWithAssignment = () => new Promise((resolve, reject) => {
             newEquipItem.assignment = assigned;
             const findStaffMember = allStaff.find((y) => y.id === assigned.staffId);
             newEquipItem.assignment.staffName = findStaffMember.name;
-            console.log(newEquipItem);
           } else {
             newEquipItem.assignment = '';
           }
