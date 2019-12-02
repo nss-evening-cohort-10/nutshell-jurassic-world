@@ -6,6 +6,20 @@ import utilities from '../../helpers/utilities';
 import equipmentTitle from './assets/images/equipmentTitle.gif';
 import equipStaffData from '../../helpers/data/equipStaffData';
 
+const selectEquipAssignmentView = (e) => {
+  const assignmentSelection = $(e.target).val();
+  if (assignmentSelection === 'assignedEquip') {
+    $('.assignedEquipment').removeClass('hide');
+    $('.unassignedEquipment').addClass('hide');
+  } else if (assignmentSelection === 'unassignedEquip') {
+    $('.assignedEquipment').addClass('hide');
+    $('.unassignedEquipment').removeClass('hide');
+  } else {
+    $('.assignedEquipment').removeClass('hide');
+    $('.unassignedEquipment').removeClass('hide');
+  }
+};
+
 const getAssignedEquipment = () => new Promise((resolve, reject) => {
   smash.getEquipmentWithAssignment().then((allEquipmentDetails) => {
     const assignedEquipment = [];
@@ -119,7 +133,7 @@ const printEquipment = () => {
   let domString = `
   <div class="row justify-content-center" id="dinoTitle"><img src=${equipmentTitle}></div>
   <div class="row d-flex justify-content-center">
-  <button class="btn btn-outline-dark cudButton m-4" id="newEquip" data-toggle="modal" data-target="#equipmentModal">Get New Equipment</button>
+  <button class="btn btn-outline-dark cudButton mt-5 mr-4 mb-2" id="newEquip" data-toggle="modal" data-target="#equipmentModal">Get New Equipment</button>
   <form class='row d-flex m-4'>
     <div class="form-group">
       <label for="chooseEquipAssignment">Filter by Assignment</label>
@@ -137,7 +151,7 @@ const printEquipment = () => {
       if (equipment[0]) {
         equipment.forEach((equip) => {
           domString += `
-          <div class="card col-sm-3 m-3 equipCards">
+          <div class="card col-sm-3 m-3 unassignedEquipment equipCards">
             <div class="card-body">
             <h5 class="card-title text-center">${equip.type}</h5>
             <p class="card-text">${equip.description}</p>
@@ -156,7 +170,7 @@ const printEquipment = () => {
         if (assignEquipments[0]) {
           assignEquipments.forEach((assignedEquip) => {
             domString += `
-            <div class="card col-sm-3 m-3 equipCards">
+            <div class="card col-sm-3 m-3 assignedEquipment equipCards">
               <div class="card-body">
               <h5 class="card-title text-center">${assignedEquip.type}</h5>
               <p class="card-text">${assignedEquip.description}</p>
@@ -172,6 +186,7 @@ const printEquipment = () => {
         domString += '</div>';
         utilities.printToDom('printComponent', domString);
         $('.broken-true').attr('disabled', true);
+        $('#chooseEquipAssignment').change(selectEquipAssignmentView);
         $('body').on('click', '.save-new-equipment', createEquipment);
         $('body').on('click', '.removeEquip', trashEquipment);
         $('body').on('click', '.updateEquip', getEquipmentToUpdate);
