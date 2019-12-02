@@ -8,6 +8,7 @@ import equipment from '../equipment/equipment';
 import allStaff from '../allStaff/allStaff';
 import vendors from '../vendors/vendors';
 import blue from './assets/blue.jpg';
+import chaosLog from '../ChaosLog/chaosLog';
 import schedule from '../schedule/schedule';
 
 const homepageArr = [
@@ -42,6 +43,11 @@ const homepageArr = [
     imageUrl: 'https://www.dhresource.com/0x0/f2/albu/g6/M00/E6/1D/rBVaSFstldOAX8G_AAEge3HDBlw474.jpg',
     description: 'Check for and assign open shifts!',
   },
+  {
+    name: 'chaos log',
+    imageUrl: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80',
+    description: 'Chaos exists!  Keeping track of all the chaos in Jurassic Park since 2019.',
+  },
 ];
 
 
@@ -57,6 +63,8 @@ const imageClickEvent = (e) => {
     allStaff.buildAllStaff();
   } else if (target === 'vendors') {
     vendors.showAllVendors();
+  } else if (target === 'chaos log') {
+    chaosLog.printChaosLog();
   } else if (target === 'schedule') {
     schedule.printOpenSchedule();
   }
