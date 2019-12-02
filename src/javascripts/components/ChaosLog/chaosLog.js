@@ -11,11 +11,15 @@ const printChaosLog = () => {
   chaosLogData.getLogEntries()
     .then((logDatas) => {
       let domString = `<div class="row justify-content-center" id="dinoTitle"><img src=${chaosLogTitle}></div>
-      <table id="chaosLogTable">
-        <tr>
-          <th>Date/Time</th>
-          <th>Event Details</th>
-        </tr>
+      <div id="chaosTableContainer" class="mx-5">
+      <table id="chaosLogTable" class="table table-hover mt-5">
+        <thead>
+          <tr>
+            <th scope="col">Date/Time</th>
+            <th scope="col">Event Details</th>
+          </tr>
+        </thead>
+        <tbody>
       `;
       logDatas.forEach((logData) => {
         domString += `
@@ -24,7 +28,7 @@ const printChaosLog = () => {
           <td>${logData.incidentDescription}</td>
         </tr>`;
       });
-      domString += '</table>';
+      domString += '</tbody></table></div>';
       utilities.printToDom('printComponent', domString);
     })
     .catch((error) => console.error(error));
