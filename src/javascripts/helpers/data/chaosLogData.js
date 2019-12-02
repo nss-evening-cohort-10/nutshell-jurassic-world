@@ -17,4 +17,6 @@ const getLogEntries = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getLogEntries };
+const addChaosLogEntry = (newChaosLogEntry) => axios.post(`${baseUrl}/chaosLog.json`, newChaosLogEntry);
+
+export default { getLogEntries, addChaosLogEntry };
