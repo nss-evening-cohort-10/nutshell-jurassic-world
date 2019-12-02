@@ -155,7 +155,7 @@ const getAliveStaff = () => {
     .then((staffMembers) => {
       let domstring = '';
       domstring += `
-        <div class="form-group">
+        <div>
           <label for="exampleFormControlSelect1">Select Staff Member</label>
           <select class="form-control" id="exampleFormControlSelect1">`;
       staffMembers.forEach((member) => {
