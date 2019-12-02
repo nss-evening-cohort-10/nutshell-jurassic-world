@@ -17,4 +17,6 @@ const getRideStaff = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getRideStaff };
+const createNewRideStaff = (newRideStaff) => axios.post(`${baseUrl}/rideStaff.json`, newRideStaff);
+
+export default { getRideStaff, createNewRideStaff };

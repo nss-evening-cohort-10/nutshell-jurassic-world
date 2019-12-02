@@ -86,7 +86,7 @@ const buildAllStaff = () => {
         allStaff.forEach((staff) => {
           domString += `
         <div class="card staffCard col-3 shadow p-3 mb-5 bg-white rounded" id="${staff.id}">
-          <img src="${staff.img}" class="card-img-top staffImg img-responsive" alt="...">
+          <img src="${staff.imgUrl}" class="card-img-top staffImg img-responsive" alt="picture of ${staff.name}">
             <div class="card-body">
               <h5 class="card-title">${staff.name}</h5>
               <p class="card-text">${staff.role}</p>
@@ -109,4 +109,70 @@ const buildAllStaff = () => {
     .catch((error) => console.error(error));
 };
 
-export default { buildAllStaff };
+// const assignStaffFunction = () => {
+//   staffData.getLivingStaffMembers()
+//     .then((staffMembers) => {
+//       let domstring = `
+//   <div class="modal fade" id="assignStaffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+//     <div class="modal-dialog" role="document">
+//       <div class="modal-content">
+//         <div class="modal-header">
+//           <h5 class="modal-title" id="exampleModalLabel">Assign Staff Member</h5>
+//           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+//             <span aria-hidden="true">&times;</span>
+//           </button>
+//         </div>
+//         <div class="form-group">
+//         <label for="exampleFormControlSelect1">Select Staff Member</label>
+//         <select class="form-control" id="exampleFormControlSelect1">
+//         `;
+//       staffMembers.forEach((member) => {
+//         domstring += `<option value="${member.id}">${member.name}</option>`;
+//       });
+//       domstring = `
+//         </select>
+//         </div>
+//         <div class="modal-body">
+//           <form id="livingStaffMembers">
+//           </form>
+//         </div>
+//         <div class="modal-footer">
+//           <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+//           <button type="button" class="btn btn-light" id="add-new-vendor-staff">Assign</button>
+//         </div>
+//       </div>
+//     </div>
+//   </div>`;
+//       utilities.printToDom('divForModal', domstring);
+//     })
+//     .catch((error) => console.error(error));
+// };
+
+// $('body').on('click', '.assignStaff', assignStaffFunction);
+
+const getAliveStaff = () => {
+  staffData.getLivingStaffMembers()
+    .then((staffMembers) => {
+      let domstring = '';
+      domstring += `
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Select Staff Member</label>
+          <select class="form-control" id="exampleFormControlSelect1">`;
+      staffMembers.forEach((member) => {
+        domstring += `<option value="${member.id}">${member.name}</option>`;
+      });
+      domstring += `
+      </select>
+</div>
+`;
+      utilities.printToDom('assignStaffMod', domstring);
+    })
+    .catch((error) => console.error(error));
+};
+
+$('body').on('click', '.assignStaff', () => {
+  $('#assignStaffModal').modal('show');
+  getAliveStaff();
+});
+
+export default { buildAllStaff, getAliveStaff };

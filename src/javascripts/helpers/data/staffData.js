@@ -53,10 +53,26 @@ const updateStaff = (staffId, newStaff) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getLivingStaffMembers = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/staff.json?orderBy="isDead"&equalTo=false`)
+    .then((response) => {
+      const demStaffMembers = response.data;
+      const livingStaff = [];
+      Object.keys(demStaffMembers).forEach((fbId) => {
+        demStaffMembers[fbId].id = fbId;
+        livingStaff.push(demStaffMembers[fbId]);
+      });
+      console.log(livingStaff);
+      resolve(livingStaff);
+    })
+    .catch((error) => reject(error));
+});
+
 export default {
   getStaff,
   fireStaff,
   hireStaff,
   updateStaff,
   updateRole,
+  getLivingStaffMembers,
 };
