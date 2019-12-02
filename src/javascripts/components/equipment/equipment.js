@@ -50,8 +50,7 @@ const createEquipment = (e) => {
   const newEquipment = {
     type: $('#new-equipment-name').val(),
     description: $('#new-equipment-desc').val(),
-    quantity: $('#new-equipment-quantity').val(),
-    status: 'status1',
+    isBroken: false,
   };
   equipmentData.addEquipment(newEquipment)
     .then(() => {
@@ -85,14 +84,12 @@ const trashEquipment = (e) => {
 
 const updateEquipment = (e) => {
   e.stopImmediatePropagation();
-  const equipmentId = e.target.id.split('equipment-')[1];
+  const equipmentType = $(e.target).attr('name');
   const updatedEquipment = {
     type: $('#update-equipment-name').val(),
     description: $('#update-equipment-desc').val(),
-    quantity: $('#update-equipment-quantity').val(),
-    status: 'status1',
   };
-  equipmentData.updateEquipmentInfo(equipmentId, updatedEquipment)
+  equipmentData.updateEquipmentInfo(equipmentType, updatedEquipment)
     .then(() => {
       $('#updateEquipmentModal').modal('hide');
       // eslint-disable-next-line no-use-before-define
@@ -109,11 +106,9 @@ const getEquipmentToUpdate = (e) => {
     .then((equipments) => {
       equipments.forEach((equipment) => {
         if (equipment.id === equipmentToUpdate) {
-          const newId = `equipment-${equipment.id}`;
           $('#update-equipment-name').val(`${equipment.type}`);
-          $('#update-equipment-quantity').val(`${equipment.quantity}`);
           $('#update-equipment-desc').val(`${equipment.description}`);
-          $('.save-updated-equipment').attr('id', newId);
+          $('.save-updated-equipment').attr('name', equipment.type);
         }
       });
     })
