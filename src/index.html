@@ -21,6 +21,7 @@
     <div id="logButtons"></div><button id="logOutButton" class="btn btn-dark hide">Logout</button>
   </nav>
   <div id="printComponent"></div>
+  <!-- <div id="divForModal"></div> -->
 
   <div class="modal fade" id="dinoModal" tabindex="-1" role="dialog" aria-labelledby="dinoModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -318,10 +319,6 @@
               <label for="new-equipment-desc">New Description</label>
               <input type="text" class="form-control" id="new-equipment-desc" placeholder="Enter Description">
             </div>
-            <div class="form-group">
-              <label for="new-equipment-quantity">New Quantity</label>
-              <input type="number" class="form-control" id="new-equipment-quantity" placeholder="Enter New Quantity">
-            </div>
           </form>
         </div>
         <div class="modal-footer">
@@ -350,10 +347,6 @@
             <div class="form-group">
               <label for="update-equipment-desc">Update Description</label>
               <input type="text" class="form-control" id="update-equipment-desc" placeholder="Enter Description">
-            </div>
-            <div class="form-group">
-              <label for="update-equipment-quantity">Update Quantity</label>
-              <input type="number" class="form-control" id="update-equipment-quantity" placeholder="Enter New Quantity">
             </div>
           </form>
         </div>
@@ -428,6 +421,29 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button id="vendor-save-new" type="button" class="btn btn-primary saveUpdatedVendor">Save Updated Vendor</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="assignStaffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Assign Member</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="livingStaffMembers">
+              <div id="assignStaffMod" class="form-group">
+                </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-light" id="add-new-vendor-staff">Assign</button>
         </div>
       </div>
     </div>
