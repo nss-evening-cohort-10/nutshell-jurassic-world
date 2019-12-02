@@ -118,8 +118,19 @@ const getEquipmentToUpdate = (e) => {
 const printEquipment = () => {
   let domString = `
   <div class="row justify-content-center" id="dinoTitle"><img src=${equipmentTitle}></div>
-  <div class="container text-center">
-  <button class="btn btn-outline-dark cudButton" id="newEquip" data-toggle="modal" data-target="#equipmentModal">Get New Equipment</button></div>
+  <div class="row d-flex justify-content-center">
+  <button class="btn btn-outline-dark cudButton m-4" id="newEquip" data-toggle="modal" data-target="#equipmentModal">Get New Equipment</button>
+  <form class='row d-flex m-4'>
+    <div class="form-group">
+      <label for="chooseEquipAssignment">Filter by Assignment</label>
+      <select class="form-control" id="chooseEquipAssignment">
+        <option value='allEquip'>All</option>
+        <option value='assignedEquip'>Assigned</option>
+        <option value='unassignedEquip'>Unassigned</option>
+      </select>
+    </div>
+  </form>
+  </div>
   <div class="d-flex row wrap justify-content-center">`;
   getUnassignedEquipment()
     .then((equipment) => {
