@@ -7,6 +7,13 @@ import utilities from '../../helpers/utilities';
 
 import './chaosLog.scss';
 
+// const addNewEntry = (e) => {
+//   e.stopImmediatePropagation();
+//   const newLogEntry = {
+
+//   };
+// };
+
 const printChaosLog = () => {
   chaosLogData.getLogEntries()
     .then((logDatas) => {
