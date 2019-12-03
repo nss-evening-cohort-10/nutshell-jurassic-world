@@ -1,4 +1,5 @@
 import axios from 'axios';
+import $ from 'jquery';
 import apiKeys from '../apiKeys.json';
 import utilities from '../utilities';
 import equipmentTitle from '../../components/equipment/assets/images/equipmentTitle.gif';
@@ -51,10 +52,36 @@ const updateEquipmentInfo = (equipmentType, updatedEquipmentInfo) => new Promise
     .catch((error) => reject(error));
 });
 
+const findBrokenEquipment = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/equipment.json?orderBy="isBroken"&equalTo=true`)
+    .then((response) => {
+      const brokenEquips = response.data;
+      const theDamage = [];
+      if (Object.keys(brokenEquips)[0] === undefined) {
+        const equipString = `
+        <div class="row justify-content-center" id="brokenHeader"><img src=></div>
+        <div class="container text-center">
+        <h2 class="p-2">Everything is in tip top shape!</h2>
+        </div>
+        `;
+        utilities.printToDom('brokenEquipToast', equipString);
+        $('#brokenToast').css('z-index', 3000);
+        $('#brokenToast').toast('show');
+      } else {
+        Object.keys(brokenEquips).forEach((fbId) => {
+          brokenEquips[fbId].id = fbId;
+          theDamage.push(brokenEquips[fbId]);
+        });
+      }
+      resolve(theDamage);
+    }).catch((err) => reject(err));
+});
+
 export default {
   getEquipmentData,
   addEquipment,
   removeEquipment,
   updateEquipmentInfo,
   updateEquipment,
+  findBrokenEquipment,
 };

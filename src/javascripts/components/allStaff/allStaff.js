@@ -4,7 +4,8 @@ import staffData from '../../helpers/data/staffData';
 import utilities from '../../helpers/utilities';
 import staffTitle from './assets/images/staffTitle.gif';
 import assignVendors from '../assignVendors/assignVendors';
-import assignRides from '../assignRideStaff/assignRideStaff';
+import assignRides from '../AssignRideStaff/assignRideStaff';
+import assignDinos from '../assignDinos/assignDinos';
 
 const fireStaff = (e) => {
   e.preventDefault();
@@ -138,7 +139,7 @@ const getAliveStaff = (event) => {
         $('.add-staff-assignment').attr('id', 'assigningVendorButton');
       }
       $('#assigningRideButton').click(assignRides.assignRideStaff);
-      $('#assigningDinoButton').click();
+      $('#assigningDinoButton').click(assignDinos.assignStaffDino);
       $('#assigningVendorButton').click(assignVendors.assignStaffVendor);
     })
     .catch((error) => console.error(error));

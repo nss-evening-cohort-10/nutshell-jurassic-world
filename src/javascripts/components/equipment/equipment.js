@@ -6,6 +6,35 @@ import utilities from '../../helpers/utilities';
 import equipmentTitle from './assets/images/equipmentTitle.gif';
 import equipStaffData from '../../helpers/data/equipStaffData';
 
+const displayBrokenEquipment = () => {
+  equipmentData.findBrokenEquipment().then((equipment) => {
+    if (equipment[0]) {
+      let domString = `<div class="row justify-content-center" id="brokenHeader"><img src=></div>
+      <div id="brokenEquipTableContainer" class="mx-5">
+      <table id="brokenEquipTable" class="table table-hover mt-5">
+        <thead>
+          <tr>
+            <th scope="col-6">Broken Item</th>
+            <th scope="col-6">Stock Number</th>
+          </tr>
+        </thead>
+        <tbody>
+      `;
+      equipment.forEach((equip) => {
+        domString += `
+        <tr>
+          <td>${equip.type}</td>
+          <td>${equip.id}</td>
+        </tr>`;
+      });
+      domString += '</tbody></table></div>';
+      utilities.printToDom('brokenEquipToast', domString);
+      $('#brokenToast').css('z-index', 3001);
+      $('#brokenToast').toast('show');
+    }
+  }).catch((err) => console.error(err));
+};
+
 const selectEquipAssignmentView = (e) => {
   const assignmentSelection = $(e.target).val();
   if (assignmentSelection === 'assignedEquip') {
@@ -134,6 +163,7 @@ const printEquipment = () => {
   <div class="row justify-content-center" id="dinoTitle"><img src=${equipmentTitle}></div>
   <div class="row d-flex justify-content-center">
   <button class="btn btn-outline-dark cudButton mt-5 mr-4 mb-2" id="newEquip" data-toggle="modal" data-target="#equipmentModal">Get New Equipment</button>
+  <button class="btn btn-outline-dark mt-5 mr-4 mb-2" id="testEquip">Test Equipment</button>
   <form class='row d-flex m-4'>
     <div class="form-group">
       <label for="chooseEquipAssignment">Filter by Assignment</label>
@@ -187,6 +217,7 @@ const printEquipment = () => {
         utilities.printToDom('printComponent', domString);
         $('.broken-true').attr('disabled', true);
         $('#chooseEquipAssignment').change(selectEquipAssignmentView);
+        $('#testEquip').click(displayBrokenEquipment);
         $('body').on('click', '.save-new-equipment', createEquipment);
         $('body').on('click', '.removeEquip', trashEquipment);
         $('body').on('click', '.updateEquip', getEquipmentToUpdate);
