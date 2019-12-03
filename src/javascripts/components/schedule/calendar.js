@@ -1,5 +1,5 @@
 import './schedule.scss';
-// import $ from 'jquery';
+import $ from 'jquery';
 import scheduleTitle from './assets/images/scheduleTitle.png';
 // import smash from '../../helpers/data/smash';
 import utilities from '../../helpers/utilities';
@@ -27,6 +27,13 @@ const makeCalendarGrid = () => {
   }
   gridString += '</table>';
   return gridString;
+};
+
+const printSpecificViewOptions = (e) => {
+  const mainSelection = $(e.target).val();
+  if (mainSelection === '') {
+    console.log('');
+  }
 };
 
 const printCalendarView = () => {
