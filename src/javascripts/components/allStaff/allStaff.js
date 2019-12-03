@@ -3,6 +3,7 @@ import './allStaff.scss';
 import staffData from '../../helpers/data/staffData';
 import utilities from '../../helpers/utilities';
 import staffTitle from './assets/images/staffTitle.gif';
+import assignVendors from '../assignVendors/assignVendors';
 
 const fireStaff = (e) => {
   e.preventDefault();
@@ -150,7 +151,7 @@ const buildAllStaff = () => {
 
 // $('body').on('click', '.assignStaff', assignStaffFunction);
 
-const getAliveStaff = () => {
+const getAliveStaff = (event) => {
   staffData.getLivingStaffMembers()
     .then((staffMembers) => {
       let domstring = '';
@@ -162,17 +163,30 @@ const getAliveStaff = () => {
         domstring += `<option value="${member.id}">${member.name}</option>`;
       });
       domstring += `
-      </select>
-</div>
-`;
+        </select>
+      </div>
+    `;
       utilities.printToDom('assignStaffMod', domstring);
+      const storeIdsNeeded = $(event.target).attr('id');
+      $('.add-staff-assignment').attr('store-ids', storeIdsNeeded);
+      const assigningFactor = $(event.target).attr('class');
+      if (assigningFactor.includes('assignRide')) {
+        $('.add-staff-assignment').attr('id', 'assigningRideButton');
+      } else if (assigningFactor.includes('assignDino')) {
+        $('.add-staff-assignment').attr('id', 'assigningDinoButton');
+      } else if (assigningFactor.includes('assignVendor')) {
+        $('.add-staff-assignment').attr('id', 'assigningVendorButton');
+      }
+      $('#assigningRideButton').click();
+      $('#assigningDinoButton').click();
+      $('#assigningVendorButton').click(assignVendors.assignStaffVendor);
     })
     .catch((error) => console.error(error));
 };
 
-$('body').on('click', '.assignStaff', () => {
+$('body').on('click', '.assignStaff', (event) => {
   $('#assignStaffModal').modal('show');
-  getAliveStaff();
+  getAliveStaff(event);
 });
 
 export default { buildAllStaff, getAliveStaff };
