@@ -59,8 +59,6 @@ const rideBreaker = () => rideData.getRides().then((rides) => {
   return rideName;
 }).catch((error) => console.error(error));
 
-// const equipUpdater = (equipId, updatedEquip) => equipmentData.updateEquipment(equipId, updatedEquip).then((equipment) => equipment.data.type).catch((error) => console.error(error));
-
 const equipBreaker = () => equipmentData.getEquipmentData().then((equipments) => {
   const number = equipments.length;
   const attackedEquip = Math.floor((Math.random() * number));
