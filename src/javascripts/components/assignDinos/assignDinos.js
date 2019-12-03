@@ -1,18 +1,18 @@
 import $ from 'jquery';
-import vendorStaffData from '../../helpers/data/vendorStaffData';
+import dinoStaffData from '../../helpers/data/dinoStaffData';
 import schedule from '../schedule/schedule';
 
-const assignStaffVendor = (event) => {
+const assignStaffDino = (event) => {
   event.stopImmediatePropagation();
-  const vendorId = $(event.target).attr('store-ids').split('-split-')[0];
+  const dinoId = $(event.target).attr('store-ids').split('-split-')[0];
   const shiftId = $(event.target).attr('store-ids').split('-split-')[1];
   const staffId = $('#exampleFormControlSelect1').val();
-  const newVendorStaff = {
+  const newDinoStaff = {
     staffId,
-    vendorId,
+    dinoId,
     shiftId,
   };
-  vendorStaffData.createNewVendorStaff(newVendorStaff)
+  dinoStaffData.createNewDinoStaff(newDinoStaff)
     .then(() => {
       $('#assignStaffModal').modal('hide');
       $('.add-staff-assignment').removeAttr('id');
@@ -22,4 +22,4 @@ const assignStaffVendor = (event) => {
     .catch((error) => console.error(error));
 };
 
-export default { assignStaffVendor };
+export default { assignStaffDino };

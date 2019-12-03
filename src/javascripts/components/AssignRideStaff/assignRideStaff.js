@@ -1,25 +1,26 @@
 import $ from 'jquery';
-import vendorStaffData from '../../helpers/data/vendorStaffData';
-import schedule from '../schedule/schedule';
+import './assignRideStaff.scss';
+import printSchedule from '../schedule/schedule';
+import createNewRideStaff from '../../helpers/data/rideStaffData';
 
-const assignStaffVendor = (event) => {
+const assignRideStaff = (event) => {
   event.stopImmediatePropagation();
-  const vendorId = $(event.target).attr('store-ids').split('-split-')[0];
+  const rideId = $(event.target).attr('store-ids').split('-split-')[0];
   const shiftId = $(event.target).attr('store-ids').split('-split-')[1];
   const staffId = $('#exampleFormControlSelect1').val();
-  const newVendorStaff = {
+  const newRideStaff = {
     staffId,
-    vendorId,
+    rideId,
     shiftId,
   };
-  vendorStaffData.createNewVendorStaff(newVendorStaff)
+  createNewRideStaff.createNewRideStaff(newRideStaff)
     .then(() => {
       $('#assignStaffModal').modal('hide');
       $('.add-staff-assignment').removeAttr('id');
       $('.add-staff-assignment').removeAttr('store-ids');
-      schedule.printOpenSchedule();
+      printSchedule.printOpenSchedule();
     })
     .catch((error) => console.error(error));
 };
 
-export default { assignStaffVendor };
+export default { assignRideStaff };

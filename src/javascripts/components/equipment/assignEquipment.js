@@ -13,6 +13,8 @@ const assignEquipStaff = (e) => {
   equipStaffData.createEquipStaff(newEquipStaff)
     .then(() => {
       $('#assignStaffModal').modal('hide');
+      $('.add-staff-assignment').removeAttr('id');
+      $('.add-staff-assignment').removeAttr('store-ids');
       equipment.printEquipment();
     })
     .catch((error) => console.error(error));
