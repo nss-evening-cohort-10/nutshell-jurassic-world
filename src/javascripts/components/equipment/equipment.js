@@ -9,14 +9,13 @@ import equipStaffData from '../../helpers/data/equipStaffData';
 const displayBrokenEquipment = () => {
   equipmentData.findBrokenEquipment().then((equipment) => {
     if (equipment[0]) {
-      console.log('show toast');
       let domString = `<div class="row justify-content-center" id="brokenHeader"><img src=></div>
       <div id="brokenEquipTableContainer" class="mx-5">
       <table id="brokenEquipTable" class="table table-hover mt-5">
         <thead>
           <tr>
-            <th scope="col">Broken Item</th>
-            <th scope="col">Stock Number</th>
+            <th scope="col-6">Broken Item</th>
+            <th scope="col-6">Stock Number</th>
           </tr>
         </thead>
         <tbody>

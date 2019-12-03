@@ -1,4 +1,5 @@
 import axios from 'axios';
+import $ from 'jquery';
 import apiKeys from '../apiKeys.json';
 import utilities from '../utilities';
 import equipmentTitle from '../../components/equipment/assets/images/equipmentTitle.gif';
@@ -56,7 +57,7 @@ const findBrokenEquipment = () => new Promise((resolve, reject) => {
     .then((response) => {
       const brokenEquips = response.data;
       const theDamage = [];
-      if (brokenEquips === null) {
+      if (Object.keys(brokenEquips)[0] === undefined) {
         const equipString = `
         <div class="row justify-content-center" id="brokenHeader"><img src=></div>
         <div class="container text-center">
@@ -64,8 +65,8 @@ const findBrokenEquipment = () => new Promise((resolve, reject) => {
         </div>
         `;
         utilities.printToDom('brokenEquipToast', equipString);
-        $('.toast').css('z-index', 3000);
-        $('.toast').toast('show');
+        $('#brokenToast').css('z-index', 3000);
+        $('#brokenToast').toast('show');
       } else {
         Object.keys(brokenEquips).forEach((fbId) => {
           brokenEquips[fbId].id = fbId;

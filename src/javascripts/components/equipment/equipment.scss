@@ -19,12 +19,17 @@
   position: absolute; 
   top: 0; 
   right: 0;
+  min-width: 40%;
   z-index: -1;
 
   .equip-toast-body {
     height: auto;
     width: auto;
     margin: 5px;
+  }
+
+  #brokenEquipTableContainer{
+    width: 100%; 
   }
 
   #brokenEquipToast {
