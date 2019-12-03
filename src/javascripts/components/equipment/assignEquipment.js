@@ -4,7 +4,7 @@ import equipment from './equipment';
 
 const assignEquipStaff = (e) => {
   e.stopImmediatePropagation();
-  const equipmentId = $(e.target).attr('store-ids');
+  const equipmentId = $(e.target).attr('store-ids').split('assign-')[1];
   const staffId = $('#exampleFormControlSelect1').val();
   const newEquipStaff = {
     equipmentId,
