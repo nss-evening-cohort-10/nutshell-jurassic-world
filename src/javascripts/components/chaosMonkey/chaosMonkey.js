@@ -5,6 +5,7 @@ import utilities from '../../helpers/utilities';
 import staffData from '../../helpers/data/staffData';
 import rideData from '../../helpers/data/rideData';
 import equipmentData from '../../helpers/data/equipmentData';
+import equipStaffData from '../../helpers/data/equipStaffData';
 
 const kidnapStaffUpdater = (staffId, newStaffData) => staffData.updateRole(staffId, newStaffData).then((staff) => staff.data.name).catch((error) => console.error(error));
 
@@ -32,8 +33,8 @@ const chaosMonkeyData = (monkeyDamage) => {
       <p>The Chaos Monkey has ${monkeyDamage}</p>!
       <img src=${monkeyImg}>`;
   utilities.printToDom('chaosMonkeyData', domString);
-  $('.toast').css('z-index', 3000);
-  $('.toast').toast('show');
+  $('#chaosToast').css('z-index', 3000);
+  $('#chaosToast').toast('show');
 };
 
 const randomMonkeyEvent = () => {
@@ -58,8 +59,6 @@ const rideBreaker = () => rideData.getRides().then((rides) => {
   return rideName;
 }).catch((error) => console.error(error));
 
-const equipUpdater = (equipId, updatedEquip) => equipmentData.updateEquipment(equipId, updatedEquip).then((equipment) => equipment.data.type).catch((error) => console.error(error));
-
 const equipBreaker = () => equipmentData.getEquipmentData().then((equipments) => {
   const number = equipments.length;
   const attackedEquip = Math.floor((Math.random() * number));
@@ -68,10 +67,10 @@ const equipBreaker = () => equipmentData.getEquipmentData().then((equipments) =>
   const updatedEquip = {
     type: `${equipments[attackedEquip].type}`,
     description: `${equipments[attackedEquip].description}`,
-    status: 'status2',
-    quantity: `${equipments[attackedEquip].quantity}`,
+    isBroken: true,
   };
-  equipUpdater(equipId, updatedEquip);
+  equipmentData.updateEquipment(equipId, updatedEquip);
+  equipStaffData.findEquipStaffByEquipId(equipId).then((result) => equipStaffData.removeEquipStaff(result)).catch((err) => console.error(err));
   return equipName;
 }).catch((error) => console.error(error));
 
