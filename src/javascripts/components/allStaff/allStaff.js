@@ -138,9 +138,9 @@ const getAliveStaff = (event) => {
       } else if (assigningFactor.includes('assignVendor')) {
         $('.add-staff-assignment').attr('id', 'assigningVendorButton');
       }
-      $('#assigningRideButton').click(assignRides.assignRideStaff);
-      $('#assigningDinoButton').click(assignDinos.assignStaffDino);
-      $('#assigningVendorButton').click(assignVendors.assignStaffVendor);
+      $('body').on('click', '#assigningRideButton', assignRides.assignRideStaff);
+      $('body').on('click', '#assigningDinoButton', assignDinos.assignStaffDino);
+      $('body').on('click', '#assigningVendorButton', assignVendors.assignStaffVendor);
     })
     .catch((error) => console.error(error));
 };

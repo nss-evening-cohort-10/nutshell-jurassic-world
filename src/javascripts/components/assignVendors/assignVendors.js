@@ -15,6 +15,8 @@ const assignStaffVendor = (event) => {
   vendorStaffData.createNewVendorStaff(newVendorStaff)
     .then(() => {
       $('#assignStaffModal').modal('hide');
+      $('.add-staff-assignment').removeAttr('id');
+      $('.add-staff-assignment').removeAttr('store-ids');
       schedule.printOpenSchedule();
     })
     .catch((error) => console.error(error));

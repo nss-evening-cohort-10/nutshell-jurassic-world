@@ -16,6 +16,8 @@ const assignRideStaff = (event) => {
   createNewRideStaff.createNewRideStaff(newRideStaff)
     .then(() => {
       $('#assignStaffModal').modal('hide');
+      $('.add-staff-assignment').removeAttr('id');
+      $('.add-staff-assignment').removeAttr('store-ids');
       printSchedule.printOpenSchedule();
     })
     .catch((error) => console.error(error));
