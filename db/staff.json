@@ -1,6 +1,6 @@
 {
   "staff1": {
-    "name": "Malcolm",
+    "name": "Dr. Ian Malcolm",
     "isDead": false,
     "role": "Scientist",
     "imgUrl": "https://b.thumbs.redditmedia.com/at9wVrtOuzrofeHQtfY_8aOQzXs5_FsJ9O_MCZY0eMI.png"
@@ -12,21 +12,51 @@
     "imgUrl": "https://res.cloudinary.com/enjoymovie/image/upload/w_256,h_256,c_fill,g_auto:faces/zd52sapllgznhjihlqjs.jpg"
   },
   "staff3": {
-    "name": "Arnold",
-    "isDead": true,
-    "role": "Head Zookeeper",
+    "name": "Ray Arnold",
+    "isDead": false,
+    "role": "Programmer",
     "imgUrl": "https://pbs.twimg.com/profile_images/412662405760430080/A-0b_Ia7.jpeg"
   },
   "staff4": {
-    "name": "Owen",
-    "isDead": true,
+    "name": "Owen Grady",
+    "isDead": false,
     "role": "Feeder",
     "imgUrl": "https://d26oc3sg82pgk3.cloudfront.net/files/media/edit/image/33891/square_thumb%402x.jpg"
   },
   "staff5": {
-    "name": "Lex",
-    "isDead": true,
-    "role": "Pro Hacker",
+    "name": "Lex Murphy",
+    "isDead": false,
+    "role": "Assistant",
     "imgUrl": "https://cdnvos.lavoz.com.ar/sites/default/files/styles/box_128/public/galeria_multimedia/jurassic-park.jpg"
+  },
+  "staff6": {
+    "name": "Nick Van Owen",
+    "isDead": false,
+    "role": "Environmentalist",
+    "imgUrl": "http://www.jurassicworld.com/sites/default/files/styles/exhibition_grid/public/2016-10/nick_grid_960x540.jpg?itok=Yj_zcgXy"
+  },
+  "staff7": {
+    "name": "Roland Tembo",
+    "isDead": false,
+    "role": "Expert Tracker",
+    "imgUrl": "http://www.jurassicworld.com/sites/default/files/styles/double_tall_card/public/2016-10/roland_960x1080.jpg?itok=Ut4Dh_CU"
+  },
+  "staff8": {
+    "name": "Dr. Henry Wu",
+    "isDead": false,
+    "role": "Head Geneticist",
+    "imgUrl": "https://vignette.wikia.nocookie.net/jurrassic-wolrd/images/4/40/Henry_Wu.jpg/revision/latest?cb=20151224124950"
+  },
+  "staff9": {
+    "name": "Claire Dearing",
+    "isDead": false,
+    "role": "Operations Manager",
+    "imgUrl": "https://vignette.wikia.nocookie.net/jurassicpark/images/e/e3/ClaireFallenKingdom.png/revision/latest?cb=20180805180719"
+  },
+  "staff10": {
+    "name": "Dr. Alan Grant",
+    "isDead": false,
+    "role": "Feeder",
+    "imgUrl": "http://www.jurassicworld.com/sites/default/files/styles/double_tall_card/public/2016-10/2213_00121_tall.jpg?itok=IJYGFA7c"
   }
 }

@@ -1,13 +1,17 @@
+import $ from 'jquery';
 import './assignRideStaff.scss';
 import printSchedule from '../schedule/schedule';
 import createNewRideStaff from '../../helpers/data/rideStaffData';
 
-const assignRideStaff = (e) => {
-  e.stopImmediatePropagation();
+const assignRideStaff = (event) => {
+  event.stopImmediatePropagation();
+  const rideId = $(event.target).attr('store-ids').split('-split-')[0];
+  const shiftId = $(event.target).attr('store-ids').split('-split-')[1];
+  const staffId = $('#exampleFormControlSelect1').val();
   const newRideStaff = {
-    staffIdf6ttygyty
-    rideId
-    shiftId
+    staffId,
+    rideId,
+    shiftId,
   };
   createNewRideStaff.createNewRideStaff(newRideStaff)
     .then(() => {
