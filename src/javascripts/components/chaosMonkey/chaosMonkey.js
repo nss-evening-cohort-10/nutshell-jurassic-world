@@ -8,6 +8,7 @@ import rideData from '../../helpers/data/rideData';
 import equipmentData from '../../helpers/data/equipmentData';
 import chaosLogData from '../../helpers/data/chaosLogData';
 import homepage from '../homepage/homepage';
+import equipStaffData from '../../helpers/data/equipStaffData';
 
 const kidnapStaffUpdater = (staffId, newStaffData) => staffData.updateRole(staffId, newStaffData).then((staff) => staff.data.name).catch((error) => console.error(error));
 
@@ -55,8 +56,8 @@ const chaosMonkeyData = (monkeyDamage) => {
       <p> ${monkeyDamage}</p>
       <img src=${monkeyImg}>`;
   utilities.printToDom('chaosMonkeyData', domString);
-  $('.toast').css('z-index', 3000);
-  $('.toast').toast('show');
+  $('#chaosToast').css('z-index', 3000);
+  $('#chaosToast').toast('show');
 };
 
 const randomMonkeyEvent = () => {
@@ -86,8 +87,6 @@ const rideBreaker = () => {
     .catch((error) => console.error(error));
 };
 
-const equipUpdater = (equipId, updatedEquip) => equipmentData.updateEquipment(equipId, updatedEquip).then((equipment) => equipment.data.type).catch((error) => console.error(error));
-
 const equipBreaker = () => {
   equipmentData.getEquipmentData()
     .then((equipments) => {
@@ -98,18 +97,21 @@ const equipBreaker = () => {
       const updatedEquip = {
         type: `${equipments[attackedEquip].type}`,
         description: `${equipments[attackedEquip].description}`,
+        isBroken: true,
       };
-      equipUpdater(equipId, updatedEquip);
+      equipmentData.updateEquipment(equipId, updatedEquip);
+      equipStaffData.findEquipStaffByEquipId(equipId)
+        .then((result) => equipStaffData.removeEquipStaff(result))
+        .catch((err) => console.error(err));
       const domString = `The Chaos Monkey has destroyed ${equipName}!`;
       chaosMonkeyData(domString);
       createEntry(equipId, '', '', domString, 'zone-3');
-
       return equipName;
     })
     .catch((error) => console.error(error));
 };
 
-const chaosMonkey = cron.job('2-59/30 4-23 * * 0-6', () => {
+const chaosMonkey = cron.job('2-59/45 4-23 * * 0-6', () => {
   const attackZone = randomMonkeyEvent();
   if (attackZone === 1) {
     rideBreaker();
