@@ -17,4 +17,7 @@ const getVendorStaff = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getVendorStaff };
+const createNewVendorStaff = (newVendorStaff) => axios.post(`${baseUrl}/vendorStaff.json`, newVendorStaff);
+
+
+export default { getVendorStaff, createNewVendorStaff };
