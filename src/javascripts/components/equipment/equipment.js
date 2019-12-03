@@ -9,6 +9,7 @@ import equipStaffData from '../../helpers/data/equipStaffData';
 const displayBrokenEquipment = () => {
   equipmentData.findBrokenEquipment().then((equipment) => {
     if (equipment[0]) {
+      console.log('show toast');
       let domString = `<div class="row justify-content-center" id="brokenHeader"><img src=></div>
       <div id="brokenEquipTableContainer" class="mx-5">
       <table id="brokenEquipTable" class="table table-hover mt-5">
@@ -28,9 +29,9 @@ const displayBrokenEquipment = () => {
         </tr>`;
       });
       domString += '</tbody></table></div>';
-      utilities.printToDom('chaosMonkeyData', domString);
-      $('.toast').css('z-index', 3000);
-      $('.toast').toast('show');
+      utilities.printToDom('brokenEquipToast', domString);
+      $('#brokenToast').css('z-index', 3001);
+      $('#brokenToast').toast('show');
     }
   }).catch((err) => console.error(err));
 };

@@ -63,7 +63,7 @@ const findBrokenEquipment = () => new Promise((resolve, reject) => {
         <h2 class="p-2">Everything is in tip top shape!</h2>
         </div>
         `;
-        utilities.printToDom('chaosMonkeyData', equipString);
+        utilities.printToDom('brokenEquipToast', equipString);
         $('.toast').css('z-index', 3000);
         $('.toast').toast('show');
       } else {
