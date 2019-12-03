@@ -190,7 +190,7 @@ const printEquipment = () => {
             </div>
             <div class="card-footer row">
             <button class="btn btn-dark updateEquip cudButton" id="update-${equip.id}" name="${equip.type}">Update</button>
-            <button class="btn btn-dark assignEquip cudButton broken-${equip.isBroken}" id="assign-${equip.id}">Assign to Staff</button>
+            <button class="btn btn-dark assignEquipment assignStaff cudButton broken-${equip.isBroken}" id="assign-${equip.id}">Assign to Staff</button>
             <button class="btn btn-dark removeEquip cudButton" id="trash-${equip.id}">Trash</button>
             </div>
           </div>`;

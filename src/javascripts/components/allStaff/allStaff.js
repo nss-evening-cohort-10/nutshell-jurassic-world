@@ -4,6 +4,7 @@ import staffData from '../../helpers/data/staffData';
 import utilities from '../../helpers/utilities';
 import staffTitle from './assets/images/staffTitle.gif';
 import assignVendors from '../assignVendors/assignVendors';
+import assignEquipment from '../equipment/assignEquipment';
 
 const fireStaff = (e) => {
   e.preventDefault();
@@ -176,10 +177,13 @@ const getAliveStaff = (event) => {
         $('.add-staff-assignment').attr('id', 'assigningDinoButton');
       } else if (assigningFactor.includes('assignVendor')) {
         $('.add-staff-assignment').attr('id', 'assigningVendorButton');
+      } else if (assigningFactor.includes('assignEquipment')) {
+        $('.add-staff-assignment').attr('id', 'assigningEquipmentButton');
       }
       $('#assigningRideButton').click();
       $('#assigningDinoButton').click();
       $('#assigningVendorButton').click(assignVendors.assignStaffVendor);
+      $('#assigningEquipmentButton').click(assignEquipment.assignEquipStaff);
     })
     .catch((error) => console.error(error));
 };
