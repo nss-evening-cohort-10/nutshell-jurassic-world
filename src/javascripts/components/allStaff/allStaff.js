@@ -111,47 +111,6 @@ const buildAllStaff = () => {
     .catch((error) => console.error(error));
 };
 
-// const assignStaffFunction = () => {
-//   staffData.getLivingStaffMembers()
-//     .then((staffMembers) => {
-//       let domstring = `
-//   <div class="modal fade" id="assignStaffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-//     <div class="modal-dialog" role="document">
-//       <div class="modal-content">
-//         <div class="modal-header">
-//           <h5 class="modal-title" id="exampleModalLabel">Assign Staff Member</h5>
-//           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-//             <span aria-hidden="true">&times;</span>
-//           </button>
-//         </div>
-//         <div class="form-group">
-//         <label for="exampleFormControlSelect1">Select Staff Member</label>
-//         <select class="form-control" id="exampleFormControlSelect1">
-//         `;
-//       staffMembers.forEach((member) => {
-//         domstring += `<option value="${member.id}">${member.name}</option>`;
-//       });
-//       domstring = `
-//         </select>
-//         </div>
-//         <div class="modal-body">
-//           <form id="livingStaffMembers">
-//           </form>
-//         </div>
-//         <div class="modal-footer">
-//           <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-//           <button type="button" class="btn btn-light" id="add-new-vendor-staff">Assign</button>
-//         </div>
-//       </div>
-//     </div>
-//   </div>`;
-//       utilities.printToDom('divForModal', domstring);
-//     })
-//     .catch((error) => console.error(error));
-// };
-
-// $('body').on('click', '.assignStaff', assignStaffFunction);
-
 const getAliveStaff = (event) => {
   staffData.getLivingStaffMembers()
     .then((staffMembers) => {
@@ -180,10 +139,10 @@ const getAliveStaff = (event) => {
       } else if (assigningFactor.includes('assignEquipment')) {
         $('.add-staff-assignment').attr('id', 'assigningEquipmentButton');
       }
-      $('#assigningRideButton').click();
-      $('#assigningDinoButton').click();
-      $('#assigningVendorButton').click(assignVendors.assignStaffVendor);
-      $('#assigningEquipmentButton').click(assignEquipment.assignEquipStaff);
+      // $('body').on('click', '#assigningRideButton');
+      // $('body').on('click', '#assigningDinoButton');
+      $('body').on('click', '#assigningVendorButton', assignVendors.assignStaffVendor);
+      $('body').on('click', '#assigningEquipmentButton', assignEquipment.assignEquipStaff);
     })
     .catch((error) => console.error(error));
 };
