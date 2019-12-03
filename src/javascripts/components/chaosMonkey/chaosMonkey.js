@@ -1,12 +1,29 @@
 import './chaosMonkey.scss';
 import $ from 'jquery';
+import moment from 'moment';
 import monkeyImg from './assets/images/chaosMonkey.gif';
 import utilities from '../../helpers/utilities';
 import staffData from '../../helpers/data/staffData';
 import rideData from '../../helpers/data/rideData';
 import equipmentData from '../../helpers/data/equipmentData';
+import chaosLogData from '../../helpers/data/chaosLogData';
+import homepage from '../homepage/homepage';
 
 const kidnapStaffUpdater = (staffId, newStaffData) => staffData.updateRole(staffId, newStaffData).then((staff) => staff.data.name).catch((error) => console.error(error));
+
+const createEntry = (equipId, ride, staff, incidentDesc, zone) => {
+  const newLogEntry = {
+    dateTime: `${moment().format('LLL')}`,
+    equipmentId: equipId,
+    incidentDescription: incidentDesc,
+    rideId: ride,
+    staffId: staff,
+    zoneId: zone,
+  };
+  chaosLogData.addChaosLogEntry(newLogEntry)
+    .then(() => homepage.buildHomepageCards())
+    .catch((error) => console.error(error));
+};
 
 const kidnapStaff = () => {
   staffData.getStaff()
@@ -18,12 +35,14 @@ const kidnapStaff = () => {
       const newStaffData = {
         name: newAllStaff[randomStaff].name,
         age: newAllStaff[randomStaff].age,
-        statusId: 'status2',
         role: newAllStaff[randomStaff].role,
-        img: newAllStaff[randomStaff].img,
+        imgUrl: newAllStaff[randomStaff].imgUrl,
       };
-      const domString = `kidnapped ${staffName}`;
+      const domString = `The Chaos Monkey has kidnapped ${staffName}!`;
       kidnapStaffUpdater(newAllStaffId, newStaffData);
+      // eslint-disable-next-line no-use-before-define
+      chaosMonkeyData(domString);
+      createEntry('', '', newAllStaffId, domString, 'zone-2');
       return domString;
     })
     .catch((error) => console.error(error));
@@ -57,10 +76,11 @@ const rideBreaker = () => {
       const updatedRide = {
         name: `${rides[attackedRide].name}`,
         imgUrl: `${rides[attackedRide].imgUrl}`,
-        status: 'status2',
-        isExhibit: `${rides[attackedRide].isExhibit}`,
       };
       rideUpdater(rideId, updatedRide);
+      const domString = `The Chaos Monkey has broken ${rideName}!`;
+      chaosMonkeyData(domString);
+      createEntry('', rideId, '', domString, 'zone-1');
       return rideName;
     })
     .catch((error) => console.error(error));
@@ -78,44 +98,26 @@ const equipBreaker = () => {
       const updatedEquip = {
         type: `${equipments[attackedEquip].type}`,
         description: `${equipments[attackedEquip].description}`,
-        status: 'status2',
-        quantity: `${equipments[attackedEquip].quantity}`,
       };
       equipUpdater(equipId, updatedEquip);
+      const domString = `The Chaos Monkey has destroyed ${equipName}!`;
+      chaosMonkeyData(domString);
+      createEntry(equipId, '', '', domString, 'zone-3');
+
       return equipName;
     })
     .catch((error) => console.error(error));
 };
 
-const chaosMonkey = cron.job('2-59/45 4-5 * * 0-6', () => {
+const chaosMonkey = cron.job('2-59/30 4-23 * * 0-6', () => {
   const attackZone = randomMonkeyEvent();
-  let domString = 'The Chaos Monkey has';
   if (attackZone === 1) {
-    rideBreaker()
-      .then((result) => {
-        domString += ` broken ${result}!`;
-        chaosMonkeyData(domString);
-        console.log('ride break', domString);
-      })
-      .catch((error) => console.error(error));
+    rideBreaker();
   } else if (attackZone === 2) {
-    kidnapStaff()
-      .then((result) => {
-        domString += ` ${result}!`;
-        chaosMonkeyData(domString);
-        console.log('kidnapping', domString);
-      })
-      .catch((error) => console.error(error));
+    kidnapStaff();
   } else if (attackZone === 3) {
-    equipBreaker()
-      .then((result) => {
-        domString += ` destroyed ${result}!`;
-        chaosMonkeyData(domString);
-        console.log('equipment break', domString);
-      })
-      .catch((error) => console.error(error));
+    equipBreaker();
   }
-  console.log(domString);
 });
 
 export default { chaosMonkey, kidnapStaff };

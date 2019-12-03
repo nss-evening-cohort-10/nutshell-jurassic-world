@@ -47,6 +47,7 @@
     "firebase": "^7.5.0",
     "fs": "0.0.1-security",
     "jquery": "^3.4.1",
+    "moment": "^2.24.0",
     "node-cron": "^2.0.3",
     "popper.js": "^1.16.0"
   }
