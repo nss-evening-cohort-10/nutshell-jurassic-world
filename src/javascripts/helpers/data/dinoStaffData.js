@@ -17,4 +17,7 @@ const getDinoStaff = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getDinoStaff };
+const createNewDinoStaff = (newDinoStaff) => axios.post(`${baseUrl}/dinoStaff.json`, newDinoStaff);
+
+
+export default { getDinoStaff, createNewDinoStaff };

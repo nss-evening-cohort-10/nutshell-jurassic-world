@@ -15,7 +15,7 @@ const dinoScheduleBuilder = (scheduleArr, calendarArr) => {
       <p class='col-2'>${shift.weekday}</p>
       <p class='col-2'>${shift.startTime}</p>
       <p class='col-2'>${shift.endTime}</p>
-      <button class='cudButton col-2 assignStaff btn btn-outline-secondary' id='${shift.dinoId}-split-${shift.id}'>Assign Staff</button>
+      <button class='cudButton col-2 assignStaff btn btn-outline-secondary assignDino' id='${shift.dinoId}-split-${shift.id}'>Assign Staff</button>
     </div>
     `;
   });
@@ -44,7 +44,7 @@ const rideScheduleBuilder = (scheduleArr, calendarArr) => {
       <p class='col-2'>${shift.weekday}</p>
       <p class='col-2'>${shift.startTime}</p>
       <p class='col-2'>${shift.endTime}</p>
-      <button class='cudButton col-2 assignStaff btn btn-outline-secondary' id='${shift.rideId}-split-${shift.id}'>Assign Staff</button>
+      <button class='cudButton col-2 assignStaff btn btn-outline-secondary assignRide' id='${shift.rideId}-split-${shift.id}'>Assign Staff</button>
     </div>
     `;
   });
@@ -73,7 +73,7 @@ const vendorScheduleBuilder = (scheduleArr, calendarArr) => {
       <p class='col-2'>${shift.weekday}</p>
       <p class='col-2'>${shift.startTime}</p>
       <p class='col-2'>${shift.endTime}</p>
-      <button class='cudButton col-2 assignStaff btn btn-outline-secondary' id='${shift.vendorId}-split-${shift.id}'>Assign Staff</button>
+      <button class='cudButton col-2 assignStaff btn btn-outline-secondary assignVendor' id='${shift.vendorId}-split-${shift.id}'>Assign Staff</button>
     </div>
     `;
   });

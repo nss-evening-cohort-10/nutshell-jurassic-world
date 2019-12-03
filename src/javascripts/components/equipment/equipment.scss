@@ -1,5 +1,6 @@
-#newEquip {
+#newEquip, #testEquip {
   box-shadow: 5px 5px 10px #212121;
+  height: 3em;
 }
 
 .updateEquip, .removeEquip, .assignEquip {
@@ -12,4 +13,31 @@
   box-shadow: 5px 5px 10px #212121;
   padding-top: 10px;
 
+}
+
+#brokenToast {
+  position: absolute; 
+  top: 0; 
+  right: 0;
+  min-width: 40%;
+  z-index: -1;
+
+  .equip-toast-body {
+    height: auto;
+    width: auto;
+    margin: 5px;
+  }
+
+  #brokenEquipTableContainer{
+    width: 100%; 
+  }
+
+  #brokenEquipToast {
+    img {
+      width: 25%;
+      position: absolute;
+      bottom: 25px;
+      right: 5px;
+    }
+  }
 }
