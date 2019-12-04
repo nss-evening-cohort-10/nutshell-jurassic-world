@@ -4,12 +4,13 @@ import 'firebase/auth';
 import utilities from '../../helpers/utilities';
 
 import vendorData from '../../helpers/data/vendorData';
+import smash from '../../helpers/data/smash';
 
 import './vendors.scss';
 import vendorTitle from './assets/images/vendorTitle.gif';
 
 const singleVendorCard = (vendorInfo) => {
-  const domString = `
+  let domString = `
   <div class="card col-3 vendor-card">
     <div class="card-body">
     <div class="view overlay">
@@ -20,8 +21,9 @@ const singleVendorCard = (vendorInfo) => {
     </div>
     <h4 class="card-title" id="${vendorInfo.id}">${vendorInfo.name}</h4>
     <h6 id="">${vendorInfo.description}</h6>
-    <h6 id="">category: ${vendorInfo.type}</h6>
-    </div>
+    <h6 id="">Category: ${vendorInfo.type}</h6>`;
+  domString += '<div id="vendorAvailability"></div>';
+  domString += `</div>
     <div class="card-footer d-flex justify-content-between flex-wrap">
           <button class="btn btn-dark update-vendor cudButton" id="update-${vendorInfo.id}">Update</button>
           <button class="btn btn-dark delete-vendor cudButton" id="delete-${vendorInfo.id}">Close</button>
@@ -29,6 +31,23 @@ const singleVendorCard = (vendorInfo) => {
     </div>
   `;
   return domString;
+};
+
+const printVendorAvailability = () => {
+  smash.getVendorsWithAssignment()
+    .then((vendorsWithAssignment) => {
+      vendorsWithAssignment.forEach((vendor) => {
+        console.error(vendor.assignments.length);
+        let availabilityString = '';
+        if (vendor.assignments.length >= 1) {
+          availabilityString += '<h6>Vendor is open!</h6>';
+        } else {
+          availabilityString += '<h6>Vendor is closed!</h6>';
+        }
+        utilities.printToDom('vendorAvailability', availabilityString);
+      });
+    })
+    .catch((error) => console.error(error));
 };
 
 const showAllVendors = () => {
@@ -47,6 +66,7 @@ const showAllVendors = () => {
         });
         domString += '</div></div>';
         utilities.printToDom('printComponent', domString);
+        printVendorAvailability();
       }
       // eslint-disable-next-line no-use-before-define
       $('body').on('click', '.delete-vendor', closeShop);

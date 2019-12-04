@@ -204,4 +204,5 @@ export default {
   findVendorShifts,
   getEquipmentWithAssignment,
   getDinosWithAssignment,
+  getVendorsWithAssignment,
 };
