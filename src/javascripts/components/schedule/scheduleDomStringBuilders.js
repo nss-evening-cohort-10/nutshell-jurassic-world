@@ -22,6 +22,7 @@ const dinoScheduleBuilder = (scheduleArr, calendarArr) => {
     `;
   });
   scheduleString += '</div><div id="dinoCalendarShifts" class="calendar hide">';
+  $('.calCell').css('background-color', 'transparent').html('');
   const calendarNames = [];
   calendarArr.forEach((shift) => {
     calendarNames.push(shift.name);
@@ -33,9 +34,10 @@ const dinoScheduleBuilder = (scheduleArr, calendarArr) => {
       const findCalendarMatches = calendarArr.find((x) => x.name === name);
       findCalendarMatches.assignments.forEach((match) => {
         const shiftName = match.shiftDetails.name.split('-');
-        console.log('class to add', shiftName[0], shiftName[1]);
+        const employee = match.shiftDetails.staffName;
+        $(`.${shiftName[0]}.${shiftName[1]}`).css('background-color', 'lightslategrey').css('color', 'darkslategrey');
+        $(`.${shiftName[0]}.${shiftName[1]}`).html(`<p>${employee}</p>`);
       });
-      console.log('cmon', findCalendarMatches);
     }
   });
   scheduleString += '</div>';

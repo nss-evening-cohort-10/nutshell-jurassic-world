@@ -11,9 +11,7 @@ const printDinoCalendar = (e) => {
   e.stopImmediatePropagation();
   const chosenName = $(e.target).val();
   $('#calendarSpecificView').attr('store-id', chosenName);
-  console.log(chosenName);
   smash.findDinoShifts().then(() => {
-    console.log('smashdinoshifts');
   }).catch((err) => console.error(err));
 };
 
@@ -31,7 +29,7 @@ const printVendorCalendar = (e) => {
 
 const makeCalendarGrid = () => {
   let gridString = `
-    <table class='table'>
+    <table id='calendarTable' class='table table-bordered text-center'>
       <tr>
         <th scope="col">Time</th>
         <th scope="col">Sunday</th>
@@ -46,7 +44,7 @@ const makeCalendarGrid = () => {
   for (let i = 0; i < 24; i += 1) {
     gridString += `<tr> <td scope='row'>${i}:00</td>`;
     for (let n = 0; n < 7; n += 1) {
-      gridString += `<td class='day${n} hour${i}'></td>`;
+      gridString += `<td class='day${n} hour${i} calCell'></td>`;
     }
     gridString += '</tr>';
   }
@@ -128,6 +126,16 @@ const printCalendarView = () => {
   calendarString += '</div>';
   utilities.printToDom('printComponent', calendarString);
   $('#calendarTypeSelect').change(printSpecificViewOptions);
+  $('.day0').addClass('Sunday');
+  $('.day1').addClass('Monday');
+  $('.day2').addClass('Tuesday');
+  $('.day3').addClass('Wednesday');
+  $('.day4').addClass('Thursday');
+  $('.day5').addClass('Friday');
+  $('.day6').addClass('Saturday');
+  $('.hour0, .hour1, .hour2, .hour3, .hour4, .hour5, .hour6, .hour7').addClass('Overnight');
+  $('.hour8, .hour9, .hour10, .hour11, .hour12, .hour13, .hour14, .hour15').addClass('Morning');
+  $('.hour16, .hour17, .hour18, .hour19, .hour20, .hour21, .hour22, .hour23').addClass('Evening');
 };
 
 export default { printCalendarView };

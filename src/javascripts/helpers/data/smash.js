@@ -100,38 +100,44 @@ const getVendorsWithAssignment = () => new Promise((resolve, reject) => {
 const findDinoShifts = () => new Promise((resolve, reject) => {
   getDinosWithAssignment().then((dinoAssignments) => {
     shiftsData.getShifts().then((allShifts) => {
-      const openDinoShifts = [];
-      const takenDinoShifts = [];
-      dinoAssignments.forEach((dino) => {
-        const newDino = { ...dino };
-        const assignedShifts = newDino.assignments;
-        allShifts.forEach((shift) => {
-          const newShift = { ...shift };
-          const matchShift = assignedShifts.filter((x) => x.shiftId === newShift.id);
-          if (matchShift[1]) {
-            matchShift.forEach((timeMatch) => {
-              const storeShift = timeMatch;
-              storeShift.shiftDetails = newShift;
-            });
-            takenDinoShifts.push(newDino);
-          } else if (matchShift[0]) {
-            matchShift.forEach((timeMatch) => {
-              const storeShift = timeMatch;
-              storeShift.shiftDetails = newShift;
-            });
-            takenDinoShifts.push(newDino);
-            newShift.dinoId = newDino.id;
-            newShift.dinoName = newDino.name;
-            openDinoShifts.push(newShift);
-          } else {
-            newShift.dinoId = newDino.id;
-            newShift.dinoName = newDino.name;
-            openDinoShifts.push(newShift);
-          }
+      staffData.getStaff().then((staff) => {
+        const openDinoShifts = [];
+        const takenDinoShifts = [];
+        dinoAssignments.forEach((dino) => {
+          const newDino = { ...dino };
+          const assignedShifts = newDino.assignments;
+          allShifts.forEach((shift) => {
+            const newShift = { ...shift };
+            const matchShift = assignedShifts.filter((x) => x.shiftId === newShift.id);
+            if (matchShift[1]) {
+              matchShift.forEach((timeMatch) => {
+                const findStaff = staff.find((z) => z.id === timeMatch.staffId);
+                const storeShift = timeMatch;
+                storeShift.shiftDetails = newShift;
+                newShift.staffName = findStaff.name;
+              });
+              takenDinoShifts.push(newDino);
+            } else if (matchShift[0]) {
+              matchShift.forEach((timeMatch) => {
+                const findStaff = staff.find((z) => z.id === timeMatch.staffId);
+                const storeShift = timeMatch;
+                storeShift.shiftDetails = newShift;
+                newShift.staffName = findStaff.name;
+              });
+              takenDinoShifts.push(newDino);
+              newShift.dinoId = newDino.id;
+              newShift.dinoName = newDino.name;
+              openDinoShifts.push(newShift);
+            } else {
+              newShift.dinoId = newDino.id;
+              newShift.dinoName = newDino.name;
+              openDinoShifts.push(newShift);
+            }
+          });
         });
+        const buildString = scheduleBuilder.dinoScheduleBuilder(openDinoShifts, takenDinoShifts);
+        resolve(buildString);
       });
-      const buildString = scheduleBuilder.dinoScheduleBuilder(openDinoShifts, takenDinoShifts);
-      resolve(buildString);
     });
   }).catch((err) => reject(err));
 });
