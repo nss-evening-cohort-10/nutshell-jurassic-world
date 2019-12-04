@@ -3,6 +3,9 @@ import $ from 'jquery';
 import scheduleTitle from './assets/images/scheduleTitle.png';
 // import smash from '../../helpers/data/smash';
 import utilities from '../../helpers/utilities';
+import dinoData from '../../helpers/data/dinoData';
+import rideData from '../../helpers/data/rideData';
+import vendorData from '../../helpers/data/vendorData';
 
 const makeCalendarGrid = () => {
   let gridString = `
@@ -31,13 +34,34 @@ const makeCalendarGrid = () => {
 
 const printSpecificViewOptions = (e) => {
   const mainSelection = $(e.target).val();
+  const specificNames = [];
   if (mainSelection === 'dinosaurs') {
-    console.log('dinosaurs');
+    dinoData.getDinosaurs().then((allDinos) => {
+      allDinos.forEach((dino) => {
+        specificNames.push(dino.name);
+      });
+    }).catch((err) => console.error(err));
   } else if (mainSelection === 'rides') {
-    console.log('rides');
+    rideData.getRides().then((allRides) => {
+      allRides.forEach((ride) => {
+        specificNames.push(ride.name);
+      });
+    }).catch((err) => console.error(err));
   } else if (mainSelection === 'vendors') {
-    console.log('vendors');
+    vendorData.getAllVendors().then((allVendors) => {
+      allVendors.forEach((vendor) => {
+        specificNames.push(vendor.name);
+      });
+    }).catch((err) => console.error(err));
   }
+  console.log(specificNames);
+  $('#calendarSpecificView').removeAttr('disabled');
+  let listString = '<option value="test">Choose One...</option>';
+  specificNames.forEach((name) => {
+    listString += `<option value='${name}'>${name}</option>`;
+    console.log('anything');
+  });
+  utilities.printToDom('calendarSpecificView', listString);
 };
 
 const printCalendarView = () => {
