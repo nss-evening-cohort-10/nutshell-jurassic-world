@@ -50,10 +50,25 @@ const updateRideInfo = (rideId, newInfo) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getNotBrokenRides = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/staff.json?orderBy="isOperational"&equalTo=true`)
+    .then((response) => {
+      const demRides = response.data;
+      const workingRides = [];
+      Object.keys(demRides).forEach((fbId) => {
+        demRides[fbId].id = fbId;
+        workingRides.push(demRides[fbId]);
+      });
+      resolve(workingRides);
+    })
+    .catch((error) => reject(error));
+});
+
 export default {
   getRides,
   deleteRide,
   addRide,
   updateRide,
   updateRideInfo,
+  getNotBrokenRides,
 };
