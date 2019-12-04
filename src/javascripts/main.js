@@ -20,7 +20,7 @@ const init = () => {
   navBar.logoutEvent();
   homepage.buildHomepageCards();
   chaosMonkey.chaosMonkey.start();
-  dinoAlert.dinoAlert();
+  dinoAlert.dinoAlertTimed.start();
 };
 
 init();

@@ -203,4 +203,5 @@ export default {
   findRideShifts,
   findVendorShifts,
   getEquipmentWithAssignment,
+  getDinosWithAssignment,
 };
