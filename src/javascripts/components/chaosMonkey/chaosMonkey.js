@@ -9,7 +9,8 @@ import equipmentData from '../../helpers/data/equipmentData';
 import chaosLogData from '../../helpers/data/chaosLogData';
 import homepage from '../homepage/homepage';
 import equipStaffData from '../../helpers/data/equipStaffData';
-
+import rideStaffData from '../../helpers/data/rideStaffData';
+import dinoStaffData from '../../helpers/data/dinoStaffData';
 
 const createEntry = (equipId, ride, staff, incidentDesc, zone) => {
   const newLogEntry = {
@@ -22,6 +23,36 @@ const createEntry = (equipId, ride, staff, incidentDesc, zone) => {
   };
   chaosLogData.addChaosLogEntry(newLogEntry)
     .then(() => homepage.buildHomepageCards())
+    .catch((error) => console.error(error));
+};
+
+const removeStaffConnections = (staffId) => {
+  equipStaffData.getEquipStaffbyStaffId(staffId)
+    .then((equipStaffs) => {
+      if (equipStaffs.length !== 0) {
+        equipStaffs.forEach((equipStaff) => {
+          equipStaffData.removeEquipStaff(equipStaff.id);
+        });
+      }
+    })
+    .catch((error) => console.error(error));
+  rideStaffData.getRideStaffByStaffId(staffId)
+    .then((rideStaffs) => {
+      if (rideStaffs.length !== 0) {
+        rideStaffs.forEach((rideStaff) => {
+          rideStaffData.removeRideStaff(rideStaff.id);
+        });
+      }
+    })
+    .catch((error) => console.error(error));
+  dinoStaffData.getDinoStaffbyStaffId(staffId)
+    .then((dinoStaffs) => {
+      if (dinoStaffs.length !== 0) {
+        dinoStaffs.forEach((dinoStaff) => {
+          dinoStaffData.removeDinoStaff(dinoStaff.id);
+        });
+      }
+    })
     .catch((error) => console.error(error));
 };
 
@@ -43,16 +74,7 @@ const kidnapStaff = () => {
       staffData.updateRole(newAllStaffId, newStaffData);
       // eslint-disable-next-line no-use-before-define
       chaosMonkeyData(domString);
-      equipStaffData.getEquipStaffbyStaffId(newAllStaffId)
-        .then((result) => {
-          if (result.length !== 0) {
-            result.forEach((equipStaff) => {
-              equipStaffData.removeEquipStaff(equipStaff.id);
-            });
-          }
-          // equipStaffData.removeEquipStaff(equipStaff);
-        })
-        .catch((error) => console.error(error));
+      removeStaffConnections(newAllStaffId);
       createEntry('', '', newAllStaffId, domString, 'zone-2');
       return domString;
     })
@@ -121,7 +143,7 @@ const equipBreaker = () => {
     .catch((error) => console.error(error));
 };
 
-const chaosMonkey = cron.job('2-59/1 4-23 * * 0-6', () => {
+const chaosMonkey = cron.job('*/1 * * * 0-6', () => {
   // const attackZone = randomMonkeyEvent();
   const attackZone = 2;
   if (attackZone === 1) {
