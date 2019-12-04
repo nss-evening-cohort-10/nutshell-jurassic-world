@@ -24,9 +24,13 @@ const createEquipStaff = (newEquipStaff) => axios.post(`${baseUrl}/equipStaff.js
 const findEquipStaffByEquipId = (equipId) => new Promise((resolve, reject) => axios.get(`${baseUrl}/equipStaff.json?orderBy="equipmentId"&equalTo="${equipId}"`)
   .then((response) => resolve(Object.keys(response.data)[0])).catch((err) => reject(err)));
 
+const findEquipStaffByStaffId = (staffId) => new Promise((resolve, reject) => axios.get(`${baseUrl}/equipStaff.json?orderBy="staffId"&equalTo="${staffId}"`)
+  .then((response) => resolve(Object.keys(response.data)[0])).catch((err) => reject(err)));
+
 export default {
   getEquipStaff,
   removeEquipStaff,
   createEquipStaff,
   findEquipStaffByEquipId,
+  findEquipStaffByStaffId,
 };

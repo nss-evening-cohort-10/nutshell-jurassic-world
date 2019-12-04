@@ -10,7 +10,6 @@ import chaosLogData from '../../helpers/data/chaosLogData';
 import homepage from '../homepage/homepage';
 import equipStaffData from '../../helpers/data/equipStaffData';
 
-const kidnapStaffUpdater = (staffId, newStaffData) => staffData.updateRole(staffId, newStaffData).then((staff) => staff.data.name).catch((error) => console.error(error));
 
 const createEntry = (equipId, ride, staff, incidentDesc, zone) => {
   const newLogEntry = {
@@ -40,9 +39,16 @@ const kidnapStaff = () => {
         imgUrl: newAllStaff[randomStaff].imgUrl,
       };
       const domString = `The Chaos Monkey has kidnapped ${staffName}!`;
-      kidnapStaffUpdater(newAllStaffId, newStaffData);
+      staffData.updateRole(newAllStaffId, newStaffData);
+      // .then((staff) => staff.data.name)
+      // .catch((error) => console.error(error));
       // eslint-disable-next-line no-use-before-define
       chaosMonkeyData(domString);
+      equipStaffData.findEquipStaffByStaffId(newAllStaffId)
+        .then((result) => {
+          console.log('equipStaff Match', result);
+        })
+        .catch((error) => console.error(error));
       createEntry('', '', newAllStaffId, domString, 'zone-2');
       return domString;
     })
@@ -60,10 +66,10 @@ const chaosMonkeyData = (monkeyDamage) => {
   $('#chaosToast').toast('show');
 };
 
-const randomMonkeyEvent = () => {
-  const attackZone = Math.floor((Math.random() * 3) + 1);
-  return attackZone;
-};
+// const randomMonkeyEvent = () => {
+//   const attackZone = Math.floor((Math.random() * 3) + 1);
+//   return attackZone;
+// };
 
 const rideUpdater = (rideId, newInfo) => rideData.updateRide(rideId, newInfo).then((ride) => ride.data.name).catch((error) => console.error(error));
 
@@ -112,7 +118,8 @@ const equipBreaker = () => {
 };
 
 const chaosMonkey = cron.job('2-59/45 4-23 * * 0-6', () => {
-  const attackZone = randomMonkeyEvent();
+  // const attackZone = randomMonkeyEvent();
+  const attackZone = 2;
   if (attackZone === 1) {
     rideBreaker();
   } else if (attackZone === 2) {
