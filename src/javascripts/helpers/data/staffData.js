@@ -62,7 +62,6 @@ const getLivingStaffMembers = () => new Promise((resolve, reject) => {
         demStaffMembers[fbId].id = fbId;
         livingStaff.push(demStaffMembers[fbId]);
       });
-      console.log(livingStaff);
       resolve(livingStaff);
     })
     .catch((error) => reject(error));

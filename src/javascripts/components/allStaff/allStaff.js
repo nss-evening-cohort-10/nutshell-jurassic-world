@@ -3,6 +3,10 @@ import './allStaff.scss';
 import staffData from '../../helpers/data/staffData';
 import utilities from '../../helpers/utilities';
 import staffTitle from './assets/images/staffTitle.gif';
+import assignVendors from '../assignVendors/assignVendors';
+import assignEquipment from '../equipment/assignEquipment';
+import assignRides from '../AssignRideStaff/assignRideStaff';
+import assignDinos from '../assignDinos/assignDinos';
 
 const fireStaff = (e) => {
   e.preventDefault();
@@ -109,48 +113,7 @@ const buildAllStaff = () => {
     .catch((error) => console.error(error));
 };
 
-// const assignStaffFunction = () => {
-//   staffData.getLivingStaffMembers()
-//     .then((staffMembers) => {
-//       let domstring = `
-//   <div class="modal fade" id="assignStaffModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-//     <div class="modal-dialog" role="document">
-//       <div class="modal-content">
-//         <div class="modal-header">
-//           <h5 class="modal-title" id="exampleModalLabel">Assign Staff Member</h5>
-//           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-//             <span aria-hidden="true">&times;</span>
-//           </button>
-//         </div>
-//         <div class="form-group">
-//         <label for="exampleFormControlSelect1">Select Staff Member</label>
-//         <select class="form-control" id="exampleFormControlSelect1">
-//         `;
-//       staffMembers.forEach((member) => {
-//         domstring += `<option value="${member.id}">${member.name}</option>`;
-//       });
-//       domstring = `
-//         </select>
-//         </div>
-//         <div class="modal-body">
-//           <form id="livingStaffMembers">
-//           </form>
-//         </div>
-//         <div class="modal-footer">
-//           <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-//           <button type="button" class="btn btn-light" id="add-new-vendor-staff">Assign</button>
-//         </div>
-//       </div>
-//     </div>
-//   </div>`;
-//       utilities.printToDom('divForModal', domstring);
-//     })
-//     .catch((error) => console.error(error));
-// };
-
-// $('body').on('click', '.assignStaff', assignStaffFunction);
-
-const getAliveStaff = () => {
+const getAliveStaff = (event) => {
   staffData.getLivingStaffMembers()
     .then((staffMembers) => {
       let domstring = '';
@@ -162,17 +125,33 @@ const getAliveStaff = () => {
         domstring += `<option value="${member.id}">${member.name}</option>`;
       });
       domstring += `
-      </select>
-</div>
-`;
+        </select>
+      </div>
+    `;
       utilities.printToDom('assignStaffMod', domstring);
+      const storeIdsNeeded = $(event.target).attr('id');
+      $('.add-staff-assignment').attr('store-ids', storeIdsNeeded);
+      const assigningFactor = $(event.target).attr('class');
+      if (assigningFactor.includes('assignRide')) {
+        $('.add-staff-assignment').attr('id', 'assigningRideButton');
+      } else if (assigningFactor.includes('assignDino')) {
+        $('.add-staff-assignment').attr('id', 'assigningDinoButton');
+      } else if (assigningFactor.includes('assignVendor')) {
+        $('.add-staff-assignment').attr('id', 'assigningVendorButton');
+      } else if (assigningFactor.includes('assignEquipment')) {
+        $('.add-staff-assignment').attr('id', 'assigningEquipmentButton');
+      }
+      $('body').on('click', '#assigningRideButton', assignRides.assignRideStaff);
+      $('body').on('click', '#assigningDinoButton', assignDinos.assignStaffDino);
+      $('body').on('click', '#assigningVendorButton', assignVendors.assignStaffVendor);
+      $('body').on('click', '#assigningEquipmentButton', assignEquipment.assignEquipStaff);
     })
     .catch((error) => console.error(error));
 };
 
-$('body').on('click', '.assignStaff', () => {
+$('body').on('click', '.assignStaff', (event) => {
   $('#assignStaffModal').modal('show');
-  getAliveStaff();
+  getAliveStaff(event);
 });
 
 export default { buildAllStaff, getAliveStaff };

@@ -16,6 +16,7 @@
       <button class="btn btn-dark" id="staffLink">Staff</button>
       <button class="btn btn-dark" id="vendLink">Vendors</button>
       <button class="btn btn-dark" id="scheduleLink">Schedule</button>
+      <button class="btn btn-dark" id="chaosLog">Chaos Log</button>
     </div>
     <div id="logButtons"></div><button id="logOutButton" class="btn btn-dark hide">Logout</button>
   </nav>
@@ -247,7 +248,7 @@
     </div>
   </div>
 
-<div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="true" data-delay="300000">
+<div role="alert" id="chaosToast" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="true" data-delay="300000">
   <div class="toast-header">
     <svg class=" rounded mr-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
@@ -261,6 +262,21 @@
     <div id="chaosMonkeyData" class="row"></div>
   </div>
 </div>
+
+<div role="alert" id="brokenToast" aria-live="polite" aria-atomic="true" class="toast" data-autohide="true" data-delay="300000">
+    <div class="toast-header">
+      <svg class=" rounded mr-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
+        <rect fill="green" width="100%" height="100%" /></svg>
+      <strong class="mr-auto">Broken Equipment Log</strong>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="equip-toast-body toast-body">
+      <div id="brokenEquipToast" class="row"></div>
+    </div>
+  </div>
 
 <div class="modal fade" id="updateStaffModal" tabindex="-1" role="dialog" aria-labelledby="updateStaffModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -442,7 +458,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-light" id="add-new-vendor-staff">Assign</button>
+          <button type="button" class="btn btn-light add-staff-assignment">Assign</button>
         </div>
       </div>
     </div>

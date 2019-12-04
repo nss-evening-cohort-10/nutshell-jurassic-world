@@ -19,5 +19,14 @@ const getEquipStaff = () => new Promise((resolve, reject) => {
 
 const removeEquipStaff = (equipStaffId) => axios.delete(`${baseUrl}/equipStaff/${equipStaffId}.json`);
 
+const createEquipStaff = (newEquipStaff) => axios.post(`${baseUrl}/equipStaff.json`, newEquipStaff);
 
-export default { getEquipStaff, removeEquipStaff };
+const findEquipStaffByEquipId = (equipId) => new Promise((resolve, reject) => axios.get(`${baseUrl}/equipStaff.json?orderBy="equipmentId"&equalTo="${equipId}"`)
+  .then((response) => resolve(Object.keys(response.data)[0])).catch((err) => reject(err)));
+
+export default {
+  getEquipStaff,
+  removeEquipStaff,
+  createEquipStaff,
+  findEquipStaffByEquipId,
+};
