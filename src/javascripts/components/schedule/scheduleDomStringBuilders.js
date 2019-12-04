@@ -1,6 +1,8 @@
+import $ from 'jquery';
+
 const dinoScheduleBuilder = (scheduleArr, calendarArr) => {
   let scheduleString = `
-  <div class='container'>
+  <div id='dinoSchedulerShifts' class='container'>
   <div class='row d-flex'>
     <h5 class='col-3'>Dinosaur Name</h5>
     <h5 class='col-2'>Day of Week</h5>
@@ -20,8 +22,16 @@ const dinoScheduleBuilder = (scheduleArr, calendarArr) => {
     `;
   });
   scheduleString += '</div><div id="dinoCalendarShifts" class="calendar hide">';
+  const calendarNames = [];
   calendarArr.forEach((shift) => {
-    scheduleString += `<p>calendar ${shift.name}</p>`;
+    calendarNames.push(shift.name);
+  });
+  const distinctNames = new Set(calendarNames);
+  distinctNames.forEach((name) => {
+    const selectedName = $('#calendarSpecificView').attr('store-id');
+    if (selectedName === name) {
+      console.log('cmon', selectedName);
+    }
   });
   scheduleString += '</div>';
   return (scheduleString);

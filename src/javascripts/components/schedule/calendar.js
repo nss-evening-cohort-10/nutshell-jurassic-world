@@ -1,11 +1,33 @@
 import './schedule.scss';
 import $ from 'jquery';
 import scheduleTitle from './assets/images/scheduleTitle.png';
-// import smash from '../../helpers/data/smash';
+import smash from '../../helpers/data/smash';
 import utilities from '../../helpers/utilities';
 import dinoData from '../../helpers/data/dinoData';
 import rideData from '../../helpers/data/rideData';
 import vendorData from '../../helpers/data/vendorData';
+
+const printDinoCalendar = (e) => {
+  e.stopImmediatePropagation();
+  const chosenName = $(e.target).val();
+  $('#calendarSpecificView').attr('store-id', chosenName);
+  console.log(chosenName);
+  smash.findDinoShifts().then(() => {
+    console.log('smashdinoshifts');
+  }).catch((err) => console.error(err));
+};
+
+const printRideCalendar = (e) => {
+  e.stopImmediatePropagation();
+  const chosenName = $(e.target).val();
+  console.log(chosenName);
+};
+
+const printVendorCalendar = (e) => {
+  e.stopImmediatePropagation();
+  const chosenName = $(e.target).val();
+  console.log(chosenName);
+};
 
 const makeCalendarGrid = () => {
   let gridString = `
@@ -32,36 +54,48 @@ const makeCalendarGrid = () => {
   return gridString;
 };
 
-const printSpecificViewOptions = (e) => {
+const getNameOptions = (e) => new Promise((resolve, reject) => {
   const mainSelection = $(e.target).val();
-  const specificNames = [];
-  if (mainSelection === 'dinosaurs') {
-    dinoData.getDinosaurs().then((allDinos) => {
-      allDinos.forEach((dino) => {
-        specificNames.push(dino.name);
-      });
-    }).catch((err) => console.error(err));
-  } else if (mainSelection === 'rides') {
+  dinoData.getDinosaurs().then((allDinos) => {
     rideData.getRides().then((allRides) => {
-      allRides.forEach((ride) => {
-        specificNames.push(ride.name);
+      vendorData.getAllVendors().then((allVendors) => {
+        const specificNames = [];
+        if (mainSelection === 'dinosaurs') {
+          allDinos.forEach((dino) => {
+            specificNames.push(dino.name);
+          });
+          $('#calendarSpecificView').change(printDinoCalendar);
+        } else if (mainSelection === 'rides') {
+          allRides.forEach((ride) => {
+            specificNames.push(ride.name);
+          });
+          $('#calendarSpecificView').change(printRideCalendar);
+        } else if (mainSelection === 'vendors') {
+          allVendors.forEach((vendor) => {
+            specificNames.push(vendor.name);
+          });
+          $('#calendarSpecificView').change(printVendorCalendar);
+        }
+        resolve(specificNames);
       });
-    }).catch((err) => console.error(err));
-  } else if (mainSelection === 'vendors') {
-    vendorData.getAllVendors().then((allVendors) => {
-      allVendors.forEach((vendor) => {
-        specificNames.push(vendor.name);
-      });
-    }).catch((err) => console.error(err));
-  }
-  console.log(specificNames);
-  $('#calendarSpecificView').removeAttr('disabled');
-  let listString = '<option value="test">Choose One...</option>';
-  specificNames.forEach((name) => {
-    listString += `<option value='${name}'>${name}</option>`;
-    console.log('anything');
-  });
-  utilities.printToDom('calendarSpecificView', listString);
+    });
+  }).catch((err) => reject(err));
+});
+
+const printSpecificViewOptions = (e) => {
+  getNameOptions(e).then((specificNamesList) => {
+    const mainSelection = $(e.target).val();
+    if (mainSelection === 'unselected') {
+      $('#calendarSpecificView').attr('disabled', true);
+    } else {
+      $('#calendarSpecificView').removeAttr('disabled');
+    }
+    let listString = '<option value="unselected">Choose One...</option>';
+    specificNamesList.forEach((name) => {
+      listString += `<option value='${name}'>${name}</option>`;
+    });
+    utilities.printToDom('calendarSpecificView', listString);
+  }).catch((err) => console.error(err));
 };
 
 const printCalendarView = () => {
