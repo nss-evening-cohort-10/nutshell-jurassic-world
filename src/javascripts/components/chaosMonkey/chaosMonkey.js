@@ -35,7 +35,7 @@ const kidnapStaff = () => {
       const staffName = newAllStaff[randomStaff].name;
       const newStaffData = {
         name: newAllStaff[randomStaff].name,
-        age: newAllStaff[randomStaff].age,
+        isDead: true,
         role: newAllStaff[randomStaff].role,
         imgUrl: newAllStaff[randomStaff].imgUrl,
       };
