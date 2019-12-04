@@ -16,7 +16,7 @@
   },
   "dinoStaff-4": {
     "staffId": "staff3",
-    "dinoId": "dino4",
+    "dinoId": "dino1",
     "shiftId": "shift4"
   },
   "dinoStaff-5": {
@@ -26,7 +26,7 @@
   },
   "dinoStaff-6": {
     "staffId": "staff6",
-    "dinoId": "dino6",
+    "dinoId": "dino5",
     "shiftId": "shift9"
   }
 }
