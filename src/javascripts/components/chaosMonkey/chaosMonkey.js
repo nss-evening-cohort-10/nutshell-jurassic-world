@@ -152,7 +152,7 @@ const equipBreaker = () => {
     .catch((error) => console.error(error));
 };
 
-const chaosMonkey = cron.job('*/1 * * * 0-6', () => {
+const chaosMonkey = cron.job('*/45 * * * 0-6', () => {
   const attackZone = randomMonkeyEvent();
   if (attackZone === 1) {
     rideBreaker();
