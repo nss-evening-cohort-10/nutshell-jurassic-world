@@ -8,10 +8,12 @@ const getEquipStaff = () => new Promise((resolve, reject) => {
     .then((response) => {
       const equipStaffArr = response.data;
       const equipStaff = [];
-      Object.keys(equipStaffArr).forEach((fbId) => {
-        equipStaffArr[fbId].id = fbId;
-        equipStaff.push(equipStaffArr[fbId]);
-      });
+      if (equipStaffArr) {
+        Object.keys(equipStaffArr).forEach((fbId) => {
+          equipStaffArr[fbId].id = fbId;
+          equipStaff.push(equipStaffArr[fbId]);
+        });
+      }
       resolve(equipStaff);
     })
     .catch((error) => reject(error));
