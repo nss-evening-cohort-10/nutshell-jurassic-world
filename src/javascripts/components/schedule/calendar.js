@@ -31,8 +31,12 @@ const makeCalendarGrid = () => {
 
 const printSpecificViewOptions = (e) => {
   const mainSelection = $(e.target).val();
-  if (mainSelection === '') {
-    console.log('');
+  if (mainSelection === 'dinosaurs') {
+    console.log('dinosaurs');
+  } else if (mainSelection === 'rides') {
+    console.log('rides');
+  } else if (mainSelection === 'vendors') {
+    console.log('vendors');
   }
 };
 
@@ -65,6 +69,7 @@ const printCalendarView = () => {
   calendarString += makeCalendarGrid();
   calendarString += '</div>';
   utilities.printToDom('printComponent', calendarString);
+  $('#calendarTypeSelect').change(printSpecificViewOptions);
 };
 
 export default { printCalendarView };
