@@ -78,7 +78,7 @@ const getStaffUpdate = (e) => {
 };
 
 const buildAllStaff = () => {
-  staffData.getStaff()
+  staffData.getLivingStaffMembers()
     .then((allStaff) => {
       if (allStaff[0]) {
         let domString = `

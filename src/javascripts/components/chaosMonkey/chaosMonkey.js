@@ -11,6 +11,7 @@ import homepage from '../homepage/homepage';
 import equipStaffData from '../../helpers/data/equipStaffData';
 import rideStaffData from '../../helpers/data/rideStaffData';
 import dinoStaffData from '../../helpers/data/dinoStaffData';
+import vendorStaffData from '../../helpers/data/vendorStaffData';
 
 const createEntry = (equipId, ride, staff, incidentDesc, zone) => {
   const newLogEntry = {
@@ -54,14 +55,22 @@ const removeStaffConnections = (staffId) => {
       }
     })
     .catch((error) => console.error(error));
+  vendorStaffData.getVendorStaffbyStaffId(staffId)
+    .then((vendorStaffs) => {
+      if (vendorStaffs.length !== 0) {
+        vendorStaffs.forEach((vendorStaff) => {
+          vendorStaffData.removeVendorStaff(vendorStaff.id);
+        });
+      }
+    })
+    .catch((error) => console.error(error));
 };
 
 const kidnapStaff = () => {
-  staffData.getStaff()
+  staffData.getLivingStaffMembers()
     .then((allStaff) => {
       const newAllStaff = { ...allStaff };
-      // const randomStaff = Math.floor(Math.random() * allStaff.length);
-      const randomStaff = 2;
+      const randomStaff = Math.floor(Math.random() * allStaff.length);
       const newAllStaffId = newAllStaff[randomStaff].id;
       const staffName = newAllStaff[randomStaff].name;
       const newStaffData = {
@@ -92,10 +101,10 @@ const chaosMonkeyData = (monkeyDamage) => {
   $('#chaosToast').toast('show');
 };
 
-// const randomMonkeyEvent = () => {
-//   const attackZone = Math.floor((Math.random() * 3) + 1);
-//   return attackZone;
-// };
+const randomMonkeyEvent = () => {
+  const attackZone = Math.floor((Math.random() * 3) + 1);
+  return attackZone;
+};
 
 const rideUpdater = (rideId, newInfo) => rideData.updateRide(rideId, newInfo).then((ride) => ride.data.name).catch((error) => console.error(error));
 
@@ -144,8 +153,7 @@ const equipBreaker = () => {
 };
 
 const chaosMonkey = cron.job('*/1 * * * 0-6', () => {
-  // const attackZone = randomMonkeyEvent();
-  const attackZone = 2;
+  const attackZone = randomMonkeyEvent();
   if (attackZone === 1) {
     rideBreaker();
   } else if (attackZone === 2) {
