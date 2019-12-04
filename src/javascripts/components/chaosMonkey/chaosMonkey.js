@@ -118,8 +118,17 @@ const rideBreaker = () => {
       const updatedRide = {
         name: `${rides[attackedRide].name}`,
         imgUrl: `${rides[attackedRide].imgUrl}`,
+        isOperational: false,
+        hasDinos: `${rides[attackedRide].hasDinos}`,
       };
       rideUpdater(rideId, updatedRide);
+      rideStaffData.findRideStaffByRideId(rideId)
+        .then((results) => {
+          results.forEach((result) => {
+            rideStaffData.removeRideStaff(result);
+          });
+        })
+        .catch((error) => console.error(error));
       const domString = `The Chaos Monkey has broken ${rideName}!`;
       chaosMonkeyData(domString);
       createEntry('', rideId, '', domString, 'zone-1');
