@@ -82,7 +82,7 @@ const rideBreaker = () => {
         hasDinos: `${rides[attackedRide].hasDinos}`,
       };
       rideUpdater(rideId, updatedRide);
-      rideStaffData.findRideStaffByStaffId(rideId)
+      rideStaffData.findRideStaffByRideId(rideId)
         .then((results) => {
           results.forEach((result) => {
             rideStaffData.removeRideStaff(result);
