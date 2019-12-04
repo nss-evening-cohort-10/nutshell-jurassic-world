@@ -12,6 +12,7 @@ import apiKeys from './helpers/apiKeys.json';
 import homepage from './components/homepage/homepage';
 import chaosMonkey from './components/chaosMonkey/chaosMonkey';
 import schedule from './components/schedule/schedule';
+import dinoAlert from './components/dinoHandlerCount/dinoHandlerCount';
 
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
@@ -22,6 +23,7 @@ const init = () => {
   homepage.buildHomepageCards();
   chaosMonkey.chaosMonkey.start();
   $('body').on('click', '#displayOpenShifts', schedule.printOpenSchedule);
+  dinoAlert.dinoAlertTimed.start();
 };
 
 init();

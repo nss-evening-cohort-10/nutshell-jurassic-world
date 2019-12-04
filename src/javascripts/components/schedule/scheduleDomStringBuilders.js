@@ -30,7 +30,12 @@ const dinoScheduleBuilder = (scheduleArr, calendarArr) => {
   distinctNames.forEach((name) => {
     const selectedName = $('#calendarSpecificView').attr('store-id');
     if (selectedName === name) {
-      console.log('cmon', selectedName);
+      const findCalendarMatches = calendarArr.find((x) => x.name === name);
+      findCalendarMatches.assignments.forEach((match) => {
+        const shiftName = match.shiftDetails.name.split('-');
+        console.log('class to add', shiftName[0], shiftName[1]);
+      });
+      console.log('cmon', findCalendarMatches);
     }
   });
   scheduleString += '</div>';
