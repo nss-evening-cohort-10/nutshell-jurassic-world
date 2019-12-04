@@ -3,6 +3,7 @@ import $ from 'jquery';
 import scheduleTitle from './assets/images/scheduleTitle.png';
 import smash from '../../helpers/data/smash';
 import utilities from '../../helpers/utilities';
+import calendar from './calendar';
 
 const selectTypeView = (e) => {
   const selectedType = $(e.target).val();
@@ -28,9 +29,9 @@ const printOpenSchedule = () => {
   let scheduleString = `
   <div class="row justify-content-center" id="dinoTitle"><img src=${scheduleTitle}></div>
   <div class='row d-flex'>
-    <h2 class='col-2 offset-1'>Open Shifts</h2>
+    <h2 class='col-3 offset-1'>Open Shifts</h2>
     <form class='row d-flex col-6'>
-      <div class="form-group col-4 offset-1">
+      <div class="form-group col-3 offset-1">
         <label for="jobTypeSelect">Job Type</label>
         <select class="form-control" id="jobTypeSelect">
           <option value='allTypes'>All</option>
@@ -39,7 +40,7 @@ const printOpenSchedule = () => {
           <option value='vendors'>Vendors</option>
         </select>
       </div>
-      <div class="form-group col-4 offset-1">
+      <div class="form-group col-3 offset-1">
         <label for="jobDaySelect">Day of Week</label>
         <select class="form-control" id="jobDaySelect">
           <option value='allDays'>All</option>
@@ -53,7 +54,7 @@ const printOpenSchedule = () => {
         </select>
       </div>
     </form>
-    <button id='displayCalendar' class='hide col-2 btn btn-secondary'>Calendar View</button>
+    <button id='displayCalendar' class='col-2 btn btn-secondary'>Calendar View</button>
   </div>
   <div id='openRidesSchedule' class='allTypes rides'>
   <h3>Rides</h3>
@@ -83,6 +84,7 @@ const printOpenSchedule = () => {
         utilities.printToDom('printComponent', scheduleString);
         $('#jobTypeSelect').change(selectTypeView);
         $('#jobDaySelect').change(selectDayView);
+        $('body').on('click', '#displayCalendar', calendar.printCalendarView);
       });
     });
   }).catch((err) => console.error(err));

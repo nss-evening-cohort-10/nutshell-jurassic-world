@@ -17,9 +17,24 @@ const getRideStaff = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const removeRideStaff = (rideStaffId) => axios.delete(`${baseUrl}/rideStaff/${rideStaffId}.json`);
+const getRideStaffByStaffId = (staffId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/rideStaff.json`)
+    .then((response) => {
+      const rideStaffArr = response.data;
+      const rideStaff = [];
+      Object.keys(rideStaffArr).forEach((fbId) => {
+        rideStaffArr[fbId].id = fbId;
+        rideStaff.push(rideStaffArr[fbId]);
+      });
+      const filteredResult = rideStaff.filter((x) => x.staffId === staffId);
+      resolve(filteredResult);
+    })
+    .catch((error) => reject(error));
+});
 
 const createNewRideStaff = (newRideStaff) => axios.post(`${baseUrl}/rideStaff.json`, newRideStaff);
+
+const removeRideStaff = (rideStaffId) => axios.delete(`${baseUrl}/rideStaff/${rideStaffId}.json`);
 
 const findRideStaffByRideId = (rideId) => new Promise((resolve, reject) => axios.get(`${baseUrl}/rideStaff.json?orderBy="rideId"&equalTo="${rideId}"`)
   .then((response) => resolve(Object.keys(response.data))).catch((error) => reject(error)));
@@ -27,6 +42,7 @@ const findRideStaffByRideId = (rideId) => new Promise((resolve, reject) => axios
 export default {
   getRideStaff,
   createNewRideStaff,
+  getRideStaffByStaffId,
   removeRideStaff,
   findRideStaffByRideId,
 };

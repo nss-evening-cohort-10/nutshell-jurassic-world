@@ -1,6 +1,29 @@
+import $ from 'jquery';
+
+const fillCalendar = (array) => {
+  $('.calCell').css('background-color', 'transparent').html('');
+  const calendarNames = [];
+  array.forEach((shift) => {
+    calendarNames.push(shift.name);
+  });
+  const distinctNames = new Set(calendarNames);
+  distinctNames.forEach((name) => {
+    const selectedName = $('#calendarSpecificView').attr('store-id');
+    if (selectedName === name) {
+      const findCalendarMatches = array.find((x) => x.name === name);
+      findCalendarMatches.assignments.forEach((match) => {
+        const shiftName = match.shiftDetails.name.split('-');
+        const employee = match.shiftDetails.staffName;
+        $(`.${shiftName[0]}.${shiftName[1]}`).css('background-color', 'lightslategrey').css('color', 'darkslategrey');
+        $(`.${shiftName[0]}.${shiftName[1]}`).html(`<p>${employee}</p>`);
+      });
+    }
+  });
+};
+
 const dinoScheduleBuilder = (scheduleArr, calendarArr) => {
   let scheduleString = `
-  <div class='container'>
+  <div id='dinoSchedulerShifts' class='container'>
   <div class='row d-flex'>
     <h5 class='col-3'>Dinosaur Name</h5>
     <h5 class='col-2'>Day of Week</h5>
@@ -20,9 +43,7 @@ const dinoScheduleBuilder = (scheduleArr, calendarArr) => {
     `;
   });
   scheduleString += '</div><div id="dinoCalendarShifts" class="calendar hide">';
-  calendarArr.forEach((shift) => {
-    scheduleString += `<p>calendar ${shift.name}</p>`;
-  });
+  fillCalendar(calendarArr);
   scheduleString += '</div>';
   return (scheduleString);
 };
@@ -49,9 +70,7 @@ const rideScheduleBuilder = (scheduleArr, calendarArr) => {
     `;
   });
   scheduleString += '</div><div id="rideCalendarShifts" class="calendar hide">';
-  calendarArr.forEach((shift) => {
-    scheduleString += `<p>calendar ${shift.name}</p>`;
-  });
+  fillCalendar(calendarArr);
   scheduleString += '</div>';
   return (scheduleString);
 };
@@ -78,9 +97,7 @@ const vendorScheduleBuilder = (scheduleArr, calendarArr) => {
     `;
   });
   scheduleString += '</div><div id="vendorCalendarShifts" class="calendar hide">';
-  calendarArr.forEach((shift) => {
-    scheduleString += `<p>calendar ${shift.name}</p>`;
-  });
+  fillCalendar(calendarArr);
   scheduleString += '</div>';
   return (scheduleString);
 };

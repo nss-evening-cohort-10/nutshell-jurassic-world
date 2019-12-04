@@ -10,8 +10,8 @@ import chaosLogData from '../../helpers/data/chaosLogData';
 import homepage from '../homepage/homepage';
 import equipStaffData from '../../helpers/data/equipStaffData';
 import rideStaffData from '../../helpers/data/rideStaffData';
-
-const kidnapStaffUpdater = (staffId, newStaffData) => staffData.updateRole(staffId, newStaffData).then((staff) => staff.data.name).catch((error) => console.error(error));
+import dinoStaffData from '../../helpers/data/dinoStaffData';
+import vendorStaffData from '../../helpers/data/vendorStaffData';
 
 const createEntry = (equipId, ride, staff, incidentDesc, zone) => {
   const newLogEntry = {
@@ -27,8 +27,47 @@ const createEntry = (equipId, ride, staff, incidentDesc, zone) => {
     .catch((error) => console.error(error));
 };
 
+const removeStaffConnections = (staffId) => {
+  equipStaffData.getEquipStaffbyStaffId(staffId)
+    .then((equipStaffs) => {
+      if (equipStaffs.length !== 0) {
+        equipStaffs.forEach((equipStaff) => {
+          equipStaffData.removeEquipStaff(equipStaff.id);
+        });
+      }
+    })
+    .catch((error) => console.error(error));
+  rideStaffData.getRideStaffByStaffId(staffId)
+    .then((rideStaffs) => {
+      if (rideStaffs.length !== 0) {
+        rideStaffs.forEach((rideStaff) => {
+          rideStaffData.removeRideStaff(rideStaff.id);
+        });
+      }
+    })
+    .catch((error) => console.error(error));
+  dinoStaffData.getDinoStaffbyStaffId(staffId)
+    .then((dinoStaffs) => {
+      if (dinoStaffs.length !== 0) {
+        dinoStaffs.forEach((dinoStaff) => {
+          dinoStaffData.removeDinoStaff(dinoStaff.id);
+        });
+      }
+    })
+    .catch((error) => console.error(error));
+  vendorStaffData.getVendorStaffbyStaffId(staffId)
+    .then((vendorStaffs) => {
+      if (vendorStaffs.length !== 0) {
+        vendorStaffs.forEach((vendorStaff) => {
+          vendorStaffData.removeVendorStaff(vendorStaff.id);
+        });
+      }
+    })
+    .catch((error) => console.error(error));
+};
+
 const kidnapStaff = () => {
-  staffData.getStaff()
+  staffData.getLivingStaffMembers()
     .then((allStaff) => {
       const newAllStaff = { ...allStaff };
       const randomStaff = Math.floor(Math.random() * allStaff.length);
@@ -36,14 +75,15 @@ const kidnapStaff = () => {
       const staffName = newAllStaff[randomStaff].name;
       const newStaffData = {
         name: newAllStaff[randomStaff].name,
-        age: newAllStaff[randomStaff].age,
+        isDead: true,
         role: newAllStaff[randomStaff].role,
         imgUrl: newAllStaff[randomStaff].imgUrl,
       };
       const domString = `The Chaos Monkey has kidnapped ${staffName}!`;
-      kidnapStaffUpdater(newAllStaffId, newStaffData);
+      staffData.updateRole(newAllStaffId, newStaffData);
       // eslint-disable-next-line no-use-before-define
       chaosMonkeyData(domString);
+      removeStaffConnections(newAllStaffId);
       createEntry('', '', newAllStaffId, domString, 'zone-2');
       return domString;
     })
@@ -121,7 +161,7 @@ const equipBreaker = () => {
     .catch((error) => console.error(error));
 };
 
-const chaosMonkey = cron.job('2-59/45 4-23 * * 0-6', () => {
+const chaosMonkey = cron.job('*/45 * * * 0-6', () => {
   const attackZone = randomMonkeyEvent();
   if (attackZone === 1) {
     rideBreaker();
