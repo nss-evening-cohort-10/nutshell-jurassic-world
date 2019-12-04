@@ -29,7 +29,8 @@ const kidnapStaff = () => {
   staffData.getStaff()
     .then((allStaff) => {
       const newAllStaff = { ...allStaff };
-      const randomStaff = Math.floor(Math.random() * allStaff.length);
+      // const randomStaff = Math.floor(Math.random() * allStaff.length);
+      const randomStaff = 2;
       const newAllStaffId = newAllStaff[randomStaff].id;
       const staffName = newAllStaff[randomStaff].name;
       const newStaffData = {
@@ -40,13 +41,16 @@ const kidnapStaff = () => {
       };
       const domString = `The Chaos Monkey has kidnapped ${staffName}!`;
       staffData.updateRole(newAllStaffId, newStaffData);
-      // .then((staff) => staff.data.name)
-      // .catch((error) => console.error(error));
       // eslint-disable-next-line no-use-before-define
       chaosMonkeyData(domString);
-      equipStaffData.findEquipStaffByStaffId(newAllStaffId)
+      equipStaffData.getEquipStaffbyStaffId(newAllStaffId)
         .then((result) => {
-          console.log('equipStaff Match', result);
+          if (result.length !== 0) {
+            result.forEach((equipStaff) => {
+              equipStaffData.removeEquipStaff(equipStaff.id);
+            });
+          }
+          // equipStaffData.removeEquipStaff(equipStaff);
         })
         .catch((error) => console.error(error));
       createEntry('', '', newAllStaffId, domString, 'zone-2');
@@ -117,7 +121,7 @@ const equipBreaker = () => {
     .catch((error) => console.error(error));
 };
 
-const chaosMonkey = cron.job('2-59/45 4-23 * * 0-6', () => {
+const chaosMonkey = cron.job('2-59/1 4-23 * * 0-6', () => {
   // const attackZone = randomMonkeyEvent();
   const attackZone = 2;
   if (attackZone === 1) {
