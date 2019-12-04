@@ -14,7 +14,6 @@ const fillCalendar = (array) => {
       findCalendarMatches.assignments.forEach((match) => {
         const shiftName = match.shiftDetails.name.split('-');
         const employee = match.shiftDetails.staffName;
-        console.log('test shift name', shiftName[0], shiftName[1]);
         $(`.${shiftName[0]}.${shiftName[1]}`).css('background-color', 'lightslategrey').css('color', 'darkslategrey');
         $(`.${shiftName[0]}.${shiftName[1]}`).html(`<p>${employee}</p>`);
       });

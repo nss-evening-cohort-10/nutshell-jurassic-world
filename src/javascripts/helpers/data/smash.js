@@ -145,31 +145,35 @@ const findDinoShifts = () => new Promise((resolve, reject) => {
 const findRideShifts = () => new Promise((resolve, reject) => {
   getRidesWithAssignment().then((rideAssignments) => {
     shiftsData.getShifts().then((allShifts) => {
-      const openRideShifts = [];
-      const takenRideShifts = [];
-      rideAssignments.forEach((ride) => {
-        if (ride.isOperational === true) {
-          const newRide = { ...ride };
-          const assignedShifts = newRide.assignments;
-          allShifts.forEach((shift) => {
-            const newShift = { ...shift };
-            const matchShift = assignedShifts.filter((x) => x.shiftId === newShift.id);
-            if (matchShift[0]) {
-              matchShift.forEach((timeMatch) => {
-                const storeShift = timeMatch;
-                storeShift.shiftDetails = newShift;
-              });
-              takenRideShifts.push(newRide);
-            } else {
-              newShift.rideId = newRide.id;
-              newShift.rideName = newRide.name;
-              openRideShifts.push(newShift);
-            }
-          });
-        }
+      staffData.getStaff().then((staff) => {
+        const openRideShifts = [];
+        const takenRideShifts = [];
+        rideAssignments.forEach((ride) => {
+          if (ride.isOperational === true) {
+            const newRide = { ...ride };
+            const assignedShifts = newRide.assignments;
+            allShifts.forEach((shift) => {
+              const newShift = { ...shift };
+              const matchShift = assignedShifts.filter((x) => x.shiftId === newShift.id);
+              if (matchShift[0]) {
+                matchShift.forEach((timeMatch) => {
+                  const findStaff = staff.find((z) => z.id === timeMatch.staffId);
+                  const storeShift = timeMatch;
+                  storeShift.shiftDetails = newShift;
+                  newShift.staffName = findStaff.name;
+                });
+                takenRideShifts.push(newRide);
+              } else {
+                newShift.rideId = newRide.id;
+                newShift.rideName = newRide.name;
+                openRideShifts.push(newShift);
+              }
+            });
+          }
+        });
+        const buildString = scheduleBuilder.rideScheduleBuilder(openRideShifts, takenRideShifts);
+        resolve(buildString);
       });
-      const buildString = scheduleBuilder.rideScheduleBuilder(openRideShifts, takenRideShifts);
-      resolve(buildString);
     });
   }).catch((err) => reject(err));
 });
@@ -177,29 +181,33 @@ const findRideShifts = () => new Promise((resolve, reject) => {
 const findVendorShifts = () => new Promise((resolve, reject) => {
   getVendorsWithAssignment().then((vendorAssignments) => {
     shiftsData.getShifts().then((allShifts) => {
-      const openVendorShifts = [];
-      const takenVendorShifts = [];
-      vendorAssignments.forEach((vendor) => {
-        const newVendor = { ...vendor };
-        const assignedShifts = newVendor.assignments;
-        allShifts.forEach((shift) => {
-          const newShift = { ...shift };
-          const matchShift = assignedShifts.filter((x) => x.shiftId === newShift.id);
-          if (matchShift[0]) {
-            matchShift.forEach((timeMatch) => {
-              const storeShift = timeMatch;
-              storeShift.shiftDetails = newShift;
-            });
-            takenVendorShifts.push(newVendor);
-          } else {
-            newShift.vendorId = newVendor.id;
-            newShift.vendorName = newVendor.name;
-            openVendorShifts.push(newShift);
-          }
+      staffData.getStaff().then((staff) => {
+        const openVendorShifts = [];
+        const takenVendorShifts = [];
+        vendorAssignments.forEach((vendor) => {
+          const newVendor = { ...vendor };
+          const assignedShifts = newVendor.assignments;
+          allShifts.forEach((shift) => {
+            const newShift = { ...shift };
+            const matchShift = assignedShifts.filter((x) => x.shiftId === newShift.id);
+            if (matchShift[0]) {
+              matchShift.forEach((timeMatch) => {
+                const findStaff = staff.find((z) => z.id === timeMatch.staffId);
+                const storeShift = timeMatch;
+                storeShift.shiftDetails = newShift;
+                newShift.staffName = findStaff.name;
+              });
+              takenVendorShifts.push(newVendor);
+            } else {
+              newShift.vendorId = newVendor.id;
+              newShift.vendorName = newVendor.name;
+              openVendorShifts.push(newShift);
+            }
+          });
         });
+        const buildString = scheduleBuilder.vendorScheduleBuilder(openVendorShifts, takenVendorShifts);
+        resolve(buildString);
       });
-      const buildString = scheduleBuilder.vendorScheduleBuilder(openVendorShifts, takenVendorShifts);
-      resolve(buildString);
     });
   }).catch((err) => reject(err));
 });

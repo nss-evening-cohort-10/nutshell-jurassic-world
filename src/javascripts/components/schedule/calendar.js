@@ -21,7 +21,6 @@ const printRideCalendar = (e) => {
   $('#calendarSpecificView').attr('store-id', chosenName);
   smash.findRideShifts().then(() => {
   }).catch((err) => console.error(err));
-  console.log(chosenName);
 };
 
 const printVendorCalendar = (e) => {
@@ -30,7 +29,6 @@ const printVendorCalendar = (e) => {
   $('#calendarSpecificView').attr('store-id', chosenName);
   smash.findVendorShifts().then(() => {
   }).catch((err) => console.error(err));
-  console.log(chosenName);
 };
 
 const makeCalendarGrid = () => {
