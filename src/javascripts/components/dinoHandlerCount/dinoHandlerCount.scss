@@ -1,0 +1,12 @@
+#handlerCountToast {
+  position: absolute; 
+  margin-top: 70px;
+  top: 0; 
+  right: 0;
+  min-width: 30%;
+  z-index: -1;
+
+  .each-dino {
+    width: 100%;
+  }
+}
