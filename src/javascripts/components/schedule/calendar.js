@@ -18,12 +18,18 @@ const printDinoCalendar = (e) => {
 const printRideCalendar = (e) => {
   e.stopImmediatePropagation();
   const chosenName = $(e.target).val();
+  $('#calendarSpecificView').attr('store-id', chosenName);
+  smash.findRideShifts().then(() => {
+  }).catch((err) => console.error(err));
   console.log(chosenName);
 };
 
 const printVendorCalendar = (e) => {
   e.stopImmediatePropagation();
   const chosenName = $(e.target).val();
+  $('#calendarSpecificView').attr('store-id', chosenName);
+  smash.findVendorShifts().then(() => {
+  }).catch((err) => console.error(err));
   console.log(chosenName);
 };
 
@@ -62,17 +68,17 @@ const getNameOptions = (e) => new Promise((resolve, reject) => {
           allDinos.forEach((dino) => {
             specificNames.push(dino.name);
           });
-          $('#calendarSpecificView').change(printDinoCalendar);
+          $('#calendarSpecificView').on('change', printDinoCalendar);
         } else if (mainSelection === 'rides') {
           allRides.forEach((ride) => {
             specificNames.push(ride.name);
           });
-          $('#calendarSpecificView').change(printRideCalendar);
+          $('#calendarSpecificView').on('change', printRideCalendar);
         } else if (mainSelection === 'vendors') {
           allVendors.forEach((vendor) => {
             specificNames.push(vendor.name);
           });
-          $('#calendarSpecificView').change(printVendorCalendar);
+          $('#calendarSpecificView').on('change', printVendorCalendar);
         }
         resolve(specificNames);
       });
@@ -81,6 +87,8 @@ const getNameOptions = (e) => new Promise((resolve, reject) => {
 });
 
 const printSpecificViewOptions = (e) => {
+  $('#calendarSpecificView').unbind();
+  $('.calCell').css('background-color', 'transparent').html('');
   getNameOptions(e).then((specificNamesList) => {
     const mainSelection = $(e.target).val();
     if (mainSelection === 'unselected') {
