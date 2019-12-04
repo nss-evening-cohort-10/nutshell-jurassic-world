@@ -214,7 +214,9 @@ const printEquipment = () => {
           });
         }
         domString += '</div>';
-        utilities.printToDom('printComponent', domString);
+        if (equipment[0] || assignEquipments[0]) {
+          utilities.printToDom('printComponent', domString);
+        }
         $('.broken-true').attr('disabled', true);
         $('#chooseEquipAssignment').change(selectEquipAssignmentView);
         $('#testEquip').click(displayBrokenEquipment);

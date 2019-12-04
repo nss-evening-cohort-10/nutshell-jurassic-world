@@ -10,6 +10,7 @@ import authData from './helpers/data/authData';
 import apiKeys from './helpers/apiKeys.json';
 import homepage from './components/homepage/homepage';
 import chaosMonkey from './components/chaosMonkey/chaosMonkey';
+import dinoAlert from './components/dinoHandlerCount/dinoHandlerCount';
 
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
@@ -19,6 +20,7 @@ const init = () => {
   navBar.logoutEvent();
   homepage.buildHomepageCards();
   chaosMonkey.chaosMonkey.start();
+  dinoAlert.dinoAlertTimed.start();
 };
 
 init();
