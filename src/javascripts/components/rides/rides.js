@@ -8,7 +8,6 @@ import utilities from '../../helpers/utilities';
 
 import './rides.scss';
 import rideTitle from './rides_assets/rideTitle.gif';
-import smash from '../../helpers/data/smash';
 
 const deleteRide = (e) => {
   e.stopImmediatePropagation();
@@ -76,7 +75,7 @@ const getRideInfo = (e) => {
 };
 
 const printRides = () => {
-  smash.getRidesWithAssignment()
+  rideData.getRides()
     .then((rides) => {
       if (rides[0]) {
         let domString = `<div id="dinoTitle" class="img-container"><img src="${rideTitle}" class="rides-title" alt="title" /></div>`;
