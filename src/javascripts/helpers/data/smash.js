@@ -70,6 +70,7 @@ const getRidesWithAssignment = () => new Promise((resolve, reject) => {
         }
         allRidesWithAssignment.push(newRide);
       });
+      console.log(allRidesWithAssignment);
       resolve(allRidesWithAssignment);
     });
   }).catch((err) => reject(err));
@@ -218,4 +219,5 @@ export default {
   findVendorShifts,
   getEquipmentWithAssignment,
   getDinosWithAssignment,
+  getRidesWithAssignment,
 };

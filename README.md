@@ -1,5 +1,8 @@
 # Nutshell Jurassic World
 
+## Test it out!
+[Click HERE to go to Application](https://jurassic-park-26ffa.firebaseapp.com)
+
 ## Description
 Welcome to the world of Jurassic Park!
 
@@ -8,6 +11,22 @@ When the user initially visits the page, they will see all the different compone
 In order to make additions or changes to the site data, the user will need to log in.
 
 However, be careful! Because there is a Chaos Monkey that wreaks havoc at the same time every day on the equipment, staff, and rides.  Check the log to see what he's been up to.
+
+## Technologies Used
+
+* [Axios 0.19.0](https://www.npmjs.com/package/axios)
+* [Bootstrap 4.3.1](https://getbootstrap.com/)
+* [CSS3](https://www.w3.org/Style/CSS/Overview.en.html)
+* [ES6 modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
+* [ESLint 14.0.0](https://eslint.org/)
+* [Firebase 7.5.0](https://firebase.google.com/)
+* [Fontawesome 5.11.2](https://fontawesome.com/6?next=%2F)
+* [HTML5](https://html.spec.whatwg.org/multipage/)
+* [JavaScript](https://www.javascript.com/)
+* [jQuery 3.4.1](https://jquery.com/)
+* [Moment.js 2.24.0](https://momentjs.com/)
+* [Node-cron 2.0.3](https://www.npmjs.com/package/node-cron)
+* [Webpack 4.41.2](https://webpack.js.org/)
 
 ## Screenshots
 Home:
@@ -37,9 +56,6 @@ Chaos Log:
 * at the root of this project run the following command: hs -p 8080
 * in your browser nagivate to https://localhost:8080
 
-## Test it out!
-[Click HERE to go to Application](https://jurassic-park-26ffa.firebaseapp.com)
-
 ## Contributors
 * [Jacob Best-Wittenberg](https://github.com/jacob-bw)
 * [Kelsey Creel](https://github.com/kelseycreel)
@@ -49,12 +65,3 @@ Chaos Log:
 * [Gabe Seals](https://github.com/gseals)
 * [Maggie Greene](https://github.com/maggieisgreene)
 * [Ashley Claiborne](https://github.com/aclai4067)
-
-## Technologies Used
-* HTML
-* CSS
-* Vanilla JavaScript
-* jQuery
-* Bootstrap
-* Cron
-* Firebase
