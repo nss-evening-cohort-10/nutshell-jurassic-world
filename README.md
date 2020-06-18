@@ -9,6 +9,22 @@ In order to make additions or changes to the site data, the user will need to lo
 
 However, be careful! Because there is a Chaos Monkey that wreaks havoc at the same time every day on the equipment, staff, and rides.  Check the log to see what he's been up to.
 
+## Technologies Used
+
+* [Axios 0.19.0](https://www.npmjs.com/package/axios)
+* [Bootstrap 4.3.1](https://getbootstrap.com/)
+* [CSS3](https://www.w3.org/Style/CSS/Overview.en.html)
+* [ES6 modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
+* [ESLint 14.0.0](https://eslint.org/)
+* [Firebase 7.5.0](https://firebase.google.com/)
+* [Fontawesome 5.11.2](https://fontawesome.com/6?next=%2F)
+* [HTML5](https://html.spec.whatwg.org/multipage/)
+* [JavaScript](https://www.javascript.com/)
+* [jQuery 3.4.1](https://jquery.com/)
+* [Moment.js 2.24.0](https://momentjs.com/)
+* [Node-cron 2.0.3](https://www.npmjs.com/package/node-cron)
+* [Webpack 4.41.2](https://webpack.js.org/)
+
 ## Screenshots
 ![screenshot of 'homepage'](https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-jurassic-world/master/images/readmeImg/homepageUpdate.png)
 ![screenshot of 'dinosaurs logout'](https://raw.githubusercontent.com/nss-evening-cohort-10/nutshell-jurassic-world/master/images/readmeImg/dinoLogin.PNG)
@@ -36,12 +52,3 @@ However, be careful! Because there is a Chaos Monkey that wreaks havoc at the sa
 * [Gabe Seals](https://github.com/gseals)
 * [Maggie Greene](https://github.com/maggieisgreene)
 * [Ashley Claiborne](https://github.com/aclai4067)
-
-## Technologies Used
-* HTML
-* CSS
-* Vanilla JavaScript
-* jQuery
-* Bootstrap
-* Cron
-* Firebase
