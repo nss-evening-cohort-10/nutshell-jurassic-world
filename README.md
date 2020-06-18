@@ -1,5 +1,8 @@
 # Nutshell Jurassic World
 
+## Test it out!
+[Click HERE to go to Application](https://jurassic-park-26ffa.firebaseapp.com)
+
 ## Description
 Welcome to the world of Jurassic Park!
 
@@ -52,9 +55,6 @@ Chaos Log:
 * install http-server from npm
 * at the root of this project run the following command: hs -p 8080
 * in your browser nagivate to https://localhost:8080
-
-## Test it out!
-[Click HERE to go to Application](https://jurassic-park-26ffa.firebaseapp.com)
 
 ## Contributors
 * [Jacob Best-Wittenberg](https://github.com/jacob-bw)
