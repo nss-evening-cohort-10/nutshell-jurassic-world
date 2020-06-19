@@ -26,6 +26,7 @@ However, be careful! Because there is a Chaos Monkey that wreaks havoc at the sa
 * [jQuery 3.4.1](https://jquery.com/)
 * [Moment.js 2.24.0](https://momentjs.com/)
 * [Node-cron 2.0.3](https://www.npmjs.com/package/node-cron)
+* [SCSS 4.13.1](https://sass-lang.com/)
 * [Webpack 4.41.2](https://webpack.js.org/)
 
 ## Screenshots
